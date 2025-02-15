@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAKA,0BAAoB;EAEnB,wBAAwB;EAEvB;qFACc;ICwBf,KAAK,EDvBa,IAAI;ICwBtB,MAAM,EDxBY,IAAI;ICyBtB,WAAW,EDzBO,IAAI;IC0BtB,UAAU,EAAC,MAAM;;EDzBf;4FAAS;IACR,SAAS,EAAE,IAAI;;;AAOnB,0BAAoB;EACnB,6HAA8H;IAC7H,SAAS,EAAE,KAAK;;EAChB,yJAA4B;IAC3B,UAAU,EAAE,eAAe",
+"sources": ["qw-extension.responsive.scss","../../css/_mixins.scss"],
+"names": [],
+"file": "qw-extension.responsive.css"
+}

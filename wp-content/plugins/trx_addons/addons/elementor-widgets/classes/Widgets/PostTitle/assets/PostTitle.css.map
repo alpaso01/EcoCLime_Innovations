@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,0BAA2B;EAC1B,OAAO,EAAE,YAAY;EACrB,UAAU,EAAE,MAAM;EAClB,cAAc,EAAE,MAAM;EACtB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,gBAAgB",
+"sources": ["PostTitle.scss"],
+"names": [],
+"file": "PostTitle.css"
+}

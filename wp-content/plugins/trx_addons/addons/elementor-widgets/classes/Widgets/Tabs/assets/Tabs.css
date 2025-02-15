@@ -1,0 +1,232 @@
+.trx-addons-tabs-nav {
+  margin: 0;
+  padding: 0;
+}
+
+.trx-addons-tabs-nav li {
+  list-style: none;
+  transition: all .3s ease;
+  position: relative;
+  cursor: pointer;
+}
+.trx-addons-tabs-nav li .trx-addons-tabs-icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.trx-addons-tabs-nav li img {
+  position: relative;
+  width: auto;
+  max-height: 2em;
+  max-width: none;
+}
+.trx-addons-tabs-nav li h1, .trx-addons-tabs-nav li h2, .trx-addons-tabs-nav li h3, .trx-addons-tabs-nav li h4, .trx-addons-tabs-nav li h5, .trx-addons-tabs-nav li h6 {
+  margin: 0;
+}
+
+.trx-addons-tabs-nav li span.trx-addons-tabs-title {
+  font-size: 16px;
+}
+
+.trx-addons-tabs-horizontal .trx-addons-tabs-nav {
+  display: flex;
+}
+
+.trx-addons-tabs-horizontal.trx-addons-tabs-align-left .trx-addons-tabs-nav {
+  justify-content: flex-start;
+}
+
+.trx-addons-tabs-horizontal.trx-addons-tabs-align-center .trx-addons-tabs-nav {
+  justify-content: center;
+}
+
+.trx-addons-tabs-horizontal.trx-addons-tabs-align-right .trx-addons-tabs-nav {
+  justify-content: flex-end;
+}
+
+.trx-addons-tabs-horizontal-full-width .trx-addons-tabs-nav {
+  display: flex;
+}
+.trx-addons-tabs-horizontal-full-width .trx-addons-tabs-nav li {
+  flex: 1;
+}
+
+.trx-addons-tabs-nav li {
+  display: flex;
+  align-items: center;
+}
+
+.trx-addons-tabs-align-left .trx-addons-tabs-nav {
+  text-align: left;
+}
+
+.trx-addons-tabs-align-center .trx-addons-tabs-nav {
+  text-align: center;
+}
+
+.trx-addons-tabs-align-right .trx-addons-tabs-nav {
+  text-align: right;
+}
+
+.trx-addons-tabs-align-left .trx-addons-tabs-nav li {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.trx-addons-tabs-align-center .trx-addons-tabs-nav li {
+  text-align: center;
+  justify-content: center;
+}
+
+.trx-addons-tabs-align-right .trx-addons-tabs-nav li {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.trx-addons-tabs-vertical {
+  display: flex;
+}
+
+.trx-addons-tabs-vertical .trx-addons-tabs-nav li {
+  display: flex;
+  align-items: center;
+}
+
+.trx-addons-tabs .trx-addons-tabs-content {
+  display: block;
+}
+.trx-addons-tabs .trx-addons-tabs-content:after {
+  content: " ";
+  display: table;
+  width: 100%;
+  height: 0;
+  clear: both;
+}
+
+.trx-addons-tabs .trx-addons-tabs-content:not(.active) {
+  display: none;
+}
+
+.trx-addons-tabs .trx-addons-tabs-content .trx-addons-tabs-content-element p:last-child {
+  margin-bottom: 0;
+}
+
+.trx-addons-tabs-btn {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: top;
+  text-decoration: none;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.trx-addons-tabs-btn-icon-before .trx-addons-button-icon {
+  margin-right: 10px;
+}
+
+.trx-addons-tabs-btn-icon-after .trx-addons-button-icon {
+  margin-left: 10px;
+}
+
+@media (max-width: 575px) {
+  .trx-addons-tabs-vertical {
+    flex-direction: column;
+  }
+  .trx-addons-tabs-vertical .trx-addons-tabs-nav li {
+    width: 100% !important;
+    justify-content: center;
+  }
+}
+.trx-addons-tabs-nav .trx-addons-tabs-nav-item-with-desc {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.trx-addons-tabs-nav .trx-addons-tabs-nav-item-with-desc .trx-addons-tabs-subtitle {
+  display: block;
+  -webkit-flex-basis: 100%;
+  -ms-flex-basis: 100%;
+  flex-basis: 100%;
+  -webkit-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.trx-addons-tabs-vertical.trx-addons-tabs-v-align-center .trx-addons-tabs-nav,
+.trx-addons-tabs-vertical.trx-addons-tabs-v-align-center .trx-addons-tabs-content-element {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.trx-addons-tabs-vertical.trx-addons-tabs-v-align-bottom .trx-addons-tabs-nav,
+.trx-addons-tabs-vertical.trx-addons-tabs-v-align-bottom .trx-addons-tabs-content-element {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  .trx-addons-tabs-horizontal-full-width .trx-addons-tabs-nav,
+  .trx-addons-tabs-horizontal .trx-addons-tabs-nav {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--trx-addons-color-scrollbar-thumb, #e5e5e5) var(--trx-addons-color-scrollbar-bg, #f3f5f7);
+  }
+  .trx-addons-tabs-horizontal-full-width .trx-addons-tabs-nav::-webkit-scrollbar,
+  .trx-addons-tabs-horizontal .trx-addons-tabs-nav::-webkit-scrollbar {
+    width: 8px;
+  }
+  .trx-addons-tabs-horizontal-full-width .trx-addons-tabs-nav::-webkit-scrollbar-track,
+  .trx-addons-tabs-horizontal .trx-addons-tabs-nav::-webkit-scrollbar-track {
+    background: var(--trx-addons-color-scrollbar-bg, #f3f5f7);
+  }
+  .trx-addons-tabs-horizontal-full-width .trx-addons-tabs-nav::-webkit-scrollbar-thumb,
+  .trx-addons-tabs-horizontal .trx-addons-tabs-nav::-webkit-scrollbar-thumb {
+    background-color: var(--trx-addons-color-scrollbar-thumb, #dadada);
+    border: 1px solid var(--trx-addons-color-scrollbar-bg, #f3f5f7);
+    -webkit-border-radius: 6px;
+    -ms-border-radius: 6px;
+    border-radius: 6px;
+  }
+  .trx-addons-tabs-horizontal-full-width li,
+  .trx-addons-tabs-horizontal li {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
+/*# sourceMappingURL=Tabs.css.map */

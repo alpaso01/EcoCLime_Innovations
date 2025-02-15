@@ -1,0 +1,333 @@
+@import "../../../../../../css/_mixins.scss";
+@import "../../../../../../css/_trx_addons.vars.scss";
+@import "../../../../../../css/_trx_addons.colors.scss";
+
+.elementor-widget-trx_elm_pricing_table .elementor-widget-container {
+	background-color: #f8f8f8;
+	overflow: hidden;
+}
+
+.trx-addons-pricing-table {
+	&:not(.trx-addons-pricing-table-tooltip-yes) {
+		overflow: hidden;
+	}
+	text-align: center;
+	transition: all 0.25s linear 0s;
+
+	h1,h2,h3,h4,h5,h6,p {
+		// font-family: inherit;
+		// letter-spacing: 0;
+		margin: 0;
+	}
+}
+
+.trx-addons-pricing-table-container {
+	position: relative;
+}
+
+.trx-addons-pricing-table.horizontal-table {
+	display: flex;
+}
+
+.trx-addons-pricing-table.horizontal-table .trx-addons-pricing-table-head,
+.trx-addons-pricing-table.horizontal-table .trx-addons-pricing-table-footer,
+.trx-addons-pricing-table.horizontal-table .trx-addons-pricing-table-features {
+	flex: 1;
+}
+
+.trx-addons-pricing-table-align-left .trx-addons-pricing-table,
+.trx-addons-pricing-table-align-left.trx-addons-pricing-table-price-duration-wrap .trx-addons-pricing-table-price-duration {
+	text-align: left;
+}
+
+.trx-addons-pricing-table-align-left .trx-addons-pricing-table-price,
+.trx-addons-pricing-table-align-left .trx-addons-pricing-table-price-divider,
+.trx-addons-pricing-table-align-left.trx-addons-pricing-table-price-duration-nowrap .trx-addons-pricing-table-price-wrap {
+	justify-content: flex-start;
+}
+
+.trx-addons-pricing-table-align-right .trx-addons-pricing-table,
+.trx-addons-pricing-table-align-right.trx-addons-pricing-table-price-duration-wrap .trx-addons-pricing-table-price-duration {
+	text-align: right;
+}
+
+.trx-addons-pricing-table-align-right .trx-addons-pricing-table-price,
+.trx-addons-pricing-table-align-right .trx-addons-pricing-table-price-divider,
+.trx-addons-pricing-table-align-right.trx-addons-pricing-table-price-duration-nowrap .trx-addons-pricing-table-price-wrap {
+	justify-content: flex-end;
+}
+
+.trx-addons-pricing-table-head {
+	background: #7a7a7a;
+	padding: 30px;
+}
+
+.trx-addons-pricing-table .trx-addons-pricing-table-icon {
+	display: inline-block;
+}
+
+.trx-addons-pricing-table .trx-addons-pricing-table-title-wrap .trx-addons-pricing-table-title {
+	margin-bottom: 0;
+}
+
+.trx-addons-pricing-table .trx-addons-pricing-table-title-wrap .trx-addons-pricing-table-subtitle {
+	margin-bottom: 0;
+}
+
+.trx-addons-pricing-table .trx-addons-pricing-table-price {
+	margin-left: auto;
+	margin-right: auto;
+}
+.trx-addons-pricing-table div.trx-addons-pricing-table-price {
+	font-size: 40px;
+}
+.trx-addons-pricing-table .trx-addons-pricing-table-price-wrap {
+	flex-direction: column;
+}
+.trx-addons-pricing-table-price-duration-nowrap .trx-addons-pricing-table-price-wrap {
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+.trx-addons-pricing-table-price-duration-nowrap .trx-addons-pricing-table-price {
+	margin-left: 0;
+	margin-right: 0;
+	width: auto;
+}
+
+
+.trx-addons-pricing-table:not(.trx-addons-pricing-table-currency-raised) .trx-addons-pricing-table-price-prefix,
+.trx-addons-pricing-table-price-value {
+	display: flex;
+	align-self: center;
+}
+
+.trx-addons-pricing-table-after-part {
+	font-size: .4em;
+	line-height: 1;
+	align-self: flex-start;
+}
+
+.trx-addons-pricing-table-button-wrap-above {
+	padding: 0 30px;
+}
+.trx-addons-pricing-table-button.elementor-button {
+	@include inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: top;
+}
+.trx-addons-button-icon {
+	margin-right: 6px;
+
+	.trx-addons-pricing-table-button-text + & {
+		margin-left: 6px;
+		margin-right: 0;
+	}
+}
+
+
+.trx-addons-pricing-table .trx-addons-pricing-table-features {
+	list-style: none;
+	margin: 0;
+	padding: 0 30px;
+}
+
+.trx-addons-pricing-table .trx-addons-pricing-table-features li {
+	margin: 0;
+	padding: 0;
+}
+
+.trx-addons-pricing-table .trx-addons-pricing-table-features li:last-child {
+	border-bottom: 0;
+}
+
+.trx-addons-pricing-table .trx-addons-pricing-table-features li.excluded .trx-addons-pricing-table-feature-text {
+	text-decoration: line-through;
+}
+
+.trx-addons-pricing-table .trx-addons-pricing-table-feature-content {
+	[data-tooltip-text],
+	&[data-tooltip-text] {
+		position: relative;
+	}
+}
+
+.trx-addons-pricing-table-currency-raised .trx-addons-pricing-table-price-prefix {
+	font-size: 0.4em;
+	line-height: 1;
+	text-align: left;
+	align-self: flex-start;
+}
+.trx-addons-pricing-table .trx-addons-pricing-table-price-duration {
+	align-self: flex-end;
+}
+
+.trx-addons-pricing-table-price-duration-wrap .trx-addons-pricing-table-price-duration {
+	text-align: center;
+	width: 100%;
+}
+
+.trx-addons-pricing-table:not(.trx-addons-pricing-table-currency-raised) .trx-addons-pricing-table-price-prefix,
+.trx-addons-pricing-table .trx-addons-pricing-table-price-value {
+	line-height: .9;
+}
+
+.trx-addons-pricing-table-price,
+.trx-addons-pricing-table-price-wrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.trx-addons-pricing-table-price-divider {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	@include box(100%, 0px);
+}
+.trx-addons-pricing-table-price-divider-inner {
+	@include box(100%, 0px);
+}
+
+.trx-addons-pricing-table-price-original {
+	display: inline-flex;
+	font-size: 0.5em;
+	line-height: 1;
+	align-self: flex-end;
+	text-decoration: line-through;
+}
+
+.trx-addons-pricing-table-feature-content {
+	display: inline-flex;
+	align-items: center;
+}
+
+.trx-addons-pricing-table-ribbon {
+	color: #fff;
+	font-size: 13px;
+	font-weight: 700;
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	top: 0;
+	z-index: 2;
+}
+
+.trx-addons-pricing-table-ribbon-inner {
+	background: #61ce70;
+}
+
+.trx-addons-pricing-table-ribbon-1 {
+	position: absolute;
+	top: 0;
+	width: 150px;
+	overflow: hidden;
+	height: 150px;
+}
+
+.trx-addons-pricing-table-ribbon-1.trx-addons-pricing-table-ribbon-right {
+	left: auto;
+	right: 0;
+	transform: rotate(90deg);
+}
+
+.trx-addons-pricing-table-ribbon-1.trx-addons-pricing-table-ribbon-left {
+	left: 0;
+	right: auto;
+	transform: rotate(0);
+}
+
+.trx-addons-pricing-table-ribbon-1 .trx-addons-pricing-table-ribbon-inner {
+	text-align: center;
+	left: 0;
+	width: 200%;
+	transform: translateY(-50%) translateX(-50%) translateX(35px) rotate(-45deg);
+	margin-top: 35px;
+	line-height: 2;
+}
+
+.trx-addons-pricing-table-ribbon-2 {
+	border-radius: 50%;
+	line-height: 4em;
+	min-height: 4em;
+	min-width: 4em;
+}
+
+.trx-addons-pricing-table-ribbon-2 .trx-addons-pricing-table-ribbon-inner {
+	background: #61ce70;
+	border-radius: 50%;
+}
+
+.trx-addons-pricing-table-ribbon-2.trx-addons-pricing-table-ribbon-right {
+	transform: translateX(50%) translateY(-50%);
+}
+
+.trx-addons-pricing-table-ribbon-2.trx-addons-pricing-table-ribbon-left {
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.trx-addons-pricing-table-ribbon-right {
+	right: 0;
+}
+
+.trx-addons-pricing-table-ribbon-left {
+	left: 0;
+}
+
+.trx-addons-pricing-table-ribbon-3 {
+	background: #61ce70;
+	top: 10%;
+}
+
+.trx-addons-pricing-table-ribbon-3 .trx-addons-pricing-table-ribbon-inner {
+	padding: 3px 18px;
+}
+
+.trx-addons-pricing-table-ribbon-3:before,
+.trx-addons-pricing-table-ribbon-3:after {
+	border-bottom: 8px solid transparent;
+	content: '';
+	display: block;
+	position: absolute;
+	height: 0;
+	width: 0;
+	top: 100%;
+}
+
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-right {
+	border-radius: 3px 3px 0 3px;
+	right: -8px;
+}
+
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-right:before,
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-right:after {
+	right: 0;
+}
+
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-right:before {
+	border-left: 8px solid #61ce70;
+}
+
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-right:after {
+	border-left: 8px solid rgba(0, 0, 0, 0.2);
+}
+
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-left {
+	border-radius: 3px 3px 3px 0;
+	left: -8px;
+}
+
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-left:before,
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-left:after {
+	left: 0;
+}
+
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-left:before {
+	border-right: 8px solid #61ce70;
+}
+
+.trx-addons-pricing-table-ribbon-3.trx-addons-pricing-table-ribbon-left:after {
+	border-right: 8px solid rgba(0, 0, 0, 0.2);
+}

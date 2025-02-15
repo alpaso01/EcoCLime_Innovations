@@ -1,0 +1,81 @@
+#trx_addons_ai_helper_process_selection {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+  background-color: #f7f7f7;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-top: 1em;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+#trx_addons_ai_helper_process_selection.trx_addons_ai_helper_process_selection_show {
+  opacity: 1;
+  z-index: 99999;
+  pointer-events: auto;
+}
+#trx_addons_ai_helper_process_selection.trx_addons_ai_helper_process_selection_loading {
+  pointer-events: none;
+}
+#trx_addons_ai_helper_process_selection .trx_addons_ai_helper_process_selection_button {
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.25em 0.75em;
+  color: #555d66;
+  display: inline-block;
+  vertical-align: top;
+}
+#trx_addons_ai_helper_process_selection .trx_addons_ai_helper_process_selection_button:before {
+  font-family: "trx_addons_icons";
+  margin-right: 0.5em;
+  display: inline-block;
+  vertical-align: middle;
+}
+#trx_addons_ai_helper_process_selection .trx_addons_ai_helper_process_selection_button[data-command="process_explain"]:before {
+  content: "\e918";
+}
+#trx_addons_ai_helper_process_selection .trx_addons_ai_helper_process_selection_button[data-command="process_summarize"]:before {
+  content: "\e8cb";
+}
+#trx_addons_ai_helper_process_selection .trx_addons_ai_helper_process_selection_button[data-command="process_translate"]:before {
+  content: "\f130";
+}
+#trx_addons_ai_helper_process_selection .trx_addons_ai_helper_process_selection_button.trx_addons_ai_helper_process_selection_button_loading:before {
+  content: "\e800";
+  font-size: 0.9em;
+  -webkit-animation: spin 2s infinite linear;
+  -ms-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+#trx_addons_ai_helper_process_selection .trx_addons_ai_helper_process_selection_button:hover {
+  color: #11a0d2;
+}
+#trx_addons_ai_helper_process_selection .trx_addons_ai_helper_process_selection_button + .trx_addons_ai_helper_process_selection_button {
+  margin-left: 0.75em;
+  border-left: 1px solid #d8d8d8;
+}
+
+/*# sourceMappingURL=index.css.map */

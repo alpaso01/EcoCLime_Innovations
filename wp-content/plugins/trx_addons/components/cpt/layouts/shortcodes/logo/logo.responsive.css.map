@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,0BAAoB;EAChB,mBAAmB;EACtB;;sCAEqC;IACpC,UAAU,EAAE,KAAK;;;EAGjB;mDACqB;IACpB,UAAU,EAAE,KAAK;;;EAIlB;kDACqB;IACpB,UAAU,EAAE,KAAK;;;AAMpB,yBAAoB;EAChB,mBAAmB;EACtB,2BAA4B;IAC3B,cAAc,EAAE,CAAC;IACjB,SAAS,EAAE,KAAK",
+"sources": ["logo.responsive.scss"],
+"names": [],
+"file": "logo.responsive.css"
+}

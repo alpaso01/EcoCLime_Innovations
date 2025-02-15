@@ -1,0 +1,53 @@
+@media (max-width: 1279px) {
+  /* AI Chat */
+  .sc_chat_form_align_left_tablet .sc_chat_limits {
+    text-align: left;
+  }
+  .sc_chat_form_align_right_tablet .sc_chat_limits {
+    text-align: right;
+  }
+
+  .sc_chat_popup {
+    max-width: 33%;
+  }
+}
+@media (max-width: 767px) {
+  /* AI Chat */
+  .sc_chat_form_field_prompt .sc_chat_form_field_prompt_button {
+    padding: 0 1em;
+  }
+
+  .sc_chat_form_align_left_mobile .sc_chat_limits {
+    text-align: left;
+  }
+  .sc_chat_form_align_right_mobile .sc_chat_limits {
+    text-align: right;
+  }
+  .sc_chat_limits .sc_chat_limits_used {
+    display: block;
+    white-space: normal;
+  }
+
+  .sc_chat_message {
+    min-width: 50%;
+  }
+
+  .sc_chat_popup {
+    max-width: calc( 100% - 2 * var(--trx-addons-ai-helper-popup-offset-x) );
+  }
+  .sc_chat_popup.sc_chat_opening, .sc_chat_popup.sc_chat_opened {
+    min-width: 450px;
+  }
+}
+@media (max-width: 479px) {
+  /* AI Chat */
+  .sc_chat_popup {
+    --trx-addons-ai-helper-popup-offset-x: 1em;
+    --trx-addons-ai-helper-popup-offset-y: 1em;
+  }
+  .sc_chat_popup.sc_chat_opening, .sc_chat_popup.sc_chat_opened {
+    min-width: 270px;
+  }
+}
+
+/*# sourceMappingURL=chat.responsive.css.map */

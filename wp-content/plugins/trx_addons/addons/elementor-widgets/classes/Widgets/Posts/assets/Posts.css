@@ -1,0 +1,300 @@
+h1.trx-addons-posts-item-title, h2.trx-addons-posts-item-title, h3.trx-addons-posts-item-title, h4.trx-addons-posts-item-title, h5.trx-addons-posts-item-title, h6.trx-addons-posts-item-title, p.trx-addons-posts-item-title {
+  margin: 0;
+}
+
+.trx-addons-posts-item-excerpt p:last-child {
+  margin-bottom: 0;
+}
+
+.trx-addons-posts[data-layout="masonry"] .trx-addons-grid-item-wrap.animated-item {
+  -webkit-animation-fill-mode: unset;
+  animation-fill-mode: unset;
+}
+
+.trx-addons-posts-equal-height-yes .trx-addons-posts-item {
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.trx-addons-posts-item .trx-addons-posts-item-title a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.trx-addons-posts-item-thumbnail img {
+  width: 100%;
+  transition: all .25s linear;
+}
+
+.elementor-element.with-elementor-animation-trx_hover_zoom .trx-addons-posts-item-thumbnail {
+  overflow: hidden;
+}
+
+.trx-addons-posts-thumbnail-ratio .trx-addons-posts-item-thumbnail-wrap {
+  position: relative;
+}
+
+.trx-addons-posts-thumbnail-ratio .trx-addons-posts-item-thumbnail-wrap img {
+  position: absolute;
+  -o-object-fit: cover;
+  object-fit: cover;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+}
+
+.trx-addons-posts-align-buttons .trx-addons-posts-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.trx-addons-posts-align-buttons .trx-addons-posts-item-content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  flex-grow: 1;
+}
+
+.trx-addons-posts-align-buttons .trx-addons-posts-item-content {
+  flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.trx-addons-posts-align-buttons.trx-addons-posts-skin-event .trx-addons-posts-button {
+  align-self: center;
+}
+
+.trx-addons-posts-button {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.trx-addons-posts-item-separator-wrap {
+  margin-bottom: 15px;
+}
+
+.trx-addons-posts-item-separator {
+  background: #e6e6e6;
+  height: 1px;
+  width: 100%;
+}
+
+.trx-addons-posts-item-terms {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.trx-addons-posts-item-terms a {
+  color: inherit;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.trx-addons-load_more-button,
+.trx-addons-posts-pagination a.trx-addons-load_more-button {
+  display: inline-flex;
+  vertical-align: top;
+  line-height: 1;
+}
+
+.trx-addons-load_more-icon.elementor-align-icon-before {
+  margin: 0 4px 0 0;
+}
+
+.trx-addons-load_more-icon.elementor-align-icon-after {
+  margin: 0 0 0 4px;
+}
+
+.trx-addons-posts-item-terms .trx-addons-terms-separator:last-child,
+.trx-addons-posts-item-meta .trx-addons-meta-separator:last-child {
+  display: none;
+}
+
+.trx-addons-posts-item-meta .trx-addons-meta-separator {
+  position: relative;
+  line-height: 1em;
+}
+.trx-addons-posts-item-meta .trx-addons-meta-separator:after {
+  line-height: inherit;
+}
+
+.trx-addons-posts-item-meta .trx-addons-icon {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.trx-addons-posts-pagination a,
+.trx-addons-posts-pagination .page-numbers {
+  display: inline-block;
+}
+
+.trx-addons-posts-infinite-scroll .trx-addons-posts-pagination-wrap {
+  display: none;
+}
+
+.trx-addons-search-form-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.trx-addons-search-form {
+  display: flex;
+  transition: .2s;
+  overflow: hidden;
+  border: 0 solid transparent;
+  margin-bottom: 20px;
+  min-height: 50px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.trx-addons-search-form button,
+.trx-addons-search-form input[type=search] {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  background: none;
+  line-height: 1;
+  min-width: 0;
+  font-size: 15px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.trx-addons-search-form button:focus,
+.trx-addons-search-form input[type=search]:focus {
+  outline: 0;
+}
+
+.trx-addons-search-form input[type=search] {
+  background: #eceeef;
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  flex-basis: 100%;
+  color: #55595c;
+  transition: color .2s;
+}
+
+.trx-addons-search-form button {
+  background-color: #818a91;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 0;
+  min-width: 50px;
+}
+
+.trx-addons-search-form .trx-addons-search-form-input:-ms-input-placeholder {
+  color: inherit;
+  font-family: inherit;
+  opacity: 0.6;
+}
+
+.trx-addons-search-form .trx-addons-search-form-input::-moz-placeholder {
+  color: inherit;
+  font-family: inherit;
+  opacity: 0.6;
+}
+
+.trx-addons-search-form .trx-addons-search-form-input::placeholder {
+  color: inherit;
+  font-family: inherit;
+  opacity: 0.6;
+}
+
+.trx-addons-search-form-text .trx-addons-search-form-submit {
+  flex-shrink: 0;
+}
+
+.trx-addons-loader-overlay {
+  content: ' ';
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.trx-addons-posts-loader {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trx-addons-posts-loader-static {
+  position: relative;
+}
+
+.trx-addons-loader {
+  position: absolute;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+}
+
+.trx-addons-loader:after {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #000 transparent #000 transparent;
+  -webkit-animation: trx-addons-loader-dual-ring 1.2s linear infinite;
+  animation: trx-addons-loader-dual-ring 1.2s linear infinite;
+}
+
+.trx-addons-loader:after {
+  width: 46px;
+  height: 46px;
+}
+
+@-webkit-keyframes trx-addons-loader-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes trx-addons-loader-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=Posts.css.map */

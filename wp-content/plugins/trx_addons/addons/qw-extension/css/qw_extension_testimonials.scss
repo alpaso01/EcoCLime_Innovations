@@ -1,0 +1,164 @@
+@import "../../../css/_mixins.scss";
+@import "../../../css/_trx_addons.vars.scss";
+
+$theme_icons: "fontello";
+$qw_addon_icons: "qw_extension_icons";
+
+
+/* QW Date */
+.sc_testimonials_qw-date {
+	&.sc_testimonials div.sc_testimonials_content > .sc_testimonials_item + .sc_testimonials_item {
+		margin-top: var(--theme-var-grid_gap);
+	}
+	.sc_testimonials_item {
+		border: 1px solid var(--theme-color-bd_color);
+		padding: 40px 25px;
+		height: auto;
+	}
+	.sc_testimonials_item_author {
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		@include flex();
+		@include flex-align-items(center);
+		.sc_testimonials_item_author_avatar {
+			margin: 0 15px 0 0;
+			@include box(70px, 70px);
+			@include flex-shrink(0);
+		}
+		.sc_testimonials_item_author_data {
+			max-width: 100%;
+			.sc_testimonials_item_author_subtitle {
+				margin: 0;
+				color: var(--theme-color-text);
+				@include font(16px, 1.3em);
+			}
+			.sc_testimonials_item_author_title {
+				color: var(--theme-color-text_dark);
+				@include font(19px, 1.25em, '', normal);
+				+ .sc_testimonials_item_author_subtitle {
+					margin-top: 5px;
+				}
+			}
+			.sc_testimonials_rating {
+				font-size: 0.9em;
+			}
+		}
+		+ .sc_testimonials_item_content {
+			margin-top: 20px;
+		}
+	}
+
+	.sc_testimonials_item_content {
+		&:before {
+			display: none;
+		}
+		.sc_testimonials_item_date {
+			color: var(--theme-color-text);
+			@include font(16px, 1.3em);
+			margin-top: 15px;
+		}
+	}
+	
+	[class*="column"] .sc_testimonials_item_content,
+	.sc_testimonials_item_content {
+		text-align: left;
+		@include font(1rem, var(--theme-font-p_line-height), var(--theme-font-p_font-weight));
+		color: var(--theme-color-text_dark);
+	}
+}
+
+
+/* QW Big */
+.sc_testimonials_qw-big {
+	.slider_container.slider_one .sc_testimonials_item {
+		padding: 0 15%;
+	}
+	[class*="column"] .sc_testimonials_item_content {
+		@include font(1.333em, 1.4em);
+		letter-spacing: 0;
+		text-align: center;
+		+ .sc_testimonials_item_author {
+			margin: 1.5em 0 0 0;
+		}
+	}
+	.slider_one .sc_testimonials_item_content,
+	.sc_testimonials_item_content {
+		&:before {
+			display: none;
+		}
+		color: var(--theme-color-text_dark);
+		@include font(var(--theme-font-h1_font-size), var(--theme-font-h1_line-height), var(--theme-font-h1_font-weight));
+		letter-spacing: var(--theme-font-h1_letter-spacing);
+		font-family: var(--theme-font-h1_font-family);
+		+ .sc_testimonials_item_author {
+			margin-top: 2.3em;
+		}
+	}
+
+	.sc_testimonials_item_author {
+		padding: 0 0 1px 0;
+		text-align: left;
+		@include flex();
+		@include flex-justify-content(center);
+		@include flex-align-items(center);
+		.sc_testimonials_item_author_avatar {
+			margin: 0 15px 0 0;
+			@include box(70px, 70px);
+			@include flex-shrink(0);
+		}
+		.sc_testimonials_item_author_data {
+			max-width: 100%;
+			.sc_testimonials_item_author_subtitle {
+				margin: 0;
+				color: var(--theme-color-text);
+				@include font(16px, 1.3em);
+			}
+			.sc_testimonials_item_author_title {
+				color: var(--theme-color-text_dark);
+				@include font(19px, 1.3em, '', normal);
+				+ .sc_testimonials_item_author_subtitle {
+					margin-top: 4px;
+				}
+			}
+			.sc_testimonials_rating {
+				font-size: 0.9em;
+			}
+		}
+	}
+
+	// controls
+	.slider_container.slider_controls_side .slider_controls_wrap,
+	.slider_outer_controls_side .slider_controls_wrap,
+	.slider_outer_controls_outside .slider_controls_wrap,
+	.slider_outer_controls_top .slider_controls_wrap,
+	.slider_outer_controls_bottom .slider_controls_wrap {
+		> a {
+			&:before {
+				font-family: $qw_addon_icons;
+				font-size: 22px;
+				content: '\e802';
+			}
+			&.slider_prev {
+				@include transform(scale(-1, 1));
+			}
+			&.slider_next {
+				@include transform(none);
+			}
+		}
+	}
+	.slider_container.slider_controls_side .slider_controls_wrap > a {
+		text-align: right !important;
+		&.slider_prev {
+			margin-left: 0 !important;
+		}
+		&.slider_next {
+			margin-right: 0 !important;
+		}
+	}
+	.slider_controls_wrap > a {
+		background-color: transparent !important;
+		@include border-radius(0 !important);
+		border: none !important;
+	}
+}

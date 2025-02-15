@@ -1,0 +1,131 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_trx_addons.vars.scss";
+
+//@mixin sc_vgenerator--lg() {
+@media #{$media_lg} {
+	/* IGenerator */
+	.sc_vgenerator_form_field_tags {
+		.sc_vgenerator_form_align_left_tablet & {
+			@include flex-justify-content(flex-start);
+		}
+		.sc_vgenerator_form_align_right_tablet & {
+			@include flex-justify-content(flex-end);
+		}
+	}
+	.sc_vgenerator_limits {
+		.sc_vgenerator_form_align_left_tablet & {
+			text-align: left;
+		}
+		.sc_vgenerator_form_align_right_tablet & {
+			text-align: right;
+		}
+	}
+	.sc_vgenerator_extended {
+		.sc_vgenerator_form_field_size {
+			@include flex-direction(column);
+			@include flex-justify-content(flex-start);
+			@include flex-align-items(stretch);
+			gap: 1.5em;
+		}
+	}
+}
+		
+//@mixin sc_vgenerator--sm() {
+@media #{$media_sm} {
+    /* IGenerator */
+	.sc_vgenerator_form_field.sc_vgenerator_form_field_prompt {
+		width: 100%;
+	}
+	.sc_vgenerator_form_field_prompt {
+		.sc_vgenerator_form_field_prompt_button {
+			padding: 0 1em;
+		}
+	}
+	.sc_vgenerator_form_field_upload_keyframe_wrap {
+		@include flex-wrap(wrap);
+
+		.sc_vgenerator_form_field_upload_start_keyframe,
+		.sc_vgenerator_form_field_upload_end_keyframe {
+			@include flex-basis(100%);
+		}	
+	}
+	
+	.sc_vgenerator_form_field_tags {
+		.sc_vgenerator_form_align_left_mobile & {
+			@include flex-justify-content(flex-start);
+		}
+		.sc_vgenerator_form_align_right_mobile & {
+			@include flex-justify-content(flex-end);
+		}
+	}
+	.sc_vgenerator_form_field_tags_item {
+		padding: 0.25em 0.75em;
+	}
+	.sc_vgenerator_form_field_tags_label {
+		padding: 0.25em 0.75em 0.25em 0;
+	}
+	.sc_vgenerator_videos .sc_vgenerator_videos_item {
+		flex-basis: 50%;
+	}
+	.sc_vgenerator_videos_columns_1 .sc_vgenerator_videos_item {
+		flex-basis: 100%;
+	}
+	.sc_vgenerator_limits {
+		.sc_vgenerator_form_align_left_mobile & {
+			text-align: left;
+		}
+		.sc_vgenerator_form_align_right_mobile & {
+			text-align: right;
+		}
+	}
+	.sc_vgenerator_message {
+		min-width: 50%;
+	}
+}
+
+//@mixin sc_vgenerator--sm_wp() {
+@media #{$media_sm_wp} {
+	/* IGenerator */
+	.sc_vgenerator_extended {
+		.sc_vgenerator_form_fields {
+			@include flex-direction(column);
+			@include flex-justify-content(flex-start);
+			@include flex-align-items(stretch);
+			gap: 1.5em;
+			padding: 1.5em;
+		}
+		.sc_vgenerator_form_fields_left {
+			@include flex-basis(100%);
+			max-width: none;
+		}
+		.sc_vgenerator_form_fields_right {
+			@include flex-basis(100%);
+			max-width: none;
+		}
+		.sc_vgenerator_form_field_size {
+			@include flex-direction(row);
+			@include flex-justify-content(space-between);
+			@include flex-align-items(flex-start);
+			gap: 4px;
+		}
+	}
+}
+	
+//@mixin sc_vgenerator--xs() {
+@media #{$media_xs} {
+	/* IGenerator */
+	.sc_vgenerator_form_field_tags {
+		@include flex-direction(column);
+	}
+	.sc_vgenerator_form_field_tags_label {
+		padding: 0 0 0.5em 0;
+	}
+	.sc_vgenerator_extended {
+		.sc_vgenerator_form_field_size {
+			@include flex-direction(column);
+			@include flex-justify-content(flex-start);
+			@include flex-align-items(stretch);
+			gap: 1.5em;
+		}
+	}
+}

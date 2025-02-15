@@ -1,0 +1,783 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_trx_addons.vars.scss";
+@import "../../../../css/_trx_addons.colors.scss";
+
+.sc_igenerator {
+	--trx-addons-ai-helper-igenerator-fields-border-radius: 6px;
+	--trx-addons-ai-helper-igenerator-loading-border-radius: var(--trx-addons-ai-helper-igenerator-fields-border-radius);
+	--trx-addons-ai-helper-igenerator-settings-border-radius: var(--trx-addons-ai-helper-igenerator-fields-border-radius);
+	--trx-addons-ai-helper-igenerator-message-border-radius: var(--trx-addons-ai-helper-igenerator-fields-border-radius);
+	--trx-addons-ai-helper-igenerator-button-border-radius: 6px;
+	--trx-addons-ai-helper-igenerator-tags-border-radius: 3px;
+}
+.sc_igenerator_error {
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+	padding: 2em;
+	background-color: $warning_bg_color;
+	color: $warning_color;
+	border: 1px solid $warning_bd_color;
+}
+.sc_igenerator_form {
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(center);
+	position: relative;
+
+	&.sc_igenerator_form_align_left {
+		@include flex-align-items(flex-start);
+	}
+	&.sc_igenerator_form_align_right {
+		@include flex-align-items(flex-end);
+	}
+	.trx_addons_loading {
+		@include abs-cover;
+		background-color: rgba(255, 255, 255, 0.5);
+		z-index: 100;
+		display: none;
+		@include border-radius(var(--trx-addons-ai-helper-igenerator-loading-border-radius));
+	}
+	&.sc_igenerator_form_loading {
+		.trx_addons_loading {
+			display: block;
+		}
+	}
+}
+.sc_igenerator_form_inner {
+	width: 100%;
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(center);
+
+	.sc_igenerator_form_align_left & {
+		@include flex-align-items(flex-start);
+	}
+	.sc_igenerator_form_align_right & {
+		@include flex-align-items(flex-end);
+	}
+}
+
+/* Common field styles */
+.sc_igenerator_form_field {
+	position: relative;
+	width: 100%;
+	@include border-box;
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(flex-start);
+
+	&.trx_addons_hidden {
+		display: none;
+	}
+
+	& + & {
+		margin-top: 1.5em;
+	}
+}
+.sc_igenerator_form_field_inner {
+	position: relative;
+	width: 100%;
+
+	& > label {
+		display: block;
+		margin-bottom: 0.5em;
+		font-weight: bold;
+	}
+	& > .select_container select,
+	& > .sc_igenerator_form_field_model_wrap > .select_container select,
+	& > .sc_igenerator_form_field_numeric_wrap input[type="number"],
+	& > input[type="text"],
+	& > .theme_form_field_text {
+		width: 100%;
+		@include border-radius(var(--trx-addons-ai-helper-igenerator-fields-border-radius));
+		@include border-box;
+		text-overflow: ellipsis;
+	}
+}
+
+/* Prompt */
+.sc_igenerator_form_field_prompt {
+	@include flex-direction(row);
+	@include flex-justify-content(space-between);
+	@include flex-align-items(stretch);
+
+	input[type="text"] {
+		padding-right: 9em;
+	}
+	.sc_igenerator_form_field_prompt_button {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(center);
+		@include flex-align-items(center);
+		@include abs-pos( 4px, 4px, 4px, auto );
+		@include border-box;
+		@include border-radius(var(--trx-addons-ai-helper-igenerator-button-border-radius));
+		@include transition-properties(background-color, color);
+		max-width: 50%;
+		overflow: hidden;
+		padding: 0 2em;
+		background-color: $success_color;
+		color: #fff;
+
+		&:not(.sc_igenerator_form_field_prompt_button_disabled):hover {
+			background-color: $success_hover;
+		}
+	}
+	.sc_igenerator_form_field_prompt_button_disabled {
+		background-color: $success_bg_color;
+		color: #aaa;
+		cursor: default;
+	}
+}
+
+/* Settings */
+.sc_igenerator_form_settings_button {
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+	@include border-box;
+	@include border-radius(var(--trx-addons-ai-helper-igenerator-fields-border-radius));
+	font-size: 1.25em;
+	width: 4em;
+	margin-left: 4px;
+	background-color: #e7eaed;
+	color: #222;
+}
+.sc_igenerator_form_settings_button:hover,
+.sc_igenerator_form_settings_button:focus {
+	background-color: #e7eaed;
+	color: #222;
+}
+.sc_igenerator_form_settings {
+	@include abs-rt( 0, 100%, 100 );
+	margin-top: 4px;
+	@include border-box;
+	@include border-radius(var(--trx-addons-ai-helper-igenerator-settings-border-radius));
+	padding: 1em;
+	background-color: #f7f7f7;
+	color: #222;
+	@include transition-properties( opacity, transform );
+	will-change: opacity, transform;
+	opacity: 0;
+	@include translateY( 20% );
+	pointer-events: none;
+	max-width: 20em;
+
+	&.sc_igenerator_form_settings_light {
+		max-height: 18em;
+		overflow-y: auto;
+		overflow-x: hidden;
+		scrollbar-width: thin;
+		&::-webkit-scrollbar-thumb {
+			@include border-radius(var(--trx-addons-ai-helper-igenerator-fields-border-radius));
+		}
+	}
+
+	&.sc_igenerator_form_settings_full {
+		.sc_igenerator_form_settings_field + .sc_igenerator_form_settings_field {
+			margin-top: 0.5em;
+		}
+	}
+
+	input[type="radio"] {
+		margin-right: 0.3em;
+	}
+}
+.sc_igenerator_form_settings_show {
+	opacity: 1;
+	@include translateY(0);
+	pointer-events: auto;
+}
+.sc_igenerator_form_settings_field_group_title {
+	font-weight: bold;
+	margin-top: 0.5em;
+	margin-bottom: 0.25em;
+}
+.sc_igenerator_form_field_numeric_wrap,
+.sc_igenerator_form_settings_field_numeric_wrap {
+	position: relative;
+	width: 100%;
+
+	input[type="number"] {
+		display: block;
+		width: 100%;
+		padding-right: 2em;
+		@include border-box;
+		-webkit-appearance: textfield;
+		-moz-appearance: textfield;
+		appearance: textfield;
+	}
+	.sc_igenerator_form_field_numeric_wrap_buttons,
+	.sc_igenerator_form_settings_field_numeric_wrap_buttons {
+		@include abs-rt;
+		@include flex;
+		@include flex-direction(column);
+		@include flex-justify-content(stretch);
+		@include flex-align-items(center);
+		@include border-box;
+		height: 100%;
+	}
+	.sc_igenerator_form_field_numeric_wrap_button,
+	.sc_igenerator_form_settings_field_numeric_wrap_button {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(center);
+		@include flex-grow(1);
+		@include flex-shrink(0);
+		@include border-box;
+		@include transition-properties(background-color, color);
+		padding: 0.15em 0.5em;
+		color: #888;
+
+		&:hover {
+			color: #222;
+		}
+	}
+	.sc_igenerator_form_field_numeric_wrap_button_inc,
+	.sc_igenerator_form_settings_field_numeric_wrap_button_inc {
+		@include flex-align-items(flex-end);
+
+		&:before {
+			content: "\e885";
+			font-family: $trx_addons_icons;
+			@include square(1em);
+		}
+	}
+	.sc_igenerator_form_field_numeric_wrap_button_dec,
+	.sc_igenerator_form_settings_field_numeric_wrap_button_dec {
+		@include flex-align-items(flex-start);
+
+		&:before {
+			content: "\e882";
+			font-family: $trx_addons_icons;
+			@include square(1em);
+		}
+	}
+}
+
+/* Upload image */
+.sc_igenerator_form_field_upload_image_decorator {
+	position: relative;
+	width: 100%;
+//	@include border-radius(var(--trx-addons-ai-helper-igenerator-fields-border-radius));
+//	@include border-box;
+//	line-height: 1.5em;
+//	@include transition-colors;
+//	color: var(--theme-color-input_text);
+//	border-color: var(--theme-color-input_bd_color);
+//	background-color: var(--theme-color-input_bg_color);
+//	padding: 1.186em 1.4em;
+//	border-width: 2px;
+//	border-style: solid;
+//	font-weight: normal;
+
+	.theme_form_field_placeholder {
+		text-overflow: ellipsis;
+		color: var(--theme-color-input_light);
+	}
+
+	.sc_igenerator_form_field_upload_image_text {
+		display: block;
+		width: 100%;
+		padding-right: 8em;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include border-box;
+	}
+	.sc_igenerator_form_field_upload_image_button {
+		@include abs-rc( 0.5em );
+		@include border-box;
+		@include transition-properties(background-color, color);
+		padding: 0.3em 1em;
+		border: 1px solid var(--theme-color-input_bd_color);
+		@include border-radius(var(--trx-addons-ai-helper-igenerator-fields-border-radius));
+
+		&:before {
+			margin-right: 0.5em;
+		}
+	}
+	.sc_igenerator_form_field_upload_image_field {
+		@include abs-cover(1);
+		@include box(100%, 100%);
+		opacity: 0;
+	}
+}
+
+/* Tags */
+.sc_igenerator_form_field_tags {
+	@include flex;
+	@include flex-direction(row);
+	@include flex-justify-content(center);
+	@include flex-align-items(flex-start);
+
+	.sc_igenerator_form_align_left & {
+		@include flex-justify-content(flex-start);
+	}
+	.sc_igenerator_form_align_right & {
+		@include flex-justify-content(flex-end);
+	}
+}
+.sc_igenerator_form_field_tags_label {
+	white-space: nowrap;
+	padding: 0.5em 1em 0.5em 0;
+}
+.sc_igenerator_form_field_tags_list {
+	@include flex;
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(flex-start);
+}
+.sc_igenerator_form_field_tags_item {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0.5em 0.5em 0;
+	padding: 0.5em 1.5em;
+	background-color: $background_light;
+	color: $text_light;
+	@include border-radius(var(--trx-addons-ai-helper-igenerator-tags-border-radius));
+	@include border-box;
+
+	&:hover {
+		color: $text_dark;
+		background-color: $background_color;
+	}
+}
+
+/* Limits */
+.sc_igenerator_limits {
+	width: 100%;
+	text-align: center;
+
+	.sc_igenerator_form_align_left & {
+		text-align: left;
+	}
+	.sc_igenerator_form_align_right & {
+		text-align: right;
+	}
+	.sc_igenerator_limits_used {
+		white-space: nowrap;
+	}
+}
+
+/* Message */
+.sc_igenerator_message {
+	@include border-radius(var(--trx-addons-ai-helper-igenerator-message-border-radius));
+	@include border-box;
+	position: relative;
+	padding: 2em 3em;
+	min-width: 40%;
+	background-color: $error_bg_color;
+	color: $error_color;
+	margin: 1em 0;
+	text-align: center;
+	display: none;
+
+	.trx_addons_button_close_icon {
+		&:before,
+		&:after {
+			border-color: $error_dark;
+		}
+	}
+}
+.sc_igenerator_message_inner {
+	p,h1,h2,h3,h4,h5,h6 {
+		margin: 0;
+
+		& + p {
+			margin-top: 0.3em;
+		}
+	}
+	h1,h2,h3,h4,h5,h6 {
+		color: $error_dark;
+	}
+	a {
+		font-weight: 500;
+		color: $error_dark;
+		border-bottom: 1px dashed $error_dark;
+
+		&:hover {
+			color: $error_dark;
+			border-bottom-style: solid;
+		}
+	}
+	// .sc_igenerator_message_translation {
+
+	// 	&:before {
+	// 		content: ' ';
+	// 		display: block;
+	// 		height: 0;
+	// 		width: 0;
+	// 	}
+	// }
+}
+.sc_igenerator_message_type_info {
+	background-color: $info_bg_color;
+	color: $info_color;
+
+	h1,h2,h3,h4,h5,h6 {
+		color: $info_dark;
+	}
+	a {
+		color: $info_dark;
+		border-bottom-color: $info_dark;
+
+		&:hover {
+			color: $info_dark;
+		}
+	}
+	.trx_addons_button_close_icon {
+		&:before,
+		&:after {
+			border-color: $info_dark;
+		}
+	}
+}
+.sc_igenerator_message_type_success {
+	background-color: $success_bg_color;
+	color: $success_color;
+
+	h1,h2,h3,h4,h5,h6 {
+		color: $success_dark;
+	}
+	a {
+		color: $success_dark;
+		border-bottom-color: $success_dark;
+
+		&:hover {
+			color: $success_dark;
+		}
+	}
+	.trx_addons_button_close_icon {
+		&:before,
+		&:after {
+			border-color: $success_dark;
+		}
+	}
+}
+
+/* Images - Preview area */
+.sc_igenerator_images {
+	margin-top: 2.5em;
+	display: none;
+}
+
+.sc_igenerator_image_inner {
+	position: relative;
+	text-align: center;
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+
+	.sc_igenerator_image_wrap {
+		display: block;
+		position: relative;
+	}
+
+	.sc_igenerator_image_wait_available {
+		display: none;
+		@include flex-direction(column);
+		@include flex-justify-content(center);
+		@include flex-align-items(center);
+		@include border-box;
+		@include abs-cover; // Place it over the image
+		padding: 1.5em;
+		background-color: rgba(122, 122, 122, 0.56);
+		border: 1px solid rgba(122, 122, 122, 0.88);
+		cursor: auto;
+	}
+	.sc_igenerator_image_wait_icon {
+		font-size: 3em;
+		color: #fff;
+
+		&:before {
+			content: "\e92a";
+			font-family: $trx_addons_icons;
+		}
+	}
+	.sc_igenerator_image_wait_msg {
+		margin-top: 2em;
+		font-size: 1em;
+		color: #fff;
+	}
+
+	&.sc_igenerator_image_loading {
+		.sc_igenerator_image_wait_available {
+			@include flex;
+		}
+	}
+}
+
+.sc_igenerator_image_fetch {
+	min-height: 15em;
+}
+.sc_igenerator_image_fetch_info {
+	@include abs-pos(auto, 10px, 10px, 10px);
+	@include border-box;
+	padding: 0 1em 1em;
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(center);
+}
+.sc_igenerator_image_fetch_msg {
+	display: block;
+	text-decoration: none;
+	font-size: 1.2em;
+	line-height: 1.5em;
+	font-weight: bold;
+	// Commented to preserve the original color from the theme
+	//color: $text_dark;
+}
+.sc_igenerator_image_fetch_progress {
+	display: block;
+	margin-top: 10px;
+	@include box(50%, 4px);
+	//border: 1px solid $text_light;
+	background-color: $text_light;
+	overflow: hidden;
+}
+.sc_igenerator_image_fetch_progressbar {
+	display: block;
+	@include box(50%, 4px);
+	background-color: $warning_color;
+	@include animation(sc_igenerator_image_fetch_progress_animation 1.5s linear infinite);
+	will-change: transform;
+}
+.sc_igenerator_image_fetch.trx_addons_column-1_1 {
+	.sc_igenerator_image_fetch_progress {
+		width: 40%;
+	}
+}
+
+@-webkit-keyframes sc_igenerator_image_fetch_progress_animation { 
+	0% {
+		@include translateX(-110%);
+	}
+	100% {
+		@include translateX(210%);
+	}
+}
+
+@keyframes sc_igenerator_image_fetch_progress_animation { 
+	0% {
+		@include translateX(-110%);
+	}
+	100% {
+		@include translateX(210%);
+	}
+}
+
+.sc_igenerator_image_link {
+	margin-top: 1.5em;
+
+	.sc_igenerator_image_fetch_info + & {
+		display: none !important;
+	}
+
+	.sc_button_icon {
+		font-size: 1em;
+	}
+}
+
+
+/* Layout Extended */
+
+.sc_igenerator_extended {
+	.sc_igenerator_form_actions {
+		width: 100%;
+	}
+	.sc_igenerator_form_actions_list {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(flex-start);
+		@include flex-align-items(flex-start);
+		@include flex-wrap(wrap);
+		@include border-box;
+		gap: 2em;
+		
+		position: relative;
+
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		&:after {
+			content: ' ';
+			display: block;
+			width: 100%;
+			height: 2px;
+			background-color: $tab_border_color;
+			@include abs-lb(0, 0, 1);
+		}
+	}
+	.sc_igenerator_form_actions_item {
+		@include border-box;
+
+		& > a {
+			display: block;
+			padding: 1em 0;
+			@include border-box;
+			position: relative;
+			text-transform: uppercase;
+			font-weight: 500;
+			color: $tab_text_disabled;
+		}
+		&.sc_igenerator_form_actions_item_active > a,
+		& > a:hover,
+		& > a:focus {
+			color: $tab_text_color;
+		}
+	}
+	.sc_igenerator_form_actions_slider {
+		@include abs-lb(0, 0, 2);
+		@include border-box;
+		@include transition-properties(left, width, opacity);
+		width: 0;
+		height: 2px;
+		background-color: $tab_text_color;
+		opacity: 0;
+
+		&.sc_igenerator_form_actions_slider_inited {
+			opacity: 1;
+		}
+	}
+	.sc_igenerator_form_fields {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(space-between);
+		@include flex-align-items(flex-start);
+		@include flex-wrap(nowrap);
+		@include border-box;
+		gap: 2em;
+		width: 100%;
+		padding: 2em 0;
+	}
+	.sc_igenerator_form_fields_left {
+		@include flex-basis(60%);
+		max-width: 60%;
+	}
+	.sc_igenerator_form_fields_right {
+		@include flex-basis(40%);
+	}
+
+	.sc_igenerator_form_field {
+		margin: 0 0 1.5em 0;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.sc_igenerator_form_field_prompt {
+		input[type="text"] {
+			padding-right: 1.4em;
+		}
+	}
+	
+	.sc_igenerator_form_field_tags {
+		@include flex-justify-content(flex-start);
+	}
+
+	.sc_igenerator_form_field_description {
+		font-size: 0.8em;
+		line-height: 1.5em;
+		margin-top: 0.25em;
+		color: $text_light;
+	}
+
+	.sc_igenerator_form_field_model_wrap_with_settings {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(space-between);
+		@include flex-align-items(stretch);
+		@include flex-wrap(nowrap);
+		@include border-box;
+		gap: 4px;
+		width: 100%;
+
+		.sc_igenerator_form_settings_button {
+			margin-left: 0;
+
+			&.trx_addons_hidden {
+				display: none;
+			}
+		}
+		.sc_igenerator_form_settings {
+			top: 100%;
+			margin-top: 4px;
+		}
+		.sc_igenerator_form_settings_field + .sc_igenerator_form_settings_field  {
+			margin-top: 0.5em;
+		}
+		.sc_igenerator_form_settings_field_description {
+			font-size: 0.8em;
+			line-height: 1.5em;
+			margin-top: 0.25em;
+			color: $text_light;
+		}
+	}
+
+	.sc_igenerator_form_field_size {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(space-between);
+		@include flex-align-items(flex-start);
+		@include flex-wrap(nowrap);
+		@include border-box;
+		gap: 4px;
+		width: 100%;
+	}
+	.sc_igenerator_form_field_size_wrap,
+	.sc_igenerator_form_field_scale_wrap {
+		min-width: 50%;
+		@include flex-grow(1);
+	}
+	.sc_igenerator_form_field_dimensions_wrap {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(space-between);
+		@include flex-align-items(flex-start);
+		@include flex-wrap(nowrap);
+		@include border-box;
+		gap: 4px;
+
+		&.trx_addons_hidden {
+			display: none;
+		}
+	}
+	.sc_igenerator_form_field_width_wrap,
+	.sc_igenerator_form_field_height_wrap {
+		@include flex-grow(1);
+	}
+
+	.sc_igenerator_form_field_generate {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(flex-end);
+		@include flex-align-items(flex-start);
+		@include flex-wrap(nowrap);
+		@include border-box;
+		width: 100%;
+
+		.sc_igenerator_form_field_generate_button {
+			&.sc_igenerator_form_field_disabled {
+				opacity: 0.5;
+				cursor: default;
+				pointer-events: none;
+			}
+		}
+	}
+
+	.sc_igenerator_limits {
+		padding-top: 1em;
+		border-top: 1px solid $tab_border_color;
+	}
+}

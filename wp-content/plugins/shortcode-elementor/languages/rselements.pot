@@ -1,0 +1,81 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Shortcode Elementor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-13 10:08+0000\n"
+"PO-Revision-Date: 2023-12-14 HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.2; wp-6.0\n"
+"X-Domain: rs-shortcode"
+
+#: elementor-shortcode.php:35
+#: includes/post-type.php:48
+msgid "Shortcode"
+msgstr ""
+
+#: includes/plugin-settings.php:6
+msgid "Support"
+msgstr ""
+
+#: includes/plugin-settings.php:32
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: includes/settings.php:32
+msgid "Upgrade to Pro"
+msgstr ""
+
+
+#: includes/post-type.php:4
+msgid "RS Global Shortcodes"
+msgstr ""
+
+#: includes/post-type.php:5
+
+msgid "Elementor Shortcodes"
+msgstr ""
+
+#: includes/post-type.php:6
+#: includes/post-type.php:7
+msgid "Add New Shorcode"
+msgstr ""
+
+#: includes/post-type.php:8
+msgid "Edit Element"
+msgstr ""
+
+#: includes/post-type.php:9
+msgid "New Shortcode"
+msgstr ""
+
+#: includes/post-type.php:10
+msgid "All Shorcodes"
+msgstr ""
+
+#: includes/post-type.php:11
+msgid "View Elements"
+msgstr ""
+
+#: includes/post-type.php:12
+msgid "No Elements found"
+msgstr ""
+
+#: includes/post-type.php:13
+msgid "No Elements found in Trash"
+msgstr ""
+
+#: includes/post-type.php:14
+msgid "Parent Team:"
+msgstr ""
+
+#: includes/post-type.php:15
+msgid "Shortcode Elementor"
+msgstr ""

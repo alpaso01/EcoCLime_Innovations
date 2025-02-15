@@ -1,0 +1,195 @@
+@import "../../../../../../css/_mixins.scss";
+@import "../../../../../../css/_trx_addons.vars.scss";
+@import "../../../../../../css/_trx_addons.colors.scss";
+
+.trx-addons-tabs-nav {
+	margin: 0;
+	padding: 0;
+}
+
+.trx-addons-tabs-nav li {
+	list-style: none;
+	transition: all .3s ease;
+	position: relative;
+	cursor: pointer;
+
+	.trx-addons-tabs-icon {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		@include transition-all;
+	}
+
+	img {
+		position: relative;
+		width: auto;
+		max-height: 2em;
+		max-width: none;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		margin: 0;
+	}
+}
+
+.trx-addons-tabs-nav li span.trx-addons-tabs-title {
+	font-size: 16px;
+}
+
+.trx-addons-tabs-horizontal .trx-addons-tabs-nav {
+	display: flex;
+}
+
+.trx-addons-tabs-horizontal.trx-addons-tabs-align-left .trx-addons-tabs-nav {
+	justify-content: flex-start;
+}
+
+.trx-addons-tabs-horizontal.trx-addons-tabs-align-center .trx-addons-tabs-nav {
+	justify-content: center;
+}
+
+.trx-addons-tabs-horizontal.trx-addons-tabs-align-right .trx-addons-tabs-nav {
+	justify-content: flex-end;
+}
+
+.trx-addons-tabs-horizontal-full-width .trx-addons-tabs-nav {
+	display: flex;
+
+	li {
+		flex: 1;
+	}
+}
+
+.trx-addons-tabs-nav li {
+	display: flex;
+	align-items: center;
+}
+
+.trx-addons-tabs-align-left .trx-addons-tabs-nav {
+	text-align: left;
+}
+
+.trx-addons-tabs-align-center .trx-addons-tabs-nav {
+	text-align: center;
+}
+
+.trx-addons-tabs-align-right .trx-addons-tabs-nav {
+	text-align: right;
+}
+
+.trx-addons-tabs-align-left .trx-addons-tabs-nav li {
+	text-align: left;
+	justify-content: flex-start;
+}
+
+.trx-addons-tabs-align-center .trx-addons-tabs-nav li {
+	text-align: center;
+	justify-content: center;
+}
+
+.trx-addons-tabs-align-right .trx-addons-tabs-nav li {
+	text-align: right;
+	justify-content: flex-end;
+}
+
+.trx-addons-tabs-vertical {
+	display: flex;
+}
+
+.trx-addons-tabs-vertical .trx-addons-tabs-nav li {
+	display: flex;
+	align-items: center;
+}
+
+
+// Tab Content
+.trx-addons-tabs .trx-addons-tabs-content {
+	display: block;
+
+	&:after {
+		content: " ";
+		display: table;
+		width: 100%;
+		height: 0;
+		clear: both;
+	}
+}
+.trx-addons-tabs .trx-addons-tabs-content:not(.active) {
+	display: none;
+}
+
+.trx-addons-tabs .trx-addons-tabs-content .trx-addons-tabs-content-element {
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.trx-addons-tabs-btn {
+	@include inline-flex;
+	vertical-align: top;
+	text-decoration: none;
+	@include transition-colors;
+}
+.trx-addons-tabs-btn-icon-before .trx-addons-button-icon {
+	margin-right: 10px;
+}
+.trx-addons-tabs-btn-icon-after .trx-addons-button-icon {
+	margin-left: 10px;
+}
+
+@media (max-width: 575px) {
+	.trx-addons-tabs-vertical {
+		flex-direction: column;
+
+		.trx-addons-tabs-nav li {
+			width: 100% !important;
+			justify-content: center;
+		}
+	}
+}
+
+.trx-addons-tabs-nav .trx-addons-tabs-nav-item-with-desc {
+	@include flex-wrap(wrap);
+
+	.trx-addons-tabs-subtitle {
+		display: block;
+		@include flex-basis(100%);
+		@include flex-shrink(0);
+		@include transition-colors;
+	}
+}
+
+.trx-addons-tabs-vertical.trx-addons-tabs-v-align-center {
+	.trx-addons-tabs-nav,
+	.trx-addons-tabs-content-element {
+		@include flex;
+		@include flex-direction(column);
+		@include flex-align-items(flex-start);
+		@include flex-justify-content(center);
+	}
+}
+
+.trx-addons-tabs-vertical.trx-addons-tabs-v-align-bottom {
+	.trx-addons-tabs-nav,
+	.trx-addons-tabs-content-element {
+		@include flex;
+		@include flex-direction(column);
+		@include flex-align-items(flex-start);
+		@include flex-justify-content(flex-end);
+	}
+}
+
+@media (max-width: 767px) {
+	.trx-addons-tabs-horizontal-full-width,
+	.trx-addons-tabs-horizontal {
+		.trx-addons-tabs-nav {
+			overflow-x: auto;
+			@include thin-scrollbar;
+		}
+		li {
+			@include flex-direction(column);
+			@include flex-align-items(center);
+			@include flex-justify-content(flex-start);
+		}
+	}
+}

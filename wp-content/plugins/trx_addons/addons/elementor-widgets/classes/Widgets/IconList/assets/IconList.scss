@@ -1,0 +1,32 @@
+@import "../../../../../../css/_mixins.scss";
+@import "../../../../../../css/_trx_addons.vars.scss";
+@import "../../../../../../css/_trx_addons.colors.scss";
+
+
+.trx-addons-list-container {
+
+	// .trx-addons-icon-list-icon {
+	// 	display: inline-block;
+	// 	text-align: center;
+	// }
+
+	.trx-addons-list-items li .trx-addons-icon-list-text {
+		transition: color 0.2s ease-in-out;
+		margin-bottom: 0;
+	}
+}
+
+.trx-addons-list-items.trx-addons-inline-items {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.trx-addons-list-items.trx-addons-inline-items {
+	gap: 8px;
+}
+
+.trx-addons-icon-list-image {
+	@include inline-flex;
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+}

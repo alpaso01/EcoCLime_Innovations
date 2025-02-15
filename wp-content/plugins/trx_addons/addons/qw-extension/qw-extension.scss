@@ -1,0 +1,130 @@
+@import "../../css/_mixins.scss";
+@import "../../css/_trx_addons.vars.scss";
+
+$qw_addon_icons: "qw_extension_icons";
+
+
+/* Global for all skins */
+/*
+.body_style_fullscreen:not(.elementor-editor-active) {
+	&:not(.sc_stack_section_present),
+	&:not(.fixed_blocks_sticky) {
+		.content_wrap_fullscreen {
+			overflow: hidden;	// Used to prevent the horizontal scroll bar.
+								// But this rule broke a sticky effect for sections - they are jumping down when any rows become fixed
+								// and a scroll animation with flow=sticky doesn't work
+		}
+	}
+}
+.body_style_fullscreen:not(.elementor-editor-active) {
+	&.sc_stack_section_present,
+	&.fixed_blocks_sticky {
+		.content_wrap_fullscreen {
+			overflow: clip; 	// This rule is used to prevent the horizontal scroll bar
+								// and a sticky effect for sections works fine.
+								// Need to check it on other devices and browsers!
+		}
+	}
+}
+*/
+body.body_style_fullscreen .content_wrap_fullscreen {
+	overflow: clip !important;
+}
+
+/* QW Extension icons */
+[class^="qw_extension_icon-"]:before,
+[class*=" qw_extension_icon-"]:before {
+	@include font(inherit, inherit !important, inherit, inherit);
+	display: inline-block;	// Don't use vertical-align: top because meta row can be a tall when large author avatar is used;
+	width:auto;
+	margin:0;
+}
+
+/* Large Dot */
+.trx_addons_mouse_helper_style_dot:not(.trx_addons_mouse_helper_with_layout) {
+	--mouse-helper-width: 14px;
+	--mouse-helper-height: 14px;
+	&.trx_addons_mouse_helper_active {
+		--mouse-helper-width: 30px;
+		--mouse-helper-height: 30px;
+	}
+}
+
+
+
+
+
+/* Controls -> Simple */
+.sc_slider_controls.sc_slider_controls_simple {
+
+	&.slider_pagination_style_title {
+		&.sc_align_right .slider_pagination_wrap { text-align: right; }
+		&.sc_align_left .slider_pagination_wrap { text-align: left; }
+		.slider_pagination_wrap {
+			counter-reset: item;
+			list-style-type: none;
+			.slider_pagination_bullet {
+				@include font(1.33em, 1.2em, var(--theme-font-h5_font-weight));
+				@include transition-all(0.3s);
+				opacity: 0.5 !important;
+				margin: 0 !important;
+				color: var(--theme-color-text_dark);
+				+ .slider_pagination_bullet {
+					margin-top: 25px !important;
+				}
+				&:before {
+					display: inline-block;
+					margin-right: 10px;
+					color: var(--theme-color-text_light);
+					content: counter(item, decimal-leading-zero) ". "; 
+					counter-increment: item;
+				}
+				&:hover,
+				&.slider_pagination_bullet_active {
+					opacity: 1 !important;
+				}
+			}
+		}
+	}
+
+	.slider_prev + .slider_next,
+	.slider_prev + .slider_pagination_wrap,
+	.slider_next + .slider_pagination_wrap {
+		margin-left: 0.8em;
+	}
+	.slider_controls_wrap > {
+		a.slider_next,
+		a.slider_prev {
+			border: none;
+			@include square(50px);
+			padding: 0;
+			background-color: transparent;
+			color: var(--theme-color-text_dark);
+			&:before {
+				display: block;
+				font-family: $qw_addon_icons;
+				font-size: 24px;
+				content: '\e803';		
+			}
+			&.with_title {
+				padding: 0;
+				width: auto;
+				&:before {
+					display: none;
+				}
+			}
+			&:hover {
+				color: var(--theme-color-text_link);
+			}
+		}
+		a.slider_prev:before {
+			@include transform(scale(-1, 1));
+		}
+	}	
+}
+
+
+
+
+
+

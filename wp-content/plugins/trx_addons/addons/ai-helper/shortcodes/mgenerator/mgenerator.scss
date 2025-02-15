@@ -1,0 +1,549 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_trx_addons.vars.scss";
+@import "../../../../css/_trx_addons.colors.scss";
+
+.sc_mgenerator {
+	--trx-addons-ai-helper-mgenerator-fields-border-radius: 6px;
+	--trx-addons-ai-helper-mgenerator-loading-border-radius: var(--trx-addons-ai-helper-mgenerator-fields-border-radius);
+	--trx-addons-ai-helper-mgenerator-settings-border-radius: var(--trx-addons-ai-helper-mgenerator-fields-border-radius);
+	--trx-addons-ai-helper-mgenerator-message-border-radius: var(--trx-addons-ai-helper-mgenerator-fields-border-radius);
+	--trx-addons-ai-helper-mgenerator-button-border-radius: 6px;
+	--trx-addons-ai-helper-mgenerator-tags-border-radius: 3px;
+}
+.sc_mgenerator_error {
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+	padding: 2em;
+	background-color: $warning_bg_color;
+	color: $warning_color;
+	border: 1px solid $warning_bd_color;
+}
+.sc_mgenerator_form {
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(center);
+	position: relative;
+
+	&.sc_mgenerator_form_align_left {
+		@include flex-align-items(flex-start);
+	}
+	&.sc_mgenerator_form_align_right {
+		@include flex-align-items(flex-end);
+	}
+	.trx_addons_loading {
+		@include abs-cover;
+		background-color: rgba(255, 255, 255, 0.5);
+		z-index: 100;
+		display: none;
+		@include border-radius(var(--trx-addons-ai-helper-mgenerator-loading-border-radius));
+	}
+	&.sc_mgenerator_form_loading {
+		.trx_addons_loading {
+			display: block;
+		}
+	}
+}
+.sc_mgenerator_form_inner {
+	width: 100%;
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(center);
+
+	.sc_mgenerator_form_align_left & {
+		@include flex-align-items(flex-start);
+	}
+	.sc_mgenerator_form_align_right & {
+		@include flex-align-items(flex-end);
+	}
+}
+
+/* Common field styles */
+.sc_mgenerator_form_field {
+	position: relative;
+	width: 100%;
+	@include border-box;
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(flex-start);
+
+	&.trx_addons_hidden {
+		display: none;
+	}
+
+	& + & {
+		margin-top: 1.5em;
+	}
+}
+.sc_mgenerator_form_field_inner {
+	position: relative;
+	width: 100%;
+
+	& > label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	& > .select_container select,
+	& > .sc_mgenerator_form_field_model_wrap > .select_container select,
+	& > .sc_mgenerator_form_field_numeric_wrap input[type="number"],
+	& > input[type="text"],
+	& > .theme_form_field_text {
+		width: 100%;
+		@include border-radius(var(--trx-addons-ai-helper-mgenerator-fields-border-radius));
+		@include border-box;
+		text-overflow: ellipsis;
+	}
+}
+
+/* Prompt */
+.sc_mgenerator_form_field_prompt {
+	@include flex-direction(row);
+	@include flex-justify-content(space-between);
+	@include flex-align-items(stretch);
+
+	input[type="text"] {
+		padding-right: 9em;
+	}
+	.sc_mgenerator_form_field_prompt_button {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(center);
+		@include flex-align-items(center);
+		@include abs-pos( 4px, 4px, 4px, auto );
+		@include border-box;
+		@include border-radius(var(--trx-addons-ai-helper-mgenerator-button-border-radius));
+		@include transition-properties(background-color, color);
+		max-width: 50%;
+		overflow: hidden;
+		padding: 0 2em;
+		background-color: $success_color;
+		color: #fff;
+
+		&:not(.sc_mgenerator_form_field_disabled):hover {
+			background-color: $success_hover;
+		}
+	}
+	.sc_mgenerator_form_field_disabled {
+		background-color: $success_bg_color;
+		color: #aaa;
+		cursor: default;
+	}
+}
+
+/* Settings */
+.sc_mgenerator_form_settings_button {
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+	@include border-box;
+	@include border-radius(var(--trx-addons-ai-helper-mgenerator-fields-border-radius));
+	font-size: 1.25em;
+	width: 4em;
+	margin-left: 4px;
+	background-color: #e7eaed;
+	color: #222;
+}
+.sc_mgenerator_form_settings_button:hover,
+.sc_mgenerator_form_settings_button:focus {
+	background-color: #e7eaed;
+	color: #222;
+}
+.sc_mgenerator_form_settings {
+	@include abs-rt( 0, 100%, 100 );
+	margin-top: 4px;
+	@include border-box;
+	@include border-radius(var(--trx-addons-ai-helper-mgenerator-settings-border-radius));
+	padding: 1em;
+	background-color: #f7f7f7;
+	color: #222;
+	@include transition-properties( opacity, transform );
+	will-change: opacity, transform;
+	opacity: 0;
+	@include translateY( 20% );
+	pointer-events: none;
+	max-width: 20em;
+
+	.sc_mgenerator_form_settings_field + .sc_mgenerator_form_settings_field {
+		margin-top: 0.5em;
+	}
+
+	input[type="radio"] {
+		margin-right: 0.3em;
+	}
+}
+.sc_mgenerator_form_settings_show {
+	opacity: 1;
+	@include translateY(0);
+	pointer-events: auto;
+}
+.sc_mgenerator_form_settings_field_group_title {
+	font-weight: bold;
+	margin-top: 0.5em;
+	margin-bottom: 0.25em;
+}
+.sc_mgenerator_form_field_numeric_wrap,
+.sc_mgenerator_form_settings_field_numeric_wrap {
+	position: relative;
+	width: 100%;
+
+	input[type="number"] {
+		display: block;
+		width: 100%;
+		padding-right: 2em;
+		@include border-box;
+		-webkit-appearance: textfield;
+		-moz-appearance: textfield;
+		appearance: textfield;
+	}
+	.sc_mgenerator_form_field_numeric_wrap_buttons,
+	.sc_mgenerator_form_settings_field_numeric_wrap_buttons {
+		@include abs-rt;
+		@include flex;
+		@include flex-direction(column);
+		@include flex-justify-content(stretch);
+		@include flex-align-items(center);
+		@include border-box;
+		height: 100%;
+	}
+	.sc_mgenerator_form_field_numeric_wrap_button,
+	.sc_mgenerator_form_settings_field_numeric_wrap_button {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(center);
+		@include flex-grow(1);
+		@include flex-shrink(0);
+		@include border-box;
+		@include transition-properties(background-color, color);
+		padding: 0.15em 0.5em;
+		color: #888;
+
+		&:hover {
+			color: #222;
+		}
+	}
+	.sc_mgenerator_form_field_numeric_wrap_button_inc,
+	.sc_mgenerator_form_settings_field_numeric_wrap_button_inc {
+		@include flex-align-items(flex-end);
+
+		&:before {
+			content: "\e885";
+			font-family: $trx_addons_icons;
+			@include square(1em);
+		}
+	}
+	.sc_mgenerator_form_field_numeric_wrap_button_dec,
+	.sc_mgenerator_form_settings_field_numeric_wrap_button_dec {
+		@include flex-align-items(flex-start);
+
+		&:before {
+			content: "\e882";
+			font-family: $trx_addons_icons;
+			@include square(1em);
+		}
+	}
+}
+
+/* Upload field */
+.sc_mgenerator_form_field_upload_audio_decorator {
+	position: relative;
+	width: 100%;
+//	@include border-radius(var(--trx-addons-ai-helper-mgenerator-fields-border-radius));
+//	@include border-box;
+//	line-height: 1.5em;
+//	@include transition-colors;
+//	color: var(--theme-color-input_text);
+//	border-color: var(--theme-color-input_bd_color);
+//	background-color: var(--theme-color-input_bg_color);
+//	padding: 1.186em 1.4em;
+//	border-width: 2px;
+//	border-style: solid;
+//	font-weight: normal;
+
+	.theme_form_field_placeholder {
+		text-overflow: ellipsis;
+		color: var(--theme-color-input_light);
+	}
+
+	.sc_mgenerator_form_field_upload_audio_text {
+		display: block;
+		width: 100%;
+		padding-right: 8em;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include border-box;
+	}
+	.sc_mgenerator_form_field_upload_audio_button {
+		@include abs-rc( 0.5em );
+		@include border-box;
+		@include transition-properties(background-color, color);
+		padding: 0.3em 1em;
+		border: 1px solid var(--theme-color-input_bd_color);
+		@include border-radius(var(--trx-addons-ai-helper-mgenerator-fields-border-radius));
+
+		&:before {
+			margin-right: 0.5em;
+		}
+	}
+	.sc_mgenerator_form_field_upload_audio_field {
+		@include abs-cover(1);
+		@include box(100%, 100%);
+		opacity: 0;
+	}
+}
+
+/* Tags */
+.sc_mgenerator_form_field_tags {
+	@include flex;
+	@include flex-direction(row);
+	@include flex-justify-content(center);
+	@include flex-align-items(flex-start);
+
+	.sc_mgenerator_form_align_left & {
+		@include flex-justify-content(flex-start);
+	}
+	.sc_mgenerator_form_align_right & {
+		@include flex-justify-content(flex-end);
+	}
+}
+.sc_mgenerator_form_field_tags_label {
+	white-space: nowrap;
+	padding: 0.5em 1em 0.5em 0;
+}
+.sc_mgenerator_form_field_tags_list {
+	@include flex;
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(flex-start);
+}
+.sc_mgenerator_form_field_tags_item {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0.5em 0.5em 0;
+	padding: 0.5em 1.5em;
+	background-color: $background_light;
+	color: $text_light;
+	@include border-radius(var(--trx-addons-ai-helper-mgenerator-tags-border-radius));
+	@include border-box;
+
+	&:hover {
+		color: $text_dark;
+		background-color: $background_color;
+	}
+}
+
+/* Limits */
+.sc_mgenerator_limits {
+	width: 100%;
+	text-align: center;
+
+	.sc_mgenerator_form_align_left & {
+		text-align: left;
+	}
+	.sc_mgenerator_form_align_right & {
+		text-align: right;
+	}
+	.sc_mgenerator_limits_used {
+		white-space: nowrap;
+	}
+}
+
+/* Message */
+.sc_mgenerator_message {
+	@include border-radius(var(--trx-addons-ai-helper-mgenerator-message-border-radius));
+	@include border-box;
+	position: relative;
+	padding: 2em 3em;
+	min-width: 40%;
+	background-color: $error_bg_color;
+	color: $error_color;
+	margin: 1em 0;
+	text-align: center;
+	display: none;
+
+	.trx_addons_button_close_icon {
+		&:before,
+		&:after {
+			border-color: $error_dark;
+		}
+	}
+}
+.sc_mgenerator_message_inner {
+	p,h1,h2,h3,h4,h5,h6 {
+		margin: 0;
+
+		& + p {
+			margin-top: 0.3em;
+		}
+	}
+	h1,h2,h3,h4,h5,h6 {
+		color: $error_dark;
+	}
+	a {
+		font-weight: 500;
+		color: $error_dark;
+		border-bottom: 1px dashed $error_dark;
+
+		&:hover {
+			color: $error_dark;
+			border-bottom-style: solid;
+		}
+	}
+	// .sc_mgenerator_message_translation {
+
+	// 	&:before {
+	// 		content: ' ';
+	// 		display: block;
+	// 		height: 0;
+	// 		width: 0;
+	// 	}
+	// }
+}
+.sc_mgenerator_message_type_info {
+	background-color: $info_bg_color;
+	color: $info_color;
+
+	h1,h2,h3,h4,h5,h6 {
+		color: $info_dark;
+	}
+	a {
+		color: $info_dark;
+		border-bottom-color: $info_dark;
+
+		&:hover {
+			color: $info_dark;
+		}
+	}
+	.trx_addons_button_close_icon {
+		&:before,
+		&:after {
+			border-color: $info_dark;
+		}
+	}
+}
+.sc_mgenerator_message_type_success {
+	background-color: $success_bg_color;
+	color: $success_color;
+
+	h1,h2,h3,h4,h5,h6 {
+		color: $success_dark;
+	}
+	a {
+		color: $success_dark;
+		border-bottom-color: $success_dark;
+
+		&:hover {
+			color: $success_dark;
+		}
+	}
+	.trx_addons_button_close_icon {
+		&:before,
+		&:after {
+			border-color: $success_dark;
+		}
+	}
+}
+
+/* Music - Preview area */
+.sc_mgenerator_music {
+	margin-top: 1.5em;
+	display: none;
+
+	audio {
+		visibility: hidden;
+	}
+}
+
+.sc_mgenerator_music_inner {
+	position: relative;
+	text-align: center;
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+
+	.sc_mgenerator_music_wrap {
+		display: block;
+		position: relative;
+		min-width: 280px;
+
+		.mejs-container,
+		.mejs-container .mejs-controls {
+			@include border-radius(var(--trx-addons-ai-helper-mgenerator-fields-border-radius));
+		}
+	}
+}
+
+.sc_mgenerator_music_fetch {
+	audio,
+	.sc_mgenerator_music_link {
+		display: none !important;
+	}
+}
+.sc_mgenerator_music_fetch_info {
+	@include flex;
+	@include flex-direction(column);
+	@include flex-justify-content(center);
+	@include flex-align-items(center);
+	@include border-box;
+}
+.sc_mgenerator_music_fetch_msg {
+	display: block;
+	text-decoration: none;
+	font-size: 1.2em;
+	line-height: 1.5em;
+	font-weight: bold;
+	// Commented to preserve the original color from the theme
+	//color: $text_dark;
+}
+.sc_mgenerator_music_fetch_progress {
+	display: block;
+	margin: 10px 0;
+	@include box(100%, 4px);
+	//border: 1px solid $text_light;
+	background-color: $text_light;
+	overflow: hidden;
+}
+.sc_mgenerator_music_fetch_progressbar {
+	display: block;
+	@include box(25%, 4px);
+	background-color: $warning_color;
+	@include animation(sc_mgenerator_music_fetch_progress_animation 1.5s linear infinite);
+	will-change: transform;
+}
+
+@-webkit-keyframes sc_mgenerator_music_fetch_progress_animation { 
+	0% {
+		@include translateX(-110%);
+	}
+	100% {
+		@include translateX(410%);
+	}
+}
+
+@keyframes sc_mgenerator_music_fetch_progress_animation { 
+	0% {
+		@include translateX(-110%);
+	}
+	100% {
+		@include translateX(410%);
+	}
+}
+
+.sc_mgenerator_music_link {
+	margin-top: 1.5em;
+
+	.sc_mgenerator_music_fetch_info + & {
+		display: none !important;
+	}
+
+	.sc_button_icon {
+		font-size: 1em;
+	}
+}

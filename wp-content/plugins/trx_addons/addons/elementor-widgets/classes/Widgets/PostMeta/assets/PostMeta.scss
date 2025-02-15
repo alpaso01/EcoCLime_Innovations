@@ -1,0 +1,55 @@
+@import "../../../../../../css/_mixins.scss";
+@import "../../../../../../css/_trx_addons.vars.scss";
+
+.trx-addons-post-meta {
+	@include flex;
+	@include flex-align-items(center);
+	@include flex-justify-content(center);
+}
+
+.trx-addons-post-meta-item {
+	@include inline-flex;
+	@include flex-align-items(center);
+
+	a {
+		@include inline-flex;
+		@include flex-align-items(center);
+		@include transition-property(color);
+	}
+	.trx-addons-post-meta-item-before {
+		margin-right: 0.3em;
+	}
+	.trx-addons-post-meta-item-after {
+		margin-left: 0.3em;
+	}
+	svg {
+		@include square(1em);
+		margin-right: 0.3em;
+	}
+	.trx-addons-post-meta-item-icon {
+		margin-right: 0.3em;
+	}
+	.trx-addons-post-meta-item-avatar {
+		display: inline-block;
+		vertical-align: middle;
+		max-width: 1.7em;
+		border-radius: 50%;
+		margin-right: 0.3em;
+	}
+
+	// WooCommerce meta
+	&[class*="trx-addons-post-meta-item-type-product_"] {
+		span.amount {
+			color: inherit;
+		}
+	}
+}
+
+.trx-addons-post-meta-item-separator {
+	@include inline-flex;
+	@include flex-align-items(center);
+
+	&:before {
+		content: '\2022';
+	}
+}

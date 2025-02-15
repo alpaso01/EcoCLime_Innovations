@@ -1,0 +1,129 @@
+.trx-addons-counter {
+	// display: inline-block;
+
+	h1,h2,h3,h4,h5,h6,p {
+		// font-family: inherit;
+		// letter-spacing: 0;
+		margin: 0;
+	}
+}
+
+.trx-addons-counter-num-divider-wrap,
+.trx-addons-counter-icon-divider-wrap {
+	line-height: 0;
+	margin-bottom: 12px;
+}
+
+.trx-addons-counter-number,
+.trx-addons-counter-number-prefix,
+.trx-addons-counter-number-suffix {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+.trx-addons-counter-icon-wrap,
+.trx-addons-counter-icon,
+.trx-addons-counter-icon-divider,
+.trx-addons-counter-num-divider {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.trx-addons-counter-icon-wrap {
+	margin-bottom: 12px;
+}
+.trx-addons-counter-icon {
+	line-height: 1;
+}
+
+.trx-addons-counter-layout-3 .trx-addons-counter-number-wrap,
+.trx-addons-counter-layout-3 .trx-addons-icon-title-wrap,
+.trx-addons-counter-layout-4 .trx-addons-counter-number-wrap,
+.trx-addons-counter-layout-4 .trx-addons-icon-title-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.trx-addons-counter-layout-3 .trx-addons-counter-title-wrap,
+.trx-addons-counter-layout-4 .trx-addons-counter-title-wrap {
+	flex-shrink: 0;
+}
+
+.trx-addons-counter-layout-5,
+.trx-addons-counter-layout-6 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.trx-addons-counter-layout-6 .trx-addons-counter-icon-wrap {
+	order: 2;
+}
+
+.trx-addons-counter-layout-7,
+.trx-addons-counter-layout-8 {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.trx-addons-counter-layout-7 .trx-addons-icon-title-wrap,
+.trx-addons-counter-layout-8 .trx-addons-icon-title-wrap {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	flex-shrink: 0;
+}
+
+.trx-addons-counter-layout-7 .trx-addons-counter-title-wrap,
+.trx-addons-counter-layout-8 .trx-addons-counter-title-wrap {
+	text-align: left;
+}
+
+.trx-addons-counter-layout-8 {
+	flex-direction: row-reverse;
+}
+
+.trx-addons-counter-layout-8 .trx-addons-icon-title-wrap {
+	align-items: flex-end;
+}
+
+.trx-addons-counter-layout-8 .trx-addons-counter-title-wrap {
+	text-align: right;
+}
+
+.trx-addons-counter .trx-addons-icon-title-wrap .trx-addons-counter-title {
+	display: inline-block;
+}
+
+.trx-addons-counter .trx-addons-icon-number-wrap .trx-addons-counter-number-wrap {
+	display: inline-block;
+}
+
+div.trx-addons-counter-number-wrap {
+	font-size: 69px;
+	line-height: 1;
+}
+
+.trx-addons-counter-number {
+	direction: ltr;
+
+	&.odometer.odometer-auto-theme .odometer-value,
+	&.odometer.odometer-theme-default .odometer-value {
+		text-align: unset;
+	}	
+}
+
+.trx-addons-counter-title-wrap {
+	max-width: 100%;
+}
+
+.trx-addons-counter-layout-7 .trx-addons-counter-number-wrap,
+.trx-addons-counter-layout-8 .trx-addons-counter-number-wrap {
+	flex-shrink: 0;
+}
+
+.trx-addons-counter-layout-7 .trx-addons-icon-title-wrap,
+.trx-addons-counter-layout-8 .trx-addons-icon-title-wrap {
+	flex-shrink: 1;
+}

@@ -1,0 +1,308 @@
+.trx-addons-info-list-container {
+  overflow: hidden;
+}
+.trx-addons-info-list-container h1, .trx-addons-info-list-container h2, .trx-addons-info-list-container h3, .trx-addons-info-list-container h4, .trx-addons-info-list-container h5, .trx-addons-info-list-container h6, .trx-addons-info-list-container p {
+  margin: 0;
+}
+.trx-addons-info-list-container li {
+  overflow: hidden;
+  position: relative;
+}
+.trx-addons-info-list-container li:last-child {
+  overflow: hidden;
+}
+.trx-addons-info-list-container .trx-addons-info-list-item-inner {
+  align-items: center;
+  display: flex;
+}
+.trx-addons-info-list-container .trx-addons-info-list-title,
+.trx-addons-info-list-container .trx-addons-info-list-description {
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+.trx-addons-info-list-container .trx-addons-info-list-icon-wrapper {
+  background: #f5f5f5;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.trx-addons-info-list-container .trx-addons-info-list-number {
+  text-align: center;
+}
+.trx-addons-info-list-container .trx-addons-info-list-image {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.trx-addons-info-list-container .trx-addons-info-list-item:last-child {
+  margin-bottom: 0 !important;
+}
+.trx-addons-info-list-container .trx-addons-list-items a {
+  color: inherit;
+}
+
+.trx-addons-info-list-icon-left.trx-addons-info-list-icon-vertical-middle .trx-addons-info-list-item-inner,
+.trx-addons-info-list-icon-right.trx-addons-info-list-icon-vertical-middle .trx-addons-info-list-item-inner {
+  align-items: center;
+}
+
+.trx-addons-info-list-icon-left.trx-addons-info-list-icon-vertical-top .trx-addons-info-list-item-inner,
+.trx-addons-info-list-icon-right.trx-addons-info-list-icon-vertical-top .trx-addons-info-list-item-inner {
+  align-items: flex-start;
+}
+
+.trx-addons-info-list-icon-left.trx-addons-info-list-icon-vertical-top .trx-addons-info-list-item:first-child .trx-addons-info-list-icon-wrapper:before,
+.trx-addons-info-list-icon-right.trx-addons-info-list-icon-vertical-top .trx-addons-info-list-item:first-child .trx-addons-info-list-icon-wrapper:before {
+  display: none;
+}
+
+.trx-addons-info-list-icon-left.trx-addons-info-list-icon-vertical-bottom .trx-addons-info-list-item-inner,
+.trx-addons-info-list-icon-right.trx-addons-info-list-icon-vertical-bottom .trx-addons-info-list-item-inner {
+  align-items: flex-end;
+}
+
+.trx-addons-info-list-icon-left.trx-addons-info-list-icon-vertical-bottom .trx-addons-info-list-item:last-child .trx-addons-info-list-icon-wrapper:after,
+.trx-addons-info-list-icon-right.trx-addons-info-list-icon-vertical-bottom .trx-addons-info-list-item:last-child .trx-addons-info-list-icon-wrapper:after {
+  display: none;
+}
+
+.trx-addons-info-list-icon-top.trx-addons-info-list-icon-horizontal-center .trx-addons-info-list-item-inner {
+  align-items: center;
+}
+
+.trx-addons-info-list-icon-top.trx-addons-info-list-icon-horizontal-left .trx-addons-info-list-item-inner {
+  align-items: flex-start;
+}
+
+.trx-addons-info-list-icon-top.trx-addons-info-list-icon-horizontal-left .trx-addons-info-list-item:first-child .trx-addons-info-list-icon-wrapper:before {
+  display: none;
+}
+
+.trx-addons-info-list-icon-top.trx-addons-info-list-icon-horizontal-right .trx-addons-info-list-item-inner {
+  align-items: flex-end;
+}
+
+.trx-addons-info-list-icon-top.trx-addons-info-list-icon-horizontal-right .trx-addons-info-list-item:last-child .trx-addons-info-list-icon-wrapper:after {
+  display: none;
+}
+
+.trx-addons-info-list-icon-left .trx-addons-info-list-icon-wrapper {
+  margin-right: 10px;
+}
+
+.trx-addons-info-list-icon-left .trx-addons-info-list-connector .trx-addons-info-list-icon-wrapper:before, .trx-addons-info-list-icon-left .trx-addons-info-list-connector .trx-addons-info-list-icon-wrapper:after {
+  content: ' ';
+  border-right: 1px solid #000;
+  height: 1500px;
+  left: calc( 7px - ( 1px / 2 ) );
+  position: absolute;
+  width: 1px;
+}
+.trx-addons-info-list-icon-left .trx-addons-info-list-connector .trx-addons-info-list-icon-wrapper:before {
+  bottom: 14px;
+}
+.trx-addons-info-list-icon-left .trx-addons-info-list-connector .trx-addons-info-list-icon-wrapper:after {
+  top: 14px;
+}
+
+.trx-addons-info-list-icon-right .trx-addons-info-list-item {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.trx-addons-info-list-icon-right .trx-addons-info-list-icon-wrapper {
+  margin-left: 10px;
+  order: 2;
+}
+
+.trx-addons-info-list-icon-right .trx-addons-info-list-connector .trx-addons-info-list-icon-wrapper:before {
+  content: '';
+  border-left: 1px solid #000;
+  height: 1500px;
+  bottom: 14px;
+  right: calc(7px - (1px/2));
+  position: absolute;
+  width: 1px;
+}
+
+.trx-addons-info-list-icon-right .trx-addons-info-list-connector .trx-addons-info-list-icon-wrapper:after {
+  content: '';
+  border-left: 1px solid #000;
+  height: 1500px;
+  top: 14px;
+  right: calc(7px - (1px/2));
+  position: absolute;
+  width: 1px;
+}
+
+.trx-addons-info-list-connector.trx-addons-info-list-corners-hide .trx-addons-info-list-item:first-child .trx-addons-info-list-icon-wrapper:before {
+  display: none;
+}
+
+.trx-addons-info-list-connector.trx-addons-info-list-corners-hide .trx-addons-info-list-item:last-child .trx-addons-info-list-icon-wrapper:after {
+  display: none;
+}
+
+.trx-addons-info-list-icon-top .trx-addons-list-items {
+  display: flex;
+  justify-content: center;
+}
+
+.trx-addons-info-list-icon-top .trx-addons-list-items .trx-addons-info-list-item {
+  display: inline-block;
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: center;
+}
+
+.trx-addons-info-list-icon-top .trx-addons-list-items .trx-addons-info-list-item:last-child {
+  margin-right: 0 !important;
+}
+
+.trx-addons-info-list-icon-top .trx-addons-info-list-icon-wrapper {
+  margin-bottom: 10px;
+  vertical-align: top;
+}
+
+.trx-addons-info-list-icon-top .trx-addons-info-list-connector .trx-addons-info-list-icon-wrapper:before {
+  content: '';
+  border-top: 1px solid #000;
+  height: 1px;
+  top: calc(7px - (1px/2));
+  left: auto;
+  right: 14px;
+  position: absolute;
+  width: 1500px;
+}
+
+.trx-addons-info-list-icon-top .trx-addons-info-list-connector .trx-addons-info-list-icon-wrapper:after {
+  content: '';
+  border-top: 1px solid #000;
+  height: 1px;
+  left: 14px;
+  top: calc(7px - (1px/2));
+  right: auto;
+  position: absolute;
+  width: 1500px;
+}
+
+.trx-addons-info-list-icon-top .trx-addons-info-list-item-inner {
+  flex-direction: column;
+}
+
+.trx-addons-info-list-icon-wrapper {
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.trx-addons-info-list-item .trx-addons-info-list-button {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.trx-addons-info-list-item .trx-addons-info-list-button .trx-addons-button-icon {
+  margin-right: 10px;
+}
+
+.trx-addons-info-list-item .trx-addons-info-list-button-icon-after .trx-addons-button-icon {
+  margin-left: 10px;
+  margin-right: 0;
+  order: 2;
+}
+
+@media (max-width: 1024px) {
+  .trx-addons-info-list-stack-tablet.trx-addons-info-list-icon-top .trx-addons-info-list-container .trx-addons-list-items {
+    display: block;
+  }
+
+  .trx-addons-info-list-stack-tablet.trx-addons-info-list-icon-top .trx-addons-info-list-container .trx-addons-list-items .trx-addons-info-list-item {
+    display: block;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .trx-addons-info-list-stack-tablet.trx-addons-info-list-icon-top .trx-addons-info-list-item-inner {
+    flex-direction: row;
+  }
+
+  .trx-addons-info-list-stack-tablet.trx-addons-info-list-icon-top .trx-addons-info-list-icon-wrapper {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .trx-addons-info-list-stack-tablet.trx-addons-info-list-icon-top .trx-addons-info-list-icon-wrapper:before {
+    content: '';
+    border-right: 1px solid #000;
+    height: 1500px;
+    bottom: 14px;
+    left: calc(7px - (1px/2));
+    position: absolute;
+    width: 1px;
+    top: auto;
+  }
+
+  .trx-addons-info-list-stack-tablet.trx-addons-info-list-icon-top .trx-addons-info-list-icon-wrapper:after {
+    content: '';
+    border-right: 1px solid #000;
+    height: 1500px;
+    top: 14px;
+    left: calc(7px - (1px/2));
+    position: absolute;
+    width: 1px;
+    top: auto;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .trx-addons-info-list-stack-mobile.trx-addons-info-list-icon-top .trx-addons-info-list-container .trx-addons-list-items {
+    display: block;
+  }
+
+  .trx-addons-info-list-stack-mobile.trx-addons-info-list-icon-top .trx-addons-info-list-container .trx-addons-list-items .trx-addons-info-list-item {
+    display: block;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .trx-addons-info-list-stack-mobile.trx-addons-info-list-icon-top .trx-addons-info-list-item-inner {
+    flex-direction: row;
+  }
+
+  .trx-addons-info-list-stack-mobile.trx-addons-info-list-icon-top .trx-addons-info-list-icon-wrapper {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .trx-addons-info-list-stack-mobile.trx-addons-info-list-icon-top .trx-addons-info-list-icon-wrapper:before {
+    content: '';
+    border-right: 1px solid #000;
+    height: 1500px;
+    bottom: 14px;
+    left: calc(7px - (1px/2));
+    position: absolute;
+    width: 1px;
+    top: auto;
+  }
+
+  .trx-addons-info-list-stack-mobile.trx-addons-info-list-icon-top .trx-addons-info-list-icon-wrapper:after {
+    content: '';
+    border-right: 1px solid #000;
+    height: 1500px;
+    top: 14px;
+    left: calc(7px - (1px/2));
+    position: absolute;
+    width: 1px;
+    top: auto;
+  }
+}
+
+/*# sourceMappingURL=InfoList.css.map */

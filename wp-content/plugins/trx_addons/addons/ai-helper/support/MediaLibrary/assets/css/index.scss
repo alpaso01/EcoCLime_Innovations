@@ -1,0 +1,460 @@
+@import "../../../../../../css/_mixins.scss";
+@import "../../../../../../css/_trx_addons.vars.scss";
+@import "../../../../../../css/_trx_addons.colors.scss";
+
+.trx-addons-ai-helper-image-generator {
+	padding: 1em 1.5em;
+
+	#trx-addons-ai-helper-image-generator-header-title {
+		h2 {
+			margin: 0.5em 0 1em 0;
+		}
+	}
+
+	#trx-addons-ai-helper-image-generator-body {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(space-between);
+		@include flex-align-items(flex-start);
+	}
+
+	// Settings area
+	#trx-addons-ai-helper-image-generator-settings-busy {
+		@include abs-cover;
+		display: none;
+
+		&.is-busy {
+			display: block;
+		}
+	}
+	#trx-addons-ai-helper-image-generator-settings {
+		@include flex;
+		@include flex-direction(column);
+		width: 30%;
+		margin-right: 1.5em;
+		position: relative;
+
+		@media screen and (max-width: 1679px) {
+			label, select, input, textarea, button {
+				font-size: 12px;
+			}
+		}
+		@media screen and (max-width: 1279px) {
+			label, select, input, textarea, button {
+				font-size: 11px;
+			}
+		}
+	}
+	#trx-addons-ai-helper-image-generator-settings-new,
+	#trx-addons-ai-helper-image-generator-settings-selected {
+		@include border-box;
+		@include border-radius(0.5em);
+		padding: 1.6em;
+		background-color: $background_light;
+		min-width: 256px;
+	}
+	.trx-addons-ai-helper-image-generator-settings-subtitle {
+		position: relative;
+		min-width: 256px;
+		margin: 1em 0;
+
+		h2, h3 {
+			margin: 0;
+		}
+	}
+	.trx-addons-ai-helper-image-generator-settings-item {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(space-between);
+		@include flex-align-items(center);
+		margin-bottom: 1em;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		.trx-addons-ai-helper-image-generator-settings-item-title {
+			@include flex-basis(30%);
+		}
+		.trx-addons-ai-helper-image-generator-settings-item-field {
+			@include flex-basis(68%);
+			@include flex;
+			@include flex-direction(row);
+			@include flex-justify-content(flex-start);
+			@include flex-align-items(center);
+	
+			input[type="number"] {
+				padding: 0 2px 0 8px;
+			}
+			input[type="text"], textarea, select {
+				width: 100%;
+			}
+			input[type="text"], textarea {
+				&::placeholder {
+					font-size: 11px;
+				}
+			}
+			#trx-addons-ai-helper-image-generator-number,
+			#trx-addons-ai-helper-image-generator-variations {
+				width: 4em;
+			}
+			.trx-addons-ai-helper-image-generator-settings-item-field-delimiter {
+				margin: 0 0.5em;
+			}
+		}
+		.trx-addons-ai-helper-image-generator-settings-item-field-variations {
+			@include flex-basis(100%);
+			@include flex-direction(column);
+	
+			p {
+				margin: 0.5em 0 0 0;
+				line-height: 1.5em;
+			}
+		}	
+	}
+
+	hr {
+		margin: 1em 0;
+	}
+
+	.trx-addons-ai-helper-image-generator-quality {
+		margin-left: 1em;
+		min-width: 5em;
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(flex-start);
+		@include flex-align-items(center);
+
+		input[type="checkbox"] {
+			margin-top: 0;
+		}
+	}
+
+	.trx-addons-ai-helper-image-generator-append {
+		margin-left: 1em;
+	}
+
+	.trx-addons-ai-helper-image-generator-button {
+		width: 100%;
+		height: 3em;
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(center);
+		@include flex-align-items(center);
+
+		&.is-secondary {
+			width: auto;
+			height: 2.3em;
+			margin-top: 0;
+			margin-left: 1em;
+			padding: 0 0.5em;
+		}
+	}
+	.trx-addons-ai-helper-image-generator-button-icon {
+		font-size: 15px;
+		line-height: 20px;
+
+		&:before {
+			margin-right: 6px;
+			font-size: 15px;
+		}
+	}
+	.trx-addons-ai-helper-image-generator-button.is-busy {
+		.trx-addons-ai-helper-image-generator-button-icon:before {
+			content: '\f463';
+			display: inline-block;
+			@include animation(trx-addons-animation-spin 2s infinite linear);
+		}
+	}
+
+	@keyframes trx-addons-animation-spin {
+		0% {
+			transform: rotate( 0deg );
+		}
+		100% {
+			transform: rotate( 360deg );
+		}
+	}
+
+	// Popup with additional settings for the selected model
+	.trx-addons-ai-helper-image-generator-settings-item-model {
+		position: relative;
+
+		.trx-addons-ai-helper-image-generator-settings-item-field {
+			@include flex;
+			@include flex-direction(row);
+			@include flex-justify-content(space-between);
+			@include flex-align-items(stretch);
+			@include flex-wrap(nowrap);
+			@include border-box;
+			gap: 4px;
+			width: 100%;
+		}
+		.trx-addons-ai-helper-image-generator-settings-button {
+			@include flex;
+			@include flex-direction(column);
+			@include flex-justify-content(center);
+			@include flex-align-items(center);
+			@include border-box;
+			@include border-radius(4px);
+			font-size: 1.25em;
+			width: 4em;
+			margin-left: 2px;
+			background-color: #e7eaed;
+			color: #222;
+			border: 1px solid #888;
+			text-decoration: none;
+
+			&:hover,
+			&:focus {
+				background-color: #e7eaed;
+				color: #222;
+			}
+		}
+		.trx-addons-ai-helper-image-generator-settings-popup {
+			@include abs-rt( 0, 100%, 100 );
+			@include border-box;
+			@include border-radius(4px);
+			margin-top: 4px;
+			padding: 1.5em;
+			background-color: #f7f7f7;
+			color: #222;
+			@include transition-properties( opacity, transform );
+			will-change: opacity, transform;
+			opacity: 0;
+			@include translateY( 20% );
+			pointer-events: none;
+			width: 100%;
+			@include box-shadow( 0 0 10px rgba(0,0,0,0.2) );
+
+			&.show {
+				opacity: 1;
+				@include translateY(0);
+				pointer-events: auto;
+			}
+		}
+		.trx-addons-ai-helper-image-generator-settings-field {
+			margin-bottom: 1em;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			label {
+				display: block;
+				margin-bottom: 0.25em;
+				font-weight: bold;
+			}
+			.trx-addons-ai-helper-image-generator-settings-field-description {
+				display: block;
+				font-size: 0.9em;
+				line-height: 1.2em;
+				margin-top: 0.25em;
+				color: #666;
+			}
+		}
+	}
+
+	// Actions for the selected image
+	.trx-addons-ai-helper-image-generator-settings-actions {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	.trx-addons-ai-helper-image-generator-settings-actions-list {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-justify-content(flex-start);
+		@include flex-align-items(flex-start);
+		@include flex-wrap(wrap);
+		@include border-box;
+		gap: 2em;
+		
+		position: relative;
+
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		&:after {
+			content: ' ';
+			display: block;
+			width: 100%;
+			height: 2px;
+			background-color: $tab_border_color;
+			@include abs-lb(0, 0, 1);
+		}
+	}
+	.trx-addons-ai-helper-image-generator-settings-actions-item {
+		@include border-box;
+		margin-bottom: 0;
+
+		& > a {
+			display: block;
+			padding: 1em 0;
+			@include border-box;
+			position: relative;
+			text-transform: uppercase;
+			text-decoration: none;
+			font-weight: 500;
+			color: $tab_text_disabled;
+		}
+		&.trx-addons-ai-helper-image-generator-settings-actions-item-active > a,
+		& > a:hover,
+		& > a:focus {
+			color: $tab_text_color;
+			outline: 0;
+			box-shadow: none;
+		}
+	}
+	.trx-addons-ai-helper-image-generator-settings-actions-slider {
+		@include abs-lb(0, 0, 2);
+		@include border-box;
+		@include transition-properties(left, width, opacity);
+		width: 0;
+		height: 2px;
+		margin-bottom: 0;
+		background-color: $tab_text_color;
+	}
+	#trx-addons-ai-helper-image-generator-upscale-width,
+	#trx-addons-ai-helper-image-generator-upscale-height {
+		min-width: 5em;
+		max-width: 6em;
+	}
+
+	#trx-addons-ai-helper-image-generator-settings-selected-delete {
+		@include abs-rc;
+	}
+
+	// Preview area
+	#trx-addons-ai-helper-image-generator-preview {
+		@include flex;
+		@include flex-direction(row);
+		@include flex-wrap(wrap);
+		@include border-box;
+		@include border-radius(0.5em);
+		@include flex-grow(1);
+		width: 68%;
+		padding: 2em;
+		background-color: $background_light;
+		max-height: 71vh;
+		overflow-y: auto;
+		overflow-x: hidden;
+
+		@media screen and (max-width: 1167px) {
+			width: 50%;
+		}
+
+		.trx-addons-ai-helper-image-generator-preview-image {
+			width: 33.3333%;
+			padding: 10px;
+			@include border-box;
+			position: relative;
+
+			@media screen and (max-width: 1167px) {
+				width: 50%;
+			}
+
+			&:focus,
+			&:active,
+			&.trx-addons-ai-helper-image-generator-preview-image-selected {
+				&:before {
+					content: '';
+					display: block;
+					@include abs-cover;
+					border: 1px solid $accent_color;
+					pointer-events: none;
+				}
+			}
+			&:focus,
+			&:active {
+				outline: 0;
+
+				&:not(.trx-addons-ai-helper-image-generator-preview-image-selected):before {
+					border-color: $border_outline;
+				}
+			}
+			&.trx-addons-ai-helper-image-generator-preview-image-selected {
+				&:after {
+					content: '\e900';
+					font-family: $trx_addons_icons;
+					font-size: 10px;
+					@include abs-rt(0, 0);
+					@include square(20px);
+					color: #fff;
+					background-color: $accent_color;
+				}
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+				vertical-align: top;
+			}
+		}
+
+		.trx-addons-ai-helper-image-generator-preview-image-fetch-info {
+			@include abs-pos(auto, 10px, 10px, 10px);
+			@include border-box;
+			padding: 0 1em 1em;
+			@include flex;
+			@include flex-direction(column);
+			@include flex-justify-content(flex-start);
+			@include flex-align-items(center);
+		}
+		.trx-addons-ai-helper-image-generator-preview-image-fetch-msg {
+			display: block;
+			text-decoration: none;
+			font-size: 1.2em;
+			line-height: 1.5em;
+			font-weight: bold;
+			color: $text_dark;
+		}
+		.trx-addons-ai-helper-image-generator-preview-image-fetch-progress {
+			display: block;
+			margin-top: 10px;
+			@include box(50%, 3px);
+			border: 1px solid $text_light;
+			background-color: $text_light;
+			overflow: hidden;
+		}
+		.trx-addons-ai-helper-image-generator-preview-image-fetch-progressbar {
+			display: block;
+			@include box(50%, 3px);
+			background-color: $warning_color;
+			@include animation(trx-animation-loading-bar 1.5s linear infinite);
+			will-change: transform;
+		}
+	}
+}
+
+@-webkit-keyframes trx-animation-loading-bar { 
+	0% {
+		@include translateX(-110%);
+	}
+	100% {
+		@include translateX(210%);
+	}
+}
+
+@keyframes trx-animation-loading-bar { 
+	0% {
+		@include translateX(-110%);
+	}
+	100% {
+		@include translateX(210%);
+	}
+}
+
+
+/* Browse Library */
+.media-frame {
+	.attachment-info {
+		.variations-attachment,
+		.delete-attachment {
+			display: block;
+			font-size: 12px !important;
+			margin-top: 2px;
+			text-decoration: none;
+		}
+	}
+}

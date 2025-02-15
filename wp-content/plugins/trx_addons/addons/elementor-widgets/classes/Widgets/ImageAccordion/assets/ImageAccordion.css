@@ -1,0 +1,226 @@
+.trx-addons-image-accordion {
+  display: flex;
+  height: 50vh;
+}
+.trx-addons-image-accordion h1, .trx-addons-image-accordion h2, .trx-addons-image-accordion h3, .trx-addons-image-accordion h4, .trx-addons-image-accordion h5, .trx-addons-image-accordion h6 {
+  margin: 0;
+}
+
+.trx-addons-image-accordion .trx-addons-image-accordion-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.trx-addons-image-accordion-button-wrap * {
+  transition: none;
+}
+
+.trx-addons-image-accordion-button {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: top;
+  transition: all 0.25s linear 0s;
+}
+.trx-addons-image-accordion-button.trx-addons-button-icon-before .trx-addons-button-icon {
+  margin-right: 10px;
+}
+.trx-addons-image-accordion-button.trx-addons-button-icon-after .trx-addons-button-icon {
+  margin-left: 10px;
+}
+
+.trx-addons-image-accordion-item {
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  position: relative;
+  flex: 1;
+  text-decoration: none;
+  transition: flex .4s;
+  overflow: hidden;
+}
+
+.trx-addons-image-accordion-item:last-child {
+  margin-right: 0 !important;
+}
+
+.trx-addons-image-accordion-active {
+  cursor: default;
+}
+
+.trx-addons-image-accordion-overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background-color .4s;
+}
+
+.trx-addons-image-accordion-button-wrap {
+  transform: translate3d(0, 30%, 0);
+}
+
+.trx-addons-image-accordion-overlay .trx-addons-image-accordion-content-wrap {
+  z-index: 1;
+}
+
+.trx-addons-image-accordion-content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+}
+
+.trx-addons-image-accordion-content-wrap p:last-child {
+  margin-bottom: 0;
+}
+
+.trx-addons-image-accordion-content-wrap > * {
+  visibility: hidden;
+  opacity: 0;
+  transform-style: preserve-3d;
+}
+
+.trx-addons-image-accordion-title {
+  color: #fff;
+  transform: translate3d(0, -30%, 0);
+}
+
+.trx-addons-image-accordion-description {
+  color: #fff;
+  transform: translate3d(0, 30%, 0);
+}
+
+.trx-addons-image-accordion-content-active {
+  visibility: visible;
+}
+
+.trx-addons-image-accordion-content-active * {
+  opacity: 1;
+  visibility: visible;
+  transform: none !important;
+  transition: all .3s;
+}
+
+.trx-addons-image-accordion-on-hover .trx-addons-image-accordion-item:hover {
+  flex: 3;
+}
+
+.trx-addons-image-accordion-on-hover .trx-addons-image-accordion-item:hover .trx-addons-image-accordion-content-wrap * {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: all .3s;
+}
+
+.trx-addons-image-accordion-orientation-horizontal .trx-addons-image-accordion {
+  flex-direction: column;
+}
+
+.trx-addons-image-accordion-orientation-horizontal .trx-addons-image-accordion a:hover .trx-addons-image-accordion-overlay {
+  background-color: transparent;
+}
+
+.trx-addons-image-accordion-orientation-horizontal .trx-addons-image-accordion-item {
+  margin-right: 0 !important;
+}
+
+/* below image */
+.trx-addons-image-accordion-shadow-link {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.trx-addons-image-accordion-max-title .trx-addons-image-accordion-title,
+.trx-addons-image-accordion-max-description .trx-addons-image-accordion-description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.trx-addons-image-accordion-max-title {
+  --var-trx-addons-image-accordion-title-column: 1;
+}
+.trx-addons-image-accordion-max-title .trx-addons-image-accordion-title {
+  -webkit-line-clamp: var(--var-trx-addons-image-accordion-title-column);
+}
+
+.trx-addons-image-accordion-max-description {
+  --var-trx-addons-image-accordion-description-column: 1;
+}
+.trx-addons-image-accordion-max-description .trx-addons-image-accordion-description {
+  -webkit-line-clamp: var(--var-trx-addons-image-accordion-description-column);
+}
+
+.trx-addons-image-accordion-below.trx-addons-image-accordion {
+  height: auto;
+}
+.trx-addons-image-accordion-below .trx-addons-image-accordion-item {
+  overflow: hidden;
+}
+.trx-addons-image-accordion-below .trx-addons-image-accordion-item-inner {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.trx-addons-image-accordion-below .trx-addons-image-accordion-below-content {
+  -webkit-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.trx-addons-image-accordion-below .trx-addons-image-accordion-content-wrap > * {
+  visibility: visible;
+  opacity: 1;
+}
+.trx-addons-image-accordion-below .trx-addons-image-accordion-title, .trx-addons-image-accordion-below .trx-addons-image-accordion-description {
+  color: #000;
+  transform: none;
+}
+.trx-addons-image-accordion-below .trx-addons-image-accordion-button-wrap {
+  transform: none;
+}
+
+@media (max-width: 1024px) {
+  .trx-addons-image-accordion-stack-on-tablet .trx-addons-image-accordion {
+    flex-direction: column;
+  }
+
+  .trx-addons-image-accordion-stack-on-tablet .trx-addons-image-accordion a:hover .trx-addons-image-accordion-overlay {
+    background-color: transparent;
+  }
+
+  .trx-addons-image-accordion-stack-on-tablet .trx-addons-image-accordion-item {
+    margin-right: 0 !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .trx-addons-image-accordion-stack-on-mobile .trx-addons-image-accordion {
+    flex-direction: column;
+  }
+
+  .trx-addons-image-accordion-stack-on-mobile .trx-addons-image-accordion a:hover .trx-addons-image-accordion-overlay {
+    background-color: transparent;
+  }
+
+  .trx-addons-image-accordion-stack-on-mobile .trx-addons-image-accordion-item {
+    margin-right: 0 !important;
+  }
+}
+
+/*# sourceMappingURL=ImageAccordion.css.map */

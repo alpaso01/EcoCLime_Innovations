@@ -1,0 +1,69 @@
+@import "../../../../../../css/_mixins.scss";
+@import "../../../../../../css/_trx_addons.vars.scss";
+@import "../../../../../../css/_trx_addons.colors.scss";
+
+#trx_addons_ai_helper_process_selection {
+	@include abs-lt(0,0,-1);
+	border: 1px solid $button_bd_color;
+	border-radius: 2px;
+	background-color: $button_bg_color;
+	@include box-shadow(0 0 10px rgba(0,0,0,.25));
+	@include flex;
+	@include flex-direction(row);
+	@include flex-wrap(nowrap);
+	@include flex-justify-content(flex-start);
+	@include flex-align-items(flex-start);
+	margin-top: 1em;
+	@include transition(opacity .3s ease-in-out);
+	opacity: 0;
+	pointer-events: none;
+
+	&.trx_addons_ai_helper_process_selection_show {
+		opacity: 1;
+		z-index: 99999;
+		pointer-events: auto;
+	}
+	&.trx_addons_ai_helper_process_selection_loading {
+		pointer-events: none
+	}
+
+	.trx_addons_ai_helper_process_selection_button {
+		@include border-box;
+		padding: 0.25em 0.75em;
+		color: $button_text_color;
+		display: inline-block;
+		vertical-align: top;
+
+		&:before {
+			font-family: "trx_addons_icons";
+			margin-right: 0.5em;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		&[data-command="process_explain"]:before {
+			content: "\e918";
+		}
+		&[data-command="process_summarize"]:before {
+			content: "\e8cb";
+		}
+		&[data-command="process_translate"]:before {
+			content: "\f130";
+		}
+		&.trx_addons_ai_helper_process_selection_button_loading {
+			&:before {
+				content: "\e800";
+				font-size: 0.9em;
+				@include animation(spin 2s infinite linear);
+			}
+		}
+
+		&:hover {
+			color: $accent_color;
+		}
+
+		& + .trx_addons_ai_helper_process_selection_button {
+			margin-left: 0.75em;
+			border-left: 1px solid $button_bd_color;
+		}
+	}
+}

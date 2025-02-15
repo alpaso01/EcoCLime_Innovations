@@ -1,0 +1,40 @@
+{
+	"type": "json_schema",
+	"json_schema": {
+		"name": "filled_fields",
+		"strict": true,
+		"schema": {
+			"type": "object",
+			"properties": {
+				"fields": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"ref_id": {
+								"type": "string",
+								"description": "Unique identifier for the content field, represented as a sequential number, do not change"
+							},
+							"widget": {
+								"type": "string",
+								"description": "Type of widget extracted from the webpage, do not change"
+							},
+							"field": {
+								"type": "string",
+								"description": "Type of content field (e.g., 'title', 'content', 'editor'), do not change"
+							},
+							"value": {
+								"type": "string",
+								"description": "Actual content/text value stored in the field"
+							}
+						},
+						"required": ["ref_id", "widget", "field", "value"],
+						"additionalProperties": false
+					}
+				}
+			},
+			"required": ["fields"],
+			"additionalProperties": false
+		}
+	}
+}

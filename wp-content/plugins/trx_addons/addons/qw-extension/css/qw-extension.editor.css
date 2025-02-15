@@ -1,0 +1,13 @@
+/* QW Extension icons */
+[class^="qw_extension_icon-"]:before,
+[class*=" qw_extension_icon-"]:before {
+  font-size: inherit;
+  line-height: inherit !important;
+  font-weight: inherit;
+  font-style: inherit;
+  display: inline-block;
+  width: auto;
+  margin: 0;
+}
+
+/*# sourceMappingURL=qw-extension.editor.css.map */

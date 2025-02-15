@@ -1,0 +1,28 @@
+@import "../../css/_mixins.scss";
+@import "../../css/_trx_addons.vars.scss";
+
+
+
+@media #{$media_lg} {
+
+	/* Controls -> Simple */
+	.sc_slider_controls.sc_slider_controls_simple .slider_controls_wrap > {
+		a.slider_next,
+		a.slider_prev {
+			@include square(40px);
+			&:before {
+				font-size: 22px;
+			}
+		}
+	}
+
+}
+
+@media #{$media_md} {
+	.sc_slider_controls.sc_slider_controls_simple.slider_pagination_style_title .slider_pagination_wrap .slider_pagination_bullet {
+		font-size: 1.2em;
+		+ .slider_pagination_bullet {
+			margin-top: 15px !important;
+		}
+	}
+}

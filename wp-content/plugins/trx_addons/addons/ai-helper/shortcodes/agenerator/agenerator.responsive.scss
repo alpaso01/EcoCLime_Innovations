@@ -1,0 +1,67 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_trx_addons.vars.scss";
+
+//@mixin sc_agenerator--lg() {
+@media #{$media_lg} {
+	/* agenerator */
+	.sc_agenerator_limits {
+		.sc_agenerator_form_align_left_tablet & {
+			text-align: left;
+		}
+		.sc_agenerator_form_align_right_tablet & {
+			text-align: right;
+		}
+	}
+}
+		
+//@mixin sc_agenerator--sm() {
+@media #{$media_sm} {
+    /* agenerator */
+	.sc_agenerator_form_field.sc_agenerator_form_field_prompt {
+		width: 100%;
+	}
+	.sc_agenerator_limits {
+		.sc_agenerator_form_align_left_mobile & {
+			text-align: left;
+		}
+		.sc_agenerator_form_align_right_mobile & {
+			text-align: right;
+		}
+	}
+	.sc_agenerator_message {
+		min-width: 50%;
+	}
+}
+
+//@mixin sc_agenerator--sm_wp() {
+@media #{$media_sm_wp} {
+	/* agenerator */
+	.sc_agenerator_form_actions_list {
+		gap: 1em;
+		font-size: 12px;
+		line-height: 18px;
+	}
+	.sc_agenerator_form_fields {
+		@include flex-direction(column);
+		@include flex-justify-content(flex-start);
+		@include flex-align-items(stretch);
+		gap: 1.5em;
+		//padding: 1.5em;
+	}
+	.sc_agenerator_form_fields_left {
+		@include flex-basis(100%);
+		max-width: none;
+	}
+	.sc_agenerator_form_fields_right {
+		@include flex-basis(100%);
+		max-width: none;
+	}
+}
+
+//@mixin sc_agenerator--xs() {
+@media #{$media_xs} {
+	/* agenerator */
+	.sc_agenerator_form_actions_list {
+		font-size: 11px;
+	}
+}

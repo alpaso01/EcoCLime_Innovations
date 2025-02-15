@@ -1,0 +1,68 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_trx_addons.vars.scss";
+
+//@mixin sc_chat--lg() {
+@media #{$media_lg} {
+	/* AI Chat */
+	.sc_chat_limits {
+		.sc_chat_form_align_left_tablet & {
+			text-align: left;
+		}
+		.sc_chat_form_align_right_tablet & {
+			text-align: right;
+		}
+	}
+	.sc_chat_popup {
+		max-width: 33%;
+	}
+}
+
+//@mixin sc_chat--sm() {
+@media #{$media_sm} {
+    /* AI Chat */
+	.sc_chat_form_field_prompt {
+		.sc_chat_form_field_prompt_button {
+			padding: 0 1em;
+		}
+	}
+	.sc_chat_limits {
+		// padding-left: 1em;
+		// padding-right: 1em;
+		
+		.sc_chat_form_align_left_mobile & {
+			text-align: left;
+		}
+		.sc_chat_form_align_right_mobile & {
+			text-align: right;
+		}
+		.sc_chat_limits_used {
+			display: block;
+			white-space: normal;
+		}
+	}
+	.sc_chat_message {
+		min-width: 50%;
+	}
+	.sc_chat_popup {
+		max-width: calc( 100% - 2 * var(--trx-addons-ai-helper-popup-offset-x) );
+
+		&.sc_chat_opening,
+		&.sc_chat_opened {
+			min-width: 450px;
+		}
+	}
+}
+
+//@mixin sc_chat--xs() {
+@media #{$media_xs} {
+	/* AI Chat */
+	.sc_chat_popup {
+		--trx-addons-ai-helper-popup-offset-x: 1em;
+		--trx-addons-ai-helper-popup-offset-y: 1em;
+
+		&.sc_chat_opening,
+		&.sc_chat_opened {
+			min-width: 270px;
+		}
+	}
+}	

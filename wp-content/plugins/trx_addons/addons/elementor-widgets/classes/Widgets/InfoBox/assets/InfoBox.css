@@ -1,0 +1,256 @@
+.trx-addons-info-box-container {
+  position: relative;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.trx-addons-info-box-container h1, .trx-addons-info-box-container h2, .trx-addons-info-box-container h3, .trx-addons-info-box-container h4, .trx-addons-info-box-container h5, .trx-addons-info-box-container h6 {
+  margin: 0;
+}
+
+.trx-addons-info-box-container:not(.elementor-grid) {
+  display: flex;
+  flex-direction: column;
+}
+
+.trx-addons-info-box-container-link {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.trx-addons-info-box .trx-addons-info-box-icon {
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.trx-addons-info-box .trx-addons-info-box-icon .fa {
+  width: 1em;
+  height: 1em;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.trx-addons-info-box .trx-addons-info-box-icon img {
+  vertical-align: middle;
+}
+
+.trx-addons-info-box-divider-wrap {
+  font-size: 0;
+  line-height: 0;
+}
+
+.trx-addons-info-box-divider {
+  display: inline-block;
+}
+
+.trx-addons-info-box .trx-addons-info-box-title,
+.trx-addons-info-box .trx-addons-info-box-subtitle {
+  margin: 0;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.trx-addons-info-box-equal-height .trx-addons-info-box {
+  height: 100%;
+}
+
+.trx-addons-info-box-left .trx-addons-info-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.trx-addons-info-box-left .trx-addons-info-box .trx-addons-info-box-icon-wrap {
+  display: flex;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.trx-addons-info-box-left .trx-addons-info-box .trx-addons-info-box-icon,
+.trx-addons-info-box-left .trx-addons-info-box img {
+  width: 100%;
+}
+
+.trx-addons-info-box-right .trx-addons-info-box {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.trx-addons-info-box-right .trx-addons-info-box .trx-addons-info-box-icon-wrap {
+  display: flex;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.trx-addons-info-box-right .trx-addons-info-box .trx-addons-info-box-icon,
+.trx-addons-info-box-right .trx-addons-info-box img {
+  width: 100%;
+}
+
+.trx-addons-info-box-carousel .trx-addons-info-box-content-wrap {
+  overflow: hidden;
+}
+
+.trx-addons-info-box-description p:last-child {
+  margin-bottom: 0;
+}
+
+.trx-addons-info-box-footer {
+  line-height: normal;
+}
+
+.trx-addons-info-box-button {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.trx-addons-info-box-button-icon-before .trx-addons-button-icon {
+  margin-right: 10px;
+}
+
+.trx-addons-info-box-button-icon-after .trx-addons-button-icon {
+  margin-left: 10px;
+}
+
+/* image animation - zoom */
+.elementor-element.with-elementor-animation-trx_hover_zoom .trx-addons-info-box-icon-type-image .trx-addons-info-box-icon {
+  overflow: hidden;
+}
+
+.elementor-element[class*="with-elementor-animation-"] .trx-addons-info-box-icon {
+  overflow: visible;
+}
+
+/* bg image with animation*/
+.trx-addons-info-box-container-bg-imitator-container,
+.trx-addons-info-box-container-bg-imitator {
+  position: absolute;
+  inset: 0;
+}
+
+.trx-addons-info-box-container-bg-imitator-container {
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* overlay */
+.trx-addons-info-box-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  z-index: 10;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.trx-addons-info-box-container-overlay .trx-addons-info-box-container-link,
+.elementor-element[class*="with-bg-elementor-animation-"] .trx-addons-info-box-container-link {
+  z-index: 30;
+}
+.trx-addons-info-box-container-overlay .trx-addons-info-box,
+.elementor-element[class*="with-bg-elementor-animation-"] .trx-addons-info-box {
+  position: relative;
+  z-index: 20;
+}
+
+@media (max-width: 1024px) {
+  .trx-addons-info-box-tablet-top .trx-addons-info-box {
+    display: inline-block;
+  }
+
+  .trx-addons-info-box-tablet-top .trx-addons-info-box .trx-addons-info-box-icon-wrap {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .trx-addons-info-box-tablet-top .trx-addons-info-box .trx-addons-info-box-icon {
+    margin-right: auto;
+  }
+
+  .trx-addons-info-box-tablet-left .trx-addons-info-box {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .trx-addons-info-box-tablet-left .trx-addons-info-box .trx-addons-info-box-icon-wrap {
+    display: flex;
+    margin-right: 20px;
+  }
+
+  .trx-addons-info-box-tablet-left .trx-addons-info-box .trx-addons-info-box-icon,
+  .trx-addons-info-box-tablet-left .trx-addons-info-box img {
+    width: 100%;
+  }
+
+  .trx-addons-info-box-tablet-right .trx-addons-info-box {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .trx-addons-info-box-tablet-right .trx-addons-info-box .trx-addons-info-box-icon-wrap {
+    display: flex;
+    margin-left: 20px;
+  }
+
+  .trx-addons-info-box-tablet-right .trx-addons-info-box .trx-addons-info-box-icon,
+  .trx-addons-info-box-tablet-right .trx-addons-info-box img {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .trx-addons-info-box-mobile-top .trx-addons-info-box {
+    display: inline-block;
+  }
+
+  .trx-addons-info-box-mobile-top .trx-addons-info-box .trx-addons-info-box-icon-wrap {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .trx-addons-info-box-mobile-top .trx-addons-info-box .trx-addons-info-box-icon {
+    margin-right: auto;
+  }
+
+  .trx-addons-info-box-mobile-left .trx-addons-info-box {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .trx-addons-info-box-mobile-left .trx-addons-info-box .trx-addons-info-box-icon-wrap {
+    display: flex;
+    margin-right: 20px;
+  }
+
+  .trx-addons-info-box-mobile-left .trx-addons-info-box .trx-addons-info-box-icon,
+  .trx-addons-info-box-mobile-left .trx-addons-info-box img {
+    width: 100%;
+  }
+
+  .trx-addons-info-box-mobile-right .trx-addons-info-box {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .trx-addons-info-box-mobile-right .trx-addons-info-box .trx-addons-info-box-icon-wrap {
+    display: flex;
+    margin-left: 20px;
+  }
+
+  .trx-addons-info-box-mobile-right .trx-addons-info-box .trx-addons-info-box-icon,
+  .trx-addons-info-box-mobile-right .trx-addons-info-box img {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=InfoBox.css.map */

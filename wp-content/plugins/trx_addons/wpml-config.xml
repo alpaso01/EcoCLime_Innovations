@@ -1,0 +1,193 @@
+<wpml-config>
+  <built-with-page-builder>/\[vc_row\]/</built-with-page-builder>
+  <elementor-widgets>
+    <widget name="trx_sc_action">
+      <fields-in-item items_of="actions">
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="SubTitle" editor_type="LINE">subtitle</field>
+        <field type="Date" editor_type="LINE">date</field>
+        <field type="Info" editor_type="LINE">info</field>
+        <field type="Description" editor_type="AREA">description</field>
+        <field type="Link URL" editor_type="LINK">url</field>
+        <field type="Link text" editor_type="LINE">link_text</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_sc_button">
+      <fields-in-item items_of="buttons">
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="SubTitle" editor_type="LINE">subtitle</field>
+        <field type="Link URL" editor_type="LINK" key_of="link">url</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_sc_googlemap">
+      <fields-in-item items_of="markers">
+        <field type="Address or Lat,Lng" editor_type="LINE">address</field>
+        <field type="Custom HTML" editor_type="VISUAL">html</field>
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="Description" editor_type="VISUAL">description</field>
+        <field type="Link URL" editor_type="LINK" key_of="link">url</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_sc_icons">
+      <fields-in-item items_of="icons">
+        <field type="Char" editor_type="LINE">char</field>
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="Description" editor_type="AREA">description</field>
+        <field type="Link URL" editor_type="LINK" key_of="link">url</field>
+        <field type="Image URL" editor_type="LINK" key_of="image">url</field>
+        <field type="or character" editor_type="LINE">char</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_sc_osmap">
+      <fields-in-item items_of="markers">
+        <field type="Address or Lat,Lng" editor_type="LINE">address</field>
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="Description" editor_type="VISUAL">description</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_sc_price">
+      <fields-in-item items_of="prices">
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="SubTitle" editor_type="LINE">subtitle</field>
+        <field type="Label" editor_type="LINE">label</field>
+        <field type="Description" editor_type="LINE">description</field>
+        <field type="Before price" editor_type="LINE">before_price</field>
+        <field type="Price" editor_type="LINE">price</field>
+        <field type="After price" editor_type="LINE">after_price</field>
+        <field type="Details" editor_type="VISUAL">details</field>
+        <field type="Link URL" editor_type="LINK" key_of="link">url</field>
+        <field type="Link text" editor_type="LINE">link_text</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_sc_skills">
+      <fields-in-item items_of="values">
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="Value" editor_type="LINE">value</field>
+        <field type="or character" editor_type="LINE">char</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_sc_socials">
+      <fields-in-item items_of="icons">
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="Link URL" editor_type="LINE">link</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_sc_supertitle">
+      <fields-in-item items_of="items">
+        <field type="Text" editor_type="LINE">text</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_widget_audio">
+      <fields-in-item items_of="media">
+        <field type="Media URL" editor_type="LINE">url</field>
+        <field type="Embed code" editor_type="AREA">embed</field>
+        <field type="Caption" editor_type="LINE">caption</field>
+        <field type="Author" editor_type="LINE">author</field>
+        <field type="Description" editor_type="AREA">description</field>
+        <field type="Cover URL" editor_type="LINK" key_of="cover">url</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_widget_custom_links">
+      <fields>
+        <field type="Title" editor_type="LINE">title</field>
+	  </fields>
+      <fields-in-item items_of="links">
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="Link URL" editor_type="LINK" key_of="url">url</field>
+        <field type="Caption" editor_type="LINE">caption</field>
+        <field type="Description" editor_type="AREA">description</field>
+        <field type="Label" editor_type="LINE">label</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_widget_slider">
+      <fields>
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="Label Prev" editor_type="LINE">label_prev</field>
+        <field type="Label Next" editor_type="LINE">label_next</field>
+	  </fields>
+      <fields-in-item items_of="slides">
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="SubTitle" editor_type="LINE">subtitle</field>
+        <field type="Meta" editor_type="LINE">meta</field>
+        <field type="Content" editor_type="VISUAL">content</field>
+        <field type="Link URL" editor_type="LINK" key_of="link">url</field>
+        <field type="Video URL" editor_type="LINE">video_url</field>
+        <field type="Video Embed" editor_type="AREA">video_embed</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_widget_video_list">
+      <fields>
+        <field type="Title" editor_type="LINE">title</field>
+	  </fields>
+      <fields-in-item items_of="videos">
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="SubTitle" editor_type="LINE">subtitle</field>
+        <field type="Meta" editor_type="LINE">meta</field>
+        <field type="Content" editor_type="VISUAL">content</field>
+        <field type="Link URL" editor_type="LINK" key_of="link">url</field>
+        <field type="Video URL" editor_type="LINE">video_url</field>
+        <field type="Video Embed" editor_type="AREA">video_embed</field>
+      </fields-in-item>
+    </widget>
+    <widget name="trx_widget_woocommerce_search">
+      <fields>
+        <field type="Title" editor_type="LINE">title</field>
+        <field type="Last text" editor_type="LINE">last_text</field>
+        <field type="Button text" editor_type="LINE">button_text</field>
+	  </fields>
+      <fields-in-item items_of="fields">
+        <field type="Text" editor_type="LINE">text</field>
+      </fields-in-item>
+    </widget>
+  </elementor-widgets>
+  <custom-types>
+    <custom-type translate="1">cpt_cars</custom-type>
+    <custom-type translate="1">cpt_cars_agents</custom-type>
+    <custom-type translate="1">cpt_certificates</custom-type>
+    <custom-type translate="1">cpt_courses</custom-type>
+    <custom-type translate="1">cpt_dishes</custom-type>
+    <custom-type translate="1">cpt_layouts</custom-type>
+    <custom-type translate="1">cpt_portfolio</custom-type>
+    <custom-type translate="1">cpt_properties</custom-type>
+    <custom-type translate="1">cpt_agents</custom-type>
+    <custom-type translate="1">cpt_resume</custom-type>
+    <custom-type translate="1">cpt_services</custom-type>
+    <custom-type translate="1">cpt_competitions</custom-type>
+    <custom-type translate="1">cpt_rounds</custom-type>
+    <custom-type translate="1">cpt_matches</custom-type>
+    <custom-type translate="1">cpt_players</custom-type>
+    <custom-type translate="1">cpt_team</custom-type>
+    <custom-type translate="1">cpt_testimonials</custom-type>
+  </custom-types>
+  <taxonomies>
+    <taxonomy translate="1">cpt_cars_type</taxonomy>
+    <taxonomy translate="1">cpt_cars_status</taxonomy>
+    <taxonomy translate="1">cpt_cars_maker</taxonomy>
+    <taxonomy translate="1">cpt_cars_model</taxonomy>
+    <taxonomy translate="1">cpt_cars_features</taxonomy>
+    <taxonomy translate="1">cpt_cars_labels</taxonomy>
+    <taxonomy translate="1">cpt_cars_city</taxonomy>
+    <taxonomy translate="1">cpt_cars_agency</taxonomy>
+    <taxonomy translate="1">cpt_courses_group</taxonomy>
+    <taxonomy translate="1">cpt_dishes_group</taxonomy>
+    <taxonomy translate="1">cpt_layouts_group</taxonomy>
+    <taxonomy translate="1">cpt_portfolio_group</taxonomy>
+    <taxonomy translate="1">cpt_properties_type</taxonomy>
+    <taxonomy translate="1">cpt_properties_status</taxonomy>
+    <taxonomy translate="1">cpt_properties_features</taxonomy>
+    <taxonomy translate="1">cpt_properties_labels</taxonomy>
+    <taxonomy translate="1">cpt_properties_country</taxonomy>
+    <taxonomy translate="1">cpt_properties_state</taxonomy>
+    <taxonomy translate="1">cpt_properties_city</taxonomy>
+    <taxonomy translate="1">cpt_properties_neighborhood</taxonomy>
+    <taxonomy translate="1">cpt_agency</taxonomy>
+    <taxonomy translate="1">cpt_services_group</taxonomy>
+    <taxonomy translate="1">cpt_competitions_sports</taxonomy>
+    <taxonomy translate="1">cpt_team_group</taxonomy>
+    <taxonomy translate="1">cpt_testimonials_group</taxonomy>
+  </taxonomies>
+  <custom-fields>
+    <custom-field action="ignore">_wpb_shortcodes_custom_css</custom-field>
+    <custom-field action="copy">trx_addons_options</custom-field>
+  </custom-fields>
+</wpml-config>

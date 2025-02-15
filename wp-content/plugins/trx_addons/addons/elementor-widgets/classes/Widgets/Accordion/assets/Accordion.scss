@@ -1,0 +1,123 @@
+@import "../../../../../../css/_mixins.scss";
+@import "../../../../../../css/_trx_addons.vars.scss";
+@import "../../../../../../css/_trx_addons.colors.scss";
+
+.trx-addons-accordion {
+	width: auto;
+	height: auto;
+	transition: all 0.3s ease-in-out;
+
+	h1,h2,h3,h4,h5,h6 {
+		// font-family: inherit;
+		// letter-spacing: 0;
+		margin: 0;
+	}
+
+	.trx-addons-accordion-tab-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 15px;
+		outline: 0;
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
+	}
+	div.trx-addons-accordion-tab-title {
+		font-family: inherit;
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1;
+	}
+	.trx-addons-accordion-tab-icon {
+		@include transition-colors;
+	}
+
+	&.trx-addons-toggle-icon-align-left .trx-addons-accordion-tab-title {
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+	}
+}
+
+.trx-addons-accordion-toggle-icon {
+	display: inline-flex;
+	transition: none;
+	position: relative;	// To enable a vertical offset for the icon
+	z-index: 10;
+	@include transition-all(0.3s);
+
+	.trx-addons-icon {
+		@include square(1em);
+	}
+}
+
+.trx-addons-accordion-tab-title:not(.trx-addons-accordion-tab-show):not(.trx-addons-accordion-tab-active-default) .trx-addons-accordion-toggle-icon-open,
+.trx-addons-accordion-tab-show .trx-addons-accordion-toggle-icon-close,
+.trx-addons-accordion-tab-active-default .trx-addons-accordion-toggle-icon-close {
+	display: none;
+}
+
+.trx-addons-accordion-tab-content {
+	display: none;
+	padding: 15px;
+	box-sizing: border-box;
+
+	p:last-child {
+		margin: 0;
+	}
+
+	&.trx-addons-accordion-tab-active {
+		display: block;
+	}
+}
+
+.trx-addons-accordion-item {
+	overflow: hidden;
+	transition: all 0.3s ease-in-out;
+}
+
+.trx-addons-accordion-title-icon {
+	display: flex;
+	align-items: center;
+}
+
+.trx-addons-accordion-tab-icon {
+	display: inline-block;
+	margin-right: 10px;
+	position: relative;	// To enable a vertical offset for the icon
+}
+
+//Show Item Numbers - yes
+.trx-addons-accordion-title-number {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY( -50% );
+	pointer-events: none;
+	white-space: nowrap;
+	display: inline-block;
+	padding-left: 15px;
+	@include transition-all(0.3s);
+
+	.trx-addons-accordion-title-number-text {
+		@include transition-all(0.3s);
+	}
+}
+
+.trx-addons-accordion-show-numbers {
+	.trx-addons-accordion-item .trx-addons-accordion-tab-title {
+		position: relative;
+		padding-left: 80px;
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			inset: 0;
+		}
+	}
+
+	.trx-addons-accordion-item .trx-addons-accordion-tab-content {
+		position: relative;
+		padding-left: 80px;
+	}
+}

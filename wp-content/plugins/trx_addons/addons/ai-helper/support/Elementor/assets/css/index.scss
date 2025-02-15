@@ -1,0 +1,72 @@
+@import "../../../../../../css/_mixins.scss";
+@import "../../../../../../css/_trx_addons.vars.scss";
+@import "../../../../../../css/_trx_addons.colors.scss";
+
+.dialog-trx_addons_ai_elementor_generate_text-widget-content {
+    width: 90vw;
+    height: 90vh;
+}
+
+.trx_addons_ai_elm_gen_text_header_inner {
+    @include border-box;
+    width: 100%;
+    background-color: $background_color;
+    border: 1px solid $border_color;
+    padding: 1em 1.5em;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.dialog-trx_addons_ai_elementor_generate_text-widget-content .trx_addons_button_close_icon:before,
+.dialog-trx_addons_ai_elementor_generate_text-widget-content .trx_addons_button_close_icon:after {
+    border-color: #333;
+}
+
+.trx_addons_ai_elm_gen_text_msg_input {
+    & input {
+        height: 55px;
+        font-size: 16px;
+        padding: 0.3em 1.5em;
+        margin-top: 1em;
+    }
+
+    & label {
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    &.disabled {
+        display: none !important;
+    }
+}
+
+.trx_addons_ai_elm_gen_text_msg_sbm {
+    @include flex;
+    @include flex-justify-content(flex-start);
+    margin-top: 2em;
+}
+
+.trx_addons_ai_elm_gen_text_msg_sbm_btn {
+    @include inline-flex;
+    @include flex-align-items(center);
+    @include flex-justify-content(center);
+    height: 55px;
+    font-size: 16px;
+    width: 150px;
+}
+
+.dialog-trx_addons_ai_elementor_generate_text-widget-content {
+    @include flex;
+    @include flex-direction(column);
+}
+
+.dialog-trx_addons_ai_elementor_generate_text-message {
+    @include flex-basis(100%);
+    @include flex;
+    @include flex-align-items(center);
+    @include flex-justify-content(center);
+}
+
+.trx_addons_ai_elm_gen_text_msg_inner {
+    width: 75%;
+}

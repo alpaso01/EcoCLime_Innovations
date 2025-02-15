@@ -1,0 +1,11 @@
+@import "../../../css/_mixins.scss";
+@import "../../../css/_trx_addons.vars.scss";
+
+/* QW Extension icons */
+[class^="qw_extension_icon-"]:before,
+[class*=" qw_extension_icon-"]:before {
+	@include font(inherit, inherit !important, inherit, inherit);
+	display: inline-block;	// Don't use vertical-align: top because meta row can be a tall when large author avatar is used;
+	width: auto;
+	margin: 0;
+}

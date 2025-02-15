@@ -1,0 +1,90 @@
+.dialog-trx_addons_ai_elementor_generate_text-widget-content {
+  width: 90vw;
+  height: 90vh;
+}
+
+.trx_addons_ai_elm_gen_text_header_inner {
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #f0f1f2;
+  border: 1px solid #e0e2e5;
+  padding: 1em 1.5em;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.dialog-trx_addons_ai_elementor_generate_text-widget-content .trx_addons_button_close_icon:before,
+.dialog-trx_addons_ai_elementor_generate_text-widget-content .trx_addons_button_close_icon:after {
+  border-color: #333;
+}
+
+.trx_addons_ai_elm_gen_text_msg_input input {
+  height: 55px;
+  font-size: 16px;
+  padding: 0.3em 1.5em;
+  margin-top: 1em;
+}
+.trx_addons_ai_elm_gen_text_msg_input label {
+  font-size: 18px;
+  font-weight: 300;
+}
+.trx_addons_ai_elm_gen_text_msg_input.disabled {
+  display: none !important;
+}
+
+.trx_addons_ai_elm_gen_text_msg_sbm {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-top: 2em;
+}
+
+.trx_addons_ai_elm_gen_text_msg_sbm_btn {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 55px;
+  font-size: 16px;
+  width: 150px;
+}
+
+.dialog-trx_addons_ai_elementor_generate_text-widget-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.dialog-trx_addons_ai_elementor_generate_text-message {
+  -webkit-flex-basis: 100%;
+  -ms-flex-basis: 100%;
+  flex-basis: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.trx_addons_ai_elm_gen_text_msg_inner {
+  width: 75%;
+}
+
+/*# sourceMappingURL=index.css.map */

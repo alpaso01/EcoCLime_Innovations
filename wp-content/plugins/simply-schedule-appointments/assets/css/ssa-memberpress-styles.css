@@ -1,0 +1,112 @@
+.ssa-memberpress-memberships-container {
+	padding: 10px;
+}
+
+.ssa-memberpress-memberships-container .ssa-memberpress-helperText {
+	display: block;
+	color: #999;
+	font-size: 0.8rem;
+}
+
+.ssa-memberpress-memberships-container .ssa-mepr-note {
+	font-size: 1.2em;
+	color: black;
+}
+
+.ssa-memberpress-memberships-container .ssa-mepr_appt-title {
+	font-size: 1.2em;
+	font-weight: 500;
+}
+
+.ssa-memberpress-memberships-container .ssa-mepr-flex {
+	display: flex;
+}
+
+.ssa-memberpress-memberships-container .ssa-mepr-flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.ssa-memberpress-memberships-container .ssa-mepr-image-wrapper {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.ssa-memberpress-memberships-container .ssa-mepr-appointmnet-details {
+	min-height: 100px;
+	border: 1px solid;
+	border-top: none;
+}
+
+.ssa-memberpress-memberships-container .ssa-mepr-appointmnet-details:first-of-type {
+	border: 1px solid;
+}
+
+
+.ssa-memberpress-memberships-container .ssa-mepr-flex-section {
+	border-right: 1px solid black;
+	box-sizing: border-box;
+	min-width: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+
+}
+
+
+.ssa-memberpress-memberships-container .ssa-mepr-flex-section-content-middle {
+	margin-left: 10px;
+	align-self: baseline;
+	line-height: 2;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.ssa-memberpress-memberships-container .ssa-mepr-flex-section:last-child {
+	border-right: none;
+	min-width: 80px;
+}
+
+.ssa-memberpress-memberships-container button.ssa-mepr-remove-appointment-types {
+	border: none;
+	background: none;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+.ssa-memberpress-memberships-container button.ssa-mepr-remove-appointment-types i::before {
+	font-size: 1.5rem;
+}
+
+.ssa-memberpress-memberships-container button.ssa-mepr-remove-appointment-types:hover i {
+	color: #959595;
+}
+
+.ssa-memberpress-memberships-empty-container {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.ssa-memberpress-memberships-empty-container p {
+	font-size: 1.2em;
+}
+
+.ssa-memberpress-memberships-container input[type="number"] {
+	width: 4rem;
+}
+
+.ssa-screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}

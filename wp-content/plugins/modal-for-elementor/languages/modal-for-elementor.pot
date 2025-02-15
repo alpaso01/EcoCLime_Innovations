@@ -1,0 +1,484 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PopBox For Elementor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-19 20:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: modal-for-elementor.php:69
+msgid ""
+"Elementor Starter is not working because you need to activate the Elementor "
+"plugin."
+msgstr ""
+
+#: modal-for-elementor.php:70
+msgid "Activate Elementor Now"
+msgstr ""
+
+#: modal-for-elementor.php:78
+msgid ""
+"Modal For Elementor is not working because you need to install the Elemenor "
+"plugin"
+msgstr ""
+
+#: modal-for-elementor.php:79
+msgid "Install Elementor Now"
+msgstr ""
+
+#: modal-for-elementor.php:93
+msgid ""
+"Modal For Elementor is not working because you are using an old version of "
+"Elementor."
+msgstr ""
+
+#: modal-for-elementor.php:94
+msgid "Update Elementor Now"
+msgstr ""
+
+#: modal-for-elementor.php:136
+msgid "PopBoxes"
+msgstr ""
+
+#: modal-for-elementor.php:137
+msgid "PopBox"
+msgstr ""
+
+#: modal-for-elementor.php:138
+msgid "All PopBoxes"
+msgstr ""
+
+#: modal-for-elementor.php:139 modal-for-elementor.php:140 
+#: modal-for-elementor.php:141
+msgid "Add New PopBox"
+msgstr ""
+
+#: modal-for-elementor.php:142
+msgid "Edit PopBox"
+msgstr ""
+
+#: plugin.php:38
+msgid "NoreWP's Elementor Modules"
+msgstr ""
+
+#: widgets/popup.php:26
+msgid "PopBox: On Click"
+msgstr ""
+
+#: widgets/popup.php:36 widgets/popup-load.php:36
+msgid "Extra Small"
+msgstr ""
+
+#: widgets/popup.php:37 widgets/popup-load.php:37
+msgid "Small"
+msgstr ""
+
+#: widgets/popup.php:38 widgets/popup-load.php:38
+msgid "Medium"
+msgstr ""
+
+#: widgets/popup.php:39 widgets/popup-load.php:39
+msgid "Large"
+msgstr ""
+
+#: widgets/popup.php:40 widgets/popup-load.php:40
+msgid "Extra Large"
+msgstr ""
+
+#: widgets/popup.php:73
+msgid "Trigger Button"
+msgstr ""
+
+#: widgets/popup.php:79
+msgid "Type"
+msgstr ""
+
+#: widgets/popup.php:83
+msgid "Default"
+msgstr ""
+
+#: widgets/popup.php:84
+msgid "Info"
+msgstr ""
+
+#: widgets/popup.php:85
+msgid "Success"
+msgstr ""
+
+#: widgets/popup.php:86
+msgid "Warning"
+msgstr ""
+
+#: widgets/popup.php:87
+msgid "Danger"
+msgstr ""
+
+#: widgets/popup.php:94
+msgid "Text"
+msgstr ""
+
+#: widgets/popup.php:96 widgets/popup.php:97
+msgid "Click me"
+msgstr ""
+
+#: widgets/popup.php:103
+msgid "Alignment"
+msgstr ""
+
+#: widgets/popup.php:107 widgets/popup.php:297 widgets/popup-load.php:130 
+#: widgets/popup-load.php:270
+msgid "Left"
+msgstr ""
+
+#: widgets/popup.php:111 widgets/popup-load.php:134
+msgid "Center"
+msgstr ""
+
+#: widgets/popup.php:115 widgets/popup.php:296 widgets/popup-load.php:138 
+#: widgets/popup-load.php:269
+msgid "Right"
+msgstr ""
+
+#: widgets/popup.php:119
+msgid "Justified"
+msgstr ""
+
+#: widgets/popup.php:130
+msgid "Size"
+msgstr ""
+
+#: widgets/popup.php:139
+msgid "Icon"
+msgstr ""
+
+#: widgets/popup.php:148
+msgid "Icon Position"
+msgstr ""
+
+#: widgets/popup.php:152
+msgid "Before"
+msgstr ""
+
+#: widgets/popup.php:153
+msgid "After"
+msgstr ""
+
+#: widgets/popup.php:163
+msgid "Icon Spacing"
+msgstr ""
+
+#: widgets/popup.php:184
+msgid "Typography"
+msgstr ""
+
+#: widgets/popup.php:193
+msgid "Turn on GA Track Event?"
+msgstr ""
+
+#: widgets/popup.php:199
+msgid "Track the PopBox button click event throught Google Analytics."
+msgstr ""
+
+#: widgets/popup.php:206
+msgid ""
+"EXPERIMENTAL: Feedback on results & if working or not will be greatly "
+"appreciated!"
+msgstr ""
+
+#: widgets/popup.php:217
+msgid "Google Track Text"
+msgstr ""
+
+#: widgets/popup.php:219
+msgid "PopBox Button Clicked"
+msgstr ""
+
+#: widgets/popup.php:220
+msgid ""
+"Enter text to be sent to Google Analytics as part of the button click event -"
+" the PopBox title would be ideal!"
+msgstr ""
+
+#: widgets/popup.php:230
+msgid "NOTE: You need to have Google Analytics enabled for this to work!"
+msgstr ""
+
+#: widgets/popup.php:241 widgets/popup-load.php:214
+msgid "View"
+msgstr ""
+
+#: widgets/popup.php:251 widgets/popup-load.php:224
+msgid "PopBox Content"
+msgstr ""
+
+#: widgets/popup.php:257
+msgid "Select Modal Content"
+msgstr ""
+
+#: widgets/popup.php:267 widgets/popup-load.php:240
+msgid "Video Content?"
+msgstr ""
+
+#: widgets/popup.php:273 widgets/popup-load.php:246
+msgid ""
+"Does the PopBox content contain a video? Setting this to Yes will stop the "
+"video from playing when the popup is closed."
+msgstr ""
+
+#: widgets/popup.php:280 widgets/popup-load.php:253
+msgid "Show Close Button"
+msgstr ""
+
+#: widgets/popup.php:282 widgets/popup-load.php:255
+msgid "Hide"
+msgstr ""
+
+#: widgets/popup.php:283 widgets/popup-load.php:256
+msgid "Show"
+msgstr ""
+
+#: widgets/popup.php:294 widgets/popup-load.php:267
+msgid "Switch Button Position"
+msgstr ""
+
+#: widgets/popup.php:308 widgets/popup-load.php:281
+msgid "Icon Size"
+msgstr ""
+
+#: widgets/popup.php:325 widgets/popup-load.php:298
+msgid "Close Padding"
+msgstr ""
+
+#: widgets/popup.php:326 widgets/popup-load.php:299
+msgid ""
+"Please note that padding bottom has no effect - Left/Right padding will "
+"depend on button position!"
+msgstr ""
+
+#: widgets/popup.php:339 widgets/popup-load.php:312
+msgid "Close Text"
+msgstr ""
+
+#: widgets/popup.php:341 widgets/popup-load.php:314
+msgid "Close"
+msgstr ""
+
+#: widgets/popup.php:343 widgets/popup-load.php:316
+msgid "Add call to action i.e \"Close\" before the popup close X"
+msgstr ""
+
+#: widgets/popup.php:351 widgets/popup-load.php:190 widgets/popup-load.php:324
+msgid "Close Typography"
+msgstr ""
+
+#: widgets/popup.php:362
+msgid "Button"
+msgstr ""
+
+#: widgets/popup.php:372
+msgid "Settings"
+msgstr ""
+
+#: widgets/popup.php:380 widgets/popup.php:685 widgets/popup-load.php:502
+msgid "Border"
+msgstr ""
+
+#: widgets/popup.php:390 widgets/popup.php:695 widgets/popup-load.php:202 
+#: widgets/popup-load.php:512
+msgid "Border Radius"
+msgstr ""
+
+#: widgets/popup.php:410
+msgid "Text Padding"
+msgstr ""
+
+#: widgets/popup.php:425
+msgid "Colors"
+msgstr ""
+
+#: widgets/popup.php:432 widgets/popup.php:468
+msgid "Text Color"
+msgstr ""
+
+#: widgets/popup.php:444 widgets/popup.php:479
+msgid "Background Color"
+msgstr ""
+
+#: widgets/popup.php:461
+msgid "Hover"
+msgstr ""
+
+#: widgets/popup.php:490
+msgid "Border Color"
+msgstr ""
+
+#: widgets/popup.php:504
+msgid "Animation"
+msgstr ""
+
+#: widgets/popup.php:519 widgets/popup-load.php:336
+msgid "Modal Container"
+msgstr ""
+
+#: widgets/popup.php:527 widgets/popup-load.php:344
+msgid "Container Max-Width"
+msgstr ""
+
+#: widgets/popup.php:554 widgets/popup-load.php:371
+msgid "Select and configure the required modal overlay background type below"
+msgstr ""
+
+#: widgets/popup.php:574 widgets/popup-load.php:391
+msgid "Modal Content"
+msgstr ""
+
+#: widgets/popup.php:590 widgets/popup-load.php:407
+msgid "Popup Window Background"
+msgstr ""
+
+#: widgets/popup.php:600 widgets/popup-load.php:417
+msgid "Close Button Color"
+msgstr ""
+
+#: widgets/popup.php:612 widgets/popup-load.php:429
+msgid "Modal Width"
+msgstr ""
+
+#: widgets/popup.php:639 widgets/popup-load.php:456
+msgid "Top Offset"
+msgstr ""
+
+#: widgets/popup.php:666 widgets/popup-load.php:483
+msgid "Padding"
+msgstr ""
+
+#: widgets/popup-load.php:26
+msgid "PopBox: On Load"
+msgstr ""
+
+#: widgets/popup-load.php:73
+msgid "PopBox Settings"
+msgstr ""
+
+#: widgets/popup-load.php:91
+msgid "Numbers Only!"
+msgstr ""
+
+#: widgets/popup-load.php:92
+msgid ""
+"The number of seconds to wait before displaying the popup - ex: 3000 = 3 "
+"seconds"
+msgstr ""
+
+#: widgets/popup-load.php:99
+msgid "Never Show Again"
+msgstr ""
+
+#: widgets/popup-load.php:105
+msgid ""
+"Allow visitors to dismiss the popup indefinately - this allows for better UX "
+"for those who have already taken action."
+msgstr ""
+
+#: widgets/popup-load.php:112
+msgid "Dismiss Text"
+msgstr ""
+
+#: widgets/popup-load.php:114
+msgid "Don't Show Again"
+msgstr ""
+
+#: widgets/popup-load.php:115
+msgid "Dismis Text!"
+msgstr ""
+
+#: widgets/popup-load.php:116
+msgid "Text to show for the dismiss option"
+msgstr ""
+
+#: widgets/popup-load.php:126
+msgid "Dismiss Alignment"
+msgstr ""
+
+#: widgets/popup-load.php:157
+msgid "Footer Padding"
+msgstr ""
+
+#: widgets/popup-load.php:173
+msgid "Dismiss Button Padding"
+msgstr ""
+
+#: widgets/popup-load.php:230
+msgid "Select Popup Content"
+msgstr ""
+
+#: widgets/popup-load.php:399
+msgid ""
+"Select and configure the required popup modal window's background type below"
+msgstr ""
+
+#: widgets/popup-load.php:534
+msgid "Dismiss Options"
+msgstr ""
+
+#: widgets/popup-load.php:541
+msgid "Dismiss Settings"
+msgstr ""
+
+#: widgets/popup-load.php:546
+msgid "Set background for the dimiss footer section"
+msgstr ""
+
+#: widgets/popup-load.php:554
+msgid "Footer Background"
+msgstr ""
+
+#: widgets/popup-load.php:564
+msgid "Footer Border Color"
+msgstr ""
+
+#: widgets/popup-load.php:575
+msgid "Dismiss Button"
+msgstr ""
+
+#: widgets/popup-load.php:580
+msgid "Dismiss Button Color"
+msgstr ""
+
+#: widgets/popup-load.php:592
+msgid "Set background for the dimiss button"
+msgstr ""
+
+#: widgets/popup-load.php:600
+msgid "Button Background"
+msgstr ""
+
+#. Name of the plugin
+msgid "PopBox For Elementor"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Create content-rich popboxes for your site using the power of Elementor Page "
+"Builder"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://designsbynore.com/popups/popbox/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Zulfikar Nore"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://designsbynore.com/"
+msgstr ""

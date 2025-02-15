@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,0BAAoB;EAEZ,mCAAe;IACX,OAAO,EAAE,aAAa;;EAE1B,6IACoD;IAChD,UAAU,EAAE,GAAG;;;AAc3B,yBAAoB;EAEZ,mCAAe;IACX,OAAO,EAAE,eAAe;;EAE5B,6IACoD;IAChD,UAAU,EAAE,KAAK",
+"sources": ["qw_extension_icons.responsive.scss"],
+"names": [],
+"file": "qw_extension_icons.responsive.css"
+}

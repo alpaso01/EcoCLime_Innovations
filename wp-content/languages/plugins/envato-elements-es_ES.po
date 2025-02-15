@@ -1,0 +1,277 @@
+# Translation of Plugins - Envato Elements &#8211; Photos &amp; Elementor Templates - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Envato Elements &#8211; Photos &amp; Elementor Templates - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-05-02 09:43:37+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Envato Elements &#8211; Photos &amp; Elementor Templates - Stable (latest release)\n"
+
+#: inc/api/class-template-kit-import.php:83
+#: trunk/inc/api/class-template-kit-import.php:83
+msgid "Single: Landing Page"
+msgstr "Individual: Página de destino"
+
+#: inc/backend/class-welcome.php:74 inc/backend/class-welcome.php:75
+#: trunk/inc/backend/class-welcome.php:74
+#: trunk/inc/backend/class-welcome.php:75
+msgid "Free Blocks"
+msgstr "Bloques gratuitos"
+
+#: inc/backend/class-welcome.php:83 inc/backend/class-welcome.php:84
+#: trunk/inc/backend/class-welcome.php:83
+#: trunk/inc/backend/class-welcome.php:84
+msgid "Installed Kits"
+msgstr "Paquetes instalados"
+
+#: inc/backend/class-welcome.php:65 inc/backend/class-welcome.php:66
+#: trunk/inc/backend/class-welcome.php:65
+#: trunk/inc/backend/class-welcome.php:66
+msgid "Free Kits"
+msgstr "Paquetes gratuitos"
+
+#: inc/backend/class-welcome.php:48 trunk/inc/backend/class-welcome.php:48
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#: inc/api/class-template-kit-import.php:108
+#: trunk/inc/api/class-template-kit-import.php:108
+msgid "Clients"
+msgstr "Clientes"
+
+#: inc/api/class-template-kit-import.php:107
+#: trunk/inc/api/class-template-kit-import.php:107
+msgid "Logo Grid"
+msgstr "Cuadrícula de logotipos"
+
+#: inc/api/class-template-kit-import.php:106
+#: trunk/inc/api/class-template-kit-import.php:106
+msgid "Gallery"
+msgstr "Galería"
+
+#: inc/api/class-template-kit-import.php:105
+#: trunk/inc/api/class-template-kit-import.php:105
+msgid "Portfolio"
+msgstr "Porfolio"
+
+#: inc/api/class-template-kit-import.php:104
+#: trunk/inc/api/class-template-kit-import.php:104
+msgid "Countdown"
+msgstr "Cuenta atrás"
+
+#: inc/api/class-template-kit-import.php:103
+#: trunk/inc/api/class-template-kit-import.php:103
+msgid "Stats"
+msgstr "Estadísticas"
+
+#: inc/api/class-template-kit-import.php:102
+#: trunk/inc/api/class-template-kit-import.php:102
+msgid "Services"
+msgstr "Servicios"
+
+#: inc/api/class-template-kit-import.php:101
+#: trunk/inc/api/class-template-kit-import.php:101
+msgid "Product"
+msgstr "Producto"
+
+#: inc/api/class-template-kit-import.php:100
+#: trunk/inc/api/class-template-kit-import.php:100
+msgid "Testimonial"
+msgstr "Recomendación"
+
+#: inc/api/class-template-kit-import.php:99
+#: trunk/inc/api/class-template-kit-import.php:99
+msgid "Pricing"
+msgstr "Precios"
+
+#: inc/api/class-template-kit-import.php:98
+#: trunk/inc/api/class-template-kit-import.php:98
+msgid "Features"
+msgstr "Características"
+
+#: inc/api/class-template-kit-import.php:97
+#: trunk/inc/api/class-template-kit-import.php:97
+msgid "Map"
+msgstr "Mapa"
+
+#: inc/api/class-template-kit-import.php:96
+#: trunk/inc/api/class-template-kit-import.php:96
+msgid "Team"
+msgstr "Equipo"
+
+#: inc/api/class-template-kit-import.php:95
+#: trunk/inc/api/class-template-kit-import.php:95
+msgid "Call to Action"
+msgstr "Llamada a la acción"
+
+#: inc/api/class-template-kit-import.php:94
+#: trunk/inc/api/class-template-kit-import.php:94
+msgid "Contact"
+msgstr "Contacto"
+
+#: inc/api/class-template-kit-import.php:93
+#: trunk/inc/api/class-template-kit-import.php:93
+msgid "FAQ"
+msgstr "FAQ"
+
+#: inc/api/class-template-kit-import.php:91
+#: trunk/inc/api/class-template-kit-import.php:91
+msgid "Hero"
+msgstr "Hero"
+
+#: inc/api/class-template-kit-import.php:90
+#: trunk/inc/api/class-template-kit-import.php:90
+msgid "Popup"
+msgstr "Mensaje emergente"
+
+#: inc/api/class-template-kit-import.php:89
+#: trunk/inc/api/class-template-kit-import.php:89
+msgid "Footer"
+msgstr "Pie de página"
+
+#: inc/api/class-template-kit-import.php:88
+#: trunk/inc/api/class-template-kit-import.php:88
+msgid "Header"
+msgstr "Cabecera"
+
+#: inc/api/class-template-kit-import.php:87
+#: trunk/inc/api/class-template-kit-import.php:87
+msgid "Archive: Category"
+msgstr "Archivo: Categoría"
+
+#: inc/api/class-template-kit-import.php:86
+#: trunk/inc/api/class-template-kit-import.php:86
+msgid "Archive: Search"
+msgstr "Archivo: Búsqueda"
+
+#: inc/api/class-template-kit-import.php:85
+#: trunk/inc/api/class-template-kit-import.php:85
+msgid "Archive: Product"
+msgstr "Archivo: Producto"
+
+#: inc/api/class-template-kit-import.php:84
+#: trunk/inc/api/class-template-kit-import.php:84
+msgid "Archive: Blog"
+msgstr "Archivo: Blog"
+
+#: inc/api/class-template-kit-import.php:82
+#: trunk/inc/api/class-template-kit-import.php:82
+msgid "Single: 404"
+msgstr "Página individual: 404"
+
+#: inc/api/class-template-kit-import.php:81
+#: trunk/inc/api/class-template-kit-import.php:81
+msgid "Single: Product"
+msgstr "Página individual: Producto"
+
+#: inc/api/class-template-kit-import.php:80
+#: trunk/inc/api/class-template-kit-import.php:80
+msgid "Single: Post"
+msgstr "Página individual: Entrada"
+
+#: inc/api/class-template-kit-import.php:79
+#: trunk/inc/api/class-template-kit-import.php:79
+msgid "Single: Home"
+msgstr "Página individual: Inicio"
+
+#: inc/api/class-template-kit-import.php:78
+#: trunk/inc/api/class-template-kit-import.php:78
+msgid "Single: Page"
+msgstr "Página individual: Página"
+
+#: inc/api/class-requirements.php:300 trunk/inc/api/class-requirements.php:300
+msgid "Sorry, you are not allowed to install themes on this site."
+msgstr "Lo siento, no tienes permiso para instalar temas en este sitio."
+
+#: inc/api/class-requirements.php:259 inc/api/class-requirements.php:346
+#: trunk/inc/api/class-requirements.php:259
+#: trunk/inc/api/class-requirements.php:346
+msgid "Unable to connect to the filesystem. Please confirm your credentials."
+msgstr "No se ha podido conectar con el sistema de archivos. Por favor, confirma tus credenciales."
+
+#. Description of the plugin
+#: envato-elements.php
+msgid "Access beautifully designed Template Kits + Photos from Envato Elements."
+msgstr "Accede a paquetes de plantillas y fotos bellamente diseñados desde Envato Elements."
+
+#: inc/api/class-template-kit-import.php:92
+#: trunk/inc/api/class-template-kit-import.php:92
+msgid "About"
+msgstr "Acerca de"
+
+#. Author URI of the plugin
+#: envato-elements.php
+msgid "https://elements.envato.com/extensions/wordpress/?utm_source=extensions&utm_medium=referral&utm_campaign=elements_extensions_wpplugins"
+msgstr "https://elements.envato.com/extensions/wordpress/?utm_source=extensions&utm_medium=referral&utm_campaign=elements_extensions_wpplugins"
+
+#: inc/backend/class-welcome.php:92 inc/backend/class-welcome.php:93
+#: trunk/inc/backend/class-welcome.php:92
+#: trunk/inc/backend/class-welcome.php:93
+msgid "Photos"
+msgstr "Fotos"
+
+#: inc/backend/class-welcome.php:101 inc/backend/class-welcome.php:102
+#: trunk/inc/backend/class-welcome.php:101
+#: trunk/inc/backend/class-welcome.php:102
+msgid "Settings"
+msgstr "Ajustes"
+
+#: inc/api/class-template-kit-import.php:109
+#: trunk/inc/api/class-template-kit-import.php:109
+msgid "Other"
+msgstr "Otros"
+
+#: inc/backend/class-welcome.php:56 inc/backend/class-welcome.php:57
+#: trunk/inc/backend/class-welcome.php:56
+#: trunk/inc/backend/class-welcome.php:57
+msgid "Template Kits"
+msgstr "Kits de plantillas"
+
+#: inc/backend/class-welcome.php:36 trunk/inc/backend/class-welcome.php:36
+msgid "Elements"
+msgstr "Elementos"
+
+#: envato-elements.php:83 trunk/envato-elements.php:83
+msgid "7.2 or above"
+msgstr "7.2 o superior"
+
+#. translators: %s: PHP version
+#: envato-elements.php:78 trunk/envato-elements.php:78
+msgid "Envato Elements requires PHP version %s+, plugin is currently NOT ACTIVE. Please contact the hosting provider. WordPress recommends version %s."
+msgstr "Envato Elements necesita la versión %s o superior de PHP, actualmente el plugin está como NO ACTIVO. Por favor, contacta con el proveedor de alojamiento. WordPress recomienda la versión %s."
+
+#. Author of the plugin
+#: envato-elements.php
+msgid "Envato"
+msgstr "Envato"
+
+#. Plugin Name of the plugin
+#: envato-elements.php inc/backend/class-welcome.php:35
+#: inc/backend/class-welcome.php:47 trunk/inc/backend/class-welcome.php:35
+#: trunk/inc/backend/class-welcome.php:47
+msgid "Envato Elements"
+msgstr "Envato Elements"
+
+#: inc/utils/class-base.php:51 inc/utils/class-base.php:62
+#: trunk/inc/utils/class-base.php:51 trunk/inc/utils/class-base.php:62
+msgid "Something went wrong."
+msgstr "Algo ha ido mal."
+
+#: inc/utils/class-extensions-api.php:155
+#: trunk/inc/utils/class-extensions-api.php:155
+msgid "An error occurred, please try again"
+msgstr "Ha ocurrido un error, por favor, inténtalo de nuevo."
+
+#: inc/utils/class-extensions-api.php:161
+#: trunk/inc/utils/class-extensions-api.php:161
+msgid "HTTP Error"
+msgstr "Error HTTP"
+
+#. translators: %s: WordPress version
+#: envato-elements.php:102 trunk/envato-elements.php:102
+msgid "Envato Elements requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT ACTIVE."
+msgstr "Envato Elements necesita la versión %s o superior de WordPress. Debido a que estás usando una versión anterior, el plugin está actualmente INACTIVO."

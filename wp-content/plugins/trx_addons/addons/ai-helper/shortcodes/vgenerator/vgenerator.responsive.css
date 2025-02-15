@@ -1,0 +1,160 @@
+@media (max-width: 1279px) {
+  /* IGenerator */
+  .sc_vgenerator_form_align_left_tablet .sc_vgenerator_form_field_tags {
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+  .sc_vgenerator_form_align_right_tablet .sc_vgenerator_form_field_tags {
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+
+  .sc_vgenerator_form_align_left_tablet .sc_vgenerator_limits {
+    text-align: left;
+  }
+  .sc_vgenerator_form_align_right_tablet .sc_vgenerator_limits {
+    text-align: right;
+  }
+
+  .sc_vgenerator_extended .sc_vgenerator_form_field_size {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    gap: 1.5em;
+  }
+}
+@media (max-width: 767px) {
+  /* IGenerator */
+  .sc_vgenerator_form_field.sc_vgenerator_form_field_prompt {
+    width: 100%;
+  }
+
+  .sc_vgenerator_form_field_prompt .sc_vgenerator_form_field_prompt_button {
+    padding: 0 1em;
+  }
+
+  .sc_vgenerator_form_field_upload_keyframe_wrap {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .sc_vgenerator_form_field_upload_keyframe_wrap .sc_vgenerator_form_field_upload_start_keyframe,
+  .sc_vgenerator_form_field_upload_keyframe_wrap .sc_vgenerator_form_field_upload_end_keyframe {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+  }
+
+  .sc_vgenerator_form_align_left_mobile .sc_vgenerator_form_field_tags {
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+  .sc_vgenerator_form_align_right_mobile .sc_vgenerator_form_field_tags {
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+
+  .sc_vgenerator_form_field_tags_item {
+    padding: 0.25em 0.75em;
+  }
+
+  .sc_vgenerator_form_field_tags_label {
+    padding: 0.25em 0.75em 0.25em 0;
+  }
+
+  .sc_vgenerator_videos .sc_vgenerator_videos_item {
+    flex-basis: 50%;
+  }
+
+  .sc_vgenerator_videos_columns_1 .sc_vgenerator_videos_item {
+    flex-basis: 100%;
+  }
+
+  .sc_vgenerator_form_align_left_mobile .sc_vgenerator_limits {
+    text-align: left;
+  }
+  .sc_vgenerator_form_align_right_mobile .sc_vgenerator_limits {
+    text-align: right;
+  }
+
+  .sc_vgenerator_message {
+    min-width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  /* IGenerator */
+  .sc_vgenerator_extended .sc_vgenerator_form_fields {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    gap: 1.5em;
+    padding: 1.5em;
+  }
+  .sc_vgenerator_extended .sc_vgenerator_form_fields_left {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .sc_vgenerator_extended .sc_vgenerator_form_fields_right {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .sc_vgenerator_extended .sc_vgenerator_form_field_size {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+@media (max-width: 479px) {
+  /* IGenerator */
+  .sc_vgenerator_form_field_tags {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .sc_vgenerator_form_field_tags_label {
+    padding: 0 0 0.5em 0;
+  }
+
+  .sc_vgenerator_extended .sc_vgenerator_form_field_size {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    gap: 1.5em;
+  }
+}
+
+/*# sourceMappingURL=vgenerator.responsive.css.map */

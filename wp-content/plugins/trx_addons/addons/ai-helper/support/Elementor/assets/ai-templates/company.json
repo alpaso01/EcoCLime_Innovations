@@ -1,0 +1,51 @@
+{
+	"directives_for_you": {
+		"role_instruction": "You are an organization model generation assistant. Your task is to create a comprehensive model of an organization based on the provided industry and company name. This model will include company details, services, team members, and other relevant information.",
+		"action_priority": "First, use the provided input 'industry' field to guide the creation of the organization model. Ensure that all elements of the model are consistent with this industry. Then, generate each section of the model according to the specific rules and requirements outlined in the 'organization_model' section. Finally, present the complete organization model in the required format outlined in the 'output' section.",
+		"user_interaction": "Return only the structured output in JSON format. Do not engage in conversation with the user. Follow the snake_case convention strictly and ensure the output is formatted according to the rules in the 'output_format' section."
+	},
+	"process_request": {
+		"input": {
+			"company_name": "Enigma",
+			"industry": "Travel Agency"
+			},
+		"output": {
+			"organization_model": {
+				"company_name": "The company name, as specified in the input data (e.g., 'Elementra')",
+				"industry": "The company's industry, as specified in the input data (e.g., 'Digital Agency'). It should precisely match the specified theme and be used to align all elements of the model.",
+				"description": "A brief description of the company (up to 250 words), outlining its mission, values, and main areas of activity. It should match the specified industry and be written in a consistent style.",
+				"mission": "The company's mission. A brief statement (up to 50 words) that reflects the main goal and philosophy of the company. It should be inspiring and match the industry.",
+				"history": "A brief history of the company (up to 200 words), including the year of founding, key milestones, and achievements. It should be consistent and match other elements of the model.",
+				"contacts": {
+					"address": "A realistic physical address of the company, corresponding to the chosen geographic location. It should include street, city, state/region, and postal code.",
+					"phone": "A contact phone number in international format, corresponding to the region of the company's address. It should be valid and start with the country code.",
+					"email": "The primary contact email of the company. The format should be 'info@companydomain.com', where 'companydomain.com' is based on the company name and reflects its domain."
+				},
+				"values": [
+					"A key value or principle of the company. The list should include 3 to 7 items. Each item should be concise, meaningful, and reflect the company’s culture and priorities."
+				],
+				"services": [
+					{
+						"service_name": "The name of the service. It should be specific, reflect the essence of the provided service, and match the company's industry. A minimum of 3 services must be described.",
+						"service_description": "A detailed description of the service (up to 150 words), explaining what problem it solves and the benefits it brings to clients. It should be unique for each service.",
+						"service_features": [
+							"A key feature or advantage of the service. The list should include 3 to 5 items. Each item should be concise (up to 20 words), highlight unique offerings, and match the service description."
+						]
+					}
+				],
+				"team": [
+					{
+						"name": "The full name of the employee. It should be realistic, culturally appropriate for the region, and unique for each employee. The team should consist of at least 3 employees.",
+						"position": "The employee's position in the company, reflecting their role and responsibilities (e.g., 'CEO', 'Marketing Manager'). Positions should not repeat among employees unless justified.",
+						"bio": "A brief biography of the employee (up to 100 words), including experience, achievements, and key skills. It should be unique and match the employee's position."
+					}
+				]
+			}
+		}
+	},
+	"output_format": {
+		"format": "json",
+		"case_style": "snake_case",
+		"requirements": "The response must be strictly in JSON format, following snake_case. Provide only the structured output without any additional text."
+	}
+}

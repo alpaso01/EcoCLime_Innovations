@@ -1,0 +1,27 @@
+.trx-addons-list-container .trx-addons-list-items li .trx-addons-icon-list-text {
+  transition: color 0.2s ease-in-out;
+  margin-bottom: 0;
+}
+
+.trx-addons-list-items.trx-addons-inline-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.trx-addons-list-items.trx-addons-inline-items {
+  gap: 8px;
+}
+
+.trx-addons-icon-list-image {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=IconList.css.map */

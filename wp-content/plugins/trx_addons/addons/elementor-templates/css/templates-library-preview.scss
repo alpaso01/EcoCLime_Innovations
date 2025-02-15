@@ -1,0 +1,18 @@
+@import "../../../css/_mixins.scss";
+@import "../../../css/_trx_addons.vars.scss";
+@import "../../../css/_trx_addons.colors.scss";
+
+.elementor-add-trx-addons-elementor-templates-library-button {
+	background-color: #aedf49;
+	background-image: url('../images/logo-transparent.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	margin-left: 5px;
+	position: relative;
+	@include transition-property(background-color);
+
+	&:hover {
+		background-color: #90bb39;
+	}
+}

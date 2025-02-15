@@ -1,0 +1,17 @@
+.elementor-add-trx-addons-elementor-templates-library-button {
+  background-color: #aedf49;
+  background-image: url("../images/logo-transparent.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left: 5px;
+  position: relative;
+  -webkit-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.elementor-add-trx-addons-elementor-templates-library-button:hover {
+  background-color: #90bb39;
+}
+
+/*# sourceMappingURL=templates-library-preview.css.map */

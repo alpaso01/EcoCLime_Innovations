@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,mDAAoD;EACnD,QAAQ,EAAE,eAAe;;;AAG1B,wBAAwB;AACxB;qCACsC;EC2EpC,SAAS,ED1EI,OAAO;EC6EpB,WAAW,ED7EU,kBAAmB;ECgFxC,WAAW,EDhF+B,OAAO;ECmFjD,UAAU,EDnFyC,OAAO;EAC3D,OAAO,EAAE,YAAY;EACrB,KAAK,EAAC,IAAI;EACV,MAAM,EAAC,CAAC",
+"sources": ["qw-extension.scss","../../css/_mixins.scss"],
+"names": [],
+"file": "qw-extension.css"
+}

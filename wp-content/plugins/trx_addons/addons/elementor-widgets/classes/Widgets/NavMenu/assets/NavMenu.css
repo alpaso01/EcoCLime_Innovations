@@ -1,0 +1,1614 @@
+.trx-addons-nav-widget-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trx-addons-nav-widget-container .trx-addons-main-nav-menu {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.trx-addons-nav-ver .trx-addons-ver-inner-container {
+  position: relative;
+}
+
+.trx-addons-nav-ver .trx-addons-nav-menu-container,
+.trx-addons-nav-ver .trx-addons-ver-toggler {
+  width: 100%;
+}
+
+.trx-addons-nav-ver .trx-addons-nav-menu-container {
+  background-color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.trx-addons-nav-ver .trx-addons-main-nav-menu {
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.menu-item-has-children .trx-addons-submenu {
+  position: absolute;
+  min-width: 250px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.menu-item-has-children.trx-addons-item-hovered > .trx-addons-submenu,
+.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.menu-item-has-children.trx-addons-item-hovered > .trx-addons-mega-content-container {
+  visibility: visible;
+  opacity: 1;
+}
+
+.trx-addons-nav-ver .trx-addons-nav-menu-item {
+  width: 100%;
+}
+
+.trx-addons-nav-ver:not(.trx-addons-hamburger-menu).trx-addons-vertical-right .trx-addons-mega-content-container,
+.trx-addons-nav-ver:not(.trx-addons-hamburger-menu).trx-addons-vertical-right .trx-addons-nav-menu-item.menu-item-has-children .trx-addons-submenu {
+  left: 100%;
+  top: 0;
+}
+
+.trx-addons-nav-ver:not(.trx-addons-hamburger-menu).trx-addons-vertical-left .trx-addons-mega-content-container,
+.trx-addons-nav-ver:not(.trx-addons-hamburger-menu).trx-addons-vertical-left .trx-addons-nav-menu-item.menu-item-has-children .trx-addons-submenu {
+  right: 100%;
+  top: 0;
+}
+
+.trx-addons-nav-ver:not(.trx-addons-hamburger-menu).trx-addons-vertical-left .trx-addons-menu-link {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.trx-addons-nav-hor > .elementor-widget-container > .trx-addons-nav-widget-container > .trx-addons-ver-inner-container > .trx-addons-nav-menu-container {
+  height: 60px;
+}
+
+.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item .trx-addons-submenu {
+  position: absolute;
+  min-width: 220px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item > .trx-addons-submenu,
+.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item > .trx-addons-mega-content-container {
+  top: 100%;
+}
+
+.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item > .trx-addons-submenu .trx-addons-submenu,
+.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item > .trx-addons-submenu .trx-addons-mega-content-container {
+  left: 100%;
+  top: 0;
+}
+
+.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.trx-addons-item-hovered > .trx-addons-submenu,
+.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.trx-addons-item-hovered > .trx-addons-mega-content-container {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.trx-addons-mega-item-static .trx-addons-mega-content-container {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.trx-addons-mega-nav-item {
+  position: relative;
+}
+.trx-addons-mega-nav-item > .trx-addons-submenu {
+  display: none;
+}
+.trx-addons-mega-nav-item > ul.trx-addons-mega-content-container {
+  padding: 7px 10px;
+}
+
+.trx-addons-mega-content-container {
+  position: absolute;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.trx-addons-mega-nav-item.trx-addons-item-hovered > .trx-addons-mega-content-container {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.trx-addons-hamburger-menu .trx-addons-mega-content-container,
+.trx-addons-nav-slide .trx-addons-mega-content-container,
+.trx-addons-nav-dropdown .trx-addons-mega-content-container {
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.elementor-use-container .trx-addons-main-nav-menu li > .trx-addons-mega-content-container > .sc_layouts_submenu_wrap > .elementor > .elementor-section .elementor-column-gap-narrow {
+  margin-left: calc( -1 * var(--theme-var-elm_gap_narrow) / 2 );
+  margin-right: calc( -1 * var(--theme-var-elm_gap_narrow) / 2 );
+}
+body.elementor-use-container .trx-addons-main-nav-menu li > .trx-addons-mega-content-container > .sc_layouts_submenu_wrap > .elementor > .elementor-section .elementor-column-gap-default {
+  margin-left: calc( -1 * var(--theme-var-elm_gap_default) / 2 );
+  margin-right: calc( -1 * var(--theme-var-elm_gap_default) / 2 );
+}
+body.elementor-use-container .trx-addons-main-nav-menu li > .trx-addons-mega-content-container > .sc_layouts_submenu_wrap > .elementor > .elementor-section .elementor-column-gap-extended {
+  margin-left: calc( -1 * var(--theme-var-elm_add_page_margins) / 2 );
+  margin-right: calc( -1 * var(--theme-var-elm_add_page_margins) / 2 );
+}
+body.elementor-use-container .trx-addons-main-nav-menu li > .trx-addons-mega-content-container > .sc_layouts_submenu_wrap > .elementor > .elementor-section .elementor-column-gap-wide {
+  margin-left: calc( -1 * var(--theme-var-elm_gap_wide) / 2 );
+  margin-right: calc( -1 * var(--theme-var-elm_gap_wide) / 2 );
+}
+body.elementor-use-container .trx-addons-main-nav-menu li > .trx-addons-mega-content-container > .sc_layouts_submenu_wrap > .elementor > .elementor-section .elementor-column-gap-wider {
+  margin-left: calc( -1 * var(--theme-var-elm_gap_wider) / 2 );
+  margin-right: calc( -1 * var(--theme-var-elm_gap_wider) / 2 );
+}
+
+.trx-addons-nav-widget-container:not(.trx-addons-nav-menu-inited) .trx-addons-mobile-menu-outer-container {
+  display: none;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle,
+.trx-addons-mobile-menu-outer-container .trx-addons-mobile-menu-close {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle {
+  display: none;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle i {
+  padding: 0.25em;
+  font-size: 22px;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle .trx-addons-toggle-text,
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle .trx-addons-toggle-close {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle i,
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle .trx-addons-toggle-text,
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle .trx-addons-toggle-close {
+  color: #494c4f;
+  -webkit-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle svg path {
+  fill: #494c4f;
+  -webkit-transition: fill 0.3s ease;
+  -ms-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle .trx-addons-toggle-text,
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle .trx-addons-toggle-close {
+  margin: 2px;
+}
+
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle.trx-addons-toggle-opened .trx-addons-toggle-text,
+.trx-addons-nav-widget-container .trx-addons-hamburger-toggle:not(.trx-addons-toggle-opened) .trx-addons-toggle-close {
+  display: none;
+}
+
+.trx-addons-mobile-menu-container {
+  width: 100%;
+}
+
+.trx-addons-mobile-menu-container .trx-addons-main-mobile-menu {
+  width: 100%;
+}
+
+.trx-addons-mobile-menu-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trx-addons-mobile-menu-container .trx-addons-mobile-menu,
+.trx-addons-mobile-menu-container .trx-addons-submenu {
+  display: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.trx-addons-mobile-menu-container .trx-addons-nav-menu-item {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.trx-addons-mobile-menu-align-flex-start .trx-addons-mobile-menu-container .trx-addons-menu-link {
+  text-align: left;
+}
+
+.trx-addons-mobile-menu-align-center .trx-addons-mobile-menu-container .trx-addons-menu-link {
+  text-align: center;
+}
+
+.trx-addons-mobile-menu-align-flex-end .trx-addons-mobile-menu-container .trx-addons-menu-link {
+  text-align: right;
+}
+
+.trx-addons-item-badge,
+.trx-addons-sub-item-badge,
+.trx-addons-rn-badge {
+  font-size: 10px;
+  font-style: normal;
+  line-height: 1.8em;
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin: 0 0 0 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.trx-addons-item-badge,
+.trx-addons-sub-item-badge,
+.trx-addons-rn-badge {
+  margin: 0 0 0 10px;
+  position: relative;
+}
+
+.trx-addons-mobile-menu-outer-container {
+  opacity: 0;
+}
+
+.trx-addons-mobile-menu-outer-container.trx-addons-vertical-toggle-open {
+  opacity: 1;
+}
+
+.trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container {
+  position: fixed;
+  z-index: 10002;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #f7f7f7;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+body.admin-bar .trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container {
+  top: 32px;
+}
+@media (max-width: 782px) {
+  body.admin-bar .trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container {
+    top: 46px;
+  }
+}
+@media (max-width: 600px) {
+  body.admin-bar .trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container {
+    top: 0;
+  }
+}
+.trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container:not(.trx-addons-vertical-toggle-open) {
+  pointer-events: none;
+}
+.trx-addons-ver-hamburger-menu.trx-addons-ver-hamburger-menu-left .trx-addons-mobile-menu-outer-container {
+  left: 0;
+  -webkit-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px);
+}
+.trx-addons-ver-hamburger-menu.trx-addons-ver-hamburger-menu-right .trx-addons-mobile-menu-outer-container {
+  right: 0;
+  -webkit-transform: translateX(300px);
+  -ms-transform: translateX(300px);
+  transform: translateX(300px);
+}
+.trx-addons-ver-hamburger-menu.trx-addons-slide-menu-effect-fade .trx-addons-mobile-menu-outer-container {
+  opacity: 0;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container .trx-addons-mobile-menu {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container .trx-addons-mobile-menu-container {
+  width: unset;
+}
+
+.trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container .trx-addons-mobile-menu-close {
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  right: 0;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #494c4f;
+  -webkit-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container .trx-addons-mobile-menu-close svg {
+  width: 22px;
+  height: 22px;
+}
+
+.trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container .trx-addons-mobile-menu-close svg path {
+  fill: #494c4f;
+  -webkit-transition: fill 0.3s ease;
+  -ms-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+
+.trx-addons-ver-hamburger-menu .trx-addons-mobile-menu-outer-container .trx-addons-mobile-menu-close i {
+  font-size: 22px;
+}
+
+.trx-addons-ver-hamburger-menu .trx-addons-vertical-toggle-open {
+  -webkit-transform: translateX(0) !important;
+  -ms-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-nav-menu-container {
+  height: auto;
+}
+.trx-addons-ver-toggle-yes .trx-addons-nav-menu-container svg path {
+  -webkit-transition: fill 0.3s ease;
+  -ms-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  padding: 15px 20px 15px 20px;
+  background: #eeeeee;
+  color: #042551;
+  cursor: pointer;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler svg path {
+  -webkit-transition: fill 0.3s ease;
+  -ms-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler .trx-addons-ver-toggler-title,
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler .trx-addons-ver-toggler-btn {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler .trx-addons-ver-toggler-txt {
+  text-indent: 5px;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler:hover {
+  background: #54595f;
+  color: #fff;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler:hover .trx-addons-ver-close svg path,
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler:hover .trx-addons-ver-open svg path,
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler:hover .trx-addons-ver-title-icon svg path {
+  fill: #fff;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-close i,
+.trx-addons-ver-toggle-yes .trx-addons-ver-open i,
+.trx-addons-ver-toggle-yes .trx-addons-nav-menu-container i,
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler i {
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-close,
+.trx-addons-ver-toggle-yes .trx-addons-ver-open,
+.trx-addons-ver-toggle-yes .trx-addons-nav-menu-container,
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler,
+.trx-addons-ver-toggle-yes .trx-addons-ver-toggler-txt {
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-close,
+.trx-addons-ver-toggle-yes .trx-addons-ver-open,
+.trx-addons-ver-toggle-yes .trx-addons-ver-title-icon {
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-close i,
+.trx-addons-ver-toggle-yes .trx-addons-ver-open i,
+.trx-addons-ver-toggle-yes .trx-addons-ver-title-icon i {
+  font-size: 16px;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-close svg,
+.trx-addons-ver-toggle-yes .trx-addons-ver-open svg,
+.trx-addons-ver-toggle-yes .trx-addons-ver-title-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-close svg path,
+.trx-addons-ver-toggle-yes .trx-addons-ver-open svg path,
+.trx-addons-ver-toggle-yes .trx-addons-ver-title-icon svg path {
+  fill: #042551;
+  -webkit-transition: fill 0.3s ease;
+  -ms-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+
+.trx-addons-ver-toggle-yes.trx-addons-ver-always .trx-addons-ver-open {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-collapsed .trx-addons-nav-menu-container {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-collapsed .trx-addons-ver-close {
+  display: none;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-collapsed .trx-addons-ver-open {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.trx-addons-ver-toggle-yes.trx-addons-ver-hover .trx-addons-nav-menu-container {
+  position: absolute;
+  z-index: 10002;
+}
+
+.trx-addons-ver-toggle-yes.trx-addons-ver-click .trx-addons-nav-menu-container {
+  position: absolute;
+  z-index: 10001;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-nav-menu-container,
+.trx-addons-ver-toggle-yes.trx-addons-ver-hover .trx-addons-ver-inner-container:hover .trx-addons-nav-menu-container {
+  visibility: visible;
+  opacity: 1;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-open,
+.trx-addons-ver-toggle-yes.trx-addons-ver-hover .trx-addons-ver-inner-container:hover .trx-addons-ver-open {
+  display: none;
+}
+
+.trx-addons-ver-toggle-yes .trx-addons-ver-close,
+.trx-addons-ver-toggle-yes .trx-addons-ver-title-icon,
+.trx-addons-ver-toggle-yes.trx-addons-ver-hover .trx-addons-ver-inner-container:hover .trx-addons-ver-close,
+.trx-addons-ver-toggle-yes.trx-addons-ver-hover .trx-addons-ver-inner-container:hover .trx-addons-ver-title-icon {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.trx-addons-sticky-parent {
+  position: fixed;
+  z-index: 10003;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.trx-addons-sticky-scroll-yes.trx-addons-sticky-parent.headroom--not-top {
+  will-change: transform;
+  -webkit-transition: -webkit-transform 500ms linear !important;
+  transition: -webkit-transform 500ms linear !important;
+  transition: transform 500ms linear !important;
+  transition: transform 500ms linear, -webkit-transform 500ms linear !important;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.trx-addons-sticky-scroll-yes.trx-addons-sticky-parent.headroom--not-top.slideDown {
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+}
+
+.trx-addons-sticky-scroll-yes.trx-addons-sticky-parent.headroom--not-top.slideUp {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.trx-addons-nav-sticky-yes.trx-addons-sticky-active.trx-addons-ham-dropdown .trx-addons-mobile-menu-container,
+.trx-addons-ham-dropdown .trx-addons-stretch-dropdown .trx-addons-mobile-menu-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.trx-addons-nav-slide-overlay {
+  position: fixed;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-transition: opacity 0.5s ease;
+  -ms-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+.trx-addons-nav-slide-overlay:not(.trx-addons-vertical-toggle-open) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.trx-addons-active-menu,
+.trx-addons-active-menu:not(.trx-addons-mega-nav-item) > .trx-addons-submenu,
+.trx-addons-active-menu.trx-addons-mega-nav-item > .trx-addons-mega-content-container {
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.trx-addons-active-menu .trx-addons-toggle-close {
+  display: block;
+}
+
+.trx-addons-nav-menu-container li ul {
+  background-color: #f7f7f7;
+}
+
+.trx-addons-mobile-menu-container li,
+.trx-addons-mobile-menu-container li > .trx-addons-mega-content-container {
+  width: 100% !important;
+}
+
+.trx-addons-item-icon,
+.trx-addons-sub-item-icon {
+  font-size: 13px;
+  font-style: normal;
+  margin: 0 7px 0 0;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+.trx-addons-item-icon svg,
+.trx-addons-sub-item-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.trx-addons-sub-item-icon,
+.trx-addons-item-icon.trx-addons-item-image,
+.trx-addons-sub-item-icon.trx-addons-sub-item-image {
+  width: 1.25em;
+  height: 1.25em;
+  line-height: 1.25em;
+  text-align: center;
+  text-align: center;
+}
+
+.trx-addons-item-icon.trx-addons-item-image,
+.trx-addons-sub-item-icon.trx-addons-sub-item-image {
+  box-sizing: content-box;
+}
+
+.trx-addons-item-icon.trx-addons-lottie-animation,
+.trx-addons-sub-item-icon.trx-addons-lottie-animation {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.trx-addons-item-icon.dashicons,
+.trx-addons-sub-item-icon.dashicons {
+  width: 13px;
+  height: 13px;
+}
+
+.trx-addons-nav-menu-item[class*="icon-"]:before {
+  display: none;
+}
+
+.trx-addons-nav-menu-item {
+  position: relative;
+}
+
+.trx-addons-nav-menu-item,
+.trx-addons-nav-menu-item .trx-addons-menu-link,
+.trx-addons-nav-menu-item .trx-addons-dropdown-icon {
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+.trx-addons-nav-menu-item svg path,
+.trx-addons-nav-menu-item .trx-addons-menu-link svg path,
+.trx-addons-nav-menu-item .trx-addons-dropdown-icon svg path {
+  -webkit-transition: fill 0.3s ease;
+  -ms-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+
+.trx-addons-nav-menu-item .trx-addons-menu-link {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 7px 10px;
+  position: relative;
+  text-decoration: none;
+}
+.trx-addons-nav-menu-item .trx-addons-menu-link .sc_layouts_menu_item_description {
+  display: none;
+}
+
+.trx-addons-nav-menu-item .trx-addons-dropdown-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.trx-addons-dropdown-icon-fixed .trx-addons-submenu .menu-item-has-children > .trx-addons-menu-link {
+  padding-right: 2em;
+}
+.trx-addons-dropdown-icon-fixed .trx-addons-submenu .trx-addons-dropdown-icon {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 10px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin: 0;
+}
+
+.trx-addons-nav-menu-item.menu-item-has-children {
+  position: relative;
+}
+
+.trx-addons-nav-menu-item.menu-item-has-children .trx-addons-submenu {
+  z-index: 9999;
+}
+
+.trx-addons-nav-menu-item.menu-item-has-children .trx-addons-submenu .trx-addons-submenu-link {
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.trx-addons-mega-item-static {
+  position: static !important;
+}
+
+.trx-addons-hamburger-menu .trx-addons-mega-content-container,
+.trx-addons-nav-dropdown .trx-addons-mega-content-container,
+.trx-addons-nav-slide .trx-addons-mega-content-container {
+  display: none;
+}
+.trx-addons-hamburger-menu .trx-addons-nav-menu-container,
+.trx-addons-nav-dropdown .trx-addons-nav-menu-container,
+.trx-addons-nav-slide .trx-addons-nav-menu-container {
+  display: none;
+}
+.trx-addons-hamburger-menu .trx-addons-hamburger-toggle,
+.trx-addons-nav-dropdown .trx-addons-hamburger-toggle,
+.trx-addons-nav-slide .trx-addons-hamburger-toggle {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+.trx-addons-hamburger-menu .trx-addons-ver-inner-container,
+.trx-addons-nav-dropdown .trx-addons-ver-inner-container,
+.trx-addons-nav-slide .trx-addons-ver-inner-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.trx-addons-hamburger-toggle i {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.trx-addons-hamburger-toggle *,
+.trx-addons-mobile-menu-close * {
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+}
+
+.trx-addons-hidden-icon-yes.trx-addons-hamburger-menu .trx-addons-item-icon,
+.trx-addons-hidden-icon-yes.trx-addons-hamburger-menu .trx-addons-sub-item-icon,
+.trx-addons-hidden-icon-yes.trx-addons-nav-dropdown .trx-addons-item-icon,
+.trx-addons-hidden-icon-yes.trx-addons-nav-dropdown .trx-addons-sub-item-icon,
+.trx-addons-hidden-icon-yes.trx-addons-nav-slide .trx-addons-item-icon,
+.trx-addons-hidden-icon-yes.trx-addons-nav-slide .trx-addons-sub-item-icon {
+  display: none;
+}
+
+.trx-addons-hidden-badge-yes.trx-addons-hamburger-menu .trx-addons-item-badge,
+.trx-addons-hidden-badge-yes.trx-addons-hamburger-menu .trx-addons-sub-item-badge,
+.trx-addons-hidden-badge-yes.trx-addons-hamburger-menu .trx-addons-rn-badge,
+.trx-addons-hidden-badge-yes.trx-addons-nav-dropdown .trx-addons-item-badge,
+.trx-addons-hidden-badge-yes.trx-addons-nav-dropdown .trx-addons-sub-item-badge,
+.trx-addons-hidden-badge-yes.trx-addons-nav-dropdown .trx-addons-rn-badge,
+.trx-addons-hidden-badge-yes.trx-addons-nav-slide .trx-addons-item-badge,
+.trx-addons-hidden-badge-yes.trx-addons-nav-slide .trx-addons-sub-item-badge,
+.trx-addons-hidden-badge-yes.trx-addons-nav-slide .trx-addons-rn-badge {
+  display: none;
+}
+
+.trx-addons-ham-dropdown .trx-addons-mobile-menu-container,
+.trx-addons-nav-dropdown .trx-addons-mobile-menu-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.trx-addons-ham-dropdown .trx-addons-toggle-opened .trx-addons-toggle-text,
+.trx-addons-nav-dropdown .trx-addons-toggle-opened .trx-addons-toggle-text {
+  display: none !important;
+}
+
+.trx-addons-stretch-dropdown .trx-addons-mobile-menu-container {
+  position: absolute;
+  z-index: 9999;
+}
+
+.trx-addons-nav-default {
+  max-height: 2em;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.trx-addons-main-nav-menu > li li.menu-delimiter {
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  border-top: 1px solid #f0f0f0;
+  text-align: center;
+  height: 0;
+  overflow: hidden;
+}
+
+.trx-addons-menu-link-parent:before,
+.trx-addons-menu-link-parent:after {
+  display: block;
+  position: absolute;
+  -webkit-transition: all 0.3s cubic-bezier(0.58, 0.3, 0.005, 1);
+  transition: all 0.3s cubic-bezier(0.58, 0.3, 0.005, 1);
+}
+
+.trx-addons-nav-pointer-underline .trx-addons-menu-link-parent:after,
+.trx-addons-nav-pointer-double-line .trx-addons-menu-link-parent:after {
+  content: "";
+  bottom: 0;
+}
+
+.trx-addons-nav-pointer-overline .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-double-line .trx-addons-menu-link-parent:before {
+  content: "";
+  top: 0;
+}
+
+.trx-addons-nav-pointer-underline .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-underline .trx-addons-menu-link-parent:after,
+.trx-addons-nav-pointer-overline .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-overline .trx-addons-menu-link-parent:after,
+.trx-addons-nav-pointer-double-line .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-double-line .trx-addons-menu-link-parent:after {
+  height: 3px;
+  width: 100%;
+  left: 0;
+  background-color: #55595c;
+  z-index: 2;
+}
+
+.trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after {
+  opacity: 0;
+}
+
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-none,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-none,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-none {
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+}
+
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-none .trx-addons-menu-link-parent,
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-none .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-none .trx-addons-menu-link-parent:after,
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-none .trx-addons-menu-link-parent:focus,
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-none .trx-addons-menu-link-parent:hover,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-none .trx-addons-menu-link-parent,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-none .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-none .trx-addons-menu-link-parent:after,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-none .trx-addons-menu-link-parent:focus,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-none .trx-addons-menu-link-parent:hover,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-none .trx-addons-menu-link-parent,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-none .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-none .trx-addons-menu-link-parent:after,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-none .trx-addons-menu-link-parent:focus,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-none .trx-addons-menu-link-parent:hover {
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+}
+
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-slide .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-slide .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after {
+  width: 10px;
+  inset-inline-start: 100%;
+}
+
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-slide .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-slide .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  width: 10px;
+  left: -20px;
+}
+
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-grow .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-grow .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-grow .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-grow .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-grow .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-grow .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after {
+  height: 0;
+  width: 0;
+  left: 50%;
+}
+
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-drop-in .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-drop-in .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-drop-in .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  top: -10px;
+}
+
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-drop-in .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-drop-in .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-drop-in .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after {
+  bottom: -10px;
+}
+
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-drop-out .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-drop-out .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-drop-out .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  top: 10px;
+}
+
+.trx-addons-nav-pointer-underline.trx-addons-nav-animation-drop-out .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after,
+.trx-addons-nav-pointer-overline.trx-addons-nav-animation-drop-out .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after,
+.trx-addons-nav-pointer-double-line.trx-addons-nav-animation-drop-out .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):after {
+  bottom: 10px;
+}
+
+.trx-addons-nav-pointer-framed .trx-addons-menu-link-parent:before {
+  content: "";
+}
+
+.trx-addons-nav-pointer-framed .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-framed .trx-addons-menu-link-parent:after {
+  background: transparent;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border: 3px solid #55595c;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-grow .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  -webkit-transform: scale(0.75, 0.75);
+  -ms-transform: scale(0.75, 0.75);
+  transform: scale(0.75, 0.75);
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-shrink .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  -webkit-transform: scale(1.25, 1.25);
+  -ms-transform: scale(1.25, 1.25);
+  transform: scale(1.25, 1.25);
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:after {
+  width: 3px;
+  height: 3px;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:before {
+  border-width: 0 0 3px 3px;
+  -webkit-transition: width 0.1s 0.2s, height 0.1s 0.3s, opacity 0.12s 0.22s;
+  transition: width 0.1s 0.2s, height 0.1s 0.3s, opacity 0.12s 0.22s;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:after {
+  content: "";
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  border-width: 3px 3px 0 0;
+  -webkit-transition: width 0.1s, height 0.1s 0.1s, opacity 0.02s 0.18s;
+  transition: width 0.1s, height 0.1s 0.1s, opacity 0.02s 0.18s;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:hover:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:focus:before {
+  -webkit-transition: opacity 0.02s, height 0.1s, width 0.1s 0.1s;
+  transition: opacity 0.02s, height 0.1s, width 0.1s 0.1s;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:hover:after,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:focus:after {
+  -webkit-transition: opacity 0.02s 0.2s, height 0.1s 0.2s, width 0.1s 0.3s;
+  transition: opacity 0.02s 0.2s, height 0.1s 0.2s, width 0.1s 0.3s;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:hover:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:hover:after,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:focus:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-menu-link-parent:focus:after {
+  width: 100%;
+  height: 100%;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-active-item .trx-addons-menu-link-parent:before {
+  -webkit-transition: opacity 0.02s, height 0.1s, width 0.1s 0.1s;
+  transition: opacity 0.02s, height 0.1s, width 0.1s 0.1s;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-active-item .trx-addons-menu-link-parent:after {
+  -webkit-transition: opacity 0.02s 0.2s, height 0.1s 0.2s, width 0.1s 0.3s;
+  transition: opacity 0.02s 0.2s, height 0.1s 0.2s, width 0.1s 0.3s;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-active-item .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-draw .trx-addons-active-item .trx-addons-menu-link-parent:after {
+  width: 100%;
+  height: 100%;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-menu-link-parent:before {
+  border-width: 3px 0 0 3px;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-menu-link-parent:after {
+  content: "";
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  border-width: 0 3px 3px 0;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-menu-link-parent:after {
+  width: 3px;
+  height: 3px;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-menu-link-parent:hover:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-menu-link-parent:hover:after,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-menu-link-parent:focus:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-menu-link-parent:focus:after {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: opacity 2ms, width 0.4s, height 0.4s;
+  transition: opacity 2ms, width 0.4s, height 0.4s;
+}
+
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-active-item .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-framed.trx-addons-nav-animation-corners .trx-addons-active-item .trx-addons-menu-link-parent:after {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: opacity 2ms, width 0.4s, height 0.4s;
+  transition: opacity 2ms, width 0.4s, height 0.4s;
+}
+
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-grow .trx-addons-menu-link-parent:hover,
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-grow .trx-addons-menu-link-parent:focus {
+  -webkit-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-shrink .trx-addons-menu-link-parent:hover,
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-shrink .trx-addons-menu-link-parent:focus {
+  -webkit-transform: scale(0.8, 0.8);
+  -ms-transform: scale(0.8, 0.8);
+  transform: scale(0.8, 0.8);
+}
+
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-sink .trx-addons-menu-link-parent:hover,
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-sink .trx-addons-menu-link-parent:focus {
+  -webkit-transform: translateY(8px);
+  -ms-transform: translateY(8px);
+  transform: translateY(8px);
+}
+
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-float .trx-addons-menu-link-parent:hover,
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-float .trx-addons-menu-link-parent:focus {
+  -webkit-transform: translateY(-8px);
+  -ms-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-skew .trx-addons-menu-link-parent:hover,
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-skew .trx-addons-menu-link-parent:focus {
+  -webkit-transform: skew(-8deg, -8deg);
+  -ms-transform: skew(-8deg, -8deg);
+  transform: skew(-8deg, -8deg);
+}
+
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-rotate .trx-addons-menu-link-parent:hover,
+.trx-addons-nav-pointer-text.trx-addons-nav-animation-rotate .trx-addons-menu-link-parent:focus {
+  -webkit-transform: rotate(6deg);
+  -ms-transform: rotate(6deg);
+  transform: rotate(6deg);
+}
+
+.trx-addons-nav-pointer-background .trx-addons-menu-link > * {
+  position: relative;
+  z-index: 1;
+}
+
+.trx-addons-nav-pointer-background .trx-addons-menu-link-parent:before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #55595c;
+  background-color: #55595c;
+  z-index: 0;
+}
+
+.trx-addons-nav-pointer-background .trx-addons-menu-link-parent:before,
+.trx-addons-nav-pointer-background .trx-addons-menu-link-parent:after {
+  content: "";
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-grow .trx-addons-menu-link-parent:before {
+  -webkit-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-grow .trx-addons-menu-link-parent:hover:before,
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-grow .trx-addons-menu-link-parent:focus:before {
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-grow .trx-addons-active-item .trx-addons-menu-link-parent:before {
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shrink .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  -webkit-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+  -webkit-transition: 0.3;
+  transition: 0.3;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-sweep-left .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  left: 100%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-sweep-right .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  right: 100%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-sweep-up .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  top: 100%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-sweep-down .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  bottom: 100%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-menu-link-parent:after,
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-menu-link-parent:after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #55595c;
+  background-color: #55595c;
+  z-index: -1;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-menu-link-parent:before {
+  top: 0;
+  bottom: 100%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-menu-link-parent:after {
+  top: 100%;
+  bottom: 0;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-menu-link-parent:hover:before,
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-menu-link-parent:focus:before {
+  bottom: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-menu-link-parent:hover:after,
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-menu-link-parent:focus:after {
+  top: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-active-item .trx-addons-menu-link-parent:before {
+  bottom: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-vertical .trx-addons-active-item .trx-addons-menu-link-parent:after {
+  top: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-out-vertical .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  bottom: 50%;
+  top: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-menu-link-parent:before {
+  right: 0;
+  left: 100%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-menu-link-parent:after {
+  right: 100%;
+  left: 0;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-menu-link-parent:hover:before,
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-menu-link-parent:focus:before {
+  left: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-menu-link-parent:hover:after,
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-menu-link-parent:focus:after {
+  right: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-active-item .trx-addons-menu-link-parent:before {
+  left: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-in-horizontal .trx-addons-active-item .trx-addons-menu-link-parent:after {
+  right: 50%;
+}
+
+.trx-addons-nav-pointer-background.trx-addons-nav-animation-shutter-out-horizontal .trx-addons-nav-menu-item:not(.trx-addons-active-item) .trx-addons-menu-link-parent:not(:hover):not(:focus):before {
+  left: 50%;
+  right: 50%;
+}
+
+.trx-addons-active-item:before,
+.trx-addons-active-item:after,
+.trx-addons-menu-link-parent:hover:before,
+.trx-addons-menu-link-parent:hover:after,
+.trx-addons-menu-link-parent:focus:before,
+.trx-addons-menu-link-parent:focus:after {
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+[class*="trx-addons-nav-slide-"] {
+  --trx-addons-nav-menu-submenu-offset-x: 2px;
+  --trx-addons-nav-menu-submenu-offset-y: 2px;
+}
+
+.trx-addons-nav-menu-item .trx-addons-submenu,
+.trx-addons-nav-menu-item .trx-addons-mega-content-container {
+  -webkit-transition: 0.5s all ease-in-out;
+  transition: 0.5s all ease-in-out;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+[class*="trx-addons-nav-slide-"].trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item > .trx-addons-submenu,
+[class*="trx-addons-nav-slide-"].trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item > .trx-addons-mega-content-container {
+  margin-top: var(--trx-addons-nav-menu-submenu-offset-y);
+}
+
+[class*="trx-addons-nav-slide-"].trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item > .trx-addons-submenu,
+[class*="trx-addons-nav-slide-"].trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item > .trx-addons-mega-content-container,
+[class*="trx-addons-nav-slide-"].trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-submenu .trx-addons-nav-menu-item > .trx-addons-submenu,
+[class*="trx-addons-nav-slide-"].trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-submenu .trx-addons-nav-menu-item > .trx-addons-mega-content-container {
+  margin: 0 0 0 var(--trx-addons-nav-menu-submenu-offset-x);
+}
+
+[class*="trx-addons-nav-slide-"].trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.trx-addons-item-hovered > .trx-addons-submenu,
+[class*="trx-addons-nav-slide-"].trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.trx-addons-item-hovered > .trx-addons-mega-content-container {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+[class*="trx-addons-nav-slide-"].trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.trx-addons-item-hovered > .trx-addons-submenu,
+[class*="trx-addons-nav-slide-"].trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-nav-menu-item.trx-addons-item-hovered > .trx-addons-mega-content-container,
+[class*="trx-addons-nav-slide-"].trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-submenu .trx-addons-nav-menu-item.trx-addons-item-hovered > .trx-addons-submenu,
+[class*="trx-addons-nav-slide-"].trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-submenu .trx-addons-nav-menu-item.trx-addons-item-hovered > .trx-addons-mega-content-container {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.trx-addons-nav-slide-up.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-submenu,
+.trx-addons-nav-slide-up.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-content-container,
+.trx-addons-nav-slide-up.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-submenu,
+.trx-addons-nav-slide-up.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-mega-content-container {
+  -webkit-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.trx-addons-nav-slide-down.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-submenu,
+.trx-addons-nav-slide-down.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-content-container,
+.trx-addons-nav-slide-down.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-submenu,
+.trx-addons-nav-slide-down.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-mega-content-container {
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.trx-addons-nav-slide-right.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-submenu,
+.trx-addons-nav-slide-right.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-content-container,
+.trx-addons-nav-slide-right.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-submenu,
+.trx-addons-nav-slide-right.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-10px);
+  -ms-transform: translateX(-10px);
+  transform: translateX(-10px);
+}
+
+.trx-addons-nav-slide-left.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-submenu,
+.trx-addons-nav-slide-left.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-content-container,
+.trx-addons-nav-slide-left.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-submenu,
+.trx-addons-nav-slide-left.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-mega-content-container {
+  -webkit-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  transform: translateX(10px);
+}
+
+.trx-addons-nav-slide-up.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-50%) translateY(10px);
+  -ms-transform: translateX(-50%) translateY(10px);
+  transform: translateX(-50%) translateY(10px);
+}
+
+.trx-addons-nav-slide-up.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static.trx-addons-item-hovered .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-50%) translateY(0);
+  -ms-transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0);
+}
+
+.trx-addons-nav-slide-down.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-50%) translateY(-10px);
+  -ms-transform: translateX(-50%) translateY(-10px);
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.trx-addons-nav-slide-down.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static.trx-addons-item-hovered .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-50%) translateY(0);
+  -ms-transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0);
+}
+
+.trx-addons-nav-slide-left.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-45%);
+  -ms-transform: translateX(-45%);
+  transform: translateX(-45%);
+}
+
+.trx-addons-nav-slide-left.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static.trx-addons-item-hovered .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.trx-addons-nav-slide-right.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-55%);
+  -ms-transform: translateX(-55%);
+  transform: translateX(-55%);
+}
+
+.trx-addons-nav-slide-right.trx-addons-nav-hor:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static.trx-addons-item-hovered .trx-addons-mega-content-container {
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.trx-addons-nav-slide-down.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static.trx-addons-item-hovered .trx-addons-mega-content-container,
+.trx-addons-nav-slide-up.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static.trx-addons-item-hovered .trx-addons-mega-content-container {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.trx-addons-nav-slide-right.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static.trx-addons-item-hovered .trx-addons-mega-content-container,
+.trx-addons-nav-slide-left.trx-addons-nav-ver:not(.trx-addons-hamburger-menu) .trx-addons-mega-item-static.trx-addons-item-hovered .trx-addons-mega-content-container {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.trx-addons-rn-badge,
+.trx-addons-mega-content-container .trx-addons-rn-badge {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.has-trx-addons-badge:hover {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.trx-addons-sub-item-badge {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-dot .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-dot .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-dot .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-dot .trx-addons-rn-badge {
+  min-width: 1px;
+  padding: 3px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-pulse:hover .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-pulse:hover .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-pulse:hover .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-pulse:hover .trx-addons-rn-badge {
+  -webkit-animation: badge-pulse-grow 0.5s alternate infinite ease-in-out;
+  animation: badge-pulse-grow 0.5s alternate infinite ease-in-out;
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-buzz:hover .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-buzz:hover .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-buzz:hover .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-buzz:hover .trx-addons-rn-badge {
+  -webkit-animation: badge-buzz 0.5s alternate infinite ease-in-out;
+  animation: badge-buzz 0.5s alternate infinite ease-in-out;
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-slide-right .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-slide-right .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-slide-right .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-slide-right .trx-addons-rn-badge {
+  -webkit-transform: translateY(-50%) translateX(-5px);
+  -ms-transform: translateY(-50%) translateX(-5px);
+  transform: translateY(-50%) translateX(-5px);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-slide-right:hover .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-slide-right:hover .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-slide-right:hover .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-slide-right:hover .trx-addons-rn-badge {
+  -webkit-transform: translateY(-50%) translateX(5px);
+  -ms-transform: translateY(-50%) translateX(5px);
+  transform: translateY(-50%) translateX(5px);
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-slide-left .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-slide-left .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-slide-left .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-slide-left .trx-addons-rn-badge {
+  -webkit-transform: translateY(-50%) translateX(5px);
+  -ms-transform: translateY(-50%) translateX(5px);
+  transform: translateY(-50%) translateX(5px);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-slide-left:hover .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-slide-left:hover .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-slide-left:hover .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-slide-left:hover .trx-addons-rn-badge {
+  -webkit-transform: translateY(-50%) translateX(-5px);
+  -ms-transform: translateY(-50%) translateX(-5px);
+  transform: translateY(-50%) translateX(-5px);
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-expand .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-expand .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-expand .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-expand .trx-addons-rn-badge {
+  -webkit-transform: translateY(-50%) scaleX(0);
+  -ms-transform: translateY(-50%) scaleX(0);
+  transform: translateY(-50%) scaleX(0);
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+}
+
+.trx-addons-mega-content-container .trx-addons-badge-expand:hover .trx-addons-sub-item-badge,
+.trx-addons-mega-content-container .trx-addons-badge-expand:hover .trx-addons-rn-badge,
+.trx-addons-submenu .trx-addons-badge-expand:hover .trx-addons-sub-item-badge,
+.trx-addons-submenu .trx-addons-badge-expand:hover .trx-addons-rn-badge {
+  -webkit-transform: translateY(-50%) scaleX(1);
+  -ms-transform: translateY(-50%) scaleX(1);
+  transform: translateY(-50%) scaleX(1);
+}
+
+@-webkit-keyframes badge-pulse-grow {
+  to {
+    -webkit-transform: translateY(-50%) scale(1.07);
+    transform: translateY(-50%) scale(1.07);
+  }
+}
+@keyframes badge-pulse-grow {
+  to {
+    -webkit-transform: translateY(-50%) scale(1.07);
+    transform: translateY(-50%) scale(1.07);
+  }
+}
+@-webkit-keyframes badge-buzz {
+  50% {
+    -webkit-transform: translateY(-50%) translateX(3px) rotate(2deg);
+    transform: translateY(-50%) translateX(3px) rotate(2deg);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-3px) rotate(-2deg);
+    transform: translateY(-50%) translateX(-3px) rotate(-2deg);
+  }
+}
+@keyframes badge-buzz {
+  50% {
+    -webkit-transform: translateY(-50%) translateX(3px) rotate(3deg);
+    transform: translateY(-50%) translateX(3px) rotate(3deg);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-3px) rotate(-3deg);
+    transform: translateY(-50%) translateX(-3px) rotate(-3deg);
+  }
+}
+body.trx-addons-scroll-disabled {
+  overflow-y: hidden;
+  height: 100vh;
+  margin: 0;
+}
+
+.elementor-sticky__spacer .trx-addons-nav-widget-container {
+  visibility: unset !important;
+  opacity: unset !important;
+}
+
+.elementor-sticky__spacer .trx-addons-mega-content-container {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.elementor-widget-trx-addons-lottie .trx-addons-lottie-animation {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.elementor-widget-trx-addons-lottie .trx-addons-lottie-animation a {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/*# sourceMappingURL=NavMenu.css.map */

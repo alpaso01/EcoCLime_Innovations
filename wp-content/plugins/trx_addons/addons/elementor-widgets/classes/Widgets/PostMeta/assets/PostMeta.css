@@ -1,0 +1,71 @@
+.trx-addons-post-meta {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.trx-addons-post-meta-item {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.trx-addons-post-meta-item a {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+.trx-addons-post-meta-item .trx-addons-post-meta-item-before {
+  margin-right: 0.3em;
+}
+.trx-addons-post-meta-item .trx-addons-post-meta-item-after {
+  margin-left: 0.3em;
+}
+.trx-addons-post-meta-item svg {
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  margin-right: 0.3em;
+}
+.trx-addons-post-meta-item .trx-addons-post-meta-item-icon {
+  margin-right: 0.3em;
+}
+.trx-addons-post-meta-item .trx-addons-post-meta-item-avatar {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 1.7em;
+  border-radius: 50%;
+  margin-right: 0.3em;
+}
+.trx-addons-post-meta-item[class*="trx-addons-post-meta-item-type-product_"] span.amount {
+  color: inherit;
+}
+
+.trx-addons-post-meta-item-separator {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.trx-addons-post-meta-item-separator:before {
+  content: '\2022';
+}
+
+/*# sourceMappingURL=PostMeta.css.map */
