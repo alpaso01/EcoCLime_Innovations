@@ -1,0 +1,8 @@
+@media (max-width: 767px) {
+  /* Instagram */
+  .column-1_1 #sb_instagram .sbi_item {
+    min-width: 25%;
+  }
+}
+
+/*# sourceMappingURL=instagram-responsive.css.map */

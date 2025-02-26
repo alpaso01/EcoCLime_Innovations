@@ -1,0 +1,174 @@
+Version: 1.18.0
+    Added:
+        - AI Helper: option to choose the API version for Open AI Assistants
+        - AI Helper: parameter 'output_tokens' for text models
+        - Styling parameters for divider in Images Compare shortcode
+        - Roles and capabilities reset when switching to another skin
+        - Customization options for the submenus in the Menu Editor
+    Fixed:
+        - CSS\PHP fixes (shortcodes and layouts)
+        - AI Helper Chat: title styles
+        - Compatibility with Elementor plugin: widget "Spacer" when its "Size" equals 0 or is not defined
+        - Compatibility with Elementor plugin: priorities for basic classes registration in action 'elementor/init'
+        - Compatibility with Elementor plugin: removing duplicate attributes loading="xxx" and decoding="xxx" for tag <img> with Image Effects
+        - Compatibility with Elementor plugin: elementor-editor.js script for post search
+        - Compatibility with Elementor plugin: Global Colors Preview styles
+        - Compatibility with WPML plugin: icl_get_languages() replaced with filter "wpml_active_languages"
+        - Compatibility with WPML plugin: added wpml-config.xml file
+        - Compatibility with The Events Calendar plugin: category name, tags and breadcrumbs on the listing pages
+        - Dark/Light Switcher script
+        - Animation for dropdown menus
+        - Autoscroll for Swiper Slider v8
+        - Script for the video inserted as a link in the popup
+    Updated:
+        - QW Extension addon (to version 1.5.0)
+        - "Background Text" (marquee) now uses the heading font family by default
+    Removed:
+        - WP GDPR Compliance plugin (Cookie Information | Free WP GDPR Consent Plugin)
+
+Version: 1.17.0
+    Added:
+        - AI Helper Image Generator & Media Library: support for the new image generation model DALL-E-3
+        - AI Helper Image Generator & Media Library: an option for choosing Stable Diffusion API server (stablediffusionapi.com or modelslab.com)
+        - AI Helper Image Generator & Media Library: an option "Autoload list of models" in Stable Diffusion and Stability AI API settings
+        - AI Helper Image Generator & Media Library: new models for Upscale (Stability AI) and Stable Diffusion.
+        - AI Helper: Chatbot AI Assistant to help with basic theme customization (title, tagline, logo, colors)
+        - AI Helper: support for Flowise AI API for chatbots
+        - AI Helper: support for Open AI Assistants API (GPT-4)
+        - AI Helper: support for Google AI API (aka Gemini)
+        - AI Helper: parameters for changing text and placeholders in AI Chat, Text Generator and Image Generator shortcodes
+        - AI Helper: "Embed External Chatbots" options
+        - AI Helper: "LoRA model" parameter for submodels
+        - AI Helper: "Proxy URL" parameter for API settings of Open AI and Google AI
+        - AI Helper: a "model choice" field in Gutenberg editor, Text Generator and AI Chat shortcodes
+        - AI Helper: customization parameters for styling a chat window in "AI Chat" shortcode
+        - AI Helper: Popup Layout for "AI Chat" shortcode
+        - AI Helper: "Remember on reload" option for "AI Chat" shortcode
+        - "Permanent" and switcher customization parameters for Dark/Light Switcher shortcode
+        - "Categories Order" option for the "Categories list" widget
+        - A contact form selection option for individual Team posts that overrides the global option for CPT Team
+        - Compatibility with The GDPR Framework plugin
+        - Meta data (variations) to the cart page
+        - Layout "Simple" for the Hotspot widget
+        - An option to change "More" button text for the Categories List widget
+    Fixed:
+        - Script for Bg-Canvas (Dynamic Background) on mobile devices
+        - Script for dropdown shift in RTL version
+        - PHP 8 compatibility: $content=null replaced with $content=''
+        - Switcher and Image Generator scripts
+        - Compatibility with WPML Multilingual CMS (xxx_is_external_url() function)
+        - Text shifting for "Background Text" module
+        - "WooCommerce Search" filter
+        - Styles for video added in portfolio items
+        - SVG icon animation in the Icons shortcode
+    Updated:
+        - Blogger shortcode styles
+        - QW Extension addon (to version 1.4.1)
+        - Elementor styles
+        - Gutenberg styles
+    Removed:
+        - Cookie Information plugin installation recommendation
+
+Version: 1.16.0
+	Skin 'default' is updated to the version 1.10.0.
+
+Version: 1.15.0
+	Skin 'default' is updated to the version 1.9.0.
+
+Version: 1.14.0
+    Added:
+        - Top 5 Visited Pages for Dashboard Widget
+        - Popup alignment for Hotspot shortcode
+        - Attribute "playsinline" for video on iOS
+        - QuickCal plugin compatibility
+        - Elementor 3.16.0 compatibility (flexbox containers support)
+        - Autoupdate for "QW Extension" addon
+        - AI Helper: width and height parameters for Stable Diffusion
+        - AI Helper: new API support from Stability AI for image generation
+        - AI Helper: "Negative Prompt" and "Safety Checker" options to exclude non-desirable images
+        - AI Helper: Chat History shortcode
+        - AI Helper: "Upscale image" option for the Extended layout of Image Generator shortcode
+        - AI Helper: "System Prompt" parameter to add context for Image Generator shortcode
+        - AI Helper: рarameters "System Prompt", "Max. Tokens" and "Temperature" for Text Generator and AI Chat shortcodes
+        - AI Helper: an option to enable/disable prompt auto-translation into English for Image Generator shortcode
+    Fixed:
+        - Loop for video autoplay
+        - Scroll for CPT Portfolio archive page on mobiles
+        - Styles for WordPress 6.3 compatibility
+        - Booked appointments fix (2.4.4 version)
+        - Fly positioning on mobiles
+        - Tabs style for Switcher shortcode
+        - Icons for Х.com (Twitter) and TikTok
+        - Responsive styles for WooCommerce Extended Products
+        - Woocommerce product meta data for Blogger shortcode
+        - Legacy Widget styles in Widgets Editor
+        - Iframe resize for RevSlider
+    Updated:
+        - GSAP JavaScript animation library to 3.12.2
+        - The Events Calendar styles
+
+Version: 1.13.0
+	Skin 'default' is updated to the version 1.8.0.
+
+Version: 1.12.0
+    Added: Switcher shortcode
+    Added: Squeeze images shortcode
+    Added: Expand / Collapse addon
+    Added: New parm "Outside Top" for Titles in the slides
+    Added: New styles for Button shortcode (Slide,Flow,Veil,Curtain,Slant)
+    Updated: addon QW Extension (theme compatibility)
+        - add QW Services (Panel,Stylish,Price,Card,Plaque,Tricolore,Nodes)
+        - add QW Icons (Stylish)
+        - add QW Portfolio (Pack,Board,Chess,Simple,Case)
+        - add QW Testimonials (Date,Big)
+	- add style "Simple" for Slider Controls
+
+Version: 1.11.0
+	Skin 'default' is updated to the version 1.7.0.
+
+Version: 1.10.0
+    Fix: CSS\JS\PHP fixes
+    Added: New addon QW Extension (theme compatibility)
+
+Version: 1.9.0
+	Skin 'default' is updated to the version 1.6.0.
+
+Version: 1.8.0
+	Skin 'default' is updated to the version 1.5.0.
+
+Version: 1.7.0
+    Fix: PHP fixes for teams layouts
+    Fix: CSS\JS\PHP fixes (shortcods)
+    Added: New trx_addons option "Show mouse helper in swiper slider" 
+
+Version: 1.6.0
+	Skin 'default' is updated to the version 1.4.0.
+
+Version: 1.5.0
+	Skin 'default' is updated to the version 1.3.0.
+
+Version: 1.4.1
+    Fix: Icons Font
+
+Version: 1.4.0
+    Added: WPC Smart Quick View for WooCommerce compatibility
+    Added: 3 new product styles for the product feed
+    Added: New functionality for WooCommerce
+    Added: Single product appearance improved
+    Added: Hotspot shortcode
+    Fix: CSS fixes (Booked)
+
+Version: 1.3.0
+	Skin 'default' is updated to the version 1.2.
+
+Version: 1.2.0
+    Fix: CSS\JS\PHP fixes for WP 6.0 (shortcodes and layouts)
+    Fix: CSS fixes (The Events Calendar)
+    Fix: Minor CSS\PHP fixes (shortcode and widget layouts)
+    Fix: Languages POT file
+    Fix: PHP8 - for Categories list widget
+
+Version: 1.1.0
+	Skin 'default' is updated to the version 1.1.
+
+Release: v.1.0.0

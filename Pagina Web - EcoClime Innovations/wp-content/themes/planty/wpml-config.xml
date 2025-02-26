@@ -1,0 +1,20 @@
+<wpml-config>
+  <custom-fields>
+    <custom-field action="copy">planty_options</custom-field>
+  </custom-fields>
+  <admin-texts>
+    <key name="planty_options">
+      <key name="sidebar_widgets"/>
+      <key name="widgets_above_page"/>
+      <key name="widgets_above_content"/>
+      <key name="widgets_below_content"/>
+      <key name="widgets_below_page"/>
+      <key name="privacy_text"/>
+      <key name="header_style"/>
+      <key name="header_widgets"/>
+      <key name="footer_style"/>
+      <key name="footer_widgets"/>
+      <key name="copyright"/>
+    </key>
+  </admin-texts>
+</wpml-config>

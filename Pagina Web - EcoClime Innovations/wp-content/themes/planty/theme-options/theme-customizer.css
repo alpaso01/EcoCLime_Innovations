@@ -1,0 +1,657 @@
+/* Theme Customizer styles */
+#customize-header-actions .button {
+  margin: 0;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
+#customize-header-actions .customize-action-reset {
+  float: right;
+  margin-left: 6px;
+  max-width: 50px;
+}
+
+#customize-header-actions .customize-action-refresh {
+  position: absolute;
+  z-index: 1000;
+  left: 60px;
+  top: 10px;
+}
+
+#customize-header-actions .customize-action-refresh:before {
+  margin: 0 0.3em 0 0;
+  vertical-align: top;
+}
+
+#customize-controls .customize-info div.customize-panel-description,
+#customize-controls .customize-info div.customize-section-description,
+#customize-controls div.no-widget-areas-rendered-notice {
+  display: block;
+}
+
+#customize-controls #customize-info div.customize-panel-description {
+  display: none;
+}
+
+#customize-controls .customize-section-description-container {
+  margin-bottom: 0;
+}
+
+#customize-controls div.customize-section-description {
+  color: #555d66;
+  background: #fff;
+  padding: 12px 15px;
+  border-top: 1px solid #ddd;
+}
+
+#customize-controls .customize-section-title + .customize-section-description {
+  margin: -1px -12px 0;
+}
+
+#customize-controls div.customize-panel-description,
+#customize-controls div.customize-panel-description p,
+#customize-controls div.customize-section-description,
+#customize-controls div.customize-section-description p,
+.customize-control-description {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.customize-control-description {
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+#customize-controls .customize-control-description {
+  color: #555d66;
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: normal;
+  font-style: normal;
+}
+#customize-controls .customize-control-info .customize-control-description {
+  color: #555d66;
+  font-size: 13px;
+}
+
+.customize-control-info > div {
+  margin-top: 2em !important;
+  padding: 0.8em 12px;
+  background-color: #fcfcfc;
+  color: #626467;
+  border-top: 1px solid #ddd !important;
+  border-bottom: 1px solid #ddd !important;
+  border-left: 4px solid #1e8cbe;
+  margin: 6px -12px;
+}
+.customize-control-info > div > .customize-control-title {
+  text-shadow: 1px 1px 1px #fff;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.customize-control-info > div > .customize-control-description p {
+  margin: 0;
+}
+
+.customize-control-field-wrap {
+  display: block;
+  position: relative;
+}
+
+#customize-theme-controls li.customize-control > .customize-control-title,
+#customize-theme-controls li.customize-control > label {
+  display: block;
+}
+
+#customize-theme-controls li.customize-control > .customize-control-title,
+#customize-theme-controls li.customize-control > label,
+#customize-theme-controls li.customize-control > .customize-control-wrap {
+  margin-top: 0.8em;
+}
+
+#customize-theme-controls li.customize-section-description-container + li.customize-control-sidebar_widgets {
+  margin-top: 1em;
+}
+
+#customize-theme-controls li:not(.customize-section-description-container):not(.customize-control-info) + li.customize-control > .customize-control-title,
+#customize-theme-controls li:not(.customize-section-description-container):not(.customize-control-info) + li.customize-control > label,
+#customize-theme-controls li:not(.customize-section-description-container):not(.customize-control-info) + li.customize-control > .customize-control-wrap {
+  padding-top: 0.8em;
+  border-top: 1px dotted #ddd;
+}
+
+.customize-control .customize-inside-control-row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.customize-control > label > label,
+.customize-control > div > label {
+  display: inline-block;
+  margin: 0 1em 0 0;
+  padding: 0;
+  border: none;
+}
+
+.customize-control > label > label > input[type="radio"],
+.customize-control > div > label > input[type="radio"] {
+  margin-right: 0;
+}
+
+.customize-control-background img,
+.customize-control-cropped_image img,
+.customize-control-header img,
+.customize-control-image img,
+.customize-control-media img,
+.customize-control-upload img {
+  width: auto;
+}
+
+#customize-control-header_image .customize-control-description {
+  display: none;
+}
+
+/* Checkbox and Checklist */
+.customize-control .planty_options_item_checkbox input[type="checkbox"]:checked,
+.customize-control .planty_options_item_checklist input[type="checkbox"]:checked {
+  border-color: #1e8cbe;
+  background-color: #1e8cbe;
+}
+
+/* Radio */
+.customize-control-radio {
+  padding: 0;
+}
+.customize-control-radio .planty_options_item_radio input:checked + .planty_options_item_holder,
+.customize-control-radio .planty_options input[type="radio"]:checked + .planty_options_item_holder {
+  background-color: #1e8cbe;
+}
+.customize-control-radio .planty_options_item_radio input:checked + .planty_options_item_holder:focus:before,
+.customize-control-radio .planty_options input[type="radio"]:checked + .planty_options_item_holder:focus:before {
+  border-color: #1e8cbe;
+}
+
+/* Select */
+.customize-control-select select {
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+/* Text */
+.customize-control-text input {
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+/* Textarea */
+.customize-control-textarea textarea {
+  font-size: 13px;
+  padding: 12px;
+}
+
+/* Switch */
+#customize-theme-controls .customize-control-switch > .customize-control-wrap {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+#customize-theme-controls .customize-control-switch > .customize-control-wrap .customize-control-title {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+#customize-theme-controls .customize-control-switch > .customize-control-wrap .customize-control-field-wrap {
+  -webkit-flex-grow: 0;
+  -ms-flex-grow: 0;
+  flex-grow: 0;
+  margin: 0 0 0 0.5em;
+}
+#customize-theme-controls .customize-control-switch > .customize-control-wrap .planty_options_item_switch .planty_options_item_holder_back {
+  background-color: #c2c6cb;
+}
+#customize-theme-controls .customize-control-switch > .customize-control-wrap .planty_options_item_switch .planty_options_item_holder_handle {
+  background-color: #9099a2;
+}
+#customize-theme-controls .customize-control-switch > .customize-control-wrap .planty_options_item_switch .planty_options_item_holder_handle:after {
+  background-color: #9099a2;
+}
+#customize-theme-controls .customize-control-switch > .customize-control-wrap .planty_options_item_switch input:checked + .planty_options_item_holder .planty_options_item_holder_handle {
+  background-color: #1e8cbe;
+}
+#customize-theme-controls .customize-control-switch > .customize-control-wrap .planty_options_item_switch input:checked + .planty_options_item_holder .planty_options_item_holder_handle:after {
+  background-color: #1e8cbe;
+}
+
+/* Choice */
+.customize-control-choice .planty_list_choice {
+  padding-top: 5px;
+}
+.customize-control-choice .planty_list_choice_item {
+  margin-right: 10px;
+}
+.customize-control-choice .planty_list_choice_item_icon {
+  border-color: #d5d8dc;
+  background-color: #fff;
+}
+.customize-control-choice .planty_list_choice_item_title {
+  color: #6e7379;
+}
+.customize-control-choice .planty_list_choice_item.planty_list_active .planty_list_choice_item_icon {
+  border-color: #1e8cbe;
+}
+.customize-control-choice .planty_list_choice_item.planty_list_active .planty_list_choice_item_title {
+  color: #1e8cbe;
+}
+
+/* Range slider */
+.customize-control-range .customize-control-field-wrap {
+  margin-top: 1em;
+}
+.customize-control-range div.ui-slider .ui-slider-handle {
+  background: #1e8cbe;
+}
+.customize-control-range div.ui-slider .ui-slider-range {
+  background: #1e8cbe;
+}
+
+/* List icons */
+.customize-control .planty_list_icons_selector:focus {
+  border-color: #1e8cbe;
+  -webkit-box-shadow: 0 0 0 1px #1e8cbe;
+  -ms-box-shadow: 0 0 0 1px #1e8cbe;
+  box-shadow: 0 0 0 1px #1e8cbe;
+}
+.customize-control .planty_list_icons {
+  left: 0 !important;
+}
+.customize-control .planty_list_icons span {
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.customize-control .planty_list_icons input[type="text"].planty_list_icons_search:focus {
+  border-color: #1e8cbe;
+}
+.customize-control .planty_list_icons input[type="text"].planty_list_icons_search {
+  font-size: 14px;
+  padding: 6px 8px;
+}
+
+/* Media selector */
+.customize-control .widget_field_type_image > input[type="text"],
+.customize-control .widget_field_type_media > input[type="text"],
+.customize-control .widget_field_type_audio > input[type="text"],
+.customize-control .widget_field_type_video > input[type="text"] {
+  width: 60%;
+}
+
+.customize-control .widget_field_type_image > a.trx_addons_media_selector,
+.customize-control .widget_field_type_media > a.trx_addons_media_selector,
+.customize-control .widget_field_type_audio > a.trx_addons_media_selector,
+.customize-control .widget_field_type_video > a.trx_addons_media_selector {
+  width: 39%;
+}
+
+/* Color scheme editor */
+.customize-control-scheme_editor {
+  /* Spectrum ColorPicker */
+}
+.customize-control-scheme_editor .planty_scheme_editor_type .planty_scheme_editor_row_cell {
+  padding: 0;
+}
+.customize-control-scheme_editor .planty_scheme_editor_type .planty_scheme_editor_row_cell:first-child {
+  width: 32%;
+}
+.customize-control-scheme_editor .planty_scheme_editor_type .planty_scheme_editor_row_cell_span {
+  width: 68%;
+}
+.customize-control-scheme_editor .planty_scheme_editor_colors .planty_scheme_editor_header_cell {
+  font-size: 12px;
+}
+.customize-control-scheme_editor .planty_scheme_editor_colors .planty_scheme_editor_row_cell,
+.customize-control-scheme_editor .planty_scheme_editor_colors .planty_scheme_editor_row_cell input {
+  font-size: 11px;
+  line-height: 13px;
+}
+.customize-control-scheme_editor .planty_scheme_editor_colors .planty_scheme_editor_row_cell input {
+  padding: 3px 2px;
+}
+.customize-control-scheme_editor .planty_scheme_editor_colors .planty_scheme_editor_header_cell,
+.customize-control-scheme_editor .planty_scheme_editor_colors .planty_scheme_editor_row_cell {
+  width: 17%;
+  padding: 0;
+}
+.customize-control-scheme_editor .planty_scheme_editor_colors .planty_scheme_editor_header_cell:first-child,
+.customize-control-scheme_editor .planty_scheme_editor_colors .planty_scheme_editor_row_cell:first-child {
+  width: 15%;
+  font-size: 11px;
+}
+.customize-control-scheme_editor div.sp-container .sp-choose {
+  background: #1e8cbe;
+}
+.customize-control-scheme_editor div.sp-container .sp-choose:hover {
+  background: #0073aa;
+}
+
+/* Core ColorPicker */
+.cp-color-picker {
+  z-index: 1000000;
+}
+
+/* Text editor */
+.mce-floatpanel, .mce-tooltip {
+  z-index: 9999999 !important;
+}
+
+/* Widgets parameters
+ *
+ * Uncomment first row in each selector if you want display ThemeREX Widgets as SOW - fixed to the right side of panel
+ * If you remove '[id^="customize-control-widget_trx_addons_"]' part from first line - standard WP Widgets will be moved also
+ *
+ */
+.customize-control-widget_form .widget-control-actions {
+  margin: 1.5em 0;
+}
+
+.customize-control-widget_form.wide-widget-control .widget-inside {
+  position: fixed;
+  left: 18%;
+  top: 0 !important;
+  max-height: 100vh !important;
+  border: 1px solid #e5e5e5;
+  overflow-y: scroll;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.customize-control-widget_form.wide-widget-control .widget-inside .widget-content {
+  max-width: 360px !important;
+  min-width: 270px !important;
+}
+
+@media (max-width: 1667px) {
+  .customize-control-widget_form.wide-widget-control .widget-inside {
+    left: 300px;
+  }
+
+  .customize-control-widget_form.wide-widget-control .widget-inside .widget-content {
+    max-width: 300px !important;
+  }
+}
+@media (max-width: 1279px) {
+  .customize-control-widget_form.wide-widget-control .widget-inside {
+    position: static !important;
+    left: 0 !important;
+    top: 0 !important;
+    max-height: none !important;
+    border: none;
+    overflow: visible;
+  }
+
+  .customize-control-widget_form.wide-widget-control .widget-inside .widget-content {
+    max-width: none !important;
+  }
+}
+/* WordPress Customizer decoration
+---------------------------------------------- */
+#customize-theme-controls {
+  /* Theme-specific sections */
+  /* WordPress sections */
+}
+#customize-theme-controls .accordion-section .accordion-section-title:before {
+  font-family: "fontello";
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 300;
+  margin-right: 0.25em;
+  -webkit-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -ms-transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  /* Simple icon */
+  font-size: 1.25em;
+  color: #9099a2;
+  /* Round icon */
+}
+#customize-theme-controls .accordion-section .accordion-section-title:hover:before {
+  /* Simple icon */
+  color: #0073aa;
+  /* Round icon */
+}
+#customize-theme-controls #accordion-section-title_tagline .accordion-section-title:before {
+  content: '\e95e';
+}
+#customize-theme-controls #accordion-section-general .accordion-section-title:before {
+  content: '\e961';
+}
+#customize-theme-controls #accordion-section-header .accordion-section-title:before {
+  content: '\e967';
+}
+#customize-theme-controls #accordion-section-footer .accordion-section-title:before {
+  content: '\e966';
+}
+#customize-theme-controls #accordion-section-mobile .accordion-section-title:before {
+  content: '\e962';
+}
+#customize-theme-controls #accordion-panel-front_page .accordion-section-title:before {
+  content: '\e965';
+}
+#customize-theme-controls #accordion-panel-blog .accordion-section-title:before {
+  content: '\f511';
+}
+#customize-theme-controls #accordion-section-blog_general .accordion-section-title:before {
+  content: '\f508';
+}
+#customize-theme-controls #accordion-section-blog_general_category .accordion-section-title:before {
+  content: '\f503';
+}
+#customize-theme-controls #accordion-section-blog_general_tag .accordion-section-title:before {
+  content: '\f513';
+}
+#customize-theme-controls #accordion-section-blog_general_author .accordion-section-title:before {
+  content: '\f509';
+}
+#customize-theme-controls #accordion-section-blog_general_search .accordion-section-title:before {
+  content: '\f50a';
+}
+#customize-theme-controls #accordion-section-blog_single .accordion-section-title:before {
+  content: '\f512';
+}
+#customize-theme-controls #accordion-panel-woocommerce .accordion-section-title:before {
+  content: '\e96a';
+}
+#customize-theme-controls #accordion-panel-shop .accordion-section-title:before {
+  content: '\e96a';
+}
+#customize-theme-controls #accordion-section-shop_general .accordion-section-title:before {
+  content: '\e961';
+}
+#customize-theme-controls #accordion-section-shop_list .accordion-section-title:before {
+  content: '\f511';
+}
+#customize-theme-controls #accordion-section-shop_single .accordion-section-title:before {
+  content: '\f508';
+}
+#customize-theme-controls #accordion-section-shop_brand_section .accordion-section-title:before {
+  content: '\e8b9';
+}
+#customize-theme-controls #accordion-section-panel_colors .accordion-section-title:before {
+  content: '\e964';
+}
+#customize-theme-controls #accordion-panel-fonts .accordion-section-title:before {
+  content: '\e95d';
+}
+#customize-theme-controls #accordion-panel-cpt .accordion-section-title:before {
+  content: '\e960';
+}
+#customize-theme-controls #accordion-section-cars .accordion-section-title:before {
+  content: '\f502';
+}
+#customize-theme-controls #accordion-section-certificates .accordion-section-title:before {
+  content: '\f504';
+}
+#customize-theme-controls #accordion-section-courses .accordion-section-title:before {
+  content: '\f505';
+}
+#customize-theme-controls #accordion-section-dishes .accordion-section-title:before {
+  content: '\f506';
+}
+#customize-theme-controls #accordion-section-portfolio .accordion-section-title:before {
+  content: '\f507';
+}
+#customize-theme-controls #accordion-section-properties .accordion-section-title:before {
+  content: '\e971';
+}
+#customize-theme-controls #accordion-section-resume .accordion-section-title:before {
+  content: '\f509';
+}
+#customize-theme-controls #accordion-section-services .accordion-section-title:before {
+  content: '\f50b';
+}
+#customize-theme-controls #accordion-section-sport .accordion-section-title:before {
+  content: '\f50c';
+}
+#customize-theme-controls #accordion-section-team .accordion-section-title:before {
+  content: '\f50d';
+}
+#customize-theme-controls #accordion-section-testimonials .accordion-section-title:before {
+  content: '\f50e';
+}
+#customize-theme-controls #accordion-section-edd .accordion-section-title:before {
+  content: '\f515';
+}
+#customize-theme-controls #accordion-section-bbpress .accordion-section-title:before {
+  content: '\f501';
+}
+#customize-theme-controls #accordion-section-events .accordion-section-title:before {
+  content: '\f516';
+}
+#customize-theme-controls #accordion-panel-tribe_customizer .accordion-section-title:before {
+  content: '\f516';
+}
+#customize-theme-controls #accordion-section-give .accordion-section-title:before {
+  content: '\f514';
+}
+#customize-theme-controls #accordion-section-learnpress .accordion-section-title:before {
+  content: '\f505';
+}
+#customize-theme-controls #accordion-panel-nav_menus .accordion-section-title:before {
+  content: '\e93c';
+}
+#customize-theme-controls #accordion-panel-widgets .accordion-section-title:before {
+  content: '\e977';
+}
+#customize-theme-controls #accordion-section-static_front_page .accordion-section-title:before {
+  content: '\f510';
+}
+#customize-theme-controls #accordion-section-background_image .accordion-section-title:before {
+  content: '\e973';
+}
+#customize-theme-controls #accordion-section-custom_css .accordion-section-title:before {
+  content: '\f50f';
+}
+
+/* Decorate panel 'Typography'
+-------------------------------------------- */
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] li:not(.customize-section-description-container):not(.customize-control-info) + li:not(.customize-control-info) > label,
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] li:not(.customize-section-description-container):not(.customize-control-info) + li:not(.customize-control-info) > div {
+  padding-top: 0;
+  border: none;
+}
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] .customize-control:not(.customize-control-info) {
+  margin: 0;
+}
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] .customize-control:not(.customize-control-info) + .customize-control:not(.customize-control-info) {
+  margin-top: 0.5em;
+}
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] .customize-control:not(.customize-control-info) .customize-control-title {
+  display: inline-block;
+  vertical-align: middle;
+  width: 35%;
+  margin-top: 0;
+  line-height: 1.25em;
+}
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] .customize-control:not(.customize-control-info) .customize-control-title ~ [data-customize-setting-link] {
+  display: inline-block;
+  vertical-align: middle;
+  width: 62%;
+}
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] .customize-control:not(.customize-control-info) .customize-control-description {
+  margin-bottom: 1em;
+}
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] .customize-control-info {
+  margin: 1em 0;
+}
+#customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] .customize-control-info .customize-control-wrap {
+  margin: 0 !important;
+  border: 1px solid #ddd;
+}
+
+body.planty_decorate_fonts_section #customize-controls .wp-full-overlay-sidebar-content {
+  overflow-y: scroll;
+}
+body.planty_decorate_fonts_section .in-sub-panel.section-open #customize-theme-controls #sub-accordion-panel-fonts.customize-pane-child.current-panel {
+  visibility: visible;
+  height: auto;
+  transform: none;
+}
+body.planty_decorate_fonts_section .in-sub-panel #customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 3%;
+  background-color: #fff;
+  width: 94%;
+  border: 2px solid #7ec3e5;
+  padding-top: 1px;
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.125);
+  -ms-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.125);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.125);
+  -webkit-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-transform: translateX(-110%);
+  -ms-transform: translateX(-110%);
+  transform: translateX(-110%);
+}
+body.planty_decorate_fonts_section .in-sub-panel #customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"]:after {
+  content: ' ';
+  display: block;
+  width: 8px;
+  height: 8px;
+  line-height: 8px;
+  text-align: center;
+  border: 2px solid #7ec3e5;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  background-color: #fff;
+  position: absolute;
+  z-index: 1;
+  top: -6px;
+  left: 15px;
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+body.planty_decorate_fonts_section .in-sub-panel #customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"].open {
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  overflow: visible;
+}
+body.planty_decorate_fonts_section .in-sub-panel #customize-theme-controls .customize-pane-child[id^="sub-accordion-section-"][id$="_font_section"] .customize-section-description-container {
+  display: none;
+}
+
+/*# sourceMappingURL=theme-customizer.css.map */

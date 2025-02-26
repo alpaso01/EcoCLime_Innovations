@@ -1,0 +1,117 @@
+@import "../../css/_mixins.scss";
+@import "../../css/_theme-vars.scss";
+
+//@mixin gutenberg--xxl() {
+@media #{$media_xxl} {
+	/* Gutenberg */
+	body.edit-post-visual-editor {
+		line-height: 164.2857%;
+	}
+	.editor-post-sidebar-holder {
+		display: none !important;
+	}
+	.wp-block[data-align="left"] {
+		body.sidebar_position_hide.narrow_content & .is-style-alignfar {
+			margin-left: -11em;
+		}
+	}
+	.wp-block[data-align="right"] {
+		body.sidebar_position_hide.narrow_content & .is-style-alignfar {
+			margin-right: -11em;
+		}
+	}
+}
+
+//@mixin gutenberg--xl() {
+@media #{$media_xl} {
+	/* Gutenberg */
+	.wp-block[data-align="left"] {
+		body.sidebar_position_hide.narrow_content & .is-style-alignfar {
+			margin-left: -8em;
+		}
+	}
+	.wp-block[data-align="right"] {
+		body.sidebar_position_hide.narrow_content & .is-style-alignfar {
+			margin-right: -8em;
+		}
+	}
+}
+
+//@mixin gutenberg--lg() {
+@media #{$media_lg} {
+	/* Gutenberg */
+	body.edit-post-visual-editor {
+		font-size: 13px !important;
+		line-height: 161.54%;
+	}
+	.wp-block[data-align="left"] {
+		body.sidebar_position_hide.narrow_content & .is-style-alignfar {
+			margin-left: 0;
+		}
+	}
+	.wp-block[data-align="right"] {
+		body.sidebar_position_hide.narrow_content & .is-style-alignfar {
+			margin-right: 0;
+		}
+	}
+}
+
+//@mixin gutenberg--sm() {
+@media #{$media_sm} {
+	/* Gutenberg */
+	.wp-block[data-align="left"],
+	.wp-block[data-align="right"] {
+		body.sidebar_position_hide.narrow_content & .is-style-alignfar,
+		body.sidebar_position_hide.normal_content & .is-style-alignfar {
+			max-width: none;
+			float: none;
+			margin: 0;
+		}
+	}
+	body.sidebar_hide.narrow_content .alignwide,
+	body.sidebar_hide.normal_content .alignwide {
+		left: 0;
+		width: 100%;
+	}
+	
+	/* FSE: Post item */
+	.wp-block-group.posts_container.classic_2 .wp-block-query-loop {
+		margin-right: 0;
+
+		& > li {
+			@include flex-basis(100%);
+			@include border-box;
+			padding-right: 0;
+			padding-bottom: 0;
+		}
+		& > li + li {
+			padding-top: var(--theme-var-grid_gap)
+		}
+	}
+}
+
+//@mixin theme--sm_wp() {
+@media #{$media_sm_wp} {
+	/* Media & Text */
+	.wp-block-media-text.is-stacked-on-mobile {
+		.wp-block-media-text__content {
+			padding: 3% 0;
+		}
+		&.alignfull .wp-block-media-text__content {
+			padding: 5% 6%;
+		}
+	}
+	.wp-block-media-text .wp-block-media-text__content {
+			p[class*="font-size"] {
+			margin-bottom: 1em;
+		}
+	}
+}	
+
+//@mixin gutenberg--xs() {
+@media #{$media_xs} {
+	/* Gutenberg */
+	body.edit-post-visual-editor {
+		line-height: 153.84615%;
+	}
+}

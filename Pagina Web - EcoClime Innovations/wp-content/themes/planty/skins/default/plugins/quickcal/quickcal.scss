@@ -1,0 +1,1257 @@
+/* Booked Appointments styles
+----------------------------------------------------------------- */
+
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_theme-vars.scss";
+@import "../../css/_skin-vars.scss";
+
+/* Buttons */
+body #booked-profile-page input[type="submit"],
+body #booked-profile-page input[type="submit"].button-primary,
+body #booked-profile-page button,
+body .booked-list-view input[type="submit"],
+body .booked-list-view input[type="submit"].button-primary,
+body .booked-list-view button,
+body .booked-calendar input[type="submit"],
+body .booked-calendar input[type="submit"].button-primary,
+body .booked-calendar button,
+body .booked-modal input[type="submit"],
+body .booked-modal input[type="submit"].button-primary,
+body .booked-modal button {
+	@include theme_button_template;
+	border-width: 0 !important;
+	white-space: normal;
+}
+
+body #booked-profile-page input[type="submit"],
+body #booked-profile-page button,
+body .booked-list-view input[type="submit"],
+body .booked-list-view button,
+body .booked-calendar input[type="submit"],
+body .booked-calendar button,
+body .booked-modal input[type="submit"],
+body .booked-modal button {
+	@include theme_button_colors;
+	&:hover {
+		@include theme_button_colors_hover;
+	}
+}
+
+body #booked-profile-page {
+	.booked-profile-appt-list button.button-primary,
+	input[type="submit"].button-primary {
+		border-color: var(--theme-color-text_link3) !important;
+		background:  var(--theme-color-text_link3) !important;
+		color: var(--theme-color-inverse_link) !important;
+	}
+	.booked-profile-appt-list button.button-primary:hover,
+	input[type="submit"].button-primary:hover {
+		border-color: var(--theme-color-text_hover3) !important;
+		background:  var(--theme-color-text_hover3) !important;
+		color: var(--theme-color-inverse_link) !important;
+	}
+	.booked-profile-appt-list .appt-block {
+		.booked-fea-buttons > a,
+		.booked-fea-buttons > button {
+			padding: 8px 22px;
+			font-size: 14px;
+			@include border-box;
+		}
+		.booked-fea-buttons > a.delete,
+		.booked-fea-buttons > button.delete,
+		.cancel {
+			padding: 8px;
+			color: var(--theme-color-inverse_hover) !important;
+			border-color: var(--theme-color-text_dark) !important;
+			background:  var(--theme-color-text_dark) !important;
+			@include transition(color .3s ease, border-color .3s ease, background-color .3s ease !important);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			&:hover {
+				color: var(--theme-color-inverse_link) !important;
+				border-color: var(--theme-color-text_link3) !important;
+				background:  var(--theme-color-text_link3) !important;
+			}
+		}
+	}
+	input[type="submit"],
+	input[type="submit"].button-primary{
+		@include font(14px !important, 20px !important);
+		padding: 14px 50px !important;
+	}
+
+	.booked-profile-appt-list .appt-block .booked-cal-buttons {
+		@include flex;
+		@include flex-align-items(center);
+	}
+	.appt-block .booked-cal-buttons .google-cal-button.addeventatc,
+	.booked-profile-appt-list .appt-block .booked-cal-buttons a {
+		text-align: center;
+		@include font(14px !important, 20px !important);
+		padding: 10px 40px !important;
+		@include border-radius(30px);
+		border: none !important;
+		float: none;
+		@include box-shadow(none);
+		@include border-box;
+	}
+	.appt-block .booked-cal-buttons .google-cal-button.addeventatc,
+	.appt-block .booked-cal-buttons .google-cal-button.addeventatc:active {
+		top: 0;
+	}
+	.appt-block .booked-cal-buttons .google-cal-button.addeventatc {
+		color: var(--theme-color-inverse_link) !important;
+		border-color: var(--theme-color-text_link3) !important;
+		background: var(--theme-color-text_link3) !important;
+		@include transition-all(0.3s);
+		&:hover {
+			color: var(--theme-color-inverse_link) !important;
+			border-color: var(--theme-color-text_hover3) !important;
+			background: var(--theme-color-text_hover3) !important;
+		}
+		.addeventatc_icon {
+			display: none;
+		}
+		.addeventatc_dropdown {
+			margin-top: 0;
+			border: none;
+			@include border-radius(15px);
+			overflow: hidden;
+			@include box-shadow(0 2px 6px rgba(0,0,0,.15));
+		}
+	}
+
+	h4 {
+		@include font(1em, 1.2em, 500);
+		&:last-child {
+			margin: 0;
+		}
+	}
+	
+	.booked-profile-appt-list .appt-block {
+		@include font(16px, 1.6em);
+		color: var(--theme-color-text);
+		border-color: var(--theme-color-bd_color);
+		.status-block {
+			display: table !important;
+			padding: 6px 16px;
+			@include border-radius(30px);
+			@include font(14px, 20px, 500);
+			text-transform: capitalize;
+			background-color: var(--theme-color-text_light) !important;
+			color: var(--theme-color-inverse_link);
+		}
+		> i.fa-solid {
+			color: var(--theme-color-text);
+		}
+		&.approved {
+			color: var(--theme-color-text_dark);
+			> i.fa-solid {
+				color: var(--theme-color-text_dark);
+			}
+			.status-block {
+				background-color: var(--theme-color-text_link3) !important;
+				color: var(--theme-color-inverse_link) !important;
+			}
+		}		
+	}
+
+	div.booked-profile-header {
+		padding: 0 0 1.5em;
+		background-color: var(--theme-color-bg_color) !important;
+		border-color: transparent !important;
+		color: var(--theme-color-text);
+		.booked-logout-button {
+			color: var(--theme-color-text_link3);
+			margin-top: 5px;
+		}
+		.booked-logout-button:hover {
+			color: var(--theme-color-text_hover3);
+		}
+	}
+	div.booked-user-avatar {
+		float: none;
+		@include box(50px, 50px);
+		img {
+			@include border-round;
+		}
+	}
+	.booked-user {
+		* {
+			line-height: 1.3em;
+		}
+		@include flex;
+		@include flex-align-items(center);
+		h3 {
+			letter-spacing: 0 !important;
+			color: var(--theme-color-text_dark);
+		}
+		strong {
+			font-weight:400;
+		}
+	}
+	.booked-tabs {
+		border-width: 0;
+		background-color: var(--theme-color-bg_color) !important;
+		border-color: var(--theme-color-alter_bd_color) !important;
+		&.login {
+			border-top-width: 0;
+		}
+		li a {
+			border: 1px solid var(--theme-color-bd_color);
+			@include font(16px, 20px, 500);
+			padding: 10px 20px;
+			background-color: var(--theme-color-bg_color);
+			color: var(--theme-color-text_dark);
+			.counter {
+				@include border-box;
+			}
+		}
+		li.active a {
+			border-bottom-color: transparent;
+		}
+		li a i {
+			color: inherit;
+		}
+		li.active a,
+		li.active a:hover,
+		li a:hover {
+			color: var(--theme-color-alter_dark) !important;
+			background-color: var(--theme-color-alter_bg_color) !important;
+		}
+		li:not(.edit-button) + li {
+			margin-left: -1px !important;
+		}
+	}
+	div.booked-tab-content {
+		margin-top: -1px !important;
+		border-top: 1px solid;
+		@include border-sharp;
+		background-color: var(--theme-color-alter_bg_color);
+		border-color: var(--theme-color-alter_bd_color);
+		.appt-block {
+			border-color: var(--theme-color-alter_bd_color); 
+			> strong {
+				color: var(--theme-color-text_dark) !important;
+			}
+		}
+	}
+	#loginform .login-remember  {
+		label {
+			padding-left: 1.8em;
+			position: relative;
+			@include font(14px !important, 22px !important, 400 !important);
+			color: var(--theme-color-text) !important;
+			input[type="checkbox"] {
+				position: static !important;
+				clip: auto;
+				width: 0;
+				outline: 0 !important;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				&:before {
+					content: '';
+					font-family: $theme_icons;
+					display: block;
+					text-align: center;
+					border: 1px solid var(--theme-color-bd_color);
+					font-size: 7px;
+					@include box(16px, 16px, 15px);
+					@include abs-lt(0, 0.45em);
+					@include border-box;
+					@include border-radius(4px);
+					color: var(--theme-color-text_dark);
+					cursor: pointer;
+					@include transition(all .3s ease);
+				}
+				&:checked:before {
+					content: '\e9f6';
+				}
+			}
+			&:hover input[type="checkbox"]:before {
+				border-color: var(--theme-color-text_dark) !important;
+			}
+		}
+	}
+	
+	p.booked-no-margin {
+		color: var(--theme-color-text);
+	}	
+}
+
+// booked modal
+body .booked-modal {
+	.bm-overlay {
+		background: rgba(0,0,0,.5);
+	}
+
+	.bm-window {
+		padding: 54px 0 30px;
+		@include border-box;
+		@include border-radius(0);
+		@include box-shadow(1px 1px 15px rgba(0,0,0,.2));
+		background: none;
+		p {
+			@include font(16px, 24px);
+			&.appointment-title {
+				font-weight: 500;
+				color: var(--theme-color-text_link3);
+			}
+			&.calendar-name {
+				font-weight: 500;
+				color: var(--theme-color-text_dark);
+			}
+		}
+		p.booked-title-bar {
+			margin: 0;
+			@include border-radius(0);
+			color: var(--theme-color-alter_dark) !important;
+			background-color: var(--theme-color-alter_bg_color) !important;
+			small {
+				@include font(17px, 24px, 500);
+				text-transform: none;
+				letter-spacing: 0;
+			}
+		}
+		.close {
+			font-size: 18px;
+			top: 18px;
+			right: 14px;
+			@include transition(transform .3s ease-out);
+			&:hover {
+				@include transform(rotate(180deg));
+			}
+			i {
+				color: var(--theme-color-alter_dark);
+				&:before {
+					font-weight: 400;
+					font-family: $theme_icons;
+					content: '\E9E1';
+				}
+			}
+		}
+		.booked-scrollable {
+			padding: 25px;
+			@include border-radius(0);
+			color: var(--theme-color-text);
+			background-color: var(--theme-color-bg_color) !important;
+			em {
+				color: var(--theme-color-text_dark);
+				font-style: normal;
+			}
+		}
+		.button.button-primary,
+		.button.booked-forgot-goback,
+		.button.cancel {
+			@include flex;
+			@include flex-justify-content(center);
+			text-align: center;
+			@include font(14px, 21px, 400);
+			padding: 14px 40px;
+			color: var(--theme-color-inverse_link) !important;
+			background: var(--theme-color-text_link3) !important;
+			border-color: var(--theme-color-text_link3) !important;
+			margin: 0;
+			float: none;
+			&:hover {
+				color: var(--theme-color-inverse_link) !important;
+				background: var(--theme-color-text_hover3) !important;
+				border-color: var(--theme-color-text_hover3) !important;
+			}
+		}
+		input[type="submit"].button:disabled {
+			@include box-shadow(none !important);
+			color: var(--theme-color-inverse_link) !important;
+			background: var(--theme-color-bd_color) !important;
+			border-color: var(--theme-color-bd_color) !important;
+		}
+		#customerChoices {
+			text-align: left;
+			padding: 5px 0 18px;
+			margin: 0;
+			margin-bottom: 14px;
+			@include flex;
+			@include flex-align-items(flex-start);
+			@include flex-justify-content(flex-start);
+			background-color: transparent;
+			border-color: var(--theme-color-bd_color);
+			&.bookedClearFix:after {
+				display: none;
+			}
+			.field {
+				margin: 0;
+				margin-right: 30px;
+				line-height: 1;
+				&:last-child {
+					width: auto;
+					margin-right: 0;
+				}
+				.checkbox-radio-block {
+					padding: 0;
+					label {
+						@include font(16px, 21px, 400);
+					}
+				}
+			}
+		}
+		#condition-current,
+		#condition-new {
+			padding-bottom: 10px;
+		}
+		#newAppointmentForm {
+			.field {
+				margin: 12px 0 0;
+			}
+			.bookings .field {
+				margin: 0;
+			}
+			p.status {
+				color: var(--theme-color-text);
+				padding: 0 0 10px;
+			}
+		}		
+	}
+
+	.booked-form {
+		// login form
+		#ajaxlogin {
+			.field {
+				margin: 0;
+			}
+			.booked-forgot-password {
+				display: inline-block;
+				margin-top: 10px;
+				@include font(16px, 21px);
+				color: var(--theme-color-text_link3);
+				&:hover {
+					color: var(--theme-color-text_hover3);
+				}
+			}
+		}
+		// fields
+		.field {
+			&:last-child {
+				width: 100%;
+				@include flex;
+				@include flex-justify-content(space-between);
+				@include flex-wrap(wrap);
+				&:after {
+					display: none;
+				}
+			}
+			label.field-label {
+				@include font(16px ,24px, 500);
+				padding: 5px 0 5px;
+				color: var(--theme-color-text_dark);
+				.required-asterisk {
+					font-size: 8px;
+					margin: 5px 0 0 5px;
+					vertical-align: top;
+					color: var(--theme-color-text_link);
+				}
+			}
+			p.field-small-p {
+				margin: 0 0 5px;
+				@include font(16px, 24px);
+			}
+			.checkbox-radio-block {
+				line-height: 1em;
+				padding: 2px 0;
+				label {
+					padding-left: 1.6em;
+					top: 0;
+					&:before {
+						top: 0.45em;
+					}
+				}
+			}
+			select {
+				height: auto;
+			}
+			select,
+			input[type="text"],
+			input[type="password"],
+			input[type="tel"],
+			input[type="email"],
+			textarea {
+				width: 100%;
+				float: none;
+				@include font(16px, 1.5em);
+				margin: 0;
+				padding: 12px 0;
+				border: none;
+				@include border-radius(0);
+				color: var(--theme-color-input_text);
+				background-color: var(--theme-color-input_bg_color);
+				border-bottom: 1px solid var(--theme-color-input_bd_color);
+				&:focus,
+				&.filled {
+					color: var(--theme-color-input_dark);
+					background-color: var(--theme-color-input_bg_hover);
+					border-color: var(--theme-color-input_bd_hover);
+				}
+			}
+		}
+		.cf-block {
+			select {
+			visibility: visible;
+				height: auto;
+				-webkit-appearance: auto;
+		}
+			.paid-variations {
+				width: 100%;
+			}
+		}
+		.booked-appointments {
+			margin: 0 0 10px;
+			@include border-radius(4px);
+			color: var(--theme-color-text);
+			background-color: var(--theme-color-bg_color) !important;
+			p.appointment-info {
+				margin-top: 8px;
+				@include font(15px, 19px);
+				i:before {
+					font-family: $theme_icons;
+					content: '\E9B7';
+					font-weight: 400;
+					color: var(--theme-color-text_link3);
+				}
+			}
+		}
+	}
+}
+
+body .booked-custom-error {
+	padding: 6px 12px;
+	border-color: red;
+	background-color: transparent;
+	@include border-radius(0);
+	font-size: 14px;
+}
+body #booked-profile-page p.booked-form-notice,
+body #booked-plugin-page p.booked-form-notice {
+	border-color: var(--theme-color-text_link3);
+	background-color: transparent;
+	@include border-radius(0);
+	margin: 0 0 20px;
+	padding: 6px 12px;
+	font-size: 14px;
+}
+
+// user profile
+body #booked-page-form {
+	color: var(--theme-color-text);
+	border-color: var(--theme-color-bd_color);
+	.login-remember {
+		float: none;
+		margin: 0;
+		input {
+			display: inline;
+			vertical-align:middle;
+		}
+	}
+	.login-submit {
+		float: none;
+		margin-top: 15px;
+	}
+}
+
+.ua_ie #booked-profile-page #loginform .login-remember  {
+	label {
+		padding-left: 0;
+	}
+	input[type="checkbox"] {
+		width: auto;
+		&:before {
+			display: none;
+		}
+	}
+}
+
+// user profile content
+body #booked-page-form input[type="email"],
+body #booked-page-form input[type="text"],
+body #booked-page-form input[type="password"],
+body #booked-page-form textarea {
+	@include theme_field_colors;
+}
+body #booked-page-form input[type="email"]:focus,
+body #booked-page-form input[type="email"].filled,
+body #booked-page-form input[type="text"]:focus,
+body #booked-page-form input[type="text"].filled,
+body #booked-page-form input[type="password"]:focus,
+body #booked-page-form input[type="password"].filled,
+body #booked-page-form textarea:focus,
+body #booked-page-form textarea.filled {
+	@include theme_field_colors_hover;
+}
+
+#booked-page-form #profile-register,
+#booked-page-form #profile-login,
+#booked-page-form #profile-forgot,
+#profile-edit #booked-page-form {
+	label {
+		@include font(15px, 1em, 500);
+		color: var(--theme-color-text_dark);
+	}
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	textarea {
+		border-left: none;		
+		border-right: none;		
+		border-top: none;		
+		padding: 0.6em 0;
+	}
+}
+#profile-edit #booked-page-form {
+	.form-table {
+		margin-bottom: 2em;
+	}
+	label {
+		@include font(15px, 1em, 500 !important);
+		color: var(--theme-color-text_dark);
+	}
+	body & .hint-p {
+		color: var(--theme-color-text_light);
+	}
+	body & p.form-submit {
+		margin-top: 10px;
+		margin-bottom: 0;
+	}
+}
+body .booked-upload-wrap {
+	span {
+		font-size: 16px;
+		color: var(--theme-color-alter_dark);
+	}
+	&,
+	input {
+		background: transparent;
+		border-color:  var(--theme-color-alter_bd_color);
+		@include border-radius(0);
+		@include transition-colors;
+	}
+	&:hover {
+		background-color: transparent;
+		border-color:  var(--theme-color-alter_dark);
+	}
+}
+
+// calendar switcher
+body .booked-calendarSwitcher {
+	background: var(--theme-color-alter_bg_color) !important;
+	color: var(--theme-color-alter_dark) !important;
+	@include border-radius(0);
+	&.calendar {
+		padding: 5px 15px;
+	}	
+	&:before {
+		color: var(--theme-color-alter_dark);
+		display: none;
+	}
+	.select_container:after {
+		color: var(--theme-color-alter_dark);
+	}
+	> p {
+		margin: 0;
+		i.fa-solid {
+			color: var(--theme-color-alter_link);
+		}
+		select {
+			height: auto;
+			font-size: inherit;
+			color: var(--theme-color-alter_dark);
+		}
+	}
+}
+
+body .calendarSavingState {
+	font-size: 16px;
+	@include box(19px,19px,19px);
+	text-align: center;
+	.fa-spin {
+		line-height: inherit;
+	}
+}
+
+body #booked-profile-page input[type="submit"].bb-small,
+body #booked-profile-page button.bb-small,
+body .booked-list-view input[type="submit"].bb-small,
+body .booked-list-view button.bb-small,
+body .booked-calendar input[type="submit"].bb-small,
+body .booked-calendar button.bb-small,
+body .booked-modal input[type="submit"].bb-small,
+body .booked-modal button.bb-small {
+	padding: 4px 12px;
+	@include font(15px, 18px);
+	> i {
+		margin-bottom: -1px;
+	}
+}
+
+// booked list view
+body div.booked-calendar-wrap.booked-list-view .booked-appt-list {
+	margin: 0;
+}
+body .booked-list-view {
+	a.booked_list_date_picker_trigger {
+		color: var(--theme-color-text_link);
+		&.booked_list_date_picker_trigger.booked-dp-active {
+			background: none;
+			&:hover {
+				background: none;
+				color: var(--theme-color-text_hover);
+			}
+		}
+	}
+	button.button {
+		color: var(--theme-color-inverse_link) !important;
+		background: var(--theme-color-text_link3) !important;
+		&:hover {
+			color: var(--theme-color-inverse_link) !important;
+			background: var(--theme-color-text_hover3) !important;
+		}
+	}
+}
+
+// datepicker
+#ui-datepicker-div.booked_custom_date_picker {
+	@include border-radius(0);
+	.ui-datepicker-header {
+		.ui-datepicker-title {
+			@include font(13px, 1.7em, 500);
+		}
+		> a {
+			&[class*="ui-datepicker"] {
+				top: 14px;
+				font-size: 11px;
+			}			
+			&:before {
+				font-family: $theme_icons;
+				font-weight: 400;
+			}
+			&.ui-datepicker-prev:before {
+				content: '\E9E5';
+			}
+			&.ui-datepicker-next:before {
+				content: '\E9E6';
+			}
+		}		
+	}
+	table.ui-datepicker-calendar {
+		thead th {
+			background: var(--theme-color-alter_bg_color) !important;
+			color: var(--theme-color-alter_dark) !important;
+		}
+		tbody td a {
+			@include border-radius(0);
+		}
+	}
+}
+
+// booked list
+body div.booked-calendar-wrap {
+	margin: 0;
+	.booked-appt-list {
+		@include box-shadow(none);
+		@include scale(1);
+		@include border-radius(0);
+		background: none;
+		padding: 40px 30px 30px;
+		p {
+			color: var(--theme-color-text);
+		}
+		h2 {
+			margin: 0 0 28px;
+			@include font(24px, 1.2em);
+			color: var(--theme-color-text_dark);
+			strong {
+				font-weight: inherit;
+			}
+		}
+		.timeslot {
+			padding: 15px 0;
+			margin: 0;
+			border-color: var(--theme-color-bd_color);
+			&:hover {
+				background-color: transparent;
+			}
+			&:last-child {
+				margin: 0;
+			}
+			.timeslot-mobile-title {
+				display: none;
+			}
+			.timeslot-time,
+			.timeslot-people {
+				height: auto;
+				color: var(--theme-color-text_dark);
+				padding: 0;
+			}
+			.timeslot-time {
+				@include font(16px, 19px, 500);
+				i {
+					color: var(--theme-color-text_dark);
+					&:before {
+						@include font(18px, '', 400);
+						font-family: $theme_icons;
+						content: '\EA00';
+						margin-right: 5px;
+					}
+				}
+			}
+			.timeslot-title {
+				color: var(--theme-color-text_dark);
+			}
+			.spots-available {
+				padding: 2px 0 0 33px;
+				@include font(15px, 19px, 400);
+				text-transform: none;
+				color: var(--theme-color-text);
+			}
+			.timeslot-people button {
+				@include font(14px, 21px, 400);
+				padding: 14px 40px;
+				color: var(--theme-color-inverse_link) !important;
+				background: var(--theme-color-text_link3) !important;
+				@include border-radius(40px);
+				@include box-shadow(none !important);
+				.button-timeslot {
+					font-weight: inherit;
+					letter-spacing: 0;
+				}
+				&:hover {
+					color: var(--theme-color-inverse_link) !important;
+					background: var(--theme-color-text_hover3) !important;
+				}
+				&[disabled],
+				&[disabled]:hover {
+					color: var(--theme-color-inverse_link) !important;
+					background: var(--theme-color-text_light) !important;					
+				}				
+			}
+		}		
+	}
+}
+
+// QuickCal compatibility
+body div.booked-calendar {
+	border: none;
+	.bc-body .bc-col {
+		border: none;
+	}
+	.monthName {
+		color: inherit;
+	}
+}
+body div.booked-calendar-wrap div.booked-calendar .bc-head .bc-row .bc-col .page-right,
+body div.booked-calendar-wrap div.booked-calendar .bc-head .bc-row .bc-col .page-left {
+	color: inherit !important;
+}
+body div.booked-calendar-wrap:not(.small) div.booked-calendar .bc-head,
+body div.booked-calendar .fa.fa-spin,
+body div.booked-calendar .booked-icon-spin {
+	color: var(--theme-color-inverse_link) !important;
+}
+body div.booked-calendar-wrap.small div.booked-calendar .bc-body .bc-col,
+body div.booked-calendar-wrap.small div.booked-calendar .bc-head .bc-row.days,
+body div.booked-calendar-wrap.small div.booked-calendar .bc-head .bc-col {
+	border-bottom: none !important;
+}
+
+// booked calendar
+body div.booked-calendar-wrap div.booked-calendar {
+	@include border-radius(0);
+	@include box-shadow(none);
+	background: transparent;
+	--theme-var-booked-arrow-space: 20px;	
+
+	.bc-head {
+		text-transform: inherit;
+		.bc-row.top .bc-col {
+			padding: 1.05rem 0 1.15rem;
+			border-color: var(--theme-color-text_link2) !important;
+			background: var(--theme-color-text_link2) !important;
+		}
+		.bc-row .bc-col {
+			width: 100%;
+			.monthName {
+				@include font(19px, 1em, 500);
+				height: 1em;
+				letter-spacing: 0;
+				.backToMonth {
+					@include font(14px, 1.5em);
+					color: rgba(255, 255, 255, 0.8);
+					&:hover {
+						color: rgba(255, 255, 255, 1);
+					}
+				}
+			}
+			.page-right,
+			.page-left {
+				font-size: 12px;
+				font-weight: 400;
+				margin-top: -7px;
+				i {
+					font-style: normal;
+					&:before {
+						font-family: $theme_icons;
+						font-weight: 400;
+					}
+				}
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+			.page-left {
+				left: var(--theme-var-booked-arrow-space);
+				&:hover {
+					left: var(--theme-var-booked-arrow-space);
+				}
+				i:before {
+					content: '\EA07';
+				}
+			}
+			.page-right {
+				right: var(--theme-var-booked-arrow-space);
+				&:hover {
+					right: var(--theme-var-booked-arrow-space);
+				}
+				i:before {
+					content: '\E9DF';
+				}
+			}
+		}
+		
+		.bc-row.days {
+			color: var(--theme-color-alter_dark) !important;
+			background: var(--theme-color-alter_bg_color) !important;
+			border: 1px solid var(--theme-color-bd_color);
+			.bc-col {
+				border-color: var(--theme-color-bd_color) !important;
+				background: inherit !important;
+				padding: 12px 0;
+				@include font(14px, 1.2em, 400);
+				letter-spacing: 0;
+				border-width: 0 1px 0 0;
+				&:last-child {
+					border-width: 0;
+				}				
+			}
+		}
+	}
+
+	.booked-appt-list .timeslot {
+		border-top: none;
+		+ .timeslot {
+			border-top: 1px solid var(--theme-color-bd_color);
+		}
+	}
+
+	.bc-body {
+		border: 1px solid var(--theme-color-bd_color);
+		margin-top: -1px;
+		.bc-row.week + .bc-row.week .bc-col {
+			border-top: 1px solid var(--theme-color-bd_color);
+		}
+		.bc-row.week div.bc-col {
+			color: var(--theme-color-text_dark);
+			border-color: var(--theme-color-bd_color) !important;
+
+			.date {
+				@include transition-all(0.3s);
+				background: transparent;
+				.number {
+					@include font(19px, 24px, 500);
+					@include box(auto, auto, normal);
+					@include border-radius(0);
+					@include abs-cc();
+					margin: 0;
+					color: inherit !important;
+					background: transparent !important;
+				}
+			}
+			&.active {
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+			&.today.active,
+			&.active,
+			&:hover {
+				span.date {
+					color: var(--theme-color-inverse_link) !important;
+					background-color: var(--theme-color-text_link3) !important;
+					.number {
+						background: transparent !important;
+						color: inherit !important;
+					}				
+				}
+			}
+			&.active span.date .number,
+			&:not(.prev-date):hover span.date .number {
+				opacity: 1;
+			}
+
+			&.prev-date:hover,
+			&.prev-date {
+				.date {
+					background: none !important;
+					color: var(--theme-color-text_light) !important;
+				}
+			}
+
+			&.today.prev-date .date,
+			&.today .date {
+				color: var(--theme-color-inverse_hover) !important;
+				background-color: var(--theme-color-text_dark) !important;
+				.number {
+					@include box-shadow(none);
+					color: var(--theme-color-inverse_hover) !important;
+					background: none !important;
+				}
+			}
+			&.today.prev-date:hover .date,
+			&.today:hover .date {
+				color: var(--theme-color-inverse_hover) !important;
+				.number {
+					color: var(--theme-color-inverse_hover) !important;
+					background: none !important;
+				}
+			}
+
+			&.next-month,
+			&.prev-month {
+				.date {
+					color: var(--theme-color-text_light) !important;
+					background: transparent !important;
+					.number {
+						opacity: 0.5;
+					}
+				}
+			}
+		}
+
+		.bc-row.entryBlock {
+			color: var(--theme-color-text);
+			background: none;
+			.bc-col {
+				color: var(--theme-color-text);
+				background: none;
+				border: 20px solid var(--theme-color-text_link3);
+				padding: 0;
+			}
+		}
+	}
+}
+
+// booked calendar small
+body div.booked-calendar-wrap.small {
+	background-color: var(--theme-color-alter_bg_color);
+	@include border-radius(14px);
+
+	.booked-calendar {
+		padding: 0 25px !important;
+	}
+	div.booked-calendar .bc-head {
+		color: var(--theme-color-text_dark);
+		background: transparent !important;		
+		.bc-row.top .bc-col {
+			padding: 1.5rem 0;
+			background: transparent !important;
+			border: none;			
+		}
+		.bc-row .bc-col {
+			.calendarSavingState {
+				@include box(24px,24px,24px);
+			}
+			.monthName {
+				height: 1em;
+				text-align: center;
+				@include font(24px, 1em, 500);
+				@include flex;
+				@include flex-direction(column);
+				@include flex-justify-content(center);
+				@include flex-align-items(center);
+				.backToMonth {
+					display: block;
+					top: 0;
+					padding: 2px 0 0 0;
+					font-size: 13px;
+					color: var(--theme-color-text_dark);
+					&:hover {
+						opacity: 0.8;
+					}
+				}
+			}
+			.page-right,
+			.page-left {
+				color: var(--theme-color-text_dark) !important;
+				font-size: 12px;
+				font-weight: 400;
+				margin-top: -5px;				
+			}
+			.page-left {
+				left: 15px;
+				&:hover {
+					left: 15px;
+				}
+				i:before {
+					content: '\E9E5';
+				}
+			}
+			.page-right {
+				right: 15px;
+				&:hover {
+					right: 15px;
+				}
+				i:before {
+					content: '\E9E6';
+				}
+			}
+		}
+
+		.bc-row.days {
+			border: none;
+			background-color: var(--theme-color-bg_color) !important;
+			color: var(--theme-color-text_dark) !important;
+			position: relative;
+			&:before {
+				display: block;
+				content: "";
+				@include abs-pos(0, -50%, 0, -50%, 1);
+				width: 200%;
+				height: 100%;
+				background-color: var(--theme-color-bg_color);
+			}
+			.bc-col {
+				padding: 15px 0;
+				position: relative;
+				z-index: 2;
+				font-size: 14px;
+				border: none;
+			}
+		}		
+	}
+
+	div.booked-calendar .bc-body {
+		border: none;
+		padding: 25px 0;
+		.bc-row.entryBlock .bc-col {
+			border: none;
+		}
+		.bc-row.week {
+			+ .bc-row.week .bc-col {
+				border: none;
+			}
+			.bc-col {
+				border: none;
+				@include border-radius(4px);
+				.date {
+					.number {
+						@include font(14px, 18px !important, 400);
+						@include box(auto, auto, normal);
+						@include border-radius(0);
+						@include abs-cc();
+						margin: -1px 0 0 0;
+					}
+				}
+				&.active:not(.prev-date),
+				&:not(.prev-date):hover {
+					span.date {
+						color: var(--theme-color-inverse_link) !important;
+						background-color: var(--theme-color-alter_link2) !important;
+						.number {
+							background: transparent !important;
+							color: inherit !important;
+						}				
+					}
+				}
+			}
+		}
+	}
+
+	.booked-appt-list {
+		padding: 10px 20px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 375px;
+		border: 7px solid var(--theme-color-alter_link2);
+		/* Scrollbar decoration */
+		// Firefox
+		scrollbar-width: thin;
+		// WebKit-based browsers
+		&::-webkit-scrollbar {
+			width: 8px;
+		}
+		&::-webkit-scrollbar-track {
+			background: var(--theme-color-bg_color);
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: var(--theme-color-bd_color);
+		}
+		h2 {
+			@include font(18px, 1.2em);
+			margin: 10px 0 5px;
+		}
+		.timeslot {
+			padding: 14px 0;
+			border-top: none;
+			+ .timeslot {
+				border-top: 1px solid var(--theme-color-alter_bd_color);
+			}			
+			.timeslot-people button.button {
+				line-height: inherit;
+				@include flex;
+				@include flex-direction(column);
+				@include flex-justify-content(center);
+				.button-timeslot {
+					font-weight: inherit;
+					position: relative;
+					@include font(15px, 18px);
+					letter-spacing: 0;
+					&:before {
+						font-family: $theme_icons;
+						content: '\EA00';
+						@include font(14px, '', 400);
+						margin-right: 8px;
+					}
+				}
+				.spots-available {
+					padding: 2px 0 3px;
+					color: var(--theme-color-inverse_link);
+					opacity: .8;
+					line-height: 1em;
+				}
+				.timeslot-mobile-title {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+// booked calendar small in sidebar
+body [class*="scheme_"].sidebar div.booked-calendar-wrap.small {
+	margin-top: -1rem;
+	background-color: transparent !important;
+	div.booked-calendar {
+		padding: 0 !important;
+		.bc-head .bc-row {
+			.bc-col .calendarSavingState {
+				@include box(18px,18px,18px);
+			}
+			.bc-col .monthName {
+				font-size: 18px;
+			}
+			&.days .bc-col {
+				padding: 5px;
+				font-size: 12px;
+			}
+		}
+		.bc-body {
+			padding: 0;
+		}
+	}
+}

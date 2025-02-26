@@ -1,0 +1,101 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_theme-vars.scss";
+@import "../../css/_skin-vars.scss";
+
+
+@media #{$media_xl} {
+	/* Blog layout: Portfolio */
+	.post_layout_portfolio .post_featured.hover_info .post_info {
+		padding: 20px 30px;
+	}
+	.post_layout_portfolio_4 .post_featured.hover_info .post_info {
+		padding: 20px;
+	}
+	.blog_style_portfolio_4 .column-1_4 {
+		width: 33.33%;
+	}
+}
+
+@media #{$media_lg} {
+	.post_layout_portfolio .post_featured.hover_info .post_info {
+		padding: 16px 20px;
+	}
+	.post_featured.hover_info .post_info .post_title {
+		font-size: 22px;
+		.hover-arrow {
+			margin-top: 12px;
+		}
+	}
+	.post_featured.hover_info .post_info .post_descr {
+		margin: 0 0 8px;
+	}
+	.post_layout_portfolio_4 {
+		.post_featured.hover_info .post_info {
+			padding: 15px 17px;
+		}
+		.post_featured.hover_info .post_info .post_descr {
+			margin: 0 0 5px;
+		}
+		.post_featured.hover_info .post_info .post_title,
+		.post_title {
+			font-size: 17px;
+		}
+		.post_featured.hover_info .post_info .post_title .hover-arrow {
+			margin-top: 5px;
+		}
+	}
+}
+
+
+@media #{$media_md} {
+	.post_featured.hover_info .post_info .post_title {
+		font-size: 20px;
+	}
+	.post_layout_portfolio_4 .post_featured.hover_info .post_info .post_title,
+	.post_layout_portfolio_4 .post_title {
+		font-size: 20px;
+	}
+	.portfolio_4 .column-1_4 {
+		width: 50%;
+	}
+	.post_layout_portfolio .post_featured.hover_info .post_info,
+	.post_layout_portfolio_4 .post_featured.hover_info .post_info {
+		padding: 20px;
+	}
+	.blog_style_portfolio_3 .column-1_3 {
+		width: 50%;
+	}
+	.post_layout_portfolio_2 {
+		&.post_format_audio {
+			.post_featured {
+				.post_audio_author {
+					font-size: 13px;
+				}
+				.post_audio_title {
+					font-size: 20px;
+				}
+				div.mejs-controls .mejs-time {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+
+@media #{$media_sm} {
+	.post_layout_portfolio .post_featured.hover_info .post_info .post_title .hover-arrow,
+	.post_layout_portfolio_4 .post_featured.hover_info .post_info .post_title .hover-arrow {
+		margin-top: 10px;
+	}
+	.post_layout_portfolio .post_featured.hover_info .post_info .post_title,
+	.post_layout_portfolio_4 .post_featured.hover_info .post_info .post_title,
+	.post_layout_portfolio_4 .post_title {
+		line-height: 1.3em;
+	}
+}
+
+
+@media #{$media_xs} {
+
+}

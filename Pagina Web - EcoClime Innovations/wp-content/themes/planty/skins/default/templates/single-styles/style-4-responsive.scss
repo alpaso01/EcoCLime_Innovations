@@ -1,0 +1,165 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_theme-vars.scss";
+@import "../../css/_skin-vars.scss";
+
+@media #{$media_xxl} {
+	.single_style_style-4.single-format-audio .post_header_wrap_in_header .post_featured.without_thumb .post_audio {
+		max-width: 80%;
+	}
+}
+
+@media #{$media_xl} {
+	.single_style_style-4.single-format-audio .post_header_wrap_in_header .post_featured.without_thumb .post_audio {
+		max-width: 90%;
+	}
+}
+@media #{$media_lg} {
+	.post_header_wrap_style_style-4 .post_header .post_meta_other {
+		margin-top: 1.5em;
+	}
+	.post_header_wrap_style_style-4 {
+		margin-bottom: 3.5em;
+	}
+	.post_header_wrap_style_style-4 .post_header {
+		margin-bottom: 3em;
+	}
+	.single_style_style-4.single-format-audio .post_header_wrap_in_header.with_featured_image .post_audio .post_info_audio {
+		display: none;
+	}
+	.single_style_style-4.single-format-audio .post_header_wrap_in_header .post_featured.without_thumb .post_audio {
+		max-width: 100%;
+	}
+	.single_style_style-4.single-format-audio .post_header_wrap_in_header .post_featured.without_thumb .post_audio .post_info_audio {
+		max-width: unset;
+	}
+}
+
+
+//@mixin theme--md() {
+@media #{$media_md} {
+	/* Single post header */
+	.post_header_wrap_style_style-4 .post_featured.post_featured_bg {
+		height: 30rem;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_meta_categories {
+		margin-bottom: 10px;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_title,
+	.post_header_wrap_style_style-4 .post_header .post_subtitle {
+		max-width: 90%;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_meta_other {
+		margin-top: 1.1em;
+	}
+	.post_header_wrap_style_style-4 .post_header {
+		margin-bottom: 2em;
+	}
+	.single_style_style-4 .page_content_wrap {
+		padding-top: 3.5em;
+	}
+	.post_header_wrap_style_style-4 {
+		margin-bottom: 3em;
+	}
+}
+
+//@mixin theme--sm() {
+@media #{$media_sm} {
+	/* Single post header */
+	.single_style_style-4 .page_content_wrap {
+		padding-top: 3em;
+	}
+	.post_header_wrap_style_style-4 {
+		margin-bottom: 2.2em;
+	}
+	.post_header_wrap_style_style-4 .post_header {
+		margin-bottom: 1.8em;
+	}
+	.post_header_wrap_style_style-4 .post_featured.post_featured_bg {
+		height: 20rem;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_title,
+	.post_header_wrap_style_style-4 .post_header .post_subtitle {
+		max-width: none;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_meta_other .post_meta_item.post_author_name,
+	.post_header_wrap_style_style-4 .post_header .post_meta_other .post_meta_item.post_date {
+		white-space: normal;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_meta_other {
+		margin-top: 0.9em;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_meta_categories {
+		margin-bottom: 7px;
+	}
+	.single_style_style-4.single-format-audio .post_header_wrap_in_header .post_featured.without_thumb .post_audio .audio_wrap {
+		div.mejs-controls .mejs-time {
+			display: none;
+		}
+	}
+	.single_style_style-4 .post_featured.with_video .post_info_video {
+		padding: 15px;
+		.post_info_meta,
+		.post_info_title,
+		.post_info_subtitle {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 100%;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+			display: -moz-box;
+			-moz-line-clamp: 1;
+			-moz-box-orient: vertical;
+			line-clamp: 1;
+			box-orient: vertical;
+		}
+		.post_info_meta {
+			display: none;
+		}
+		.post_info_title {
+			font-size: 17px;
+		}
+		.post_info_subtitle {
+			display: none;
+		}
+	}
+	.single_style_style-4 .post_featured.with_video.without_thumb .post_info_video {
+		padding: 20px;
+		.post_info_meta {
+			display: -webkit-box;
+			display: -moz-box;
+			font-size: 15px;
+		}
+		.post_info_subtitle {
+			display: -webkit-box;
+			display: -moz-box;
+			font-size: 15px;
+		}
+	}
+}
+
+//@mixin theme--xs() {
+@media #{$media_xs} {
+    /* Single post header */
+	.single_style_style-4 .page_content_wrap {
+		padding-top: 2em;
+	}
+	.post_header_wrap_style_style-4 {
+		margin-bottom: 1.6em;
+	}
+	.post_header_wrap_style_style-4 .post_header {
+		margin-bottom: 1.3em;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_meta_other .post_meta_item .post_author_avatar > img {
+		width: 26px;
+		height: 26px;
+		line-height: 26px;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_meta_other .post_meta_item .post_author_avatar {
+		margin-right: 10px;
+	}
+	.post_header_wrap_style_style-4 .post_header .post_meta_categories {
+		margin-bottom: 5px;
+	}
+
+}

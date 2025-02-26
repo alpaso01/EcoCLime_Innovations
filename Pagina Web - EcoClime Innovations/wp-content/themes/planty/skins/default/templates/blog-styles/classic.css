@@ -1,0 +1,220 @@
+/* Blog layout: Classic 
+------------------------- */
+body[class*="blog_style_classic"] .posts_container.columns_wrap {
+  margin-bottom: calc(-1 * (var(--theme-var-grid_gap) + 15px));
+}
+
+.posts_container.columns_wrap {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.posts_container.columns_wrap .post_layout_classic {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.post_layout_classic {
+  position: relative;
+  border-color: var(--theme-color-bd_color);
+}
+.post_layout_classic.format-gallery .post_featured.with_thumb .slider_outer {
+  height: 100%;
+}
+.post_layout_classic.format-gallery .post_featured.with_thumb .slider_outer .slider_container {
+  height: 100% !important;
+}
+
+.post_layout_classic .post_featured {
+  margin-bottom: 1em;
+  -webkit-border-radius: 14px;
+  -ms-border-radius: 14px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.post_layout_classic .post_featured[class*="hover_"] {
+  display: block;
+}
+
+.post_layout_classic .post_header {
+  padding-top: 0.02px;
+}
+
+.post_layout_classic .post_category {
+  margin-bottom: 0.5em;
+}
+
+.post_layout_classic .post_title {
+  margin: 0;
+}
+
+.post_layout_classic blockquote {
+  margin: 0;
+}
+
+.post_layout_classic .post_header + .post_content {
+  padding-top: 1em;
+}
+
+.post_layout_classic .post_content + .post_meta {
+  margin-top: 1em;
+}
+
+.post_layout_classic {
+  padding-bottom: 15px;
+  /* video */
+}
+.post_layout_classic .post_meta {
+  margin: 0;
+}
+.post_layout_classic .post_title {
+  font-size: 28px;
+  margin-top: 12px;
+}
+.post_layout_classic .format-audio .post_featured .post_audio_title {
+  font-size: 24px;
+  line-height: 1.3em;
+  font-weight: 500;
+  margin-top: 0.4em;
+  margin-bottom: 0.5em;
+}
+.post_layout_classic .format-audio .post_featured .post_audio_author {
+  font-size: 13px;
+}
+.post_layout_classic .post_info_audio {
+  margin-top: 5px;
+}
+.post_layout_classic div.mejs-controls div.mejs-button > button {
+  border: none;
+}
+.post_layout_classic div.mejs-controls div.mejs-button.mejs-playpause-button > button {
+  background-color: var(--theme-color-bg_color) !important;
+}
+.post_layout_classic div.mejs-controls div.mejs-button.mejs-volume-button {
+  width: 30px;
+}
+.post_layout_classic div.mejs-controls div.mejs-button.mejs-volume-button > button {
+  width: 30px;
+  height: 40px;
+  line-height: 42px;
+}
+.post_layout_classic div.mejs-controls .mejs-horizontal-volume-slider {
+  margin-left: 5px;
+}
+.post_layout_classic div.mejs-controls .mejs-time.mejs-duration-container {
+  margin-right: 5px;
+}
+.post_layout_classic div.mejs-controls .mejs-time.mejs-currenttime-container {
+  margin-left: 10px;
+}
+.post_layout_classic div.mejs-controls .mejs-time-rail {
+  margin: 0 12px;
+}
+.post_layout_classic .format-audio .post_featured.without_thumb .post_audio:not(.with_iframe),
+.post_layout_classic .single-format-audio .post_featured.without_thumb .post_audio:not(.with_iframe),
+.post_layout_classic .sc_layouts_blog_item_featured .post_featured.without_thumb .post_audio:not(.with_iframe) {
+  padding: 30px;
+}
+.post_layout_classic .trx_addons_video_player.with_cover .video_hover,
+.post_layout_classic .post_featured.with_thumb .post_video_hover {
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  margin: -32px 0 0 -32px;
+  font-size: 17px;
+  letter-spacing: -4px;
+}
+.post_layout_classic .swiper-pagination-bullets {
+  display: none;
+}
+.post_layout_classic .slider_container.slider_controls_side .slider_controls_wrap > a, .post_layout_classic .slider_outer_controls_side .slider_controls_wrap > a {
+  opacity: 1;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.post_layout_classic .slider_container.slider_controls_side .slider_controls_wrap > a,
+.post_layout_classic .slider_outer_controls_side .slider_controls_wrap > a {
+  width: 34px;
+  height: 34px;
+  line-height: 30px;
+  margin-top: -17px;
+}
+.post_layout_classic .slider_container.slider_controls_side .slider_controls_wrap > a:before,
+.post_layout_classic .slider_outer_controls_side .slider_controls_wrap > a:before {
+  font-size: 13px;
+}
+.post_layout_classic .swiper-button-next, .post_layout_classic .swiper-button-prev {
+  margin-top: -17px !important;
+}
+.post_layout_classic .post_meta_item.post_categories {
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--theme-color-text_dark);
+}
+.post_layout_classic .post_meta_item.post_categories a {
+  color: var(--theme-color-text_dark);
+}
+.post_layout_classic .post_meta_item.post_categories a:hover {
+  color: var(--theme-color-text_link);
+}
+.post_layout_classic .post_meta_item.post_sponsored .post_sponsored_label {
+  font-size: 13px;
+}
+
+.post_layout_classic_4 .post_title,
+.sc_layouts_submenu .post_layout_classic .post_title {
+  font-size: 24px;
+}
+
+.post_layout_classic.sticky:not(.post_layout_custom) {
+  padding: 0;
+  border: none;
+}
+.post_layout_classic.sticky:not(.post_layout_custom) .label_sticky {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: -12px;
+  right: -12px;
+  z-index: 9;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent;
+  border-top-color: var(--theme-color-text_link);
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+.post_layout_classic.post_format_quote .post_content_inner blockquote + p {
+  margin-top: 15px;
+}
+.post_layout_classic.post_format_quote .post_content_inner p:last-child {
+  margin-bottom: 0;
+}
+.post_layout_classic.post_layout_classic_3 div.mejs-controls .mejs-time, .post_layout_classic.post_layout_classic_4 div.mejs-controls .mejs-time {
+  display: none;
+}
+.post_layout_classic.post_layout_classic_4.post_format_audio .post_featured.without_thumb .post_audio:not(.with_iframe), .post_layout_classic.post_layout_classic_3.post_format_audio .post_featured.without_thumb .post_audio:not(.with_iframe) {
+  padding: 30px;
+}
+
+.post_layout_classic .post_content_inner > blockquote {
+  margin-bottom: 1em;
+}
+.post_layout_classic .post_content_inner > p:last-child {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=classic.css.map */

@@ -1,0 +1,22 @@
+@media (max-width: 479px) {
+  /* Theme Hovers */
+  .post_featured.hover_border .post_info .post_info_back {
+    padding: 2.5em;
+  }
+
+  .post_featured.hover_border .post_info:before,
+  .post_featured.hover_border .post_info:after {
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .post_featured.hover_border .post_info .post_title {
+    padding-bottom: 4px;
+  }
+}
+
+/*# sourceMappingURL=theme-hovers-responsive.css.map */

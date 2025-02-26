@@ -1,0 +1,404 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_theme-vars.scss";
+@import "../../css/_skin-vars.scss";
+
+//@mixin booked--xl() {
+@media #{$media_xl} {
+	body div.booked-calendar-wrap.small {
+		div.booked-calendar .bc-head .bc-row .bc-col {
+			.monthName {
+				font-size: 19px;
+			}
+			.calendarSavingState {
+				@include box(19px, 19px, 19px);
+			}
+		}
+	}
+}
+
+//@mixin booked--lg() {
+@media #{$media_lg} {
+	body div.booked-calendar-wrap .booked-appt-list h2 {
+		font-size: 22px;
+		margin: 0 0 20px;
+	}
+	body .booked-list-view .booked-list-view-nav {
+		height: auto;
+		margin: 0;
+	}
+}
+
+//@mixin booked--md() {
+@media #{$media_md} {
+	body div.booked-calendar-wrap {
+		div.booked-calendar .bc-head .bc-row.days .bc-col {
+			padding: 10px 0;
+			font-size: 13px;
+		}
+		.booked-appt-list {
+			padding: 30px 25px 25px;
+			.timeslot .timeslot-people button {
+				padding: 12px 35px;
+			}
+		}
+	}
+	body div.booked-calendar-wrap.small {
+		div.booked-calendar .bc-head .bc-row.days .bc-col {
+			padding: 10px 0;
+		}
+		.booked-appt-list .timeslot .timeslot-people button {
+			padding: 12px 20px;
+			&.button .button-timeslot {
+				font-size: 14px;
+			}
+		}
+	}
+
+	body #booked-profile-page {
+		.booked-tab-content {
+			padding: 25px;
+		}
+		.booked-profile-appt-list {
+			margin: 0;
+		}
+	}
+}
+
+//@mixin booked--sm() {
+@media #{$media_sm} {
+	body div.booked-calendar-wrap div.booked-calendar {
+		--theme-var-booked-arrow-space: 12px;
+	}
+
+	body .booked-calendarSwitcher {
+		margin: 0;
+	}
+
+	body .calendarSavingState {
+		@include box(18px, 18px, 18px);
+	}
+
+	body div.booked-calendar-wrap.booked-list-view .booked-appt-list .booked-appt-list-header {
+		flex-direction: column;
+		.booked-list-view-nav > * {
+			margin: 0 5px;
+		}
+		h2 {
+			font-size: 20px;
+			margin: 0 0 10px;
+		}
+	}
+
+	body .booked-appt-list .timeslot .timeslot-people,
+	body .booked-appt-list .timeslot .timeslot-time {
+		width: 50%;
+	}
+
+	body div.booked-calendar-wrap {
+		div.booked-calendar {
+			.bc-head .bc-row .bc-col .monthName {
+				font-size: 18px;
+				.backToMonth {
+					font-size: 13px;
+				}
+			}
+			.bc-body {
+				.bc-row.entryBlock .bc-col {
+					border-width: 7px;
+				}
+				.bc-row.week div.bc-col .date .number {
+					font-size: 17px;
+				}
+			}
+			.booked-appt-list {
+				padding: 25px 20px 15px;
+				max-height: 300px;
+				overflow-y: auto;
+				overflow-x: hidden;
+				h2 {
+					font-size: 18px;
+					margin: 0 0 10px;
+				}
+				.timeslot {
+					.timeslot-people button.button {
+						line-height: inherit;
+						@include flex;
+						@include flex-direction(column);
+						@include flex-justify-content(center);
+						.button-timeslot {
+							@include font(14px, 18px);
+						}
+						.spots-available {
+							padding: 2px 0 3px;
+							color: var(--theme-color-inverse_link);
+							opacity: .8;
+							line-height: 1em;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	body div.booked-calendar-wrap.small {
+		div.booked-calendar .bc-head .bc-row .bc-col {
+			.monthName {
+				font-size: 18px;
+			}
+			.calendarSavingState {
+				@include box(18px, 18px, 18px);
+			}
+		}
+	}
+
+	body .booked-modal .button {
+		width: auto;
+	}
+
+	body #booked-page-form input[type="text"],
+	body #booked-page-form input[type="password"],
+	body #booked-page-form input[type="email"],
+	body #booked-page-form textarea {
+		font-size: 15px;
+	}
+	body #booked-profile-page {
+		.booked-tabs {
+			display: block;
+			li a {
+				font-size: 16px;
+			}
+		}
+		.booked-tab-content {
+			padding: 25px;
+		}
+		.booked-profile-appt-list .appt-block {
+			font-size: 15px;
+		}
+		.booked-tabs {
+			li.edit-button {
+				float: none;
+			}
+			li:not(.edit-button) + li {
+				margin-left: 0 !important;
+			}
+			li + li {
+				margin-top: -1px !important;
+			}
+			li a,
+			li.edit-button a {
+				border-left: 1px solid var(--theme-color-bd_color);
+				border-right: 1px solid var(--theme-color-bd_color);
+			}
+			li.active a {
+				border-bottom-color: var(--theme-color-bd_color);
+			}
+		}
+		.booked-profile-appt-list .appt-block .booked-cal-buttons {
+			@include flex-direction(column);
+			@include flex-align-items(flex-start);
+			> div {
+				margin: 0;
+			}
+			a.cancel {
+				margin-top: 10px !important;
+			}
+			a.cancel,
+			.google-cal-button.addeventatc {
+				width: 100%;
+			}
+			.google-cal-button.addeventatc .addeventatc_dropdown {
+				width: 100%;
+			}
+		}
+	}
+}
+
+
+
+
+
+//@mixin booked--xs() {
+@media #{$media_xs} {
+	body .calendarSavingState {
+		@include box(16px, 16px, 16px);
+	}
+
+	#ui-datepicker-div.booked_custom_date_picker {
+		margin-left: -50px;
+	}
+
+	body .booked-list-view .booked-appt-list .timeslot {
+		border-top: 1px solid;
+		.timeslot-people button .button-timeslot {
+			font-size: 14px;
+		}
+	}
+	body div.booked-calendar-wrap.booked-list-view .booked-appt-list .booked-appt-list-header h2 {
+		font-size: 17px;
+		text-align: center;
+		strong {
+			display: inline;
+		}
+	}
+
+	body div.booked-calendar-wrap .booked-appt-list .timeslot {
+		padding: 10px 0;
+		.timeslot-people button {
+			padding: 10px 22px;
+			display: block;
+		}
+		.spots-available {
+			padding: 2px 0 0 33px;
+		}
+	}
+
+	body div.booked-calendar-wrap div.booked-calendar {
+		.bc-head .bc-row {
+			.bc-col .monthName {
+				font-size: 17px;
+			}
+			.bc-col .monthName {
+				text-align: center;
+				@include flex;
+				@include flex-direction(column);
+				@include flex-justify-content(center);
+				@include flex-align-items(center);
+				.backToMonth {
+					display: block;
+					top: 0;
+					padding: 0;
+				}
+			}
+			&.top .bc-col {
+				padding: 20px 0;
+			}
+			&.days .bc-col {
+				padding: 7px 0;
+			}
+		}
+		.bc-body .bc-row.week div.bc-col .date .number {
+			font-size: 16px;
+		}
+		.booked-appt-list {
+			padding: 15px 15px 10px;
+			h2 {
+				font-size: 16px;
+				margin: 0 0 8px;
+			}
+			.timeslot {
+				padding: 6px 0;
+				+ .timeslot {
+					border: none;
+				}
+				.timeslot-people button.button .button-timeslot {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+	body div.booked-calendar-wrap.small {
+		.booked-calendar {
+			padding: 0 15px !important;
+		}
+		div.booked-calendar {
+			.bc-body {
+				padding: 15px 0;
+			}
+			.bc-head .bc-row {
+				.bc-col .monthName .backToMonth {
+					padding: 0;
+				}
+				.bc-col .calendarSavingState {
+					@include box(16px, 16px, 16px);
+				}
+				.bc-col .monthName {
+					font-size: 17px;
+				}
+				&.top .bc-col {
+					padding: 20px 0;
+				}
+				.bc-col {
+					.page-left {
+						margin-top: -6px;
+						left: 10px;
+						&:hover {
+							left: 10px;
+						}
+					}
+					.page-right {
+						margin-top: -6px;
+						right: 10px;
+						&:hover {
+							right: 10px;
+						}
+					}
+				}
+			}			
+		}
+		.booked-appt-list .timeslot .timeslot-people button {
+			padding: 12px 15px;
+		}
+	}
+
+	body [class*="scheme_"].sidebar div.booked-calendar-wrap.small {
+		div.booked-calendar .bc-head .bc-row {
+			.bc-col .calendarSavingState {
+				@include box(16px,16px,16px);
+			}
+			.bc-col .monthName {
+				font-size: 16px;
+			}		
+		}
+	}
+
+	body #booked-profile-page .booked-tab-content {
+		padding: 20px;
+	}
+
+	body .booked-modal .bm-window  {
+		.button {
+			width: 100%;
+			&.booked-forgot-goback,
+			&.cancel {
+				margin-top: 10px !important;
+			}
+		}
+		.button.button-primary,
+		.button.booked-forgot-goback,
+		.button.cancel {
+			padding: 12px 40px;
+		}
+
+		#customerChoices {
+			@include flex-direction(column);
+			.field {
+				margin-right: 0;
+				+ .field {
+					margin-top: 5px;
+				}
+			}
+		}
+		.booked-form {
+			.booked-appointments p.appointment-info {
+				margin-top: 6px;
+				@include font(14px, 16px);
+			}
+			.field p.field-small-p {
+				@include font(15px, 20px);
+			}
+			.field select,
+			.field input[type="text"],
+			.field input[type="password"],
+			.field input[type="tel"],
+			.field input[type="email"],
+			.field textarea {
+				font-size: 15px;
+				padding: 10px 0;
+			}
+			 #ajaxlogin .booked-forgot-password {
+				@include font(15px, 20px);
+			}
+		}
+	}
+}

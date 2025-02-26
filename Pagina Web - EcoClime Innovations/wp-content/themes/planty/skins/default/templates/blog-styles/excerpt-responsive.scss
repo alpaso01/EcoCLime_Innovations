@@ -1,0 +1,86 @@
+@import "../../../../css/_mixins.scss";
+@import "../../../../css/_theme-vars.scss";
+@import "../../css/_skin-vars.scss";
+
+//@mixin blog_styles_excerpt--lg() {
+@media #{$media_lg} {
+	/* Blog layout: Excerpt */
+	.post_layout_excerpt .post_header .post_price {
+		@include font(2em, 1.5em);
+	}
+	.post_layout_excerpt.format-audio .post_featured.without_thumb .post_audio:not(.with_iframe) {
+		padding: 2em;
+	}
+}
+
+//@mixin blog_styles_excerpt--md() {
+@media #{$media_md} {
+	/* Blog layout: Excerpt */
+	.post_layout_excerpt.sticky {
+		padding: 1.5em;
+	}
+	.post_layout_excerpt .post_header .post_price {
+		@include font(1.5em, 1.5em);
+	}
+	.post_layout_excerpt .post_featured {
+		margin-bottom: 1.7em;
+	}
+	.post_layout_excerpt .post_header + .post_content {
+		margin-top: 1em;
+	}
+	.post_layout_excerpt .post-more-link {
+		margin-top: 1.2em;
+	}
+	.post_layout_excerpt + .post_layout_excerpt {
+		margin-top: 2.5rem;
+	}
+}
+
+//@mixin blog_styles_excerpt--sm() {
+@media #{$media_sm} {
+	/* Blog layout: Excerpt */
+	.post_layout_excerpt .post_header .post_price {
+		position:static;
+		right: auto;
+		top: auto;
+		margin-top:0.3em;
+	}
+	.post_layout_excerpt .post-more-link {
+		margin-top: 1em;
+	}
+	.post_layout_excerpt .post_featured {
+		margin-bottom: 1.6em;
+	}
+	.post_layout_excerpt.format-audio .post_featured.without_thumb .post_audio:not(.with_iframe) {
+		padding: 1.5em;
+	}
+}
+
+@media #{$media_xs} {
+	.post_layout_excerpt .post_featured {
+		margin-bottom: 1.1em;
+	}
+	.post_layout_excerpt .post_meta + .post_content_inner {
+		margin-top: 0.6em;
+	}
+	.post_layout_excerpt .post-more-link {
+		margin-top: 0.7em;
+	}
+	.post_layout_excerpt + .post_layout_excerpt {
+		margin-top: 2rem;
+	}
+	.post_layout_excerpt.format-audio .post_featured.without_thumb .post_audio:not(.with_iframe) {
+		padding: 20px;
+	}
+	.post_layout_excerpt .slider_container.slider_controls_side .slider_controls_wrap > a, .post_layout_excerpt .slider_outer_controls_side .slider_controls_wrap > a {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.post_layout_excerpt.sticky {
+		padding: 20px;
+		div.mejs-controls .mejs-time.mejs-duration-container,
+		div.mejs-controls .mejs-time.mejs-currenttime-container {
+			display: none;
+		}
+	}
+}
