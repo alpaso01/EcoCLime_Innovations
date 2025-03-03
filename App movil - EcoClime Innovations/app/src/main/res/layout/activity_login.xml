@@ -1,0 +1,137 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <!-- Formulario de Login -->
+
+    <Button
+        android:id="@+id/switchToLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="switchToLoginAction"
+        android:text="Iniciar sesión" />
+
+    <LinearLayout
+        android:id="@+id/loginForm"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/switchToRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="switchToRegisterAction"
+            android:text="Registrarse"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:textColor="@android:color/black"
+            android:background="@android:drawable/edit_text" />
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="@android:color/black"
+            android:background="@android:drawable/edit_text" />
+
+        <Button
+            android:id="@+id/accessButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="accessAction"
+            android:text="Acceder"
+            android:visibility="visible" />
+
+        <!-- Botón para acceder (en el formulario de login) -->
+    </LinearLayout>
+
+    <!-- Formulario de Registro -->
+    <LinearLayout
+        android:id="@+id/registerForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/registerUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
+            android:hint="Nombre de usuario"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/registerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/registerPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
+            android:hint="Teléfono"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/registerPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/registerConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
+            android:hint="Confirmar contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="@android:color/black" />
+
+        <!-- Botón para registrar al usuario -->
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="registerAction"
+            android:text="Registrarse" />
+
+        <!-- Botón para regresar al login (en el formulario de registro) -->
+    </LinearLayout>
+
+    <!-- Botón para cambiar a formulario de registro -->
+
+    <!-- Botón para cambiar a formulario de login -->
+
+</LinearLayout>
