@@ -5,6 +5,98 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E8EBFD"
     tools:context=".pantalla_principal">
+
+    <Button
+        android:id="@+id/botonCogerCitaParticular"
+        android:layout_width="170dp"
+        android:layout_height="137dp"
+        android:backgroundTint="#F7FBFF"
+        android:shadowRadius="0"
+        android:text="Agendar Cita para Particulares"
+        android:textColor="#000000"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/agenda"
+        app:iconSize="30sp"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.367" />
+
+    <Button
+        android:id="@+id/botonAnularCita"
+        android:layout_width="165dp"
+        android:layout_height="125dp"
+        android:backgroundTint="#F7FBFF"
+        android:text="Anular Cita"
+        android:textColor="#000000"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/cancelar"
+        app:iconSize="30sp"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.651" />
+
+    <Button
+        android:id="@+id/botonHistorialCitas"
+        android:layout_width="162dp"
+        android:layout_height="123dp"
+        android:backgroundTint="#F7FBFF"
+        android:text="Historial de Citas"
+        android:textColor="#000000"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/historial"
+        app:iconSize="30sp"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.649" />
+
+    <Button
+        android:id="@+id/botonCogerCitaEmpresas"
+        android:layout_width="165dp"
+        android:layout_height="136dp"
+        android:backgroundTint="#F7FBFF"
+        android:checkable="false"
+        android:text="Agendar Cita Para Empresa"
+        android:textColor="#000000"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/agenda"
+        app:iconSize="30sp"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.365" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EcoClime Innovations"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.098" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

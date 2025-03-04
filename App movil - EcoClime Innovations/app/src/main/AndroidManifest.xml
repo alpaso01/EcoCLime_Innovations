@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EcoClime_Innovations"
         tools:targetApi="31">
         <activity
+            android:name=".citas_particulares"
+            android:exported="false" />
+        <activity
             android:name=".pantalla_principal"
             android:exported="false" />
         <activity
