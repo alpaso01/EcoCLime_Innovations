@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Elemento de menú: Atención al Cliente -->
+    <item
+        android:id="@+id/atencion_cliente"
+        android:title="Atención al Cliente"/>
+
+    <!-- Elemento de menú: Visitar Web -->
+    <item
+        android:id="@+id/visita_web"
+        android:title="Visitar Web"/>
+
+    <!-- Elemento de menú: Mi Perfil -->
+    <item
+        android:id="@+id/mi_perfil"
+        android:title="Mi Perfil"/>
+</menu>

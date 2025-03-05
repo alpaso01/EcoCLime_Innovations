@@ -13,6 +13,18 @@
         android:theme="@style/Theme.EcoClime_Innovations"
         tools:targetApi="31">
         <activity
+            android:name=".menu_principal"
+            android:exported="false" />
+        <activity
+            android:name=".mi_perfil"
+            android:exported="false" />
+        <activity
+            android:name=".visita_web"
+            android:exported="false" />
+        <activity
+            android:name=".atencion_cliente"
+            android:exported="false" />
+        <activity
             android:name=".historial_citas"
             android:exported="false" />
         <activity
