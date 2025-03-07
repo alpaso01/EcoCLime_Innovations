@@ -6,8 +6,6 @@
     android:padding="16dp"
     android:gravity="center">
 
-    <!-- Botones fijos de navegación -->
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
@@ -44,32 +42,31 @@
     <!-- Formulario de Login -->
     <LinearLayout
         android:id="@+id/loginForm"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:visibility="visible">
 
         <EditText
             android:id="@+id/loginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
             android:hint="Correo electrónico"
             android:inputType="textEmailAddress"
             android:padding="12dp"
-            android:textColor="@android:color/black"
-            android:background="@android:drawable/edit_text" />
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/loginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:padding="12dp"
-            android:textColor="@android:color/black"
-            android:background="@android:drawable/edit_text" />
+            android:textColor="@android:color/black" />
 
-        <!-- Botón para acceder (solo visible en login) -->
         <Button
             android:id="@+id/accessButton"
             android:layout_width="match_parent"
@@ -90,59 +87,87 @@
             android:id="@+id/registerUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
             android:hint="Nombre de usuario"
             android:inputType="text"
             android:padding="12dp"
-            android:textColor="@android:color/black"
-            android:background="@android:drawable/edit_text" />
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/registerEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
             android:hint="Correo electrónico"
             android:inputType="textEmailAddress"
             android:padding="12dp"
-            android:textColor="@android:color/black"
-            android:background="@android:drawable/edit_text" />
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/registerPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
             android:hint="Teléfono"
             android:inputType="phone"
             android:padding="12dp"
-            android:textColor="@android:color/black"
-            android:background="@android:drawable/edit_text" />
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/registerPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:padding="12dp"
-            android:textColor="@android:color/black"
-            android:background="@android:drawable/edit_text" />
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/registerConfirmPassword"
-            android:layout_width="14dp"
-            android:layout_height="71dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@android:drawable/edit_text"
             android:hint="Confirmar contraseña"
             android:inputType="textPassword"
             android:padding="12dp"
             android:textColor="@android:color/black" />
 
-        <!-- Botón para registrar al usuario (solo visible en registro) -->
+        <!-- Tipo de usuario -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+
+        <RadioGroup
+            android:id="@+id/userTypeGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbParticular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Particular" />
+
+            <RadioButton
+                android:id="@+id/rbEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empresa" />
+        </RadioGroup>
+
     </LinearLayout>
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrarse" />
+        android:text="Registrarse"
+        android:visibility="gone" />
 
 </LinearLayout>
