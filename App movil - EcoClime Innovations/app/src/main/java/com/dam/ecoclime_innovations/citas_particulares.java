@@ -3,7 +3,6 @@ package com.dam.ecoclime_innovations;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +14,12 @@ import java.util.Locale;
 public class citas_particulares extends AppCompatActivity {
 
     private CalendarView calendarView;
-    private String selectedDate;
-    private String selectedTime;
+    private Button seleccionarHora;
+    private Button confirmar;
+    private String selectedDate = null;
+    private String selectedTime = null;
+
+    private EditText email, telefono, ciudad, codigoPostal, calle, numero, mensaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +27,20 @@ public class citas_particulares extends AppCompatActivity {
         setContentView(R.layout.activity_citas_particulares);
 
         calendarView = findViewById(R.id.calendarioCitas);
+        seleccionarHora = findViewById(R.id.seleccionarHora);
+        confirmar = findViewById(R.id.confirmar);
         Button botonAtrasParticulares = findViewById(R.id.botonAtrasParticulares);
+
+        email = findViewById(R.id.email);
+        telefono = findViewById(R.id.telefono);
+        ciudad = findViewById(R.id.ciudad);
+        codigoPostal = findViewById(R.id.codigoPostal);
+        calle = findViewById(R.id.calle);
+        numero = findViewById(R.id.numero);
+        mensaje = findViewById(R.id.mensaje);
+
+        seleccionarHora.setEnabled(false);
+        confirmar.setEnabled(false);
 
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             Calendar selectedCalendar = Calendar.getInstance();
@@ -33,9 +49,29 @@ public class citas_particulares extends AppCompatActivity {
 
             if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
                 Toast.makeText(this, "Solo se permiten citas de lunes a viernes", Toast.LENGTH_SHORT).show();
+                seleccionarHora.setEnabled(false);
             } else {
                 selectedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedCalendar.getTime());
-                mostrarSeleccionHoras();
+                seleccionarHora.setEnabled(true);
+            }
+        });
+
+        seleccionarHora.setOnClickListener(v -> mostrarSeleccionHoras());
+
+        confirmar.setOnClickListener(v -> {
+            if (validarFormulario()) {
+                String infoCita = "Cita confirmada para " + selectedDate + " a las " + selectedTime + "\n" +
+                        "Email: " + email.getText().toString() + "\n" +
+                        "Teléfono: " + telefono.getText().toString() + "\n" +
+                        "Ciudad: " + ciudad.getText().toString() + "\n" +
+                        "C.P.: " + codigoPostal.getText().toString() + "\n" +
+                        "Dirección: " + calle.getText().toString() + " Nº: " + numero.getText().toString() + "\n" +
+                        "Mensaje: " + mensaje.getText().toString();
+
+                enviarConfirmacion(email.getText().toString(), infoCita);
+                Toast.makeText(this, "Cita confirmada", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -51,43 +87,19 @@ public class citas_particulares extends AppCompatActivity {
         builder.setTitle("Selecciona una hora")
                 .setItems(horasDisponibles, (dialog, which) -> {
                     selectedTime = horasDisponibles[which];
-                    mostrarFormulario();
+                    confirmar.setEnabled(true);
                 })
                 .setNegativeButton("Cancelar", null)
                 .show();
     }
 
-    private void mostrarFormulario() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.activity_citas_particulares, null);
-        builder.setView(dialogView);
-
-        EditText email = dialogView.findViewById(R.id.email);
-        EditText telefono = dialogView.findViewById(R.id.telefono);
-        EditText ciudad = dialogView.findViewById(R.id.ciudad);
-        EditText codigoPostal = dialogView.findViewById(R.id.codigoPostal);
-        EditText calle = dialogView.findViewById(R.id.calle);
-        EditText numero = dialogView.findViewById(R.id.numero);
-        EditText mensaje = dialogView.findViewById(R.id.mensaje);
-        Button confirmar = dialogView.findViewById(R.id.confirmar);
-
-        AlertDialog dialog = builder.create();
-        confirmar.setOnClickListener(v -> {
-            String infoCita = "Cita confirmada para " + selectedDate + " a las " + selectedTime + "\n" +
-                    "Email: " + email.getText().toString() + "\n" +
-                    "Teléfono: " + telefono.getText().toString() + "\n" +
-                    "Ciudad: " + ciudad.getText().toString() + "\n" +
-                    "C.P.: " + codigoPostal.getText().toString() + "\n" +
-                    "Dirección: " + calle.getText().toString() + " Nº: " + numero.getText().toString() + "\n" +
-                    "Mensaje: " + mensaje.getText().toString();
-
-            enviarConfirmacion(email.getText().toString(), infoCita);
-            Toast.makeText(this, "Cita confirmada", Toast.LENGTH_LONG).show();
-            dialog.dismiss();
-        });
-
-        dialog.show();
+    private boolean validarFormulario() {
+        return !email.getText().toString().trim().isEmpty() &&
+                !telefono.getText().toString().trim().isEmpty() &&
+                !ciudad.getText().toString().trim().isEmpty() &&
+                !codigoPostal.getText().toString().trim().isEmpty() &&
+                !calle.getText().toString().trim().isEmpty() &&
+                !numero.getText().toString().trim().isEmpty();
     }
 
     private void enviarConfirmacion(String email, String mensaje) {
