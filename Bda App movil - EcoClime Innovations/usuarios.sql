@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3309
--- Tiempo de generación: 17-03-2025 a las 09:55:04
+-- Tiempo de generación: 29-03-2025 a las 18:00:13
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `ecoclime_innovations`
+-- Base de datos: `ecoclimmeinnovations`
 --
 
 -- --------------------------------------------------------
@@ -34,8 +34,15 @@ CREATE TABLE `usuarios` (
   `email` varchar(255) NOT NULL,
   `telefono` varchar(15) NOT NULL,
   `contraseña` varchar(255) NOT NULL,
-  `tipo` enum('particular','empresa') NOT NULL
+  `tipo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `email`, `telefono`, `contraseña`, `tipo`) VALUES
+(1, 'alex', 'palomares', 'aa@aa.aa', '455', 'aa', 'empresa');
 
 --
 -- Índices para tablas volcadas
@@ -56,7 +63,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

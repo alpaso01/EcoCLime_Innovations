@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3309
--- Tiempo de generación: 17-03-2025 a las 09:55:51
+-- Tiempo de generación: 29-03-2025 a las 17:59:54
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `ecoclime_innovations`
+-- Base de datos: `ecoclimmeinnovations`
 --
 
 -- --------------------------------------------------------
@@ -34,13 +34,20 @@ CREATE TABLE `citas` (
   `apellidos` varchar(100) NOT NULL,
   `telefono` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `tipo` enum('particular','empresa') NOT NULL,
+  `tipo` varchar(50) NOT NULL,
   `ciudad` varchar(100) NOT NULL,
   `codigo_postal` varchar(10) NOT NULL,
   `calle` varchar(255) NOT NULL,
   `numero_casa` varchar(10) NOT NULL,
   `fecha_hora` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`id`, `usuario_id`, `nombre`, `apellidos`, `telefono`, `email`, `tipo`, `ciudad`, `codigo_postal`, `calle`, `numero_casa`, `fecha_hora`) VALUES
+(1, 1, 'aa', 'aa', '1', 'aa@aa.aa', 'empresa', 'aa', '121', 'aa', '122', '2025-03-29 17:25:32');
 
 --
 -- Índices para tablas volcadas
@@ -61,7 +68,7 @@ ALTER TABLE `citas`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
