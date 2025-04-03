@@ -81,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <EditText
             android:id="@+id/registerUsername"
@@ -134,13 +134,14 @@
             android:textColor="@android:color/black" />
 
         <!-- Tipo de usuario -->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="8dp"
             android:text="Tipo:"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:paddingTop="8dp" />
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/userTypeGroup"
@@ -159,15 +160,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Empresa" />
+
         </RadioGroup>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:visibility="visible" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrarse"
-        android:visibility="gone" />
+    </LinearLayout>
 
 </LinearLayout>

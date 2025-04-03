@@ -13,22 +13,26 @@ import java.util.List;
 public interface ApiService {
 
     // Endpoint para registrar un usuario
-    @POST("api/ApiEcoClimeInnovations/usuarios/register")
+    @POST("/usuarios/register")
     Call<Usuario> registerUser(@Body Usuario usuario);
 
     // Endpoint para hacer login
-    @POST("api/ApiEcoClimeInnovations/usuarios/login")
+    @POST("/usuarios/login")
     Call<String> loginUser(@Body Usuario usuario);
+
 
     // Endpoint para agendar una cita
     @POST("citas/agendar/{usuarioId}")
-    Call<Cita> agendarCita(@Body Cita cita, @Path("usuarioId") Long usuarioId);
+    Call<Cita> agendarCita(@Body Cita cita, @Path("usuarioId") int usuarioId);
 
     // Endpoint para obtener el historial de citas de un usuario
     @GET("citas/historial/{usuarioId}")
-    Call<List<Cita>> obtenerHistorialCitas(@Path("usuarioId") Long usuarioId);
+    Call<List<Cita>> obtenerHistorialCitas(@Path("usuarioId") int usuarioId);
 
     // Endpoint para anular una cita
     @DELETE("citas/anular/{citaId}")
-    Call<String> anularCita(@Path("citaId") Long citaId);
+    Call<String> anularCita(@Path("citaId") int citaId);
+
+    @POST("citas")
+    Call<Void> enviarCita(@Body Cita cita);
 }

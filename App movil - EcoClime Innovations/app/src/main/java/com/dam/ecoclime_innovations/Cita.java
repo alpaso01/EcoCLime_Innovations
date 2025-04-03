@@ -1,45 +1,57 @@
 package com.dam.ecoclime_innovations;
-
 public class Cita {
-    private String fecha;
-    private String hora;
-    private String email;
+    private int id;
+    private int usuario_id;
+    private String nombre;
+    private String apellidos;
     private String telefono;
+    private String email;
+    private String tipo;
     private String ciudad;
     private String codigoPostal;
     private String calle;
-    private String numero;
-    private String mensaje;
+    private int numeroCasa;
+    private String fechaHora;
 
-    public Cita(String fecha, String hora, String email, String telefono, String ciudad,
-                String codigoPostal, String calle, String numero, String mensaje) {
-        this.fecha = fecha;
-        this.hora = hora;
-        this.email = email;
+    // Getters y Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUsuario_id() {
+        return usuario_id;
+    }
+
+    public void setUsuario_id(int usuario_id) {
+        this.usuario_id = usuario_id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
-        this.ciudad = ciudad;
-        this.codigoPostal = codigoPostal;
-        this.calle = calle;
-        this.numero = numero;
-        this.mensaje = mensaje;
-    }
-
-    // Getters y setters
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
     }
 
     public String getEmail() {
@@ -50,12 +62,12 @@ public class Cita {
         this.email = email;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getCiudad() {
@@ -82,19 +94,19 @@ public class Cita {
         this.calle = calle;
     }
 
-    public String getNumero() {
-        return numero;
+    public int getNumeroCasa() {
+        return numeroCasa;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setNumeroCasa(int numeroCasa) {
+        this.numeroCasa = numeroCasa;
     }
 
-    public String getMensaje() {
-        return mensaje;
+    public String getFechaHora() {
+        return fechaHora;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+    public void setFechaHora(String fechaHora) {
+        this.fechaHora = fechaHora;
     }
 }
