@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,38 +61,49 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        // Crear el objeto LoginRequest para la solicitud POST
         LoginRequest loginRequest = new LoginRequest(email, password);
 
+        // Realizar la llamada a la API para hacer login
         apiService.loginUser(loginRequest).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     String responseMessage = response.body();
+
+                    // Verificar si la respuesta es "Inicio de sesión exitoso"
                     if (responseMessage != null && responseMessage.equals("Inicio de sesión exitoso")) {
                         Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
-                        // Guardar datos del usuario en SharedPreferences
+                        // Guardar los datos del usuario en SharedPreferences
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("email", email);
                         editor.putBoolean("isLoggedIn", true);
                         editor.apply();
 
+                        // Iniciar la actividad principal
                         startActivity(new Intent(LoginActivity.this, pantalla_principal.class));
                         finish();
                     } else {
+                        // Si las credenciales son incorrectas
                         Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    // Error en la respuesta de la API
                     Toast.makeText(LoginActivity.this, "Error en la API", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                // Error en la conexión
                 Toast.makeText(LoginActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("control de error de conexion en login", t.getMessage());
             }
         });
     }
+
+
 
     private void registerUser() {
         String username = ((EditText) findViewById(R.id.registerUsername)).getText().toString().trim();
@@ -112,12 +124,11 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        String passwordEncriptada = Util.encriptarMD5(password);
 
         RadioButton selectedRadioButton = findViewById(selectedTypeId);
         String userType = selectedRadioButton.getText().toString();
 
-        Usuario usuario = new Usuario(username, apellidos, email, phone, passwordEncriptada, userType);
+        Usuario usuario = new Usuario(username, apellidos, email, phone, password, userType);
 
         apiService.registerUser(usuario).enqueue(new Callback<Usuario>() {
             @Override

@@ -2,15 +2,13 @@ package com.dam.ecoclime_innovations;
 
 public class LoginRequest {
     private String email;
-    private String contraseña;
+    private String password;
 
-    // Constructor
-    public LoginRequest(String email, String contraseña) {
+    public LoginRequest(String email, String password) {
         this.email = email;
-        this.contraseña = contraseña;
+        this.password = password;
     }
 
-    // Getters y Setters
     public String getEmail() {
         return email;
     }
@@ -19,11 +17,11 @@ public class LoginRequest {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

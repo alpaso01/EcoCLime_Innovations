@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,91 +9,6 @@
     android:background="#E8EBFD"
     tools:context=".pantalla_principal">
 
-    <Button
-        android:id="@+id/botonCogerCitaParticular"
-        android:layout_width="190dp"
-        android:layout_height="161dp"
-        android:backgroundTint="#F7FBFF"
-        android:shadowRadius="0"
-        android:text="Agendar Cita para Particulares"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/agenda"
-        app:iconGravity="top"
-        app:iconSize="45sp"
-        app:iconTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintCircleRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.391" />
-
-    <Button
-        android:id="@+id/botonAnularCita"
-        android:layout_width="190dp"
-        android:layout_height="161dp"
-        android:backgroundTint="#F7FBFF"
-        android:text="Anular Cita"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/cancelar"
-        app:iconGravity="top"
-        app:iconSize="45sp"
-        app:iconTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
-
-    <Button
-        android:id="@+id/botonHistorialCitas"
-        android:layout_width="190dp"
-        android:layout_height="161dp"
-        android:backgroundTint="#F7FBFF"
-        android:text="Historial de Citas"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/historial"
-        app:iconGravity="top"
-        app:iconSize="45sp"
-        app:iconTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
-
-    <Button
-        android:id="@+id/botonCogerCitaEmpresas"
-        android:layout_width="190dp"
-        android:layout_height="161dp"
-        android:backgroundTint="#F7FBFF"
-        android:checkable="false"
-        android:text="Agendar Cita Para Empresa"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/agenda"
-        app:iconGravity="top"
-        app:iconSize="45sp"
-        app:iconTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintCircleRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.391" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -100,12 +16,85 @@
         android:text="EcoClime Innovations"
         android:textColor="#000000"
         android:textSize="40sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <Button
+        android:id="@+id/botonCogerCitaParticular"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/rounded_button_background"
+        android:drawableTop="@drawable/agenda"
+        android:drawableTint="#000000"
+        android:gravity="center"
+        android:text="Cita Particular"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/botonCogerCitaEmpresas"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintVertical_bias="0.222" />
+
+    <Button
+        android:id="@+id/botonCogerCitaEmpresas"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/rounded_button_background"
+        android:drawableTop="@drawable/agenda"
+        android:drawableTint="#000000"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Cita Empresa"
+        android:textColor="#000000"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toEndOf="@+id/botonCogerCitaParticular"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintVertical_bias="0.214" />
+
+    <Button
+        android:id="@+id/botonAnularCita"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/rounded_button_background"
+        android:drawableTop="@drawable/cancelar"
+        android:drawableTint="#000000"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Anular Cita"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/botonHistorialCitas"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintTop_toBottomOf="@+id/botonCogerCitaParticular" />
+
+    <Button
+        android:id="@+id/botonHistorialCitas"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/rounded_button_background"
+        android:drawableTop="@drawable/historial"
+        android:drawableTint="#000000"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Historial Citas"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/botonAnularCita"
+        app:layout_constraintTop_toBottomOf="@+id/botonCogerCitaEmpresas" />
 
     <Button
         android:id="@+id/botonAtrasPrincipal"
@@ -113,11 +102,12 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#677EE1"
         android:text="Atrás"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.185" />
+        app:layout_constraintVertical_bias="0.099" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

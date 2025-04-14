@@ -1,0 +1,12 @@
+<!-- res/anim/anim_boton_entrada.xml -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/decelerate_interpolator">
+    <translate
+        android:fromYDelta="50%"
+        android:toYDelta="0%"
+        android:duration="500" />
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="500" />
+</set>
