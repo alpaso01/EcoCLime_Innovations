@@ -1,175 +1,217 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bienvenido/a a EcoClime Innovations"
-        android:textAlignment="center"
-        android:textColor="#111F77"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+    android:fillViewport="true"
+    android:background="#2196f3"> <!-- Fondo de la pantalla en color #2196f3 -->
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/switchToLogin"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:onClick="switchToLoginAction"
-            android:text="Iniciar sesión" />
-
-        <Button
-            android:id="@+id/switchToRegister"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:onClick="switchToRegisterAction"
-            android:text="Registrarse" />
-    </LinearLayout>
-
-    <!-- Formulario de Login -->
-    <LinearLayout
-        android:id="@+id/loginForm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="60dp">
 
-        <EditText
-            android:id="@+id/loginEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="Correo electrónico"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/loginPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:id="@+id/accessButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Acceder"
-            android:visibility="visible" />
-    </LinearLayout>
-
-    <!-- Formulario de Registro -->
-    <LinearLayout
-        android:id="@+id/registerForm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-        <EditText
-            android:id="@+id/registerUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="Nombre de usuario"
-            android:inputType="text"
-            android:padding="12dp"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/registerEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="Correo electrónico"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/registerPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="Teléfono"
-            android:inputType="phone"
-            android:padding="12dp"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/registerPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/registerConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="Confirmar contraseña"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:textColor="@android:color/black" />
-
-        <!-- Tipo de usuario -->
-
+        <!-- Título principal centrado hacia arriba pero no en el borde -->
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:text="Tipo:"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:text="Bienvenido/a a EcoClime Innovations"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="25dp" /> <!-- El título permanece en la parte superior pero separado -->
 
-        <RadioGroup
-            android:id="@+id/userTypeGroup"
+        <!-- Tabs de Login y Registro -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#EFEFEF"
+            android:padding="4dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center">
 
-            <RadioButton
-                android:id="@+id/rbParticular"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/switchToLogin"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Particular" />
+                android:padding="12dp"
+                android:text="Iniciar sesión"
+                android:gravity="center"
+                android:background="@drawable/bg_tab_inactive"
+                android:textColor="#111F77"
+                android:textStyle="bold" />
 
-            <RadioButton
-                android:id="@+id/rbEmpresa"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/switchToRegister"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Empresa" />
+                android:padding="15dp"
+                android:text="Registrarse"
+                android:gravity="center"
+                android:background="@android:color/transparent"
+                android:textColor="#111F77"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/registerButton"
+        <!-- Formulario de Login y Registro centrado -->
+        <LinearLayout
+            android:id="@+id/loginForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
-            android:visibility="visible" />
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/loginEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/loginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/accessButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4caf50 "
+                android:backgroundTint="#4CAF50"
+                android:text="Acceder"
+                android:textColor="@android:color/white"
+                android:textColorLink="#4CAF50" />
+        </LinearLayout>
+
+        <!-- Formulario de Registro -->
+        <LinearLayout
+            android:id="@+id/registerForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/registerUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
+                android:inputType="text"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/registerApellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Apellidos"
+                android:inputType="text"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/registerEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/registerPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Teléfono"
+                android:inputType="phone"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/registerPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/registerConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirmar contraseña"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de usuario"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp" />
+
+            <RadioGroup
+                android:id="@+id/userTypeGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <RadioButton
+                    android:id="@+id/rbParticular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Particular" />
+
+                <RadioButton
+                    android:id="@+id/rbEmpresa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Empresa" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrarse"
+                android:background="@drawable/bg_button_rounded"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

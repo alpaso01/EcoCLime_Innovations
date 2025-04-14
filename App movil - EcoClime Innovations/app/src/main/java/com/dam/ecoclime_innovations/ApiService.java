@@ -6,6 +6,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -17,9 +18,8 @@ public interface ApiService {
     Call<Usuario> registerUser(@Body Usuario usuario);
 
     // Endpoint para hacer login
-    @POST("/usuarios/login")
-    Call<String> loginUser(@Body Usuario usuario);
-
+    @POST("/usuarios/login")  // Cambié de @GET a @POST
+    Call<String> loginUser(@Body LoginRequest loginRequest);
 
     // Endpoint para agendar una cita
     @POST("citas/agendar/{usuarioId}")

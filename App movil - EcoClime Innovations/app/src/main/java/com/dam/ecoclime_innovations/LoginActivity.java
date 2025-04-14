@@ -2,6 +2,7 @@ package com.dam.ecoclime_innovations;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 public class LoginActivity extends AppCompatActivity {
 
     private LinearLayout loginForm, registerForm;
@@ -58,33 +60,42 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Encriptar la contraseña antes de enviarla
-        String passwordEncriptada = Util.encriptarMD5(password);
+        LoginRequest loginRequest = new LoginRequest(email, password);
 
-        Usuario usuario = new Usuario(null, null, email, null, passwordEncriptada, null);
-
-        apiService.loginUser(usuario).enqueue(new Callback<String>() {
+        apiService.loginUser(loginRequest).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, pantalla_principal.class));
-                    finish();
+                    String responseMessage = response.body();
+                    if (responseMessage != null && responseMessage.equals("Inicio de sesión exitoso")) {
+                        Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+
+                        // Guardar datos del usuario en SharedPreferences
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("email", email);
+                        editor.putBoolean("isLoggedIn", true);
+                        editor.apply();
+
+                        startActivity(new Intent(LoginActivity.this, pantalla_principal.class));
+                        finish();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Error en la API", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-
     private void registerUser() {
         String username = ((EditText) findViewById(R.id.registerUsername)).getText().toString().trim();
+        String apellidos = ((EditText) findViewById(R.id.registerApellidos)).getText().toString().trim();
         String email = ((EditText) findViewById(R.id.registerEmail)).getText().toString().trim();
         String phone = ((EditText) findViewById(R.id.registerPhone)).getText().toString().trim();
         String password = ((EditText) findViewById(R.id.registerPassword)).getText().toString().trim();
@@ -101,20 +112,40 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Encriptar la contraseña antes de enviarla
         String passwordEncriptada = Util.encriptarMD5(password);
 
         RadioButton selectedRadioButton = findViewById(selectedTypeId);
         String userType = selectedRadioButton.getText().toString();
 
-        Usuario usuario = new Usuario(username, "", email, phone, passwordEncriptada, userType);
+        Usuario usuario = new Usuario(username, apellidos, email, phone, passwordEncriptada, userType);
 
         apiService.registerUser(usuario).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+
+                    // Guardar en SharedPreferences
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("username", username);
+                    editor.putString("apellidos", apellidos);
+                    editor.putString("email", email);
+                    editor.putString("phone", phone);
+                    editor.putString("userType", userType);
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.apply();
+
                     showLoginForm();
+
+                    // Limpiar los campos del formulario de registro
+                    ((EditText) findViewById(R.id.registerUsername)).setText("");
+                    ((EditText) findViewById(R.id.registerApellidos)).setText("");
+                    ((EditText) findViewById(R.id.registerEmail)).setText("");
+                    ((EditText) findViewById(R.id.registerPhone)).setText("");
+                    ((EditText) findViewById(R.id.registerPassword)).setText("");
+                    ((EditText) findViewById(R.id.registerConfirmPassword)).setText("");
+                    userTypeGroup.clearCheck();
+
                 } else {
                     Toast.makeText(LoginActivity.this, "Error en el registro", Toast.LENGTH_SHORT).show();
                 }
@@ -131,10 +162,22 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginForm() {
         loginForm.setVisibility(View.VISIBLE);
         registerForm.setVisibility(View.GONE);
+
+        switchToLogin.setBackgroundResource(R.drawable.bg_tab_active);
+        switchToLogin.setTextColor(Color.WHITE);
+
+        switchToRegister.setBackgroundResource(android.R.color.transparent);
+        switchToRegister.setTextColor(Color.parseColor("#111F77"));
     }
 
     private void showRegisterForm() {
         loginForm.setVisibility(View.GONE);
         registerForm.setVisibility(View.VISIBLE);
+
+        switchToRegister.setBackgroundResource(R.drawable.bg_tab_active);
+        switchToRegister.setTextColor(Color.WHITE);
+
+        switchToLogin.setBackgroundResource(android.R.color.transparent);
+        switchToLogin.setTextColor(Color.parseColor("#111F77"));
     }
 }
