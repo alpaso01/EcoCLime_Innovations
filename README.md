@@ -30,7 +30,7 @@ Es una solución digital compuesta por una aplicación móvil Android y una pág
 - **Constructor visual:** Elementor
 
 
-
+## 📁 Estructura del repositorio
 
 
 
