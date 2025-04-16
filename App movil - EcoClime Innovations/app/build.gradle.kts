@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-
 }
 
 android {
@@ -13,8 +12,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -32,6 +29,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+
 dependencies {
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("com.google.android.material:material:1.6.0")
@@ -39,15 +37,18 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.1")
     implementation("com.google.firebase:firebase-inappmessaging:19.0.5")
 
-    // Retrofit y Gson
+    // Retrofit + Gson
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:converter-scalars:2.9.0") // 👈 AÑADE ESTA LÍNEA
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation(libs.monitor)
+    implementation(libs.ext.junit)
+    testImplementation("junit:junit:4.12")
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.espresso:espresso-core:3.4.0")
+    // Evitamos errores por clases duplicadas
+    configurations.all {
+        exclude(group = "com.google.guava", module = "listenablefuture")
+    }
 }
-
