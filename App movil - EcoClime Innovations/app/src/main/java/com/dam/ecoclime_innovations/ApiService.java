@@ -1,38 +1,40 @@
 package com.dam.ecoclime_innovations;
 
-import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
-
 import java.util.List;
+import retrofit2.Call;
+import retrofit2.http.*;
 
 // Interfaz de Retrofit para la comunicación con la API
 public interface ApiService {
 
     // Endpoint para registrar un usuario
-    @POST("/usuarios/register")
+    @POST("usuarios/register")
     Call<Usuario> registerUser(@Body Usuario usuario);
 
     // Endpoint para hacer login
-    @POST("/usuarios/login")  // Cambié de @GET a @POST
-    Call<String> loginUser(@Body LoginRequest loginRequest);
+    @POST("usuarios/login")
+    Call<String> loginUser(@Body Usuario usuario);
 
-    // Endpoint para agendar una cita
-    @POST("citas/agendar/{usuarioId}")
-    Call<Cita> agendarCita(@Body Cita cita, @Path("usuarioId") int usuarioId);
+    // Endpoint para obtener datos del usuario por email
+    @GET("usuarios/email/{email}")
+    Call<Usuario> obtenerUsuarioPorEmail(@Path("email") String email);
 
-    // Endpoint para obtener el historial de citas de un usuario
-    @GET("citas/historial/{usuarioId}")
+    // Endpoints para citas
+    @GET("citas/usuario/{usuarioId}")
     Call<List<Cita>> obtenerHistorialCitas(@Path("usuarioId") int usuarioId);
 
-    // Endpoint para anular una cita
-    @DELETE("citas/anular/{citaId}")
-    Call<String> anularCita(@Path("citaId") int citaId);
+    @GET("citas/email/{email}")
+    Call<List<Cita>> obtenerHistorialCitasPorEmail(@Path("email") String email);
 
-    @POST("citas")
-    Call<Void> enviarCita(@Body Cita cita);
+    @GET("citas/{citaId}")
+    Call<Cita> obtenerCita(@Path("citaId") int citaId);
+
+    @POST("citas/{usuarioId}")
+    Call<Cita> agendarCita(@Path("usuarioId") int usuarioId, @Body Cita cita);
+
+    @PUT("citas/{citaId}")
+    Call<Void> actualizarCita(@Path("citaId") int citaId, @Body Cita cita);
+
+    @DELETE("citas/{citaId}")
+    Call<Void> eliminarCita(@Path("citaId") int citaId);
 }

@@ -1,84 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/botonAtrasParticulares"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Atrás" />
-
-    <TextView
+    <!-- Primera parte: Selección de fecha y hora -->
+    <ScrollView
+        android:id="@+id/layoutSeleccionFecha"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccione un día"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:paddingBottom="8dp" />
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
-    <CalendarView
-        android:id="@+id/calendarioCitas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <Button
-        android:id="@+id/seleccionarHora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar Hora" />
+            <Button
+                android:id="@+id/botonAtrasParticulares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_border"
+                android:backgroundTint="#FFFFFF"
+                android:text="Atrás"
+                android:textColor="#000000" />
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Correo electrónico" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seleccione un día"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:paddingBottom="8dp" />
 
-    <EditText
-        android:id="@+id/telefono"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Teléfono"
-        android:inputType="phone" />
+            <CalendarView
+                android:id="@+id/calendarioCitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
 
-    <EditText
-        android:id="@+id/ciudad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ciudad" />
+            <Button
+                android:id="@+id/seleccionarHora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seleccionar Hora"
+                android:textColor="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:background="@drawable/button_border"
+                android:layout_marginBottom="16dp"/>
 
-    <EditText
-        android:id="@+id/codigoPostal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Código Postal"
-        android:inputType="number" />
+            <Button
+                android:id="@+id/btnSiguiente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Siguiente"
+                android:textColor="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:background="@drawable/button_border"/>
 
-    <EditText
-        android:id="@+id/calle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre de la calle" />
+        </LinearLayout>
+    </ScrollView>
 
-    <EditText
-        android:id="@+id/numero"
+    <!-- Segunda parte: Formulario -->
+    <ScrollView
+        android:id="@+id/layoutFormulario"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Número de casa/piso y puerta" />
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-    <EditText
-        android:id="@+id/mensaje"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mensaje opcional"
-        android:inputType="textMultiLine" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <Button
-        android:id="@+id/confirmar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Confirmar Cita" />
-</LinearLayout>
+            <Button
+                android:id="@+id/btnVolverFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volver"
+                android:textColor="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:background="@drawable/button_border"
+                android:layout_marginBottom="16dp"/>
+
+            <EditText
+                android:id="@+id/nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/apellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Apellidos"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Teléfono"
+                android:inputType="phone"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/ciudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ciudad"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/codigoPostal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Código Postal"
+                android:inputType="number"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/calle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de la calle"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/numero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de casa/piso y puerta"
+                android:inputType="number"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/mensaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mensaje opcional"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/confirmar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirmar Cita"
+                android:textColor="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:background="@drawable/button_border"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
 

@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/fondo"
     tools:context=".pantalla_principal">
 
     <!-- BOTÓN ELEGIR CITA -->
@@ -33,55 +33,40 @@
 
     <Button
         android:id="@+id/botonElegir"
-        android:layout_width="180dp"
-        android:layout_height="160dp"
+        android:layout_width="364dp"
+        android:layout_height="150dp"
         android:layout_margin="12dp"
         android:background="@drawable/inline_button_style"
-        android:backgroundTint="#669CF2"
+        android:backgroundTint="#0F5898"
         android:gravity="center"
         android:text="Elegir Cita"
         android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
-
-    <Button
-        android:id="@+id/botonAnularCita"
-        android:layout_width="180dp"
-        android:layout_height="160dp"
-        android:layout_margin="12dp"
-        android:background="@drawable/inline_button_style"
-        android:gravity="center"
-        android:text="Cancelar Cita"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
+        app:layout_constraintVertical_bias="0.361" />
 
     <Button
         android:id="@+id/botonHistorialCitas"
-        android:layout_width="180dp"
-        android:layout_height="160dp"
+        android:layout_width="364dp"
+        android:layout_height="150dp"
         android:layout_margin="12dp"
         android:background="@drawable/inline_button_style"
+        android:backgroundTint="#0F5898"
         android:gravity="center"
-        android:text="Historial"
+        android:text="Historial de Citas"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921" />
+        app:layout_constraintVertical_bias="0.646" />
 
     <Button
         android:id="@+id/botonAtrasPrincipal"
@@ -93,9 +78,9 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.142" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

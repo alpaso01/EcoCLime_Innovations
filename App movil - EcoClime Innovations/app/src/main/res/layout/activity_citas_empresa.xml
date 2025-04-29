@@ -1,88 +1,162 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/botonAtrasEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Atrás" />
-
-    <TextView
+    <!-- Primera parte: Selección de fecha y hora -->
+    <ScrollView
+        android:id="@+id/layoutSeleccionFechaEmpresa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccione un día"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:paddingBottom="8dp" />
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
-    <CalendarView
-        android:id="@+id/calendarioCitasEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <Button
-        android:id="@+id/seleccionarHoraEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar Hora" />
+            <Button
+                android:id="@+id/botonAtrasEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_border"
+                android:backgroundTint="#FFFFFF"
+                android:text="Atrás"
+                android:textColor="#000000" />
 
-    <EditText
-        android:id="@+id/nombreEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre de la empresa" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:text="Seleccione un día"
+                android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/emailEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Correo electrónico" />
+            <CalendarView
+                android:id="@+id/calendarioCitasEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
 
-    <EditText
-        android:id="@+id/telefonoEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Teléfono"
-        android:inputType="phone" />
+            <Button
+                android:id="@+id/seleccionarHoraEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_border"
+                android:backgroundTint="#FFFFFF"
+                android:text="Seleccionar Hora"
+                android:textColor="#000000" />
 
-    <EditText
-        android:id="@+id/ciudadEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ciudad" />
+            <Button
+                android:id="@+id/btnSiguienteEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_border"
+                android:backgroundTint="#FFFFFF"
+                android:text="Siguiente"
+                android:textColor="#000000" />
 
-    <EditText
-        android:id="@+id/codigoPostalEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Código Postal"
-        android:inputType="number" />
+        </LinearLayout>
+    </ScrollView>
 
-    <EditText
-        android:id="@+id/calleEmpresa"
+    <!-- Segunda parte: Formulario -->
+    <ScrollView
+        android:id="@+id/layoutFormularioEmpresa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre de la calle" />
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-    <EditText
-        android:id="@+id/numeroEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Número de casa/piso y puerta" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <EditText
-        android:id="@+id/mensajeEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mensaje opcional"
-        android:inputType="textMultiLine" />
+            <Button
+                android:id="@+id/btnVolverFechaEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volver"
+                android:textColor="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:background="@drawable/button_border"
+                android:layout_marginBottom="16dp"/>
 
-    <Button
-        android:id="@+id/confirmarEmpresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Confirmar Cita" />
-</LinearLayout>
+            <EditText
+                android:id="@+id/nombreEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de la empresa"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/emailEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/telefonoEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Teléfono"
+                android:inputType="phone"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/ciudadEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ciudad"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/codigoPostalEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Código Postal"
+                android:inputType="number"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/calleEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de la calle"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/numeroEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de casa/piso y puerta"
+                android:inputType="number"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/mensajeEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mensaje opcional"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/confirmarEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="@drawable/button_border"
+                android:backgroundTint="#FFFFFF"
+                android:text="Confirmar Cita"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

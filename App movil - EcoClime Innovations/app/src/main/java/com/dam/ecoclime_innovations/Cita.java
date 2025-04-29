@@ -1,17 +1,74 @@
 package com.dam.ecoclime_innovations;
+
+import com.google.gson.annotations.SerializedName;
+
 public class Cita {
+    @SerializedName("id")
     private int id;
-    private int usuario_id;
+    
+    @SerializedName("usuario_id")
+    private int usuarioId;
+    
+    @SerializedName("nombre")
     private String nombre;
+    
+    @SerializedName("apellidos")
     private String apellidos;
+    
+    @SerializedName("telefono")
     private String telefono;
+    
+    @SerializedName("email")
     private String email;
+    
+    @SerializedName("tipo")
     private String tipo;
+    
+    @SerializedName("ciudad")
     private String ciudad;
+    
+    @SerializedName("codigo_postal")
     private String codigoPostal;
+    
+    @SerializedName("calle")
     private String calle;
-    private int numeroCasa;
-    private String fechaHora;
+    
+    @SerializedName("numero_casa")
+    private String numeroCasa;
+    
+    @SerializedName("fecha")
+    private String fecha;
+    
+    @SerializedName("hora")
+    private String hora;
+    
+    @SerializedName("estado")
+    private String estado;
+
+    // Constructor vacío para Retrofit
+    public Cita() {
+        this.estado = "pendiente";
+    }
+
+    // Constructor completo
+    public Cita(int id, int usuarioId, String nombre, String apellidos, String telefono, String email, 
+                String tipo, String ciudad, String codigoPostal, String calle, String numeroCasa, 
+                String fecha, String hora, String estado) {
+        this.id = id;
+        this.usuarioId = usuarioId;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.email = email;
+        this.tipo = tipo;
+        this.ciudad = ciudad;
+        this.codigoPostal = codigoPostal;
+        this.calle = calle;
+        this.numeroCasa = numeroCasa;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.estado = estado != null ? estado : "pendiente";
+    }
 
     // Getters y Setters
     public int getId() {
@@ -22,12 +79,12 @@ public class Cita {
         this.id = id;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
+    public int getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     public String getNombre() {
@@ -94,19 +151,39 @@ public class Cita {
         this.calle = calle;
     }
 
-    public int getNumeroCasa() {
+    public String getNumeroCasa() {
         return numeroCasa;
     }
 
-    public void setNumeroCasa(int numeroCasa) {
+    public void setNumeroCasa(String numeroCasa) {
         this.numeroCasa = numeroCasa;
     }
 
-    public String getFechaHora() {
-        return fechaHora;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setFechaHora(String fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
-}
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    public String getFechaHora() {
+        return fecha + " " + hora;
+    }
+} 

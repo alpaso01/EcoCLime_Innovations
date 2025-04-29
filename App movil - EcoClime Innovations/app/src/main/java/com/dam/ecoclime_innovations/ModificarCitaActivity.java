@@ -2,7 +2,6 @@ package com.dam.ecoclime_innovations;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,39 +10,44 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import java.util.Calendar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class citas_empresa extends AppCompatActivity {
-    private EditText etNombre, etTelefono, etEmail;
+public class ModificarCitaActivity extends AppCompatActivity {
+    private EditText etNombre, etApellidos, etTelefono, etEmail, etTipo;
     private EditText etCiudad, etCodigoPostal, etCalle, etNumeroCasa, etFechaHora;
     private Button btnGuardar, btnCancelar;
     private ApiService apiService;
+    private int citaId;
     private String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_citas_empresa);
+        setContentView(R.layout.activity_modificar_cita);
 
+        citaId = getIntent().getIntExtra("citaId", -1);
         userEmail = getIntent().getStringExtra("userEmail");
-        if (userEmail == null || userEmail.isEmpty()) {
-            Toast.makeText(this, "Error: Usuario no válido", Toast.LENGTH_SHORT).show();
+        
+        if (citaId == -1 || userEmail == null || userEmail.isEmpty()) {
+            Toast.makeText(this, "Error: Datos de cita no válidos", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
 
         inicializarVistas();
         configurarListeners();
+        cargarDatosCita();
     }
 
     private void inicializarVistas() {
         etNombre = findViewById(R.id.etNombre);
+        etApellidos = findViewById(R.id.etApellidos);
         etTelefono = findViewById(R.id.etTelefono);
         etEmail = findViewById(R.id.etEmail);
+        etTipo = findViewById(R.id.etTipo);
         etCiudad = findViewById(R.id.etCiudad);
         etCodigoPostal = findViewById(R.id.etCodigoPostal);
         etCalle = findViewById(R.id.etCalle);
@@ -53,15 +57,43 @@ public class citas_empresa extends AppCompatActivity {
         btnCancelar = findViewById(R.id.btnCancelar);
 
         apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
-        
-        // Prellenar el email del usuario
-        etEmail.setText(userEmail);
     }
 
     private void configurarListeners() {
-        etFechaHora.setOnClickListener(v -> mostrarSelectorFechaHora());
-        btnGuardar.setOnClickListener(v -> guardarCita());
+        btnGuardar.setOnClickListener(v -> guardarCambios());
         btnCancelar.setOnClickListener(v -> finish());
+        etFechaHora.setOnClickListener(v -> mostrarSelectorFechaHora());
+    }
+
+    private void cargarDatosCita() {
+        apiService.obtenerCita(citaId).enqueue(new Callback<Cita>() {
+            @Override
+            public void onResponse(Call<Cita> call, Response<Cita> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Cita cita = response.body();
+                    etNombre.setText(cita.getNombre());
+                    etApellidos.setText(cita.getApellidos());
+                    etTelefono.setText(cita.getTelefono());
+                    etEmail.setText(cita.getEmail());
+                    etTipo.setText(cita.getTipo());
+                    etCiudad.setText(cita.getCiudad());
+                    etCodigoPostal.setText(cita.getCodigoPostal());
+                    etCalle.setText(cita.getCalle());
+                    etNumeroCasa.setText(cita.getNumeroCasa());
+                    String fechaHora = cita.getFecha() + " " + cita.getHora();
+                    etFechaHora.setText(fechaHora);
+                } else {
+                    Toast.makeText(ModificarCitaActivity.this, "Error al cargar los datos de la cita", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Cita> call, Throwable t) {
+                Toast.makeText(ModificarCitaActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 
     private void mostrarSelectorFechaHora() {
@@ -117,7 +149,7 @@ public class citas_empresa extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private void guardarCita() {
+    private void guardarCambios() {
         if (!validarCampos()) {
             Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
@@ -128,69 +160,71 @@ public class citas_empresa extends AppCompatActivity {
             Toast.makeText(this, "Formato de fecha y hora inválido", Toast.LENGTH_SHORT).show();
             return;
         }
-        
+
         // Obtener datos del usuario
         apiService.obtenerUsuarioPorEmail(userEmail).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Usuario usuario = response.body();
-                    agendarCitaConUsuario(usuario.getId(), fechaHora);
+                    actualizarCitaConUsuario(usuario.getId(), fechaHora);
                 } else {
-                    Toast.makeText(citas_empresa.this, "Error al obtener datos del usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ModificarCitaActivity.this, "Error al obtener datos del usuario", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
-                Toast.makeText(citas_empresa.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ModificarCitaActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
-    
-    private void agendarCitaConUsuario(int usuarioId, String[] fechaHora) {
-        // Crear instancia de Cita usando constructor vacío y setters
-        Cita cita = new Cita();
-        cita.setUsuarioId(usuarioId);
-        cita.setNombre(etNombre.getText().toString().trim());
-        cita.setApellidos(""); // No hay apellidos para empresas
-        cita.setTelefono(etTelefono.getText().toString().trim());
-        cita.setEmail(etEmail.getText().toString().trim());
-        cita.setTipo("Empresa");
-        cita.setCiudad(etCiudad.getText().toString().trim());
-        cita.setCodigoPostal(etCodigoPostal.getText().toString().trim());
-        cita.setCalle(etCalle.getText().toString().trim());
-        cita.setNumeroCasa(etNumeroCasa.getText().toString().trim());
-        cita.setFecha(fechaHora[0]);
-        cita.setHora(fechaHora[1]);
-        cita.setEstado("pendiente");
 
-        apiService.agendarCita(usuarioId, cita).enqueue(new Callback<Cita>() {
+    private void actualizarCitaConUsuario(int usuarioId, String[] fechaHora) {
+        // Crear instancia de Cita usando constructor vacío y setters
+        Cita citaModificada = new Cita();
+        citaModificada.setId(citaId);
+        citaModificada.setUsuarioId(usuarioId);
+        citaModificada.setNombre(etNombre.getText().toString());
+        citaModificada.setApellidos(etApellidos.getText().toString());
+        citaModificada.setTelefono(etTelefono.getText().toString());
+        citaModificada.setEmail(etEmail.getText().toString());
+        citaModificada.setTipo(etTipo.getText().toString());
+        citaModificada.setCiudad(etCiudad.getText().toString());
+        citaModificada.setCodigoPostal(etCodigoPostal.getText().toString());
+        citaModificada.setCalle(etCalle.getText().toString());
+        citaModificada.setNumeroCasa(etNumeroCasa.getText().toString());
+        citaModificada.setFecha(fechaHora[0]);
+        citaModificada.setHora(fechaHora[1]);
+
+        apiService.actualizarCita(citaId, citaModificada).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Cita> call, Response<Cita> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(citas_empresa.this, "Cita agendada con éxito", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(ModificarCitaActivity.this, "Cita actualizada con éxito", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(citas_empresa.this, "Error al agendar la cita", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ModificarCitaActivity.this, "Error al actualizar la cita", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Cita> call, Throwable t) {
-                Toast.makeText(citas_empresa.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(ModificarCitaActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private boolean validarCampos() {
         return !TextUtils.isEmpty(etNombre.getText()) &&
+               !TextUtils.isEmpty(etApellidos.getText()) &&
                !TextUtils.isEmpty(etTelefono.getText()) &&
                !TextUtils.isEmpty(etEmail.getText()) &&
+               !TextUtils.isEmpty(etTipo.getText()) &&
                !TextUtils.isEmpty(etCiudad.getText()) &&
                !TextUtils.isEmpty(etCodigoPostal.getText()) &&
                !TextUtils.isEmpty(etCalle.getText()) &&
                !TextUtils.isEmpty(etNumeroCasa.getText()) &&
                !TextUtils.isEmpty(etFechaHora.getText());
     }
-}
+} 

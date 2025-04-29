@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-        apiService = RetrofitClient.getClient().create(ApiService.class);
+        initRetrofit();
 
         loginForm = findViewById(R.id.loginForm);
         registerForm = findViewById(R.id.registerForm);
@@ -51,6 +51,12 @@ public class LoginActivity extends AppCompatActivity {
         accessButton.setOnClickListener(v -> loginUser());
         registerButton.setOnClickListener(v -> registerUser());
     }
+    
+    private void initRetrofit() {
+        // Reiniciar la instancia por si acaso
+        RetrofitClient.clearInstance();
+        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+    }
 
     private void loginUser() {
         String email = ((EditText) findViewById(R.id.loginEmail)).getText().toString().trim();
@@ -61,49 +67,60 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Crear el objeto LoginRequest para la solicitud POST
-        LoginRequest loginRequest = new LoginRequest(email, password);
+        // Crear objeto Usuario para login
+        Usuario usuario = new Usuario(email, password);
+        
+        Toast.makeText(this, "Intentando conectar...", Toast.LENGTH_SHORT).show();
 
         // Realizar la llamada a la API para hacer login
-        apiService.loginUser(loginRequest).enqueue(new Callback<String>() {
+        apiService.loginUser(usuario).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()) {
-                    String responseMessage = response.body();
+                if (response.isSuccessful() && response.body() != null) {
+                    // Extraer el ID del usuario de la respuesta (si el servidor lo devuelve)
+                    String responseBody = response.body();
+                    Log.d("LoginActivity", "Respuesta del servidor: " + responseBody);
 
-                    // Verificar si la respuesta es "Inicio de sesión exitoso"
-                    if (responseMessage != null && responseMessage.equals("Inicio de sesión exitoso")) {
-                        Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
-                        // Guardar los datos del usuario en SharedPreferences
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("email", email);
-                        editor.putBoolean("isLoggedIn", true);
-                        editor.apply();
+                    // Guardar datos mínimos necesarios en SharedPreferences
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.apply();
 
-                        // Iniciar la actividad principal
-                        startActivity(new Intent(LoginActivity.this, pantalla_principal.class));
-                        finish();
-                    } else {
-                        // Si las credenciales son incorrectas
-                        Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
-                    }
+                    // Iniciar la actividad principal pasando el email del usuario
+                    Intent intent = new Intent(LoginActivity.this, pantalla_principal.class);
+                    intent.putExtra("userEmail", email);
+                    startActivity(intent);
+                    finish();
                 } else {
-                    // Error en la respuesta de la API
-                    Toast.makeText(LoginActivity.this, "Error en la API", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                    Log.e("LoginError", "Código de error: " + response.code());
+                    try {
+                        String errorBody = response.errorBody() != null ? response.errorBody().string() : "Sin cuerpo de error";
+                        Log.e("LoginError", "Mensaje de error: " + errorBody);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    
+                    // Reiniciar Retrofit si hay errores de HTTP
+                    if (response.code() >= 500) {
+                        initRetrofit();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                // Error en la conexión
                 Toast.makeText(LoginActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("control de error de conexion en login", t.getMessage());
+                Log.e("LoginError", "Error de conexión: " + t.getMessage());
+                t.printStackTrace();
+                
+                // Reiniciar Retrofit en caso de error de conexión
+                initRetrofit();
             }
         });
     }
-
-
 
     private void registerUser() {
         String username = ((EditText) findViewById(R.id.registerUsername)).getText().toString().trim();
@@ -124,9 +141,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-
         RadioButton selectedRadioButton = findViewById(selectedTypeId);
-        String userType = selectedRadioButton.getText().toString();
+        String userType = selectedRadioButton.getText().toString().toLowerCase();
 
         Usuario usuario = new Usuario(username, apellidos, email, phone, password, userType);
 
@@ -135,17 +151,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-
-                    // Guardar en SharedPreferences
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("username", username);
-                    editor.putString("apellidos", apellidos);
-                    editor.putString("email", email);
-                    editor.putString("phone", phone);
-                    editor.putString("userType", userType);
-                    editor.putBoolean("isLoggedIn", true);
-                    editor.apply();
-
                     showLoginForm();
 
                     // Limpiar los campos del formulario de registro
@@ -156,7 +161,6 @@ public class LoginActivity extends AppCompatActivity {
                     ((EditText) findViewById(R.id.registerPassword)).setText("");
                     ((EditText) findViewById(R.id.registerConfirmPassword)).setText("");
                     userTypeGroup.clearCheck();
-
                 } else {
                     Toast.makeText(LoginActivity.this, "Error en el registro", Toast.LENGTH_SHORT).show();
                 }
@@ -165,10 +169,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                // Reiniciar Retrofit en caso de error
+                initRetrofit();
             }
         });
     }
-
 
     private void showLoginForm() {
         loginForm.setVisibility(View.VISIBLE);

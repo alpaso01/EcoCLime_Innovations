@@ -2,9 +2,10 @@ package com.dam.ecoclime_innovations;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -12,6 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class ElegirCita extends AppCompatActivity {
+    private static final String TAG = "ElegirCita";
+    private String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,41 +27,55 @@ public class ElegirCita extends AppCompatActivity {
             return insets;
         });
 
-        // Cargar animación
-        Animation animEntrada = AnimationUtils.loadAnimation(this, R.anim.anim_boton_entrada);
+        // Obtener email del usuario desde el intent
+        userEmail = getIntent().getStringExtra("userEmail");
+        
+        if (userEmail == null || userEmail.isEmpty()) {
+            Toast.makeText(this, "Error: Usuario no identificado", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
+        
+        Log.d(TAG, "userEmail obtenido: " + userEmail);
 
-        // Botones
+        // Inicializar botones
         Button botonElegirEmpresa = findViewById(R.id.botonElegirEmpresa);
         Button botonElegirParticular = findViewById(R.id.botonElegirParticular);
         Button botonAtras = findViewById(R.id.botonAtras);
 
-        // Aplicar animación de entrada
-        botonElegirEmpresa.startAnimation(animEntrada);
-        botonElegirParticular.startAnimation(animEntrada);
-        botonAtras.startAnimation(animEntrada);
-
-        // Listeners
-        botonElegirEmpresa.setOnClickListener(v -> {
-            v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(100).withEndAction(() -> {
+        // Configurar listeners sin animaciones complejas para mejorar rendimiento
+        botonElegirEmpresa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Iniciando citas_empresa con email: " + userEmail);
                 Intent intent = new Intent(ElegirCita.this, citas_empresa.class);
+                intent.putExtra("userEmail", userEmail);
                 startActivity(intent);
-                v.setScaleX(1f);
-                v.setScaleY(1f);
-            }).start();
+            }
         });
 
-        botonElegirParticular.setOnClickListener(v -> {
-            v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(100).withEndAction(() -> {
+        botonElegirParticular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Iniciando citas_particulares con email: " + userEmail);
                 Intent intent = new Intent(ElegirCita.this, citas_particulares.class);
+                intent.putExtra("userEmail", userEmail);
                 startActivity(intent);
-                v.setScaleX(1f);
-                v.setScaleY(1f);
-            }).start();
+            }
         });
 
-        botonAtras.setOnClickListener(v -> {
-            Intent intent = new Intent(ElegirCita.this, pantalla_principal.class);
-            startActivity(intent);
+        botonAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Simplemente volvemos a la pantalla anterior
+            }
         });
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume - ElegirCita");
     }
 }

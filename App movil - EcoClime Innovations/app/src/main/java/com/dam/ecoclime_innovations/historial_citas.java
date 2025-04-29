@@ -1,111 +1,153 @@
 package com.dam.ecoclime_innovations;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class historial_citas extends AppCompatActivity {
+public class historial_citas extends AppCompatActivity implements CitaAdapter.OnCitaActionListener {
+    private static final String TAG = "historial_citas";
     private RecyclerView recyclerView;
+    private CitaAdapter citaAdapter;
+    private List<Cita> listaCitas = new ArrayList<>();
     private ApiService apiService;
-    private int usuarioId; // ID del usuario logueado
+    private String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_citas);
 
+        // Inicialización de Retrofit
+        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+
+        // Obtener el email del intent
+        userEmail = getIntent().getStringExtra("userEmail");
+        if (userEmail == null || userEmail.isEmpty()) {
+            Toast.makeText(this, "No se pudo obtener el email del usuario", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+        
+        Log.d(TAG, "userEmail obtenido: " + userEmail);
+
+        // Configuración del RecyclerView
         recyclerView = findViewById(R.id.recyclerViewCitas);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        citaAdapter = new CitaAdapter(listaCitas, this);
+        recyclerView.setAdapter(citaAdapter);
 
-        apiService = RetrofitClient.getClient().create(ApiService.class);  // Usamos getClient()
-        usuarioId = getIntent().getIntExtra("usuarioId", -1);
+        // Configurar botón volver
+        Button btnVolver = findViewById(R.id.botonAtrasHistorial);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
-        if (usuarioId != -1) {
-            obtenerHistorialCitas(usuarioId);
-        } else {
-            Toast.makeText(this, "Error: Usuario no identificado", Toast.LENGTH_SHORT).show();
-        }
+        // Obtener el historial de citas
+        obtenerHistorialCitas();
     }
 
-    private void obtenerHistorialCitas(int usuarioId) {
-        apiService.obtenerHistorialCitas(usuarioId).enqueue(new Callback<List<Cita>>() {
+    private void obtenerHistorialCitas() {
+        Log.d(TAG, "Obteniendo historial de citas para: " + userEmail);
+        Call<List<Cita>> call = apiService.obtenerHistorialCitasPorEmail(userEmail);
+        call.enqueue(new Callback<List<Cita>>() {
             @Override
             public void onResponse(Call<List<Cita>> call, Response<List<Cita>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    CitaAdapter citaAdapter = new CitaAdapter(response.body());
-                    recyclerView.setAdapter(citaAdapter);
+                    listaCitas.clear();
+                    listaCitas.addAll(response.body());
+                    citaAdapter.notifyDataSetChanged();
+                    
+                    Log.d(TAG, "Citas obtenidas: " + listaCitas.size());
+                    
+                    if (listaCitas.isEmpty()) {
+                        Toast.makeText(historial_citas.this, "No tienes citas programadas", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(historial_citas.this, "No hay citas registradas", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error en la respuesta: " + response.code());
+                    Toast.makeText(historial_citas.this, "Error al obtener las citas", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Cita>> call, Throwable t) {
-                Toast.makeText(historial_citas.this, "Error al obtener citas", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Error en la llamada: " + t.getMessage());
+                Toast.makeText(historial_citas.this, "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    // Clase interna que actúa como el Adapter del RecyclerView
-    public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder> {
-        private List<Cita> citas;
+    @Override
+    public void onModificarClick(Cita cita) {
+        // Iniciar actividad para modificar la cita
+        Intent intent = new Intent(this, ModificarCitaActivity.class);
+        intent.putExtra("citaId", cita.getId());
+        intent.putExtra("userEmail", userEmail);
+        startActivity(intent);
+    }
 
-        public CitaAdapter(List<Cita> citas) {
-            this.citas = citas;
-        }
+    @Override
+    public void onEliminarClick(final Cita cita) {
+        // Mostrar diálogo de confirmación
+        new AlertDialog.Builder(this)
+                .setTitle("Confirmar eliminación")
+                .setMessage("¿Estás seguro de que deseas eliminar esta cita?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        eliminarCita(cita.getId());
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 
-        @Override
-        public CitaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            // Infla el layout para cada elemento de la lista
-            View view = getLayoutInflater().inflate(R.layout.item_cita, parent, false);
-            return new CitaViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(CitaViewHolder holder, int position) {
-            Cita cita = citas.get(position);
-            holder.nombreTextView.setText(cita.getNombre() + " " + cita.getApellidos());
-            holder.telefonoTextView.setText(cita.getTelefono());
-            holder.emailTextView.setText(cita.getEmail());
-            holder.tipoTextView.setText(cita.getTipo());
-            holder.ciudadTextView.setText(cita.getCiudad());
-            holder.codigoPostalTextView.setText(cita.getCodigoPostal());
-            holder.calleTextView.setText(cita.getCalle());
-            holder.numeroCasaTextView.setText(String.valueOf(cita.getNumeroCasa()));
-            holder.fechaHoraTextView.setText(cita.getFechaHora());
-        }
-
-        @Override
-        public int getItemCount() {
-            return citas.size();
-        }
-
-        // Clase ViewHolder para mantener las vistas de cada item
-        public class CitaViewHolder extends RecyclerView.ViewHolder {
-            TextView nombreTextView, telefonoTextView, emailTextView, tipoTextView, ciudadTextView, codigoPostalTextView,
-                    calleTextView, numeroCasaTextView, fechaHoraTextView;
-
-            public CitaViewHolder(View itemView) {
-                super(itemView);
-                nombreTextView = itemView.findViewById(R.id.nombreTextView);
-                telefonoTextView = itemView.findViewById(R.id.telefonoTextView);
-                emailTextView = itemView.findViewById(R.id.emailTextView);
-                tipoTextView = itemView.findViewById(R.id.tipoTextView);
-                ciudadTextView = itemView.findViewById(R.id.ciudadTextView);
-                codigoPostalTextView = itemView.findViewById(R.id.codigoPostalTextView);
-                calleTextView = itemView.findViewById(R.id.calleTextView);
-                numeroCasaTextView = itemView.findViewById(R.id.numeroCasaTextView);
-                fechaHoraTextView = itemView.findViewById(R.id.fechaHoraTextView);
+    private void eliminarCita(int citaId) {
+        Call<Void> call = apiService.eliminarCita(citaId);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(historial_citas.this, "Cita eliminada correctamente", Toast.LENGTH_SHORT).show();
+                    // Actualizar la lista de citas
+                    obtenerHistorialCitas();
+                } else {
+                    Log.e(TAG, "Error al eliminar la cita: " + response.code());
+                    Toast.makeText(historial_citas.this, "Error al eliminar la cita", Toast.LENGTH_SHORT).show();
+                }
             }
-        }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e(TAG, "Error en la llamada: " + t.getMessage());
+                Toast.makeText(historial_citas.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Actualizar la lista de citas al volver a la actividad
+        obtenerHistorialCitas();
+        Log.d(TAG, "onResume - historial_citas");
     }
 }
