@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/nav_atencion_cliente"
+        android:icon="@android:drawable/ic_menu_call"
+        android:title="Atención Cliente" />
+    <item
+        android:id="@+id/nav_mi_perfil"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Mi Perfil" />
+</menu> 
