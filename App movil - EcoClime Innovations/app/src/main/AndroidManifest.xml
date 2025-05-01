@@ -17,6 +17,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ModificarCitaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AtencionClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MiPerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".ElegirCita"
             android:exported="false" />
         <activity

@@ -1,5 +1,6 @@
 package com.dam.ecoclime_innovations;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class mi_perfil extends AppCompatActivity {
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

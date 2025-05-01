@@ -14,6 +14,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class RetrofitClient {
+    // Asegurarse que la URL base es correcta
+    // Para el emulador Android estándar, 10.0.2.2 apunta al localhost de la máquina host
     private static final String BASE_URL = "http://10.0.2.2:8085/";
     private static Retrofit retrofit = null;
 

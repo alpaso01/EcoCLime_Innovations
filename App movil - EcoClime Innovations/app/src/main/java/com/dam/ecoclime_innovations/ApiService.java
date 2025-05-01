@@ -7,6 +7,12 @@ import retrofit2.http.*;
 // Interfaz de Retrofit para la comunicación con la API
 public interface ApiService {
 
+
+    //-----INICIO DE SESIÓN Y REGISTRO-----
+
+
+
+
     // Endpoint para registrar un usuario
     @POST("usuarios/register")
     Call<Usuario> registerUser(@Body Usuario usuario);
@@ -15,9 +21,35 @@ public interface ApiService {
     @POST("usuarios/login")
     Call<String> loginUser(@Body Usuario usuario);
 
+
+
+
+
+
+
+
+
+    //-------OBTENER DATOS DE USUARIO-------
+
+
     // Endpoint para obtener datos del usuario por email
-    @GET("usuarios/email/{email}")
+    @GET("usuarios/user/{email}")
     Call<Usuario> obtenerUsuarioPorEmail(@Path("email") String email);
+
+    // Endpoint alternativo para obtener datos del usuario por email (vía query parameter)
+    @GET("usuarios")
+    Call<Usuario> obtenerUsuarioPorEmailQuery(@Query("email") String email);
+
+
+
+
+
+
+
+    //----CITAS------
+
+
+
 
     // Endpoints para citas
     @GET("citas/usuario/{usuarioId}")
