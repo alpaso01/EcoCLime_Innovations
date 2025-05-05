@@ -3,6 +3,7 @@ package com.dam.ecoclime_innovations;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.io.IOException;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
@@ -55,9 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initRetrofit() {
-        // Reiniciar la instancia por si acaso
-        RetrofitClient.clearInstance();
-        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+
     }
 
     private void loginUser() {
@@ -226,32 +226,30 @@ public class LoginActivity extends AppCompatActivity {
         String userType = selectedRadioButton.getText().toString().toLowerCase();
 
         Usuario usuario = new Usuario(username, apellidos, email, phone, password, userType);
+        Log.d("Tag",usuario.toString());
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
         apiService.registerUser(usuario).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                    showLoginForm();
-
-                    // Limpiar los campos del formulario de registro
-                    ((EditText) findViewById(R.id.registerUsername)).setText("");
-                    ((EditText) findViewById(R.id.registerApellidos)).setText("");
-                    ((EditText) findViewById(R.id.registerEmail)).setText("");
-                    ((EditText) findViewById(R.id.registerPhone)).setText("");
-                    ((EditText) findViewById(R.id.registerPassword)).setText("");
-                    ((EditText) findViewById(R.id.registerConfirmPassword)).setText("");
-                    userTypeGroup.clearCheck();
+                    Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(LoginActivity.this, "Error en el registro", Toast.LENGTH_SHORT).show();
+                    Log.e("Registro", "Código de error: " + response.code());
+                    Log.e("Registro", "Mensaje: " + response.message());
+                    try {
+                        Log.e("Registro", "Cuerpo de error: " + response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getApplicationContext(), "Error en el registro", Toast.LENGTH_SHORT).show();
                 }
             }
 
+
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
-                // Reiniciar Retrofit en caso de error
-                initRetrofit();
+                Toast.makeText(getApplicationContext(), "Fallo de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }

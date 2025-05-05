@@ -15,7 +15,7 @@ public class CitaService {
     private UsuarioRepository usuarioRepository;
 
     // Agendar una nueva cita
-    public Cita agendarCita(Cita cita, Long usuarioId) {
+    public Cita agendarCita(Cita cita, Integer usuarioId) {
         Optional<Usuario> usuarioOpt = usuarioRepository.findById(usuarioId);
         if (usuarioOpt.isPresent()) {
             cita.setUsuario(usuarioOpt.get());
@@ -25,12 +25,12 @@ public class CitaService {
     }
 
     // Obtener historial de citas de un usuario
-    public List<Cita> obtenerCitasPorUsuario(Long usuarioId) {
+    public List<Cita> obtenerCitasPorUsuario(Integer usuarioId) {
         return citaRepository.findByUsuarioId(usuarioId);
     }
 
     // Anular una cita
-    public boolean anularCita(Long citaId) {
+    public boolean anularCita(Integer citaId) {
         if (citaRepository.existsById(citaId)) {
             citaRepository.deleteById(citaId);
             return true;

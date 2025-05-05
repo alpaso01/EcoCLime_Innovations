@@ -281,7 +281,7 @@ public class MiPerfilActivity extends AppCompatActivity {
                 mostrarDatosUsuario(usuarioMinimo);
                 
                 // Intentar reiniciar Retrofit
-                RetrofitClient.clearInstance();
+
                 apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
             }
         });

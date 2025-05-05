@@ -21,7 +21,7 @@ public class Usuario implements Serializable {
     private String apellidos;
     private String email;
     private String telefono;
-    private String contraseña;
+    private String password;
     private String tipo; // Puede ser "Particular" o "Empresa"
 
     // Getters y setters
@@ -65,12 +65,12 @@ public class Usuario implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getpassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setpassword(String password) {
+        this.password = password;
     }
 
     public String getTipo() {

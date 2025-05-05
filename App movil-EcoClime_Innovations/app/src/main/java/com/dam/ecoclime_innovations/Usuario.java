@@ -30,6 +30,22 @@ public class Usuario {
     @SerializedName("codigo_postal")
     private String codigoPostal;
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", password='" + password + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", codigoPostal='" + codigoPostal + '\'' +
+                ", direccion='" + direccion + '\'' +
+                '}';
+    }
+
     @SerializedName("direccion")
     private String direccion;
 

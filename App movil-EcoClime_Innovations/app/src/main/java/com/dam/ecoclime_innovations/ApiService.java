@@ -8,7 +8,7 @@ public interface ApiService {
 
     //-----INICIO DE SESIÓN Y REGISTRO-----
 
-    @POST("usuarios/register")
+    @POST("usuarios/registro")
     Call<Usuario> registerUser(@Body Usuario usuario);
 
     @POST("usuarios/login")
