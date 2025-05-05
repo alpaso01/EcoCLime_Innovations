@@ -24,4 +24,16 @@ public class UsuarioController {
 	    
 	    
 	    
+	    @PostMapping("/login")
+	    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+	        Usuario usuario = usuarioService.login(loginRequest.getEmail(), loginRequest.getPassword());
+	        if (usuario != null) {
+	            return ResponseEntity.ok(usuario);
+	        } else {
+	            return ResponseEntity.status(401).body("Email o contraseña incorrectos.");
+	        }
+	    }
+	    
+	    
+	    
 }

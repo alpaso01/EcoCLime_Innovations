@@ -19,5 +19,16 @@ public class UsuarioService {
 	        return usuarioRepository.save(usuario);
 	    }
 	    
-	    
+	    //LOGIN
+	    public Usuario login(String email, String password) {
+	        Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
+	        if (optionalUsuario.isPresent()) {
+	            Usuario usuario = optionalUsuario.get();
+	            if (usuario.getpassword().equals(password)) {
+	                return usuario;
+	            }
+	        }
+	        return null;
+	    }
+
 }
