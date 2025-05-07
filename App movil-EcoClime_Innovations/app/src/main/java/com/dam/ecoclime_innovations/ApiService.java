@@ -12,7 +12,7 @@ public interface ApiService {
     Call<Usuario> registerUser(@Body Usuario usuario);
 
     @POST("usuarios/login")
-    Call<String> loginUser(@Body Usuario usuario);
+    Call<Usuario> loginUser(@Body Usuario usuario);
 
 
 

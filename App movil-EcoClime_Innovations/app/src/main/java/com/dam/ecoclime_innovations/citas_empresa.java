@@ -21,10 +21,12 @@ import retrofit2.Response;
 
 public class citas_empresa extends AppCompatActivity {
     private EditText etNombre, etTelefono, etEmail;
-    private EditText etCiudad, etCodigoPostal, etCalle, etNumeroCasa, etFechaHora;
+    private EditText etCiudad, etCodigoPostal, etCalle, etNumeroCasa, etMensajeOpcional;
     private Button btnGuardar, btnCancelar;
     private ApiService apiService;
     private String userEmail;
+    private String fechaSeleccionada;
+    private String horaSeleccionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +45,29 @@ public class citas_empresa extends AppCompatActivity {
     }
 
     private void inicializarVistas() {
-        etNombre = findViewById(R.id.etNombre);
-        etTelefono = findViewById(R.id.etTelefono);
-        etEmail = findViewById(R.id.etEmail);
-        etCiudad = findViewById(R.id.etCiudad);
-        etCodigoPostal = findViewById(R.id.etCodigoPostal);
-        etCalle = findViewById(R.id.etCalle);
-        etNumeroCasa = findViewById(R.id.etNumeroCasa);
-        etFechaHora = findViewById(R.id.etFechaHora);
-        btnGuardar = findViewById(R.id.btnGuardar);
-        btnCancelar = findViewById(R.id.btnCancelar);
+        etNombre = findViewById(R.id.nombreEmpresa);
+        etTelefono = findViewById(R.id.telefonoEmpresa);
+        etEmail = findViewById(R.id.emailEmpresa);
+        etCiudad = findViewById(R.id.ciudadEmpresa);
+        etCodigoPostal = findViewById(R.id.codigoPostalEmpresa);
+        etCalle = findViewById(R.id.calleEmpresa);
+        etNumeroCasa = findViewById(R.id.numeroEmpresa);
+        etMensajeOpcional = findViewById(R.id.mensajeEmpresa);
+        btnGuardar = findViewById(R.id.confirmarEmpresa);
+        btnCancelar = findViewById(R.id.btnVolverFechaEmpresa);
+
+        Button btnSeleccionarHora = findViewById(R.id.seleccionarHoraEmpresa);
+        btnSeleccionarHora.setOnClickListener(v -> mostrarSelectorHora());
+
+        Button btnSiguiente = findViewById(R.id.btnSiguienteEmpresa);
+        btnSiguiente.setOnClickListener(v -> {
+            if (horaSeleccionada == null || horaSeleccionada.isEmpty()) {
+                Toast.makeText(this, "Por favor, seleccione una hora", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            findViewById(R.id.layoutSeleccionFechaEmpresa).setVisibility(View.GONE);
+            findViewById(R.id.layoutFormularioEmpresa).setVisibility(View.VISIBLE);
+        });
 
         apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
@@ -61,73 +76,37 @@ public class citas_empresa extends AppCompatActivity {
     }
 
     private void configurarListeners() {
-        etFechaHora.setOnClickListener(v -> mostrarSelectorFechaHora());
         btnGuardar.setOnClickListener(v -> guardarCita());
         btnCancelar.setOnClickListener(v -> finish());
     }
 
-    private void mostrarSelectorFechaHora() {
+    private void mostrarSelectorHora() {
         Calendar calendario = Calendar.getInstance();
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
                 this,
-                (view, year, month, dayOfMonth) -> {
-                    // Validar que la fecha no sea anterior a hoy
-                    Calendar selectedCalendar = Calendar.getInstance();
-                    selectedCalendar.set(year, month, dayOfMonth);
-                    Calendar today = Calendar.getInstance();
-                    today.set(Calendar.HOUR_OF_DAY, 0);
-                    today.set(Calendar.MINUTE, 0);
-                    today.set(Calendar.SECOND, 0);
-                    today.set(Calendar.MILLISECOND, 0);
-
-                    if (selectedCalendar.before(today)) {
-                        Toast.makeText(this, "No se pueden agendar citas en fechas pasadas", Toast.LENGTH_SHORT).show();
+                (view1, hourOfDay, minute) -> {
+                    // Validar horario laboral (7:00 - 19:00)
+                    if (hourOfDay < 7 || hourOfDay >= 19) {
+                        Toast.makeText(this, "El horario de citas es de 7:00 a 19:00", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
-                    // Validar que sea día laborable
-                    int dayOfWeek = selectedCalendar.get(Calendar.DAY_OF_WEEK);
-                    if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
-                        Toast.makeText(this, "Solo se permiten citas de lunes a viernes", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    TimePickerDialog timePickerDialog = new TimePickerDialog(
-                            this,
-                            (view1, hourOfDay, minute) -> {
-                                // Validar horario laboral (7:00 - 19:00)
-                                if (hourOfDay < 7 || hourOfDay >= 19) {
-                                    Toast.makeText(this, "El horario de citas es de 7:00 a 19:00", Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
-
-                                String fecha = String.format("%02d/%02d/%d", dayOfMonth, month + 1, year);
-                                String hora = String.format("%02d:%02d", hourOfDay, minute);
-                                etFechaHora.setText(fecha + " " + hora);
-                            },
-                            calendario.get(Calendar.HOUR_OF_DAY),
-                            calendario.get(Calendar.MINUTE),
-                            true
-                    );
-                    timePickerDialog.show();
+                    String hora = String.format("%02d:%02d", hourOfDay, minute);
+                    // Guardar la hora seleccionada en una variable de clase
+                    horaSeleccionada = hora;
+                    // Mostrar la hora en un TextView o mantenerla en memoria
+                    Toast.makeText(this, "Hora seleccionada: " + hora, Toast.LENGTH_SHORT).show();
                 },
-                calendario.get(Calendar.YEAR),
-                calendario.get(Calendar.MONTH),
-                calendario.get(Calendar.DAY_OF_MONTH)
+                7, // Hora inicial: 7:00
+                0, // Minuto inicial: 00
+                true // Formato 24 horas
         );
-        datePickerDialog.show();
+        timePickerDialog.show();
     }
 
     private void guardarCita() {
         if (!validarCampos()) {
             Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String[] fechaHora = etFechaHora.getText().toString().split(" ");
-        if (fechaHora.length != 2) {
-            Toast.makeText(this, "Formato de fecha y hora inválido", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -137,7 +116,7 @@ public class citas_empresa extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Usuario usuario = response.body();
-                    agendarCitaConUsuario(usuario.getId(), fechaHora);
+                    agendarCitaConUsuario(usuario.getId());
                 } else {
                     String errorMsg = "Error al obtener datos del usuario: " + response.code();
                     Log.e("citas_empresa", errorMsg);
@@ -153,7 +132,7 @@ public class citas_empresa extends AppCompatActivity {
         });
     }
 
-    private void agendarCitaConUsuario(int usuarioId, String[] fechaHora) {
+    private void agendarCitaConUsuario(int usuarioId) {
         // Crear objeto Cita con todos los datos necesarios
         Cita cita = new Cita();
         cita.setUsuarioId(usuarioId);
@@ -166,8 +145,8 @@ public class citas_empresa extends AppCompatActivity {
         cita.setCodigoPostal(etCodigoPostal.getText().toString().trim());
         cita.setCalle(etCalle.getText().toString().trim());
         cita.setNumeroCasa(etNumeroCasa.getText().toString().trim());
-        cita.setFecha(fechaHora[0]);
-        cita.setHora(fechaHora[1]);
+        cita.setFecha(fechaSeleccionada);
+        cita.setHora(horaSeleccionada);
         cita.setEstado("pendiente");
 
         // Enviar la cita al servidor
@@ -216,7 +195,6 @@ public class citas_empresa extends AppCompatActivity {
                 !TextUtils.isEmpty(etCiudad.getText()) &&
                 !TextUtils.isEmpty(etCodigoPostal.getText()) &&
                 !TextUtils.isEmpty(etCalle.getText()) &&
-                !TextUtils.isEmpty(etNumeroCasa.getText()) &&
-                !TextUtils.isEmpty(etFechaHora.getText());
+                !TextUtils.isEmpty(etNumeroCasa.getText());
     }
 }

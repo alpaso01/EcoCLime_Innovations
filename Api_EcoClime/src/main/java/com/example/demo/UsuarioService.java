@@ -31,4 +31,9 @@ public class UsuarioService {
 	        return null;
 	    }
 
+    //OBTENER USUARIO POR EMAIL
+    public Usuario obtenerUsuarioPorEmail(String email) {
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
+        return optionalUsuario.orElse(null);
+    }
 }

@@ -34,6 +34,14 @@ public class UsuarioController {
 	        }
 	    }
 	    
-	    
+	    @GetMapping("/user/{email}")
+	    public ResponseEntity<?> obtenerUsuarioPorEmail(@PathVariable String email) {
+	        Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
+	        if (usuario != null) {
+	            return ResponseEntity.ok(usuario);
+	        } else {
+	            return ResponseEntity.notFound().build();
+	        }
+	    }
 	    
 }

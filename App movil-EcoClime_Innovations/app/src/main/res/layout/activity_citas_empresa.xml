@@ -32,7 +32,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:paddingBottom="8dp"
-                android:text="Seleccione un día"
+
                 android:textSize="18sp" />
 
             <CalendarView

@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initRetrofit() {
-
+        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
     }
 
     private void loginUser() {
@@ -75,13 +75,12 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this, "Intentando conectar...", Toast.LENGTH_SHORT).show();
 
         // Realizar la llamada a la API para hacer login
-        apiService.loginUser(usuario).enqueue(new Callback<String>() {
+        apiService.loginUser(usuario).enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    // Extraer el ID del usuario de la respuesta (si el servidor lo devuelve)
-                    String responseBody = response.body();
-                    Log.d("LoginActivity", "Respuesta del servidor: " + responseBody);
+                    Usuario usuarioCompleto = response.body();
+                    Log.d("LoginActivity", "Respuesta del servidor: " + usuarioCompleto.toString());
 
                     Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
@@ -103,6 +102,10 @@ public class LoginActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
+                    // Vaciar los campos de email y contraseña
+                    ((EditText) findViewById(R.id.loginEmail)).setText("");
+                    ((EditText) findViewById(R.id.loginPassword)).setText("");
+
                     // Reiniciar Retrofit si hay errores de HTTP
                     if (response.code() >= 500) {
                         initRetrofit();
@@ -111,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Usuario> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("LoginError", "Error de conexión: " + t.getMessage());
                 t.printStackTrace();
