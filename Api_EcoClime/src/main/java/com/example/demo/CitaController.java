@@ -20,7 +20,7 @@ public class CitaController {
         return citaService.agendarCita(cita, usuarioId);
     }
 
-    // Endpoint para ver el historial de citas de un usuario
+    // Endpoint para ver el historial de citas de un usuario (usado principalmente por empresas)
     @GetMapping("/historial/{usuarioId}")
     public ResponseEntity<?> obtenerHistorial(@PathVariable Integer usuarioId) {
         try {
@@ -28,6 +28,17 @@ public class CitaController {
             return ResponseEntity.ok(citas);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Error al obtener el historial: " + e.getMessage());
+        }
+    }
+
+    // Endpoint para obtener citas por email (usado principalmente por particulares)
+    @GetMapping("/email/{email}")
+    public ResponseEntity<?> obtenerCitasPorEmail(@PathVariable String email) {
+        try {
+            List<Cita> citas = citaService.obtenerCitasPorEmail(email);
+            return ResponseEntity.ok(citas);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error al obtener las citas: " + e.getMessage());
         }
     }
 

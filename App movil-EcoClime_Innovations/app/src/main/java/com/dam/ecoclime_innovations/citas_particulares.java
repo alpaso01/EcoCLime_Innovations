@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +22,7 @@ public class citas_particulares extends AppCompatActivity {
     private EditText etNombre, etApellidos, etTelefono, etEmail;
     private EditText etCiudad, etCodigoPostal, etCalle, etNumeroCasa, etFechaHora;
     private Button btnGuardar, btnCancelar;
-    private LinearLayout layoutFormulario;
+    private ScrollView layoutFormulario;
     private ApiService apiService;
     private String userEmail;
 

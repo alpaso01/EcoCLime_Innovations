@@ -33,9 +33,15 @@ public class CitaService {
         return citaRepository.findByUsuarioId(usuarioId);
     }
 
+    // Obtener citas por email
+    public List<Cita> obtenerCitasPorEmail(String email) {
+        return citaRepository.findByEmail(email);
+    }
+
     // Anular una cita
     public boolean anularCita(Integer citaId) {
-        if (citaRepository.existsById(citaId)) {
+        Optional<Cita> citaOpt = citaRepository.findById(citaId);
+        if (citaOpt.isPresent()) {
             citaRepository.deleteById(citaId);
             return true;
         }
