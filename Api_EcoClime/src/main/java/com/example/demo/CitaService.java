@@ -2,6 +2,10 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,5 +40,27 @@ public class CitaService {
             return true;
         }
         return false;
+    }
+    
+    public Cita crearCita(int usuarioId, Cita cita) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(usuarioId);
+        if (usuarioOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+            cita.setUsuario(usuario);
+            cita.setId(null); // Aseguramos que se cree una nueva cita
+            
+            // Convertir fecha y hora a LocalDateTime
+            try {
+                LocalDate fecha = LocalDate.parse(cita.getFecha());
+                LocalTime hora = LocalTime.parse(cita.getHora());
+                LocalDateTime fechaHora = LocalDateTime.of(fecha, hora);
+                cita.setFechaHora(fechaHora);
+            } catch (Exception e) {
+                throw new RuntimeException("Error al procesar la fecha y hora: " + e.getMessage());
+            }
+            
+            return citaRepository.save(cita);
+        }
+        throw new RuntimeException("Usuario no encontrado");
     }
 }

@@ -44,6 +44,9 @@ public class Cita {
     
     @SerializedName("estado")
     private String estado;
+    
+    @SerializedName("mensaje")
+    private String mensaje;
 
     // Constructor vacío para Retrofit
     public Cita() {
@@ -182,8 +185,37 @@ public class Cita {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
     public String getFechaHora() {
         return fecha + " " + hora;
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" +
+                "id=" + id +
+                ", usuarioId=" + usuarioId +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", codigoPostal='" + codigoPostal + '\'' +
+                ", calle='" + calle + '\'' +
+                ", numeroCasa='" + numeroCasa + '\'' +
+                ", fecha='" + fecha + '\'' +
+                ", hora='" + hora + '\'' +
+                ", estado='" + estado + '\'' +
+                ", mensaje='" + mensaje + '\'' +
+                '}';
     }
 } 

@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "citas")
@@ -32,6 +33,12 @@ public class Cita {
     private String calle;
     private String numeroCasa;
     private LocalDateTime fechaHora; // Formato de fecha y hora
+
+    @Transient
+    private String fecha;
+
+    @Transient
+    private String hora;
 
     // Getters y Setters
     public Long getId() {
@@ -128,5 +135,21 @@ public class Cita {
 
     public void setFechaHora(LocalDateTime fechaHora) {
         this.fechaHora = fechaHora;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }

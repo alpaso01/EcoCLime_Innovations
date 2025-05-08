@@ -8,41 +8,44 @@ public interface ApiService {
 
     //-----INICIO DE SESIÓN Y REGISTRO-----
 
-    @POST("usuarios/registro")
+    @POST("api/usuarios/registro")
     Call<Usuario> registerUser(@Body Usuario usuario);
 
-    @POST("usuarios/login")
+    @POST("api/usuarios/login")
     Call<Usuario> loginUser(@Body Usuario usuario);
 
 
 
     //-------OBTENER DATOS DE USUARIO-------
 
-    @GET("usuarios/user/{email}")
+    @GET("api/usuarios/user/{email}")
     Call<Usuario> obtenerUsuarioPorEmail(@Path("email") String email);
 
-    @GET("usuarios")
+    @GET("api/usuarios")
     Call<Usuario> obtenerUsuarioPorEmailQuery(@Query("email") String email);
 
 
 
     //----CITAS------
 
-    @GET("citas/historial/{usuarioId}")
+    @GET("api/citas/historial/{usuarioId}")
     Call<List<Cita>> obtenerHistorialCitas(@Path("usuarioId") int usuarioId);
 
-    @GET("citas/email/{email}")
+    @GET("api/citas/email/{email}")
     Call<List<Cita>> obtenerHistorialCitasPorEmail(@Path("email") String email);
 
-    @GET("citas/{citaId}")
+    @GET("api/citas/{citaId}")
     Call<Cita> obtenerCita(@Path("citaId") int citaId);
 
-    @POST("citas/agendar/{usuarioId}")
+    @POST("api/citas/crear/{usuarioId}")
+    Call<Cita> crearCita(@Path("usuarioId") int usuarioId, @Body Cita cita);
+
+    @POST("api/citas/agendar/{usuarioId}")
     Call<Cita> agendarCita(@Path("usuarioId") int usuarioId, @Body Cita cita);
 
-    @PUT("citas/{citaId}")
+    @PUT("api/citas/{citaId}")
     Call<Void> actualizarCita(@Path("citaId") int citaId, @Body Cita cita);
 
-    @DELETE("citas/anular/{citaId}")
+    @DELETE("api/citas/anular/{citaId}")
     Call<Void> eliminarCita(@Path("citaId") int citaId);
 }
