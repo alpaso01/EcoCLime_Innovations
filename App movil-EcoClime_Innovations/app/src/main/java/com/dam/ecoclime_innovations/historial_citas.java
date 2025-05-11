@@ -28,14 +28,19 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
     private List<Cita> listaCitas = new ArrayList<>();
     private ApiService apiService;
     private String userEmail;
+    private int userId;
+    private Button btnTodos, btnEmpresas, btnParticulares;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_citas);
 
-        // Inicialización de Retrofit
-        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+        // Inicializar vistas
+        recyclerView = findViewById(R.id.recyclerViewCitas);
+        btnTodos = findViewById(R.id.btnTodos);
+        btnEmpresas = findViewById(R.id.btnEmpresas);
+        btnParticulares = findViewById(R.id.btnParticulares);
 
         // Obtener el email del intent
         userEmail = getIntent().getStringExtra("userEmail");
@@ -48,10 +53,19 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
         Log.d(TAG, "userEmail obtenido: " + userEmail);
 
         // Configuración del RecyclerView
-        recyclerView = findViewById(R.id.recyclerViewCitas);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
         citaAdapter = new CitaAdapter(listaCitas, this);
         recyclerView.setAdapter(citaAdapter);
+
+        // Inicializar Retrofit
+        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+
+        // Configurar listeners de los botones
+        configurarBotones();
+
+        // Cargar citas
+        cargarCitas();
 
         // Configurar botón volver
         Button btnVolver = findViewById(R.id.botonAtrasHistorial);
@@ -61,56 +75,141 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
                 finish();
             }
         });
-
-        // Obtener el historial de citas
-        obtenerHistorialCitas();
     }
 
-    private void obtenerHistorialCitas() {
-        Log.d(TAG, "Obteniendo historial de citas para: " + userEmail);
+    private void configurarBotones() {
+        btnTodos.setOnClickListener(v -> {
+            actualizarFiltro("Todos");
+            mostrarCitasFiltradas("Todos");
+        });
 
-        // Mostrar un mensaje de carga
-        Toast.makeText(this, "Cargando citas...", Toast.LENGTH_SHORT).show();
+        btnEmpresas.setOnClickListener(v -> {
+            actualizarFiltro("Empresa");
+            mostrarCitasFiltradas("Empresa");
+        });
 
-        Call<List<Cita>> call = apiService.obtenerHistorialCitasPorEmail(userEmail);
-        call.enqueue(new Callback<List<Cita>>() {
+        btnParticulares.setOnClickListener(v -> {
+            actualizarFiltro("Particular");
+            mostrarCitasFiltradas("Particular");
+        });
+    }
+
+    private void actualizarFiltro(String tipo) {
+        // Actualizar el estado visual de los botones
+        btnTodos.setBackgroundTintList(getColorStateList(R.color.white));
+        btnEmpresas.setBackgroundTintList(getColorStateList(R.color.white));
+        btnParticulares.setBackgroundTintList(getColorStateList(R.color.white));
+
+        switch (tipo) {
+            case "Todos":
+                btnTodos.setBackgroundTintList(getColorStateList(R.color.light_gray));
+                break;
+            case "Empresa":
+                btnEmpresas.setBackgroundTintList(getColorStateList(R.color.light_gray));
+                break;
+            case "Particular":
+                btnParticulares.setBackgroundTintList(getColorStateList(R.color.light_gray));
+                break;
+        }
+    }
+
+    private void mostrarCitasFiltradas(String tipo) {
+        List<Cita> citasFiltradas = new ArrayList<>();
+        
+        if (tipo.equals("Todos")) {
+            citasFiltradas.addAll(listaCitas);
+        } else {
+            for (Cita cita : listaCitas) {
+                if (cita.getTipo().equals(tipo)) {
+                    citasFiltradas.add(cita);
+                }
+            }
+        }
+        
+        citaAdapter.actualizarCitas(citasFiltradas);
+    }
+
+    private void cargarCitas() {
+        apiService.obtenerUsuarioPorEmail(userEmail).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Usuario usuario = response.body();
+                    userId = usuario.getId();
+                    obtenerCitasUsuario(userId);
+                } else {
+                    Log.e(TAG, "Error al obtener usuario: " + response.code());
+                    Toast.makeText(historial_citas.this, "Error al cargar datos del usuario", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                Log.e(TAG, "Error de conexión: " + t.getMessage());
+                Toast.makeText(historial_citas.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void obtenerCitasUsuario(int usuarioId) {
+        Log.d(TAG, "Obteniendo citas para usuario ID: " + usuarioId);
+        apiService.obtenerHistorialCitas(usuarioId).enqueue(new Callback<List<Cita>>() {
             @Override
             public void onResponse(Call<List<Cita>> call, Response<List<Cita>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    listaCitas.clear();
-                    listaCitas.addAll(response.body());
-                    citaAdapter.notifyDataSetChanged();
-
-                    Log.d(TAG, "Citas obtenidas: " + listaCitas.size());
-
-                    // Actualizar el contador en SharedPreferences
-                    SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt("citasCount", listaCitas.size());
-                    editor.apply();
-
-                    if (listaCitas.isEmpty()) {
-                        Toast.makeText(historial_citas.this, "No tienes citas programadas", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Log.e(TAG, "Error en la respuesta: " + response.code());
-                    String error = "Error al obtener las citas: ";
-                    if (response.errorBody() != null) {
-                        try {
-                            error += response.errorBody().string();
-                        } catch (Exception e) {
-                            error += response.code();
+                    List<Cita> nuevasCitas = response.body();
+                    Log.d(TAG, "Respuesta del servidor - Número de citas: " + nuevasCitas.size());
+                    Log.d(TAG, "Contenido de las citas: " + nuevasCitas.toString());
+                    
+                    runOnUiThread(() -> {
+                        listaCitas.clear();
+                        listaCitas.addAll(nuevasCitas);
+                        
+                        // Procesar las citas para asegurar que fecha y hora estén correctamente establecidos
+                        for (Cita cita : listaCitas) {
+                            Log.d(TAG, "Procesando cita: " + cita.toString());
+                            if (cita.getFechaHora() != null) {
+                                String[] partes = cita.getFechaHora().split("T");
+                                if (partes.length == 2) {
+                                    cita.setFecha(partes[0]);
+                                    cita.setHora(partes[1].substring(0, 5)); // Tomar solo HH:mm
+                                }
+                            }
                         }
-                    }
-                    Log.e(TAG, error);
-                    Toast.makeText(historial_citas.this, "Error al obtener las citas", Toast.LENGTH_SHORT).show();
+                        
+                        Log.d(TAG, "Citas procesadas - Tamaño final de la lista: " + listaCitas.size());
+                        citaAdapter.actualizarCitas(listaCitas);
+                        actualizarFiltro("Todos");
+
+                        // Actualizar el contador en SharedPreferences
+                        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt("citasCount", listaCitas.size());
+                        editor.apply();
+
+                        if (listaCitas.isEmpty()) {
+                            Log.d(TAG, "La lista de citas está vacía");
+                            Toast.makeText(historial_citas.this, "No tienes citas programadas", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.d(TAG, "Mostrando " + listaCitas.size() + " citas");
+                        }
+                    });
+                } else {
+                    Log.e(TAG, "Error al obtener citas: " + response.code());
+                    Log.e(TAG, "Mensaje de error: " + response.message());
+                    runOnUiThread(() -> {
+                        Toast.makeText(historial_citas.this, "Error al cargar las citas", Toast.LENGTH_SHORT).show();
+                    });
                 }
             }
 
             @Override
             public void onFailure(Call<List<Cita>> call, Throwable t) {
-                Log.e(TAG, "Error en la llamada: " + t.getMessage());
-                Toast.makeText(historial_citas.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Error de conexión: " + t.getMessage());
+                t.printStackTrace();
+                runOnUiThread(() -> {
+                    Toast.makeText(historial_citas.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                });
             }
         });
     }
@@ -147,8 +246,8 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(historial_citas.this, "Cita eliminada correctamente", Toast.LENGTH_SHORT).show();
-                    // Actualizar la lista de citas
-                    obtenerHistorialCitas();
+                    // Actualizar la lista de citas usando el ID del usuario actual
+                    obtenerCitasUsuario(userId);
                 } else {
                     Log.e(TAG, "Error al eliminar la cita: " + response.code());
                     Toast.makeText(historial_citas.this, "Error al eliminar la cita", Toast.LENGTH_SHORT).show();
@@ -167,7 +266,7 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
     protected void onResume() {
         super.onResume();
         // Actualizar la lista de citas al volver a la actividad
-        obtenerHistorialCitas();
+        cargarCitas();
         Log.d(TAG, "onResume - Actualizando historial de citas");
     }
 }

@@ -23,6 +23,12 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
         this.listener = listener;
     }
 
+    public void actualizarCitas(List<Cita> nuevasCitas) {
+        this.citas.clear();
+        this.citas.addAll(nuevasCitas);
+        notifyDataSetChanged();
+    }
+
     @Override
     public CitaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -43,13 +49,20 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
         holder.emailTextView.setText("Email: " + cita.getEmail());
         holder.tipoTextView.setText("Tipo: " + cita.getTipo());
         holder.ciudadTextView.setText("Ciudad: " + cita.getCiudad());
-        holder.codigoPostalTextView.setText("C.P.: " + cita.getCodigoPostal());
+        holder.codigoPostalTextView.setText("C.P.: " + (cita.getCodigoPostal() != null ? cita.getCodigoPostal() : ""));
         holder.calleTextView.setText("Calle: " + cita.getCalle());
-        holder.numeroCasaTextView.setText("Nº: " + cita.getNumeroCasa());
+        holder.numeroCasaTextView.setText("Nº: " + (cita.getNumeroCasa() != null ? cita.getNumeroCasa() : ""));
         
-        // Combinar fecha y hora para mostrar
-        String fechaHora = cita.getFecha() + " " + cita.getHora();
-        holder.fechaHoraTextView.setText("Fecha y hora: " + fechaHora);
+        // Mostrar fecha y hora desde el campo fechaHora
+        String fechaHora = cita.getFechaHora();
+        if (fechaHora != null && fechaHora.contains("T")) {
+            String[] partes = fechaHora.split("T");
+            String fecha = partes[0];
+            String hora = partes[1].substring(0, 5); // Tomar solo HH:mm
+            holder.fechaHoraTextView.setText("Fecha y hora: " + fecha + " " + hora);
+        } else {
+            holder.fechaHoraTextView.setText("Fecha y hora: No disponible");
+        }
 
         holder.btnModificar.setOnClickListener(v -> listener.onModificarClick(cita));
         holder.btnEliminar.setOnClickListener(v -> listener.onEliminarClick(cita));

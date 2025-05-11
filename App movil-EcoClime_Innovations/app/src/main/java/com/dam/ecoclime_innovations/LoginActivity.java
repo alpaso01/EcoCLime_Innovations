@@ -30,10 +30,22 @@ public class LoginActivity extends AppCompatActivity {
     private RadioGroup userTypeGroup;
     private SharedPreferences sharedPreferences;
     private ApiService apiService;
+    private static final int MAX_RETRIES = 3;
+    private int retryCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // Configurar la ventana para el fondo transparente
+        getWindow().setStatusBarColor(android.graphics.Color.TRANSPARENT);
+        getWindow().setNavigationBarColor(android.graphics.Color.TRANSPARENT);
+        getWindow().getDecorView().setSystemUiVisibility(
+            View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+            View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        );
+        
         setContentView(R.layout.activity_login);
 
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
@@ -65,24 +77,33 @@ public class LoginActivity extends AppCompatActivity {
         String password = ((EditText) findViewById(R.id.loginPassword)).getText().toString().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Por favor, ingrese los datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor, ingrese los datos", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Verificar conectividad
+        if (!RetrofitClient.isNetworkAvailable(this)) {
+            Toast.makeText(this, "No hay conexión a Internet. Por favor, verifica tu conexión.", Toast.LENGTH_LONG).show();
             return;
         }
 
         // Crear objeto Usuario para login
         Usuario usuario = new Usuario(email, password);
 
-        Toast.makeText(this, "Intentando conectar...", Toast.LENGTH_SHORT).show();
+        // Mostrar mensaje de conexión por más tiempo
+        Toast.makeText(this, "Intentando conectar al servidor...", Toast.LENGTH_LONG).show();
+        Log.d("LoginActivity", "Intentando conectar a: " + RetrofitClient.getRetrofitInstance().baseUrl());
 
         // Realizar la llamada a la API para hacer login
         apiService.loginUser(usuario).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    retryCount = 0; // Resetear contador de reintentos
                     Usuario usuarioCompleto = response.body();
                     Log.d("LoginActivity", "Respuesta del servidor: " + usuarioCompleto.toString());
 
-                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_LONG).show();
 
                     // Guardar datos mínimos necesarios en SharedPreferences
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -93,14 +114,24 @@ public class LoginActivity extends AppCompatActivity {
                     // Obtener todos los datos del usuario después del login exitoso
                     obtenerDatosUsuarioCompletos(email);
                 } else {
-                    Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
-                    Log.e("LoginError", "Código de error: " + response.code());
+                    String errorMessage = "Error en el inicio de sesión";
                     try {
-                        String errorBody = response.errorBody() != null ? response.errorBody().string() : "Sin cuerpo de error";
-                        Log.e("LoginError", "Mensaje de error: " + errorBody);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        if (response.errorBody() != null) {
+                            errorMessage = "Error: " + response.errorBody().string();
+                        } else {
+                            errorMessage = "Error: Código " + response.code();
+                        }
+                    } catch (IOException e) {
+                        errorMessage = "Error al leer respuesta del servidor";
                     }
+                    
+                    // Mostrar el error por más tiempo y en el log
+                    Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                    Log.e("LoginError", errorMessage);
+                    Log.e("LoginError", "Código de error: " + response.code());
+                    Log.e("LoginError", "URL: " + call.request().url());
+                    Log.e("LoginError", "Headers: " + call.request().headers());
+                    Log.e("LoginError", "Método: " + call.request().method());
 
                     // Vaciar los campos de email y contraseña
                     ((EditText) findViewById(R.id.loginEmail)).setText("");
@@ -108,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     // Reiniciar Retrofit si hay errores de HTTP
                     if (response.code() >= 500) {
+                        RetrofitClient.resetInstance();
                         initRetrofit();
                     }
                 }
@@ -115,12 +147,33 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("LoginError", "Error de conexión: " + t.getMessage());
+                String errorMessage = "Error de conexión: " + t.getMessage();
+                Log.e("LoginError", errorMessage);
+                Log.e("LoginError", "URL: " + call.request().url());
+                Log.e("LoginError", "Causa: " + (t.getCause() != null ? t.getCause().getMessage() : "Desconocida"));
+                Log.e("LoginError", "Stack trace completo:");
                 t.printStackTrace();
 
-                // Reiniciar Retrofit en caso de error de conexión
-                initRetrofit();
+                // Intentar reintentar la conexión
+                if (retryCount < MAX_RETRIES) {
+                    retryCount++;
+                    Log.d("LoginActivity", "Reintentando conexión (" + retryCount + "/" + MAX_RETRIES + ")");
+                    Toast.makeText(LoginActivity.this, "Reintentando conexión...", Toast.LENGTH_LONG).show();
+                    
+                    // Reiniciar Retrofit y volver a intentar
+                    RetrofitClient.resetInstance();
+                    initRetrofit();
+                    loginUser();
+                } else {
+                    retryCount = 0;
+                    String finalErrorMessage = "No se pudo conectar al servidor después de varios intentos.\n" +
+                            "Por favor, verifica que:\n" +
+                            "1. El servidor esté en ejecución\n" +
+                            "2. Estés conectado a la misma red que el servidor\n" +
+                            "3. El puerto 8085 esté abierto\n" +
+                            "4. La IP del servidor sea correcta";
+                    Toast.makeText(LoginActivity.this, finalErrorMessage, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -258,24 +311,28 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showLoginForm() {
+        // Cambiar el estilo del botón de login
+        switchToLogin.setBackground(getResources().getDrawable(R.drawable.bg_tab_inactive));
+        switchToRegister.setBackground(null);
+
+        // Aplicar animación de entrada desde la izquierda al formulario de login
+        loginForm.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.slide_in_right));
+        registerForm.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.slide_out_left));
+
         loginForm.setVisibility(View.VISIBLE);
         registerForm.setVisibility(View.GONE);
-
-        switchToLogin.setBackgroundResource(R.drawable.bg_tab_active);
-        switchToLogin.setTextColor(Color.WHITE);
-
-        switchToRegister.setBackgroundResource(android.R.color.transparent);
-        switchToRegister.setTextColor(Color.parseColor("#111F77"));
     }
 
     private void showRegisterForm() {
-        loginForm.setVisibility(View.GONE);
+        // Cambiar el estilo del botón de registro
+        switchToRegister.setBackground(getResources().getDrawable(R.drawable.bg_tab_inactive));
+        switchToLogin.setBackground(null);
+
+        // Aplicar animación de entrada desde la derecha al formulario de registro
+        registerForm.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.slide_in_right));
+        loginForm.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.slide_out_left));
+
         registerForm.setVisibility(View.VISIBLE);
-
-        switchToRegister.setBackgroundResource(R.drawable.bg_tab_active);
-        switchToRegister.setTextColor(Color.WHITE);
-
-        switchToLogin.setBackgroundResource(android.R.color.transparent);
-        switchToLogin.setTextColor(Color.parseColor("#111F77"));
+        loginForm.setVisibility(View.GONE);
     }
 }

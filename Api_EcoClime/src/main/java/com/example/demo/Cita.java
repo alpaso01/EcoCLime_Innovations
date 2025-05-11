@@ -1,7 +1,8 @@
 package com.example.demo;
 
 import java.time.LocalDateTime;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.persistence.Column;
 
 @Entity
 @Table(name = "citas")
@@ -21,6 +23,7 @@ public class Cita {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
+    @JsonProperty("usuario_id")
     private Usuario usuario; // Relación con la tabla usuarios
 
     private String nombre;
@@ -29,16 +32,48 @@ public class Cita {
     private String email;
     private String tipo; // "Empresa" o "Particular"
     private String ciudad;
+    
+    @Column(name = "codigo_postal")
+    @JsonProperty("codigo_postal")
     private String codigoPostal;
+    
     private String calle;
+    
+    @Column(name = "numero_casa")
+    @JsonProperty("numero_casa")
     private String numeroCasa;
+    
+    @Column(name = "fecha_hora")
+    @JsonProperty("fecha_hora")
     private LocalDateTime fechaHora; // Formato de fecha y hora
 
     @Transient
+    @JsonIgnore
     private String fecha;
 
     @Transient
+    @JsonIgnore
     private String hora;
+
+    @Override
+    public String toString() {
+        return "Cita{" +
+                "id=" + id +
+                ", usuario=" + (usuario != null ? usuario.getId() : null) +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", codigoPostal='" + codigoPostal + '\'' +
+                ", calle='" + calle + '\'' +
+                ", numeroCasa='" + numeroCasa + '\'' +
+                ", fechaHora=" + fechaHora +
+                ", fecha='" + fecha + '\'' +
+                ", hora='" + hora + '\'' +
+                '}';
+    }
 
     // Getters y Setters
     public Long getId() {

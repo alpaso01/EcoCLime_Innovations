@@ -42,6 +42,9 @@ public class Cita {
     @SerializedName("hora")
     private String hora;
     
+    @SerializedName("fecha_hora")
+    private String fechaHora;
+    
     @SerializedName("estado")
     private String estado;
     
@@ -70,6 +73,7 @@ public class Cita {
         this.numeroCasa = numeroCasa;
         this.fecha = fecha;
         this.hora = hora;
+        this.fechaHora = fecha != null && hora != null ? fecha + "T" + hora + ":00" : null;
         this.estado = estado != null ? estado : "pendiente";
     }
 
@@ -168,6 +172,7 @@ public class Cita {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+        actualizarFechaHora();
     }
 
     public String getHora() {
@@ -176,6 +181,26 @@ public class Cita {
 
     public void setHora(String hora) {
         this.hora = hora;
+        actualizarFechaHora();
+    }
+
+    public String getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(String fechaHora) {
+        this.fechaHora = fechaHora;
+        if (fechaHora != null && fechaHora.contains("T")) {
+            String[] partes = fechaHora.split("T");
+            this.fecha = partes[0];
+            this.hora = partes[1].substring(0, 5); // Tomar solo HH:mm
+        }
+    }
+
+    private void actualizarFechaHora() {
+        if (fecha != null && hora != null) {
+            this.fechaHora = fecha + "T" + hora + ":00";
+        }
     }
 
     public String getEstado() {
@@ -194,10 +219,6 @@ public class Cita {
         this.mensaje = mensaje;
     }
 
-    public String getFechaHora() {
-        return fecha + " " + hora;
-    }
-
     @Override
     public String toString() {
         return "Cita{" +
@@ -214,6 +235,7 @@ public class Cita {
                 ", numeroCasa='" + numeroCasa + '\'' +
                 ", fecha='" + fecha + '\'' +
                 ", hora='" + hora + '\'' +
+                ", fechaHora='" + fechaHora + '\'' +
                 ", estado='" + estado + '\'' +
                 ", mensaje='" + mensaje + '\'' +
                 '}';

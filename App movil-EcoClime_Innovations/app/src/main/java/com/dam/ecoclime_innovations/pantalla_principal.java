@@ -5,17 +5,18 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class pantalla_principal extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class pantalla_principal extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     
     private static final String TAG = "pantalla_principal";
     private String userEmail;
@@ -27,7 +28,6 @@ public class pantalla_principal extends AppCompatActivity {
     private String userCiudad;
     private String userCodigoPostal;
     private String userDireccion;
-    private Button menuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,27 +44,25 @@ public class pantalla_principal extends AppCompatActivity {
         });
 
         // Inicializar vistas
-        Button botonElegir = findViewById(R.id.botonElegir);
-        Button botonHistorialCitas = findViewById(R.id.botonHistorialCitas);
-        menuButton = findViewById(R.id.menuButton);
+        CardView cardElegirCita = findViewById(R.id.cardElegirCita);
+        CardView cardHistorialCitas = findViewById(R.id.cardHistorialCitas);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        // Configurar listeners de botones
-        botonElegir.setOnClickListener(v -> {
+        // Configurar listeners de tarjetas
+        cardElegirCita.setOnClickListener(v -> {
             Intent intent = new Intent(pantalla_principal.this, ElegirCita.class);
             pasarDatosUsuario(intent);
             startActivity(intent);
         });
 
-        botonHistorialCitas.setOnClickListener(v -> {
+        cardHistorialCitas.setOnClickListener(v -> {
             Intent intent = new Intent(pantalla_principal.this, historial_citas.class);
             pasarDatosUsuario(intent);
             startActivity(intent);
         });
-
-        // Configurar menú desplegable
-        menuButton.setOnClickListener(v -> mostrarMenu());
     }
-    
+
     private void obtenerDatosUsuario() {
         Intent intent = getIntent();
         
@@ -111,9 +109,8 @@ public class pantalla_principal extends AppCompatActivity {
         
         editor.apply();
     }
-    
+
     private void pasarDatosUsuario(Intent intent) {
-        // Pasar todos los datos a la siguiente actividad
         intent.putExtra("userEmail", userEmail);
         intent.putExtra("userId", userId);
         intent.putExtra("userNombre", userNombre);
@@ -125,30 +122,36 @@ public class pantalla_principal extends AppCompatActivity {
         intent.putExtra("userDireccion", userDireccion);
     }
 
-    private void mostrarMenu() {
-        PopupMenu popup = new PopupMenu(this, menuButton);
-        popup.getMenuInflater().inflate(R.menu.dropdown_menu, popup.getMenu());
-
-        popup.setOnMenuItemClickListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.nav_atencion_cliente) {
-                Intent intent = new Intent(pantalla_principal.this, AtencionClienteActivity.class);
-                pasarDatosUsuario(intent);
-                startActivity(intent);
-                return true;
-            } else if (itemId == R.id.nav_mi_perfil) {
-                Intent intent = new Intent(pantalla_principal.this, MiPerfilActivity.class);
-                pasarDatosUsuario(intent);
-                startActivity(intent);
-                return true;
-            } else if (itemId == R.id.nav_salir) {
-                startActivity(new Intent(pantalla_principal.this, LoginActivity.class));
-                finish();
-                return true;
-            }
-            return false;
-        });
-
-        popup.show();
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        
+        if (itemId == R.id.navigation_home) {
+            // Ya estamos en la pantalla principal
+            return true;
+        } else if (itemId == R.id.navigation_profile) {
+            Intent intent = new Intent(this, MiPerfilActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+            return true;
+        } else if (itemId == R.id.navigation_support) {
+            Intent intent = new Intent(this, AtencionClienteActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+            return true;
+        } else if (itemId == R.id.navigation_logout) {
+            // Limpiar datos de sesión si es necesario
+            SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            preferences.edit().clear().apply();
+            
+            // Redirigir al login
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        
+        return false;
     }
 }

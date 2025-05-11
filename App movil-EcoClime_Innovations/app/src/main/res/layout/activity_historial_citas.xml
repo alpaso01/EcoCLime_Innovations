@@ -5,31 +5,139 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#316ffe"
     tools:context=".historial_citas">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewCitas"
-        android:layout_width="415dp"
-        android:layout_height="638dp"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
+    <!-- Barra superior azul con botón atrás y título -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/barraSuperior"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="#316ffe"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <Button
-        android:id="@+id/botonAtrasHistorial"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/botonAtrasHistorial"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/button_border"
+            android:backgroundTint="#FFFFFF"
+            android:text="&#60;"
+            android:textColor="#316ffe"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tituloHistorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Historial de Citas"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"
+            app:layout_constraintStart_toEndOf="@id/botonAtrasHistorial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Filtros modernos -->
+    <LinearLayout
+        android:id="@+id/layoutFiltros"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="Atrás"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/barraSuperior"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnTodos"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_filtro_pill_selected"
+            android:text="Todos"
+            android:textColor="#316ffe"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"/>
+
+        <Button
+            android:id="@+id/btnEmpresas"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_filtro_pill"
+            android:text="Empresas"
+            android:textColor="#316ffe"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"/>
+
+        <Button
+            android:id="@+id/btnParticulares"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_filtro_pill"
+            android:text="Particulares"
+            android:textColor="#316ffe"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"/>
+    </LinearLayout>
+
+    <!-- Lista de citas sobre fondo blanco -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutFiltros"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCitas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:background="#FFFFFF"
+            android:clipToPadding="false"/>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Menú de navegación inferior -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:paddingVertical="8dp"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
+        app:itemIconSize="24dp"
+        app:labelVisibilityMode="labeled"
+        app:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

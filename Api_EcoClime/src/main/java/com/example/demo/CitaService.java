@@ -8,9 +8,12 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class CitaService {
+    private static final Logger logger = LoggerFactory.getLogger(CitaService.class);
 
     @Autowired
     private CitaRepository citaRepository;
@@ -20,12 +23,32 @@ public class CitaService {
 
     // Agendar una nueva cita
     public Cita agendarCita(Cita cita, Integer usuarioId) {
+        logger.info("Datos de la cita recibidos: {}", cita);
+        logger.info("Código Postal: {}", cita.getCodigoPostal());
+        logger.info("Número de Casa: {}", cita.getNumeroCasa());
+        
         Optional<Usuario> usuarioOpt = usuarioRepository.findById(usuarioId);
         if (usuarioOpt.isPresent()) {
-            cita.setUsuario(usuarioOpt.get());
-            return citaRepository.save(cita);
+            Usuario usuario = usuarioOpt.get();
+            cita.setUsuario(usuario);
+            cita.setId(null); // Aseguramos que se cree una nueva cita
+            
+            // Convertir fecha y hora a LocalDateTime
+            try {
+                LocalDate fecha = LocalDate.parse(cita.getFecha());
+                LocalTime hora = LocalTime.parse(cita.getHora());
+                LocalDateTime fechaHora = LocalDateTime.of(fecha, hora);
+                cita.setFechaHora(fechaHora);
+            } catch (Exception e) {
+                throw new RuntimeException("Error al procesar la fecha y hora: " + e.getMessage());
+            }
+            
+            logger.info("Datos de la cita antes de guardar: {}", cita);
+            Cita citaGuardada = citaRepository.save(cita);
+            logger.info("Cita guardada: {}", citaGuardada);
+            return citaGuardada;
         }
-        return null; // O lanzar una excepción
+        throw new RuntimeException("Usuario no encontrado");
     }
 
     // Obtener historial de citas de un usuario
@@ -49,6 +72,10 @@ public class CitaService {
     }
     
     public Cita crearCita(int usuarioId, Cita cita) {
+        logger.info("Datos de la cita recibidos en crearCita: {}", cita);
+        logger.info("Código Postal: {}", cita.getCodigoPostal());
+        logger.info("Número de Casa: {}", cita.getNumeroCasa());
+        
         Optional<Usuario> usuarioOpt = usuarioRepository.findById(usuarioId);
         if (usuarioOpt.isPresent()) {
             Usuario usuario = usuarioOpt.get();
@@ -65,7 +92,10 @@ public class CitaService {
                 throw new RuntimeException("Error al procesar la fecha y hora: " + e.getMessage());
             }
             
-            return citaRepository.save(cita);
+            logger.info("Datos de la cita antes de guardar: {}", cita);
+            Cita citaGuardada = citaRepository.save(cita);
+            logger.info("Cita guardada: {}", citaGuardada);
+            return citaGuardada;
         }
         throw new RuntimeException("Usuario no encontrado");
     }

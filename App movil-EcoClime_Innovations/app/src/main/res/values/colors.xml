@@ -1,6 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="inactiveTab">#888888</color>
-    <color name="primaryColorButton">#888888</color>
+    <color name="colorPrimary">#316ffe</color>
+    <color name="colorPrimaryDark">#2855CB</color>
+    <color name="colorAccent">#316ffe</color>
+    <color name="primaryColorButton">#316ffe</color>
+    <color name="inactiveTab">#757575</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
     <color name="green">#4CAF50</color>  <!-- Verde -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_gray">#E0E0E0</color>
+    <color name="transparent">#00000000</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="navigation_bar_color">#FFFFFF</color>
+    <color name="navigationBarColor">#FFFFFF</color>
 </resources>

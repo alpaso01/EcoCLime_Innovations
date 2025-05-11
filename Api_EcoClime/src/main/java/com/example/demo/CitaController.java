@@ -16,8 +16,48 @@ public class CitaController {
 
     // Endpoint para agendar una cita
     @PostMapping("/agendar/{usuarioId}")
-    public Cita agendarCita(@RequestBody Cita cita, @PathVariable Integer usuarioId) {
-        return citaService.agendarCita(cita, usuarioId);
+    public ResponseEntity<?> agendarCita(@RequestBody Cita cita, @PathVariable Integer usuarioId) {
+        try {
+            if (cita == null) {
+                return ResponseEntity.badRequest().body("Los datos de la cita no pueden ser nulos");
+            }
+            
+            // Validar campos obligatorios
+            if (cita.getNombre() == null || cita.getNombre().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("El nombre es obligatorio");
+            }
+            if (cita.getTelefono() == null || cita.getTelefono().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("El teléfono es obligatorio");
+            }
+            if (cita.getEmail() == null || cita.getEmail().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("El email es obligatorio");
+            }
+            if (cita.getTipo() == null || cita.getTipo().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("El tipo de cita es obligatorio");
+            }
+            if (cita.getCiudad() == null || cita.getCiudad().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("La ciudad es obligatoria");
+            }
+            if (cita.getCodigoPostal() == null || cita.getCodigoPostal().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("El código postal es obligatorio");
+            }
+            if (cita.getNumeroCasa() == null || cita.getNumeroCasa().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("El número de casa es obligatorio");
+            }
+            if (cita.getFecha() == null || cita.getFecha().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("La fecha es obligatoria");
+            }
+            if (cita.getHora() == null || cita.getHora().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("La hora es obligatoria");
+            }
+
+            Cita nuevaCita = citaService.agendarCita(cita, usuarioId);
+            return ResponseEntity.ok(nuevaCita);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error al agendar la cita: " + e.getMessage());
+        }
     }
 
     // Endpoint para ver el historial de citas de un usuario (usado principalmente por empresas)
@@ -79,6 +119,12 @@ public class CitaController {
             }
             if (cita.getCiudad() == null || cita.getCiudad().trim().isEmpty()) {
                 return ResponseEntity.badRequest().body("La ciudad es obligatoria");
+            }
+            if (cita.getCodigoPostal() == null || cita.getCodigoPostal().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("El código postal es obligatorio");
+            }
+            if (cita.getNumeroCasa() == null || cita.getNumeroCasa().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("El número de casa es obligatorio");
             }
             if (cita.getFecha() == null || cita.getFecha().trim().isEmpty()) {
                 return ResponseEntity.badRequest().body("La fecha es obligatoria");
