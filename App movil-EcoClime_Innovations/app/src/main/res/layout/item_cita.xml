@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,56 +20,64 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+            android:textColor="#316ffe"/>
 
         <TextView
             android:id="@+id/telefonoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:textColor="#666666"/>
 
         <TextView
             android:id="@+id/emailTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:textColor="#666666"/>
 
         <TextView
             android:id="@+id/tipoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:textColor="#666666"/>
 
         <TextView
             android:id="@+id/ciudadTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:textColor="#666666"/>
 
         <TextView
             android:id="@+id/codigoPostalTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:textColor="#666666"/>
 
         <TextView
             android:id="@+id/calleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:textColor="#666666"/>
 
         <TextView
             android:id="@+id/numeroCasaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:textColor="#666666"/>
 
         <TextView
             android:id="@+id/fechaHoraTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textStyle="italic"/>
+            android:layout_marginTop="8dp"
+            android:textStyle="italic"
+            android:textColor="#316ffe"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,7 +92,8 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:text="Modificar"
-                android:backgroundTint="@color/colorPrimary"/>
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#316ffe"/>
 
             <Button
                 android:id="@+id/btnEliminar"
@@ -92,8 +102,8 @@
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:text="Eliminar"
-                android:backgroundTint="@android:color/holo_red_light"/>
-
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF4444"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

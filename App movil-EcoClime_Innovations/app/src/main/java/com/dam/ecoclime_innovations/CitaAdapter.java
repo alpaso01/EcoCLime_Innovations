@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder> {
@@ -19,14 +20,16 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
     }
 
     public CitaAdapter(List<Cita> citas, OnCitaActionListener listener) {
-        this.citas = citas;
+        this.citas = new ArrayList<>(citas != null ? citas : new ArrayList<>());
         this.listener = listener;
     }
 
     public void actualizarCitas(List<Cita> nuevasCitas) {
-        this.citas.clear();
-        this.citas.addAll(nuevasCitas);
-        notifyDataSetChanged();
+        if (nuevasCitas != null) {
+            this.citas.clear();
+            this.citas.addAll(nuevasCitas);
+            notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -38,19 +41,22 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
 
     @Override
     public void onBindViewHolder(CitaViewHolder holder, int position) {
+        if (position < 0 || position >= citas.size()) return;
+        
         Cita cita = citas.get(position);
+        if (cita == null) return;
         
         String nombreCompleto = cita.getTipo().equals("Particular") ? 
             cita.getNombre() + " " + cita.getApellidos() :
             "Empresa: " + cita.getNombre();
         
         holder.nombreTextView.setText(nombreCompleto);
-        holder.telefonoTextView.setText("Tel: " + cita.getTelefono());
-        holder.emailTextView.setText("Email: " + cita.getEmail());
+        holder.telefonoTextView.setText("Tel: " + (cita.getTelefono() != null ? cita.getTelefono() : ""));
+        holder.emailTextView.setText("Email: " + (cita.getEmail() != null ? cita.getEmail() : ""));
         holder.tipoTextView.setText("Tipo: " + cita.getTipo());
-        holder.ciudadTextView.setText("Ciudad: " + cita.getCiudad());
+        holder.ciudadTextView.setText("Ciudad: " + (cita.getCiudad() != null ? cita.getCiudad() : ""));
         holder.codigoPostalTextView.setText("C.P.: " + (cita.getCodigoPostal() != null ? cita.getCodigoPostal() : ""));
-        holder.calleTextView.setText("Calle: " + cita.getCalle());
+        holder.calleTextView.setText("Calle: " + (cita.getCalle() != null ? cita.getCalle() : ""));
         holder.numeroCasaTextView.setText("Nº: " + (cita.getNumeroCasa() != null ? cita.getNumeroCasa() : ""));
         
         // Mostrar fecha y hora desde el campo fechaHora
@@ -64,13 +70,17 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
             holder.fechaHoraTextView.setText("Fecha y hora: No disponible");
         }
 
-        holder.btnModificar.setOnClickListener(v -> listener.onModificarClick(cita));
-        holder.btnEliminar.setOnClickListener(v -> listener.onEliminarClick(cita));
+        holder.btnModificar.setOnClickListener(v -> {
+            if (listener != null) listener.onModificarClick(cita);
+        });
+        holder.btnEliminar.setOnClickListener(v -> {
+            if (listener != null) listener.onEliminarClick(cita);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return citas.size();
+        return citas != null ? citas.size() : 0;
     }
 
     public static class CitaViewHolder extends RecyclerView.ViewHolder {

@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_abstract">
 
     <!-- Primera parte: Selección de fecha y hora -->
     <ScrollView
@@ -19,46 +20,57 @@
 
             <Button
                 android:id="@+id/botonAtrasParticulares"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/button_border"
-                android:backgroundTint="#FFFFFF"
-                android:text="Atrás"
-                android:textColor="#000000" />
+                android:backgroundTint="#316ffe"
+                android:text="&#60;"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Seleccione un día"
-                android:textSize="18sp"
+                android:textSize="26sp"
+                android:textColor="#316ffe"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:layout_marginTop="16dp"
-                android:paddingBottom="8dp" />
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"/>
 
             <CalendarView
                 android:id="@+id/calendarioCitas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="24dp"/>
 
             <Button
                 android:id="@+id/seleccionarHora"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:text="Seleccionar Hora"
-                android:textColor="#000000"
-                android:backgroundTint="#FFFFFF"
-                android:background="@drawable/button_border"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#316ffe"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"
+                app:cornerRadius="28dp"
                 android:layout_marginBottom="16dp"/>
 
             <Button
                 android:id="@+id/btnSiguiente"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:text="Siguiente"
-                android:textColor="#000000"
-                android:backgroundTint="#FFFFFF"
-                android:background="@drawable/button_border"/>
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#316ffe"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"
+                app:cornerRadius="28dp"/>
 
         </LinearLayout>
     </ScrollView>
@@ -78,75 +90,112 @@
 
             <Button
                 android:id="@+id/btnVolverFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Volver"
-                android:textColor="#000000"
-                android:backgroundTint="#FFFFFF"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/button_border"
-                android:layout_marginBottom="16dp"/>
+                android:backgroundTint="#316ffe"
+                android:text="&#60;"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"
+                android:layout_marginBottom="32dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Datos de contacto"
+                android:textSize="26sp"
+                android:textColor="#316ffe"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"/>
 
             <EditText
                 android:id="@+id/nombre"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="Nombre"
                 android:inputType="textPersonName"
-                android:layout_marginBottom="8dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/apellidos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="Apellidos"
                 android:inputType="textPersonName"
-                android:layout_marginBottom="8dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="Correo electrónico"
                 android:inputType="textEmailAddress"
-                android:layout_marginBottom="8dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/telefono"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="Teléfono"
                 android:inputType="phone"
-                android:layout_marginBottom="8dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/ciudad"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="Ciudad"
-                android:layout_marginBottom="8dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/codigoPostal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="Código Postal"
                 android:inputType="number"
-                android:layout_marginBottom="8dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/calle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="Nombre de la calle"
-                android:layout_marginBottom="8dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/numero"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="Número de casa/piso y puerta"
                 android:inputType="number"
-                android:layout_marginBottom="8dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/mensaje"
@@ -155,16 +204,22 @@
                 android:hint="Mensaje opcional"
                 android:inputType="textMultiLine"
                 android:lines="3"
-                android:layout_marginBottom="16dp"/>
+                android:background="@drawable/bg_input_rounded"
+                android:padding="16dp"
+                android:gravity="top"
+                android:layout_marginBottom="24dp"/>
 
             <Button
                 android:id="@+id/confirmar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:text="Confirmar Cita"
-                android:textColor="#000000"
-                android:backgroundTint="#FFFFFF"
-                android:background="@drawable/button_border"/>
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#316ffe"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"
+                app:cornerRadius="28dp"/>
 
         </LinearLayout>
     </ScrollView>

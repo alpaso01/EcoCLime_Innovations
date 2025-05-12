@@ -7,7 +7,7 @@ public class Cita {
     private int id;
     
     @SerializedName("usuario_id")
-    private int usuarioId;
+    private Usuario usuario;
     
     @SerializedName("nombre")
     private String nombre;
@@ -57,11 +57,11 @@ public class Cita {
     }
 
     // Constructor completo
-    public Cita(int id, int usuarioId, String nombre, String apellidos, String telefono, String email, 
+    public Cita(int id, Usuario usuario, String nombre, String apellidos, String telefono, String email, 
                 String tipo, String ciudad, String codigoPostal, String calle, String numeroCasa, 
                 String fecha, String hora, String estado) {
         this.id = id;
-        this.usuarioId = usuarioId;
+        this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
@@ -86,12 +86,24 @@ public class Cita {
         this.id = id;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    // Métodos de conveniencia para compatibilidad
     public int getUsuarioId() {
-        return usuarioId;
+        return usuario != null ? usuario.getId() : 0;
     }
 
     public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
+        if (this.usuario == null) {
+            this.usuario = new Usuario();
+        }
+        this.usuario.setId(usuarioId);
     }
 
     public String getNombre() {
@@ -223,7 +235,7 @@ public class Cita {
     public String toString() {
         return "Cita{" +
                 "id=" + id +
-                ", usuarioId=" + usuarioId +
+                ", usuario=" + (usuario != null ? usuario.getId() : "null") +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", telefono='" + telefono + '\'' +

@@ -80,31 +80,36 @@ public class RetrofitClient {
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
-            // Configurar el interceptor de logging
-            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(message -> {
-                Log.d(TAG, "OkHttp: " + message);
-            });
+            String baseUrl;
+            if (isEmulator()) {
+                baseUrl = EMULATOR_BASE_URL;
+                Log.d(TAG, "Usando URL para emulador: " + baseUrl);
+            } else if (lastWorkingUrl != null) {
+                baseUrl = lastWorkingUrl;
+                Log.d(TAG, "Usando última URL funcional: " + baseUrl);
+            } else {
+                baseUrl = LOCAL_NETWORK_BASE_URL;
+                Log.d(TAG, "Usando URL de red local: " + baseUrl);
+            }
+
+            // Configurar interceptor para logging
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            // Configurar el cliente OkHttp con timeouts más largos y reintentos
+            // Configurar cliente OkHttp
             OkHttpClient client = new OkHttpClient.Builder()
                     .addInterceptor(loggingInterceptor)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .writeTimeout(60, TimeUnit.SECONDS)
-                    .retryOnConnectionFailure(true)
+                    .connectTimeout(15, TimeUnit.SECONDS)
+                    .readTimeout(15, TimeUnit.SECONDS)
+                    .writeTimeout(15, TimeUnit.SECONDS)
                     .build();
 
             // Configurar Gson
             Gson gson = new GsonBuilder()
-                    .setLenient()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                     .create();
 
-            // Obtener la URL base
-            String baseUrl = getBaseUrl();
-            Log.d(TAG, "URL base seleccionada: " + baseUrl);
-
-            // Crear la instancia de Retrofit
+            // Crear instancia de Retrofit
             retrofit = new Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .client(client)
@@ -117,123 +122,19 @@ public class RetrofitClient {
         return retrofit;
     }
 
-    // Método para verificar la conectividad
+    // Método para verificar la conectividad usando APIs modernas
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                Network network = connectivityManager.getActiveNetwork();
-                if (network != null) {
-                    NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
-                    if (capabilities != null) {
-                        boolean isConnected = capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
-                        Log.d(TAG, "Estado de la red: " + (isConnected ? "Conectado" : "Desconectado"));
-                        
-                        if (isConnected) {
-                            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                                Log.d(TAG, "Conectado a WiFi");
-                                WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                                if (wifiManager != null) {
-                                    int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
-                                    String ipString = String.format("%d.%d.%d.%d",
-                                            (ipAddress & 0xff),
-                                            (ipAddress >> 8 & 0xff),
-                                            (ipAddress >> 16 & 0xff),
-                                            (ipAddress >> 24 & 0xff));
-                                    Log.d(TAG, "Dirección IP del dispositivo (WiFi): " + ipString);
-                                    
-                                    // Intentar hacer ping a las posibles IPs del servidor
-                                    for (String ip : POSSIBLE_IPS) {
-                                        try {
-                                            InetAddress address = InetAddress.getByName(ip);
-                                            boolean reachable = address.isReachable(1000);
-                                            Log.d(TAG, "Ping a " + ip + ": " + (reachable ? "Alcanzable" : "No alcanzable"));
-                                            
-                                            // Intentar conectar al puerto 8085
-                                            if (reachable) {
-                                                try (Socket socket = new Socket()) {
-                                                    socket.connect(new java.net.InetSocketAddress(ip, 8085), 1000);
-                                                    Log.d(TAG, "Puerto 8085 abierto en " + ip);
-                                                    
-                                                    // Intentar hacer una petición HTTP
-                                                    try {
-                                                        URL url = new URL("http://" + ip + ":8085/");
-                                                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                                                        connection.setConnectTimeout(1000);
-                                                        connection.setReadTimeout(1000);
-                                                        connection.setRequestMethod("GET");
-                                                        int responseCode = connection.getResponseCode();
-                                                        Log.d(TAG, "Respuesta HTTP de " + ip + ": " + responseCode);
-                                                        
-                                                        if (responseCode == HttpURLConnection.HTTP_OK) {
-                                                            lastWorkingUrl = "http://" + ip + ":8085/";
-                                                            Log.d(TAG, "URL funcional encontrada: " + lastWorkingUrl);
-                                                        }
-                                                    } catch (IOException e) {
-                                                        Log.e(TAG, "Error en petición HTTP a " + ip + ": " + e.getMessage());
-                                                    }
-                                                } catch (IOException e) {
-                                                    Log.e(TAG, "Puerto 8085 cerrado en " + ip + ": " + e.getMessage());
-                                                }
-                                            }
-                                        } catch (Exception e) {
-                                            Log.e(TAG, "Error al hacer ping a " + ip + ": " + e.getMessage());
-                                        }
-                                    }
-                                }
-                            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                                Log.d(TAG, "Conectado a red móvil");
-                                // Para redes móviles, intentar con la IP pública del servidor
-                                for (String ip : POSSIBLE_IPS) {
-                                    try {
-                                        InetAddress address = InetAddress.getByName(ip);
-                                        boolean reachable = address.isReachable(1000);
-                                        Log.d(TAG, "Ping a " + ip + " (red móvil): " + (reachable ? "Alcanzable" : "No alcanzable"));
-                                        
-                                        // Intentar conectar al puerto 8085
-                                        if (reachable) {
-                                            try (Socket socket = new Socket()) {
-                                                socket.connect(new java.net.InetSocketAddress(ip, 8085), 1000);
-                                                Log.d(TAG, "Puerto 8085 abierto en " + ip + " (red móvil)");
-                                                
-                                                // Intentar hacer una petición HTTP
-                                                try {
-                                                    URL url = new URL("http://" + ip + ":8085/");
-                                                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                                                    connection.setConnectTimeout(1000);
-                                                    connection.setReadTimeout(1000);
-                                                    connection.setRequestMethod("GET");
-                                                    int responseCode = connection.getResponseCode();
-                                                    Log.d(TAG, "Respuesta HTTP de " + ip + " (red móvil): " + responseCode);
-                                                    
-                                                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                                                        lastWorkingUrl = "http://" + ip + ":8085/";
-                                                        Log.d(TAG, "URL funcional encontrada: " + lastWorkingUrl);
-                                                    }
-                                                } catch (IOException e) {
-                                                    Log.e(TAG, "Error en petición HTTP a " + ip + " (red móvil): " + e.getMessage());
-                                                }
-                                            } catch (IOException e) {
-                                                Log.e(TAG, "Puerto 8085 cerrado en " + ip + " (red móvil): " + e.getMessage());
-                                            }
-                                        }
-                                    } catch (Exception e) {
-                                        Log.e(TAG, "Error al hacer ping a " + ip + " (red móvil): " + e.getMessage());
-                                    }
-                                }
-                            }
-                        }
-                        return isConnected;
-                    }
-                }
-            } else {
-                NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-                boolean isConnected = activeNetworkInfo != null && activeNetworkInfo.isConnected();
-                Log.d(TAG, "Estado de la red (API < 23): " + (isConnected ? "Conectado" : "Desconectado"));
-                return isConnected;
+            Network network = connectivityManager.getActiveNetwork();
+            if (network != null) {
+                NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
+                return capabilities != null && (
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET));
             }
         }
-        Log.d(TAG, "No se pudo obtener el estado de la red");
         return false;
     }
 

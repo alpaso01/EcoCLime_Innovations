@@ -4,121 +4,260 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="#F5F8FF"
     tools:context=".MiPerfilActivity">
 
-    <TextView
-        android:id="@+id/textTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Mi Perfil"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Barra superior azul con botón atrás y título -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/barraSuperior"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="#316ffe"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button_border"
+            android:backgroundTint="#FFFFFF"
+            android:text="&#60;"
+            android:textColor="#316ffe"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/textTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mi Perfil"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"
+            app:layout_constraintStart_toEndOf="@id/btnVolver"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Contenedor de datos de perfil -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="-32dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnVolver"
-        app:layout_constraintTop_toBottomOf="@id/textTitulo">
+        app:layout_constraintTop_toBottomOf="@id/barraSuperior"
+        app:layout_constraintBottom_toTopOf="@id/btnEditarPerfil">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="24dp"
+            android:gravity="center_horizontal">
 
+            <!-- ID oculto -->
             <TextView
                 android:id="@+id/tvId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"/>
 
-            <TextView
-                android:id="@+id/tvNombre"
+            <!-- Card: Nombre -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#212121"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvApellidos"
+            <!-- Card: Apellidos -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvApellidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#212121"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvEmail"
+            <!-- Card: Tipo -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_info_details"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvTipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#212121"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvTelefono"
+            <!-- Card: Ciudad -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_compass"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvCiudad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#212121"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvTipo"
+            <!-- Card: Código Postal -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvCodigoPostal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#212121"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvCiudad"
+            <!-- Card: Dirección -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_directions"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvDireccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#212121"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvCodigoPostal"
+            <!-- Card: Contraseña -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
-
-            <TextView
-                android:id="@+id/tvDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:layout_marginBottom="16dp"/>
-
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_lock_lock"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textColor="#212121"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="********"/>
+                <ImageView
+                    android:id="@+id/ivTogglePassword"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_view"
+                    android:tint="#316ffe"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
+    <!-- Botón Editar perfil -->
     <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnEditarPerfil"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#669cf2"
-        android:text="Volver"
+        android:backgroundTint="#316ffe"
+        android:text="Editar perfil"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        app:cornerRadius="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

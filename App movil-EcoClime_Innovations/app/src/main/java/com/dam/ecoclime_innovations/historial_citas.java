@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +32,8 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
     private String userEmail;
     private int userId;
     private Button btnTodos, btnEmpresas, btnParticulares;
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private boolean isLoading = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +134,9 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
     }
 
     private void cargarCitas() {
+        if (isLoading) return;
+        isLoading = true;
+        
         apiService.obtenerUsuarioPorEmail(userEmail).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
@@ -156,18 +163,17 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
         apiService.obtenerHistorialCitas(usuarioId).enqueue(new Callback<List<Cita>>() {
             @Override
             public void onResponse(Call<List<Cita>> call, Response<List<Cita>> response) {
+                isLoading = false;
                 if (response.isSuccessful() && response.body() != null) {
                     List<Cita> nuevasCitas = response.body();
                     Log.d(TAG, "Respuesta del servidor - Número de citas: " + nuevasCitas.size());
-                    Log.d(TAG, "Contenido de las citas: " + nuevasCitas.toString());
                     
-                    runOnUiThread(() -> {
+                    mainHandler.post(() -> {
                         listaCitas.clear();
                         listaCitas.addAll(nuevasCitas);
                         
                         // Procesar las citas para asegurar que fecha y hora estén correctamente establecidos
                         for (Cita cita : listaCitas) {
-                            Log.d(TAG, "Procesando cita: " + cita.toString());
                             if (cita.getFechaHora() != null) {
                                 String[] partes = cita.getFechaHora().split("T");
                                 if (partes.length == 2) {
@@ -179,7 +185,10 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
                         
                         Log.d(TAG, "Citas procesadas - Tamaño final de la lista: " + listaCitas.size());
                         citaAdapter.actualizarCitas(listaCitas);
-                        actualizarFiltro("Todos");
+                        recyclerView.post(() -> {
+                            recyclerView.scrollToPosition(0);
+                            actualizarFiltro("Todos");
+                        });
 
                         // Actualizar el contador en SharedPreferences
                         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
@@ -187,8 +196,9 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
                         editor.putInt("citasCount", listaCitas.size());
                         editor.apply();
 
+                        // Verificar si hay citas después de procesar
                         if (listaCitas.isEmpty()) {
-                            Log.d(TAG, "La lista de citas está vacía");
+                            Log.d(TAG, "No hay citas programadas");
                             Toast.makeText(historial_citas.this, "No tienes citas programadas", Toast.LENGTH_SHORT).show();
                         } else {
                             Log.d(TAG, "Mostrando " + listaCitas.size() + " citas");
@@ -196,20 +206,19 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
                     });
                 } else {
                     Log.e(TAG, "Error al obtener citas: " + response.code());
-                    Log.e(TAG, "Mensaje de error: " + response.message());
-                    runOnUiThread(() -> {
-                        Toast.makeText(historial_citas.this, "Error al cargar las citas", Toast.LENGTH_SHORT).show();
-                    });
+                    mainHandler.post(() -> 
+                        Toast.makeText(historial_citas.this, "Error al cargar las citas", Toast.LENGTH_SHORT).show()
+                    );
                 }
             }
 
             @Override
             public void onFailure(Call<List<Cita>> call, Throwable t) {
+                isLoading = false;
                 Log.e(TAG, "Error de conexión: " + t.getMessage());
-                t.printStackTrace();
-                runOnUiThread(() -> {
-                    Toast.makeText(historial_citas.this, "Error de conexión", Toast.LENGTH_SHORT).show();
-                });
+                mainHandler.post(() -> 
+                    Toast.makeText(historial_citas.this, "Error de conexión", Toast.LENGTH_SHORT).show()
+                );
             }
         });
     }
@@ -265,8 +274,8 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
     @Override
     protected void onResume() {
         super.onResume();
-        // Actualizar la lista de citas al volver a la actividad
-        cargarCitas();
-        Log.d(TAG, "onResume - Actualizando historial de citas");
+        if (!isLoading) {
+            cargarCitas();
+        }
     }
 }

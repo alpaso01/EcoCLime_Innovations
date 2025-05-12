@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +23,11 @@ public class MiPerfilActivity extends AppCompatActivity {
     private int userId = -1; // Inicializar con valor inválido
     private ApiService apiService;
     
-    private TextView tvId, tvNombre, tvApellidos, tvEmail, tvTelefono, tvTipo, tvCiudad, tvCodigoPostal, tvDireccion;
+    private TextView tvId, tvNombre, tvApellidos, tvEmail, tvTelefono, tvTipo, tvCiudad, tvCodigoPostal, tvDireccion, tvPassword;
     private Button btnVolver;
+    private ImageView ivTogglePassword;
+    private boolean passwordVisible = false;
+    private String passwordReal = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,8 @@ public class MiPerfilActivity extends AppCompatActivity {
         tvCiudad = findViewById(R.id.tvCiudad);
         tvCodigoPostal = findViewById(R.id.tvCodigoPostal);
         tvDireccion = findViewById(R.id.tvDireccion);
+        tvPassword = findViewById(R.id.tvPassword);
+        ivTogglePassword = findViewById(R.id.ivTogglePassword);
         btnVolver = findViewById(R.id.btnVolver);
         
         // Inicializar Retrofit
@@ -307,8 +313,8 @@ public class MiPerfilActivity extends AppCompatActivity {
             tvId.setText("ID: " + (usuario.getId() > 0 ? usuario.getId() : "No disponible"));
             
             // Para el resto de campos, verificar que no sean nulos
-            tvNombre.setText("Nombre: " + (usuario.getNombre() != null ? usuario.getNombre() : "No disponible"));
-            tvApellidos.setText("Apellidos: " + (usuario.getApellidos() != null ? usuario.getApellidos() : "No disponible"));
+            tvNombre.setText(usuario.getNombre() != null ? usuario.getNombre() : "No disponible");
+            tvApellidos.setText(usuario.getApellidos() != null ? usuario.getApellidos() : "No disponible");
             tvEmail.setText("Email: " + (usuario.getEmail() != null ? usuario.getEmail() : userEmail));
             tvTelefono.setText("Teléfono: " + (usuario.getTelefono() != null ? usuario.getTelefono() : "No disponible"));
             
@@ -337,6 +343,24 @@ public class MiPerfilActivity extends AppCompatActivity {
             } else {
                 tvDireccion.setText("Dirección: No especificada");
             }
+            
+            passwordReal = usuario.getPassword() != null ? usuario.getPassword() : "";
+            tvPassword.setText("********");
+            passwordVisible = false;
+            ivTogglePassword.setImageResource(android.R.drawable.ic_menu_view);
+            ivTogglePassword.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    passwordVisible = !passwordVisible;
+                    if (passwordVisible) {
+                        tvPassword.setText(passwordReal);
+                        ivTogglePassword.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+                    } else {
+                        tvPassword.setText("********");
+                        ivTogglePassword.setImageResource(android.R.drawable.ic_menu_view);
+                    }
+                }
+            });
             
             // Mostrar mensaje de éxito solo si tenemos los datos completos
             if (usuario.getNombre() != null) {
