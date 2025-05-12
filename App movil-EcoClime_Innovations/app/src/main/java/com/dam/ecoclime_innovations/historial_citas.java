@@ -9,6 +9,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -72,7 +73,7 @@ public class historial_citas extends AppCompatActivity implements CitaAdapter.On
         cargarCitas();
 
         // Configurar botón volver
-        Button btnVolver = findViewById(R.id.botonAtrasHistorial);
+        ImageButton btnVolver = findViewById(R.id.botonAtrasHistorial);
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

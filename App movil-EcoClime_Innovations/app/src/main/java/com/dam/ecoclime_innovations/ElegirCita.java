@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -39,13 +41,13 @@ public class ElegirCita extends AppCompatActivity {
         
         Log.d(TAG, "userEmail obtenido: " + userEmail);
 
-        // Inicializar botones
-        Button botonElegirEmpresa = findViewById(R.id.botonElegirEmpresa);
-        Button botonElegirParticular = findViewById(R.id.botonElegirParticular);
-        Button botonAtras = findViewById(R.id.botonAtras);
+        // Inicializar vistas
+        CardView cardElegirEmpresa = findViewById(R.id.botonElegirEmpresa);
+        CardView cardElegirParticular = findViewById(R.id.botonElegirParticular);
+        ImageButton botonAtras = findViewById(R.id.botonAtras);
 
         // Configurar listeners sin animaciones complejas para mejorar rendimiento
-        botonElegirEmpresa.setOnClickListener(new View.OnClickListener() {
+        cardElegirEmpresa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Iniciando citas_empresa con email: " + userEmail);
@@ -55,7 +57,7 @@ public class ElegirCita extends AppCompatActivity {
             }
         });
 
-        botonElegirParticular.setOnClickListener(new View.OnClickListener() {
+        cardElegirParticular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Iniciando citas_particulares con email: " + userEmail);
