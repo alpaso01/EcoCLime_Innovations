@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
@@ -48,12 +50,25 @@ public class Cita {
     private LocalDateTime fechaHora; // Formato de fecha y hora
 
     @Transient
-    @JsonIgnore
+    @JsonProperty("fecha")
     private String fecha;
 
     @Transient
-    @JsonIgnore
+    @JsonProperty("hora")
     private String hora;
+
+    private void actualizarFechaHora() {
+        if (fecha != null && !fecha.isEmpty() && hora != null && !hora.isEmpty()) {
+            try {
+                LocalDate localDate = LocalDate.parse(fecha);
+                LocalTime localTime = LocalTime.parse(hora);
+                this.fechaHora = LocalDateTime.of(localDate, localTime);
+            } catch (Exception e) {
+                // Log error pero no lanzar excepción para permitir que la validación maneje esto
+                System.err.println("Error al parsear fecha/hora: " + e.getMessage());
+            }
+        }
+    }
 
     @Override
     public String toString() {
@@ -178,6 +193,7 @@ public class Cita {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+        actualizarFechaHora();
     }
 
     public String getHora() {
@@ -186,5 +202,6 @@ public class Cita {
 
     public void setHora(String hora) {
         this.hora = hora;
+        actualizarFechaHora();
     }
 }

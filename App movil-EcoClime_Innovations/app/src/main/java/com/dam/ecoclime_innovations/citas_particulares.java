@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,6 +63,10 @@ public class citas_particulares extends AppCompatActivity {
         btnGuardar = findViewById(R.id.confirmar);
         btnCancelar = findViewById(R.id.btnVolverFecha);
         layoutFormulario = findViewById(R.id.layoutFormulario);
+
+        // Configurar el botón atrás
+        ImageButton botonAtras = findViewById(R.id.botonAtrasParticulares);
+        botonAtras.setOnClickListener(v -> finish());
 
         // Configurar el CalendarView para la fecha
         CalendarView calendarView = findViewById(R.id.calendarioCitas);
@@ -173,6 +178,7 @@ public class citas_particulares extends AppCompatActivity {
         cita.setNumeroCasa(etNumeroCasa.getText().toString().trim());
         cita.setFecha(fechaSeleccionada);
         cita.setHora(horaSeleccionada);
+        cita.setFechaHora(fechaSeleccionada + "T" + horaSeleccionada + ":00");
         cita.setMensaje(etMensajeOpcional.getText().toString().trim());
         cita.setEstado("pendiente");
 
@@ -186,6 +192,7 @@ public class citas_particulares extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     Cita citaGuardada = response.body();
                     Log.d(TAG, "Cita agendada exitosamente. ID de la cita: " + citaGuardada.getId());
+                    Log.d(TAG, "Detalles de la cita guardada: " + citaGuardada.toString());
                     Toast.makeText(citas_particulares.this, "Cita agendada con éxito", Toast.LENGTH_SHORT).show();
                     actualizarContadorCitas();
                     finish();
@@ -216,6 +223,7 @@ public class citas_particulares extends AppCompatActivity {
                         } catch (Exception e) {
                             errorMsg += response.code();
                             Log.e(TAG, "Error al procesar respuesta del servidor: " + e.getMessage());
+                            Log.e(TAG, "Stack trace del error: ", e);
                         }
                     }
                 }
@@ -224,6 +232,7 @@ public class citas_particulares extends AppCompatActivity {
             @Override
             public void onFailure(Call<Cita> call, Throwable t) {
                 Log.e(TAG, "Error de conexión al intentar agendar la cita: " + t.getMessage());
+                Log.e(TAG, "Stack trace completo: ", t);
                 
                 if (retryCount < MAX_RETRIES - 1) {
                     retryCount++;

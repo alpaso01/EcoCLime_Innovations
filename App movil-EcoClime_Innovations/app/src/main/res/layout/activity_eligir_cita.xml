@@ -55,28 +55,28 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/botonElegirEmpresa"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="213dp"
             android:layout_marginBottom="24dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="12dp"
-            android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="#316ffe">
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="#316ffe"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="32dp">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
+                    android:layout_marginEnd="32dp"
                     android:src="@drawable/ic_calendar"
-                    android:tint="#FFFFFF"
-                    android:layout_marginEnd="32dp"/>
+                    android:tint="#FFFFFF" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -86,20 +86,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
                         android:text="Cita Empresa"
                         android:textColor="#FFFFFF"
                         android:textSize="28sp"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif-black"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Programa una cita para tu empresa"
                         android:textColor="#E6FFFFFF"
-                        android:textSize="18sp"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -107,27 +107,27 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/botonElegirParticular"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="12dp"
-            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_height="225dp"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="#316ffe">
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="#316ffe"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="32dp">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
+                    android:layout_marginEnd="32dp"
                     android:src="@drawable/ic_calendar"
-                    android:tint="#FFFFFF"
-                    android:layout_marginEnd="32dp"/>
+                    android:tint="#FFFFFF" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -137,20 +137,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
                         android:text="Cita Particular"
                         android:textColor="#FFFFFF"
                         android:textSize="28sp"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif-black"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Programa una cita personal"
                         android:textColor="#E6FFFFFF"
-                        android:textSize="18sp"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -58,6 +59,10 @@ public class citas_empresa extends AppCompatActivity {
         etMensajeOpcional = findViewById(R.id.mensajeEmpresa);
         btnGuardar = findViewById(R.id.confirmarEmpresa);
         btnCancelar = findViewById(R.id.btnVolverFechaEmpresa);
+
+        // Configurar el botón atrás
+        ImageButton botonAtras = findViewById(R.id.botonAtrasEmpresa);
+        botonAtras.setOnClickListener(v -> finish());
 
         // Configurar el CalendarView para la fecha
         CalendarView calendarView = findViewById(R.id.calendarioCitasEmpresa);

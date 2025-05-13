@@ -21,31 +21,34 @@
         <ImageButton
             android:id="@+id/botonAtrasHistorial"
             android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_height="38dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_back"
+            android:contentDescription="Botón atrás"
             android:padding="8dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.042"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="Botón atrás"/>
+            app:layout_constraintVertical_bias="0.25" />
 
         <TextView
             android:id="@+id/tituloHistorial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="276dp"
+            android:layout_height="36dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
             android:text="Historial de Citas"
             android:textColor="#FFFFFF"
-            android:textSize="26sp"
+            android:textSize="30sp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-black"
-            app:layout_constraintStart_toEndOf="@id/botonAtrasHistorial"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:gravity="center"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.308"
+            app:layout_constraintStart_toEndOf="@id/botonAtrasHistorial"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Filtros modernos -->
@@ -70,7 +73,7 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_filtro_pill_selected"
             android:text="Todos"
-            android:textColor="#316ffe"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:fontFamily="sans-serif"/>
 
@@ -78,24 +81,25 @@
             android:id="@+id/btnEmpresas"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/bg_filtro_pill"
+            android:layout_weight="1"
+            android:background="@drawable/bg_filtro_pill_inactive"
+            android:fontFamily="sans-serif"
             android:text="Empresas"
-            android:textColor="#316ffe"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif"/>
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnParticulares"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_filtro_pill"
+            android:background="@drawable/bg_filtro_pill_inactive"
+            android:fontFamily="sans-serif"
             android:text="Particulares"
-            android:textColor="#316ffe"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif"/>
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Lista de citas sobre fondo blanco -->

@@ -37,13 +37,7 @@
             android:name=".menu_principal"
             android:exported="false" />
         <activity
-            android:name=".mi_perfil"
-            android:exported="false" />
-        <activity
-            android:name=".visita_web"
-            android:exported="false" />
-        <activity
-            android:name=".atencion_cliente"
+            android:name=".VistaWebActivity"
             android:exported="false" />
         <activity
             android:name=".historial_citas"

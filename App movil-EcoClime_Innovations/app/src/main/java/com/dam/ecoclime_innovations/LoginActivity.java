@@ -313,7 +313,11 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginForm() {
         // Cambiar el estilo del botón de login
         switchToLogin.setBackground(getResources().getDrawable(R.drawable.bg_tab_inactive));
+        switchToLogin.setBackgroundColor(Color.parseColor("#316ffe")); // Azul cuando está activo
+        switchToLogin.setTextColor(Color.WHITE); // Texto blanco cuando está activo
         switchToRegister.setBackground(null);
+        switchToRegister.setBackgroundColor(Color.TRANSPARENT); // Original cuando está inactivo
+        switchToRegister.setTextColor(Color.parseColor("#316ffe")); // Texto azul cuando está inactivo
 
         // Aplicar animación de entrada desde la izquierda al formulario de login
         loginForm.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.slide_in_right));
@@ -326,7 +330,11 @@ public class LoginActivity extends AppCompatActivity {
     private void showRegisterForm() {
         // Cambiar el estilo del botón de registro
         switchToRegister.setBackground(getResources().getDrawable(R.drawable.bg_tab_inactive));
+        switchToRegister.setBackgroundColor(Color.parseColor("#316ffe")); // Azul cuando está activo
+        switchToRegister.setTextColor(Color.WHITE); // Texto blanco cuando está activo
         switchToLogin.setBackground(null);
+        switchToLogin.setBackgroundColor(Color.TRANSPARENT); // Original cuando está inactivo
+        switchToLogin.setTextColor(Color.parseColor("#316ffe")); // Texto azul cuando está inactivo
 
         // Aplicar animación de entrada desde la derecha al formulario de registro
         registerForm.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.slide_in_right));

@@ -5,10 +5,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class pantalla_principal extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class pantalla_principal extends BaseActivity {
     
     private static final String TAG = "pantalla_principal";
     private String userEmail;
@@ -46,8 +48,12 @@ public class pantalla_principal extends AppCompatActivity implements BottomNavig
         // Inicializar vistas
         CardView cardElegirCita = findViewById(R.id.cardElegirCita);
         CardView cardHistorialCitas = findViewById(R.id.cardHistorialCitas);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        // Configurar el botón de inicio
+        ImageButton fabHome = findViewById(R.id.fab_home);
+        fabHome.setOnClickListener(v -> {
+            // Ya estamos en inicio, no necesitamos hacer nada
+        });
 
         // Configurar listeners de tarjetas
         cardElegirCita.setOnClickListener(v -> {
@@ -61,6 +67,42 @@ public class pantalla_principal extends AppCompatActivity implements BottomNavig
             pasarDatosUsuario(intent);
             startActivity(intent);
         });
+
+        // Configurar el botón de menú
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> showPopupMenu(v));
+
+        // Configurar navegación inferior
+        setupBottomNavigation();
+    }
+
+    @Override
+    protected void setupBottomNavigation() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.navigation_home) {
+                // Ya estamos en home
+                return true;
+            } else if (itemId == R.id.navigation_web) {
+                Intent intent = new Intent(this, vista_web.class);
+                pasarDatosUsuario(intent);
+                startActivity(intent);
+                return true;
+            } else if (itemId == R.id.navigation_perfil) {
+                Intent intent = new Intent(this, MiPerfilActivity.class);
+                pasarDatosUsuario(intent);
+                startActivity(intent);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    @Override
+    protected int getSelectedNavigationItemId() {
+        return R.id.navigation_home;
     }
 
     private void obtenerDatosUsuario() {
@@ -88,7 +130,7 @@ public class pantalla_principal extends AppCompatActivity implements BottomNavig
         // Guardar todos los datos en SharedPreferences para persistencia
         guardarDatosEnSharedPreferences();
         
-        Log.d(TAG, "Datos del usuario cargados - ID: " + userId + ", Email: " + userEmail + 
+        Log.d(TAG, "Datos del usuario cargados - ID: " + userId + ", Email: " + userEmail +
               ", Nombre: " + userNombre + ", Tipo: " + userTipo);
     }
     
@@ -110,7 +152,8 @@ public class pantalla_principal extends AppCompatActivity implements BottomNavig
         editor.apply();
     }
 
-    private void pasarDatosUsuario(Intent intent) {
+    @Override
+    protected void pasarDatosUsuario(Intent intent) {
         intent.putExtra("userEmail", userEmail);
         intent.putExtra("userId", userId);
         intent.putExtra("userNombre", userNombre);
@@ -122,36 +165,19 @@ public class pantalla_principal extends AppCompatActivity implements BottomNavig
         intent.putExtra("userDireccion", userDireccion);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-        
-        if (itemId == R.id.navigation_home) {
-            // Ya estamos en la pantalla principal
-            return true;
-        } else if (itemId == R.id.navigation_profile) {
-            Intent intent = new Intent(this, MiPerfilActivity.class);
-            pasarDatosUsuario(intent);
-            startActivity(intent);
-            return true;
-        } else if (itemId == R.id.navigation_support) {
-            Intent intent = new Intent(this, AtencionClienteActivity.class);
-            pasarDatosUsuario(intent);
-            startActivity(intent);
-            return true;
-        } else if (itemId == R.id.navigation_logout) {
-            // Limpiar datos de sesión si es necesario
-            SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-            preferences.edit().clear().apply();
-            
-            // Redirigir al login
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-            return true;
-        }
-        
-        return false;
+    private void showPopupMenu(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.getMenuInflater().inflate(R.menu.menu_principal, popup.getMenu());
+        popup.setOnMenuItemClickListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.menu_atencion_cliente) {
+                Intent intent = new Intent(this, AtencionClienteActivity.class);
+                pasarDatosUsuario(intent);
+                startActivity(intent);
+                return true;
+            }
+            return false;
+        });
+        popup.show();
     }
 }

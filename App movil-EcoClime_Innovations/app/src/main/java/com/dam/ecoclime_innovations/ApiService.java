@@ -25,7 +25,6 @@ public interface ApiService {
     Call<Usuario> obtenerUsuarioPorEmailQuery(@Query("email") String email);
 
 
-
     //----CITAS------
 
     @GET("api/citas/historial/{usuarioId}")

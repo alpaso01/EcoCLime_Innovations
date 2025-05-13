@@ -5,11 +5,47 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_abstract">
 
+    <!-- Barra superior con botón atrás -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/barraSuperior"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#316ffe">
+
+        <ImageButton
+            android:id="@+id/botonAtrasEmpresa"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:tint="#FFFFFF"
+            android:padding="12dp"
+            android:contentDescription="Botón atrás"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tituloEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cita Empresa"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/botonAtrasEmpresa"
+            app:layout_constraintTop_toTopOf="@id/botonAtrasEmpresa"
+            app:layout_constraintBottom_toBottomOf="@id/botonAtrasEmpresa"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <!-- Primera parte: Selección de fecha y hora -->
     <ScrollView
         android:id="@+id/layoutSeleccionFechaEmpresa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
         android:visibility="visible">
 
         <LinearLayout
@@ -17,17 +53,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-
-            <Button
-                android:id="@+id/botonAtrasEmpresa"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/button_border"
-                android:backgroundTint="#316ffe"
-                android:text="&#60;"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -38,7 +63,6 @@
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:layout_marginTop="32dp"
                 android:layout_marginBottom="16dp"/>
 
             <CalendarView
@@ -64,13 +88,13 @@
                 android:id="@+id/btnSiguienteEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:backgroundTint="#316ffe"
+                android:fontFamily="sans-serif"
                 android:text="Siguiente"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#316ffe"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                app:cornerRadius="28dp"/>
+                app:cornerRadius="28dp" />
 
         </LinearLayout>
     </ScrollView>
