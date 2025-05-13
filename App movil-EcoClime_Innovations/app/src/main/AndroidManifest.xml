@@ -65,6 +65,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TrabajadorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CrearTrabajadorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CrearAdminActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

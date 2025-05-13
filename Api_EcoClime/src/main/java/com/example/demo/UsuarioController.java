@@ -3,7 +3,6 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/usuarios")
@@ -26,7 +25,7 @@ public class UsuarioController {
 	    
 	    @PostMapping("/login")
 	    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-	        Usuario usuario = usuarioService.login(loginRequest.getEmail(), loginRequest.getPassword());
+	        Object usuario = usuarioService.login(loginRequest.getEmail(), loginRequest.getPassword());
 	        if (usuario != null) {
 	            return ResponseEntity.ok(usuario);
 	        } else {
@@ -36,7 +35,7 @@ public class UsuarioController {
 	    
 	    @GetMapping("/user/{email}")
 	    public ResponseEntity<?> obtenerUsuarioPorEmail(@PathVariable String email) {
-	        Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
+	        Object usuario = usuarioService.obtenerUsuarioPorEmail(email);
 	        if (usuario != null) {
 	            return ResponseEntity.ok(usuario);
 	        } else {

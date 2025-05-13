@@ -14,7 +14,13 @@ public interface ApiService {
     @POST("api/usuarios/login")
     Call<Usuario> loginUser(@Body Usuario usuario);
 
+    //-----REGISTRO DE TRABAJADORES Y ADMINS-----
 
+    @POST("api/trabajadores/registro")
+    Call<Usuario> registrarTrabajador(@Body Usuario trabajador);
+
+    @POST("api/admins/registro")
+    Call<Usuario> registrarAdmin(@Body Usuario admin);
 
     //-------OBTENER DATOS DE USUARIO-------
 
@@ -24,6 +30,11 @@ public interface ApiService {
     @GET("api/usuarios")
     Call<Usuario> obtenerUsuarioPorEmailQuery(@Query("email") String email);
 
+    @GET("api/trabajadores/{email}")
+    Call<Usuario> obtenerTrabajadorPorEmail(@Path("email") String email);
+
+    @GET("api/admins/{email}")
+    Call<Usuario> obtenerAdminPorEmail(@Path("email") String email);
 
     //----CITAS------
 
@@ -47,4 +58,10 @@ public interface ApiService {
 
     @DELETE("api/citas/anular/{citaId}")
     Call<Void> eliminarCita(@Path("citaId") int citaId);
+
+    @GET("api/citas/fecha/{fecha}")
+    Call<List<Cita>> obtenerCitasPorFecha(@Path("fecha") String fecha);
+
+    @GET("api/citas/fecha/{fecha}/tipo/{tipo}")
+    Call<List<Cita>> obtenerCitasPorFechaYTipo(@Path("fecha") String fecha, @Path("tipo") String tipo);
 }

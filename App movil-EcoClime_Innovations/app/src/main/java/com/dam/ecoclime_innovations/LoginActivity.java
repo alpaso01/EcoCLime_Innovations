@@ -111,8 +111,23 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("userEmail", email);
                     editor.apply();
 
-                    // Obtener todos los datos del usuario después del login exitoso
-                    obtenerDatosUsuarioCompletos(email);
+                    // Verificar si es un correo de trabajador o admin
+                    if (email.matches("ecotrabajador_\\d+@clime\\.es")) {
+                        // Si es un trabajador, ir a la pantalla de trabajador
+                        Intent intent = new Intent(LoginActivity.this, TrabajadorActivity.class);
+                        intent.putExtra("userEmail", email);
+                        startActivity(intent);
+                        finish();
+                    } else if (email.matches("ecoadmin_\\d+@clime\\.es")) {
+                        // Si es un admin, ir a la pantalla de administrador
+                        Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                        intent.putExtra("userEmail", email);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        // Usuario normal, obtener todos los datos
+                        obtenerDatosUsuarioCompletos(email);
+                    }
                 } else {
                     String errorMessage = "Error en el inicio de sesión";
                     try {
@@ -267,6 +282,12 @@ public class LoginActivity extends AppCompatActivity {
         String password = ((EditText) findViewById(R.id.registerPassword)).getText().toString().trim();
         String confirmPassword = ((EditText) findViewById(R.id.registerConfirmPassword)).getText().toString().trim();
         int selectedTypeId = userTypeGroup.getCheckedRadioButtonId();
+
+        // Validar que no se pueda registrar como trabajador o admin
+        if (email.matches("ecotrabajador_\\d+@clime\\.es") || email.matches("ecoadmin_\\d+@clime\\.es")) {
+            Toast.makeText(this, "No está permitido registrarse con este tipo de correo", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         if (username.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || selectedTypeId == -1) {
             Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
