@@ -76,7 +76,7 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
         btnTodos.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill));
         btnEmpresas.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill_inactive));
         btnParticulares.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill_inactive));
-        
+
         btnTodos.setTextColor(getResources().getColor(android.R.color.white));
         btnEmpresas.setTextColor(getResources().getColor(android.R.color.white));
         btnParticulares.setTextColor(getResources().getColor(android.R.color.white));
@@ -118,9 +118,9 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
     private void filtrarCitas(String tipo) {
         Log.d(TAG, "Filtrando citas por tipo: " + tipo);
         Log.d(TAG, "Total de citas antes del filtrado: " + listaCitas.size());
-        
+
         List<Cita> citasFiltradas = new ArrayList<>();
-        
+
         if (tipo.equalsIgnoreCase("todos")) {
             citasFiltradas.addAll(listaCitas);
             Log.d(TAG, "Mostrando todas las citas: " + listaCitas.size());
@@ -133,9 +133,9 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
             }
             Log.d(TAG, "Citas filtradas encontradas: " + citasFiltradas.size());
         }
-        
+
         citaAdapter.actualizarCitas(citasFiltradas);
-        
+
         if (citasFiltradas.isEmpty()) {
             Toast.makeText(this, "No hay citas de tipo " + tipo, Toast.LENGTH_SHORT).show();
         }
@@ -144,7 +144,7 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
     private void cargarCitas() {
         if (isLoading) return;
         isLoading = true;
-        
+
         Call<List<Cita>> call = apiService.obtenerHistorialCitasPorEmail(userEmail);
         call.enqueue(new Callback<List<Cita>>() {
             @Override
@@ -153,11 +153,11 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
                 if (response.isSuccessful() && response.body() != null) {
                     List<Cita> nuevasCitas = response.body();
                     Log.d(TAG, "Citas obtenidas: " + nuevasCitas.size());
-                    
+
                     listaCitas.clear();
                     listaCitas.addAll(nuevasCitas);
                     citaAdapter.actualizarCitas(listaCitas);
-                    
+
                     if (listaCitas.isEmpty()) {
                         Toast.makeText(historial_citas.this, "No tienes citas programadas", Toast.LENGTH_SHORT).show();
                     }

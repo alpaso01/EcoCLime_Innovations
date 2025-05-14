@@ -26,14 +26,14 @@ public class ElegirCita extends BaseActivity {
 
         // Obtener email del usuario desde el intent
         userEmail = getIntent().getStringExtra("userEmail");
-        
+
         if (userEmail == null || userEmail.isEmpty()) {
             Toast.makeText(this, "Error: Usuario no identificado", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, LoginActivity.class));
             finish();
             return;
         }
-        
+
         Log.d(TAG, "userEmail obtenido: " + userEmail);
 
         // Inicializar vistas

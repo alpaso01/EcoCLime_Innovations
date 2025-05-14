@@ -56,8 +56,8 @@ public class CrearTrabajadorActivity extends BaseActivity {
         String confirmPassword = etConfirmPassword.getText().toString().trim();
 
         // Validaciones
-        if (nombre.isEmpty() || apellidos.isEmpty() || numeroTrabajador.isEmpty() || 
-            telefono.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (nombre.isEmpty() || apellidos.isEmpty() || numeroTrabajador.isEmpty() ||
+                telefono.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -78,8 +78,8 @@ public class CrearTrabajadorActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(CrearTrabajadorActivity.this, 
-                        "Trabajador registrado exitosamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CrearTrabajadorActivity.this,
+                            "Trabajador registrado exitosamente", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     String error = "Error al registrar trabajador";
@@ -96,8 +96,8 @@ public class CrearTrabajadorActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
-                Toast.makeText(CrearTrabajadorActivity.this, 
-                    "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CrearTrabajadorActivity.this,
+                        "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -106,4 +106,4 @@ public class CrearTrabajadorActivity extends BaseActivity {
     protected int getSelectedNavigationItemId() {
         return R.id.navigation_home;
     }
-} 
+}

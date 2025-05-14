@@ -19,7 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class pantalla_principal extends BaseActivity {
-    
+
     private static final String TAG = "pantalla_principal";
     private String userEmail;
     private int userId;
@@ -35,10 +35,10 @@ public class pantalla_principal extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_principal);
-        
+
         // Obtener todos los datos del usuario del Intent
         obtenerDatosUsuario();
-        
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -86,7 +86,7 @@ public class pantalla_principal extends BaseActivity {
                 // Ya estamos en home
                 return true;
             } else if (itemId == R.id.navigation_web) {
-                Intent intent = new Intent(this, vista_web.class);
+                Intent intent = new Intent(this, VistaWebActivity.class);
                 pasarDatosUsuario(intent);
                 startActivity(intent);
                 return true;
@@ -107,7 +107,7 @@ public class pantalla_principal extends BaseActivity {
 
     private void obtenerDatosUsuario() {
         Intent intent = getIntent();
-        
+
         // Obtener email (obligatorio)
         userEmail = intent.getStringExtra("userEmail");
         if (userEmail == null || userEmail.isEmpty()) {
@@ -116,7 +116,7 @@ public class pantalla_principal extends BaseActivity {
             finish();
             return;
         }
-        
+
         // Obtener el resto de datos
         userId = intent.getIntExtra("userId", -1);
         userNombre = intent.getStringExtra("userNombre");
@@ -126,21 +126,21 @@ public class pantalla_principal extends BaseActivity {
         userCiudad = intent.getStringExtra("userCiudad");
         userCodigoPostal = intent.getStringExtra("userCodigoPostal");
         userDireccion = intent.getStringExtra("userDireccion");
-        
+
         // Guardar todos los datos en SharedPreferences para persistencia
         guardarDatosEnSharedPreferences();
-        
+
         Log.d(TAG, "Datos del usuario cargados - ID: " + userId + ", Email: " + userEmail +
-              ", Nombre: " + userNombre + ", Tipo: " + userTipo);
+                ", Nombre: " + userNombre + ", Tipo: " + userTipo);
     }
-    
+
     private void guardarDatosEnSharedPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        
+
         editor.putString("userEmail", userEmail);
         editor.putInt("userId", userId);
-        
+
         if (userNombre != null) editor.putString("userNombre", userNombre);
         if (userApellidos != null) editor.putString("userApellidos", userApellidos);
         if (userTelefono != null) editor.putString("userTelefono", userTelefono);
@@ -148,7 +148,7 @@ public class pantalla_principal extends BaseActivity {
         if (userCiudad != null) editor.putString("userCiudad", userCiudad);
         if (userCodigoPostal != null) editor.putString("userCodigoPostal", userCodigoPostal);
         if (userDireccion != null) editor.putString("userDireccion", userDireccion);
-        
+
         editor.apply();
     }
 

@@ -26,12 +26,12 @@ public abstract class BaseActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, pantalla_principal.class);
                     intent.putExtra("userEmail", userEmail);
                     startActivity(intent);
-                    if (!isCurrentActivity(vista_web.class)) {
+                    if (!isCurrentActivity(VistaWebActivity.class)) {
                         finish();
                     }
                     return true;
-                } else if (itemId == R.id.navigation_web && !isCurrentActivity(vista_web.class)) {
-                    Intent intent = new Intent(this, vista_web.class);
+                } else if (itemId == R.id.navigation_web && !isCurrentActivity(VistaWebActivity.class)) {
+                    Intent intent = new Intent(this, VistaWebActivity.class);
                     intent.putExtra("userEmail", userEmail);
                     startActivity(intent);
                     if (!isCurrentActivity(pantalla_principal.class)) {
@@ -42,7 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, MiPerfilActivity.class);
                     intent.putExtra("userEmail", userEmail);
                     startActivity(intent);
-                    if (!isCurrentActivity(pantalla_principal.class) && !isCurrentActivity(vista_web.class)) {
+                    if (!isCurrentActivity(pantalla_principal.class) && !isCurrentActivity(VistaWebActivity.class)) {
                         finish();
                     }
                     return true;
@@ -61,4 +61,4 @@ public abstract class BaseActivity extends AppCompatActivity {
     private boolean isCurrentActivity(Class<?> activityClass) {
         return this.getClass().equals(activityClass);
     }
-} 
+}

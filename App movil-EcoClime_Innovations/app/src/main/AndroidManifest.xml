@@ -55,16 +55,19 @@
             android:name=".pantalla_principal"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".PantallaCargaActivity"
             android:exported="true"
-            android:theme="@style/Theme.EcoClime_Innovations"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@style/Theme.EcoClime_Innovations">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.EcoClime_Innovations"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".TrabajadorActivity"
             android:exported="false" />

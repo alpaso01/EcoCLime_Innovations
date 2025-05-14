@@ -34,10 +34,10 @@ public class RetrofitClient {
     private static final String LOCAL_NETWORK_BASE_URL = "http://192.168.1.1:8085/";
     private static final String LOCALHOST_BASE_URL = "http://localhost:8085/";
     private static final String[] POSSIBLE_IPS = {
-        "192.168.1.1",
-        "192.168.0.1",
-        "192.168.56.1",
-        "10.0.2.2"
+            "192.168.1.1",
+            "192.168.0.1",
+            "192.168.56.1",
+            "10.0.2.2"
     };
     private static Retrofit retrofit = null;
     private static String lastWorkingUrl = null;
@@ -130,9 +130,9 @@ public class RetrofitClient {
             if (network != null) {
                 NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
                 return capabilities != null && (
-                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
-                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
-                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET));
+                        capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET));
             }
         }
         return false;

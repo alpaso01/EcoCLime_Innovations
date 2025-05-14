@@ -4,9 +4,9 @@
         android:id="@+id/menu_atencion_cliente"
         android:icon="@drawable/ic_support"
         android:title="Atención al Cliente" />
-    
+
     <item
         android:id="@+id/menu_salir"
         android:icon="@drawable/ic_logout"
         android:title="Salir" />
-</menu> 
+</menu>

@@ -42,14 +42,14 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
     @Override
     public void onBindViewHolder(CitaViewHolder holder, int position) {
         if (position < 0 || position >= citas.size()) return;
-        
+
         Cita cita = citas.get(position);
         if (cita == null) return;
-        
-        String nombreCompleto = cita.getTipo().equals("Particular") ? 
-            cita.getNombre() + " " + cita.getApellidos() :
-            "Empresa: " + cita.getNombre();
-        
+
+        String nombreCompleto = cita.getTipo().equals("Particular") ?
+                cita.getNombre() + " " + cita.getApellidos() :
+                "Empresa: " + cita.getNombre();
+
         holder.nombreTextView.setText(nombreCompleto);
         holder.telefonoTextView.setText("Tel: " + (cita.getTelefono() != null ? cita.getTelefono() : ""));
         holder.emailTextView.setText("Email: " + (cita.getEmail() != null ? cita.getEmail() : ""));
@@ -58,7 +58,7 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
         holder.codigoPostalTextView.setText("C.P.: " + (cita.getCodigoPostal() != null ? cita.getCodigoPostal() : ""));
         holder.calleTextView.setText("Calle: " + (cita.getCalle() != null ? cita.getCalle() : ""));
         holder.numeroCasaTextView.setText("Nº: " + (cita.getNumeroCasa() != null ? cita.getNumeroCasa() : ""));
-        
+
         // Mostrar fecha y hora desde el campo fechaHora
         String fechaHora = cita.getFechaHora();
         if (fechaHora != null && fechaHora.contains("T")) {

@@ -17,11 +17,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MiPerfilActivity extends AppCompatActivity {
-    
+
     private static final String TAG = "MiPerfilActivity";
     private String userEmail;
     private ApiService apiService;
-    
+
     private TextView tvNombre, tvApellidos, tvEmail, tvTelefono;
     private TextView tvTipo, tvCiudad, tvCodigoPostal, tvDireccion;
     private ImageButton btnVolver;
@@ -93,4 +93,4 @@ public class MiPerfilActivity extends AppCompatActivity {
         tvCodigoPostal.setText(usuario.getCodigoPostal());
         tvDireccion.setText(usuario.getDireccion());
     }
-} 
+}

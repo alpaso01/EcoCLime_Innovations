@@ -95,4 +95,4 @@
         android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_nav_menu"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout> 
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

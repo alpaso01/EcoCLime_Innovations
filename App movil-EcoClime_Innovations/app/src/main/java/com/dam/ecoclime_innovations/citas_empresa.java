@@ -161,7 +161,7 @@ public class citas_empresa extends AppCompatActivity {
 
     private void agendarCitaConUsuario(int usuarioId) {
         Log.d("citas_empresa", "Iniciando proceso de agendar cita para usuario ID: " + usuarioId);
-        
+
         // Crear objeto Cita con todos los datos necesarios
         Cita cita = new Cita();
         // No establecemos el ID, dejamos que el servidor lo asigne
@@ -201,7 +201,7 @@ public class citas_empresa extends AppCompatActivity {
                         try {
                             errorMsg += response.errorBody().string();
                             Log.e("citas_empresa", "Error detallado del servidor: " + errorMsg);
-                            
+
                             // Verificar si es un error de concurrencia
                             if (errorMsg.contains("ObjectOptimisticLockingFailureException")) {
                                 if (retryCount < MAX_RETRIES - 1) {
@@ -234,7 +234,7 @@ public class citas_empresa extends AppCompatActivity {
             public void onFailure(Call<Cita> call, Throwable t) {
                 Log.e("citas_empresa", "Error de conexión al intentar agendar la cita: " + t.getMessage());
                 Log.e("citas_empresa", "Stack trace completo: ", t);
-                
+
                 if (retryCount < MAX_RETRIES - 1) {
                     retryCount++;
                     Log.d("citas_empresa", "Reintentando después de error de conexión... (Intento " + (retryCount + 1) + " de " + MAX_RETRIES + ")");

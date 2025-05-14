@@ -17,10 +17,10 @@ public class Usuario {
 
     @SerializedName("telefono")
     private String telefono;
-    
+
     @SerializedName("password")
     private String password;
-    
+
     @SerializedName("tipo")
     private String tipo;
 
@@ -71,7 +71,7 @@ public class Usuario {
 
     // Constructor con todos los campos
     public Usuario(String nombre, String apellidos, String email, String telefono, String password, String tipo,
-                  String ciudad, String codigoPostal, String direccion) {
+                   String ciudad, String codigoPostal, String direccion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;

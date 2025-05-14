@@ -163,7 +163,7 @@ public class citas_particulares extends AppCompatActivity {
 
     private void agendarCitaConUsuario(int usuarioId) {
         Log.d(TAG, "Iniciando proceso de agendar cita para usuario ID: " + usuarioId);
-        
+
         // Crear objeto Cita con todos los datos necesarios
         Cita cita = new Cita();
         cita.setUsuarioId(usuarioId);
@@ -202,7 +202,7 @@ public class citas_particulares extends AppCompatActivity {
                         try {
                             errorMsg += response.errorBody().string();
                             Log.e(TAG, "Error detallado del servidor: " + errorMsg);
-                            
+
                             if (errorMsg.contains("ObjectOptimisticLockingFailureException")) {
                                 if (retryCount < MAX_RETRIES - 1) {
                                     retryCount++;
@@ -233,7 +233,7 @@ public class citas_particulares extends AppCompatActivity {
             public void onFailure(Call<Cita> call, Throwable t) {
                 Log.e(TAG, "Error de conexión al intentar agendar la cita: " + t.getMessage());
                 Log.e(TAG, "Stack trace completo: ", t);
-                
+
                 if (retryCount < MAX_RETRIES - 1) {
                     retryCount++;
                     Log.d(TAG, "Reintentando después de error de conexión... (Intento " + (retryCount + 1) + " de " + MAX_RETRIES + ")");

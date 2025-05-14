@@ -30,7 +30,7 @@ public class perfil extends AppCompatActivity {
 
         // Inicializar vistas
         inicializarVistas();
-        
+
         // Inicializar Retrofit
         apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
@@ -91,4 +91,4 @@ public class perfil extends AppCompatActivity {
         tvTelefono.setText("Teléfono: " + usuario.getTelefono());
         tvTipo.setText("Tipo: " + usuario.getTipo());
     }
-} 
+}

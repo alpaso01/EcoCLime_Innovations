@@ -30,7 +30,7 @@ public class ModificarCitaActivity extends AppCompatActivity {
 
         citaId = getIntent().getIntExtra("citaId", -1);
         userEmail = getIntent().getStringExtra("userEmail");
-        
+
         if (citaId == -1 || userEmail == null || userEmail.isEmpty()) {
             Toast.makeText(this, "Error: Datos de cita no válidos", Toast.LENGTH_SHORT).show();
             finish();
@@ -98,53 +98,53 @@ public class ModificarCitaActivity extends AppCompatActivity {
 
     private void mostrarSelectorFechaHora() {
         Calendar calendario = Calendar.getInstance();
-        
+
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-            this,
-            (view, year, month, dayOfMonth) -> {
-                // Validar que la fecha no sea anterior a hoy
-                Calendar selectedCalendar = Calendar.getInstance();
-                selectedCalendar.set(year, month, dayOfMonth);
-                Calendar today = Calendar.getInstance();
-                today.set(Calendar.HOUR_OF_DAY, 0);
-                today.set(Calendar.MINUTE, 0);
-                today.set(Calendar.SECOND, 0);
-                today.set(Calendar.MILLISECOND, 0);
+                this,
+                (view, year, month, dayOfMonth) -> {
+                    // Validar que la fecha no sea anterior a hoy
+                    Calendar selectedCalendar = Calendar.getInstance();
+                    selectedCalendar.set(year, month, dayOfMonth);
+                    Calendar today = Calendar.getInstance();
+                    today.set(Calendar.HOUR_OF_DAY, 0);
+                    today.set(Calendar.MINUTE, 0);
+                    today.set(Calendar.SECOND, 0);
+                    today.set(Calendar.MILLISECOND, 0);
 
-                if (selectedCalendar.before(today)) {
-                    Toast.makeText(this, "No se pueden agendar citas en fechas pasadas", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                    if (selectedCalendar.before(today)) {
+                        Toast.makeText(this, "No se pueden agendar citas en fechas pasadas", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
-                // Validar que sea día laborable
-                int dayOfWeek = selectedCalendar.get(Calendar.DAY_OF_WEEK);
-                if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
-                    Toast.makeText(this, "Solo se permiten citas de lunes a viernes", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                    // Validar que sea día laborable
+                    int dayOfWeek = selectedCalendar.get(Calendar.DAY_OF_WEEK);
+                    if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
+                        Toast.makeText(this, "Solo se permiten citas de lunes a viernes", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(
-                    this,
-                    (view1, hourOfDay, minute) -> {
-                        // Validar horario laboral (7:00 - 19:00)
-                        if (hourOfDay < 7 || hourOfDay >= 19) {
-                            Toast.makeText(this, "El horario de citas es de 7:00 a 19:00", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        
-                        String fecha = String.format("%02d/%02d/%d", dayOfMonth, month + 1, year);
-                        String hora = String.format("%02d:%02d", hourOfDay, minute);
-                        etFechaHora.setText(fecha + " " + hora);
-                    },
-                    calendario.get(Calendar.HOUR_OF_DAY),
-                    calendario.get(Calendar.MINUTE),
-                    true
-                );
-                timePickerDialog.show();
-            },
-            calendario.get(Calendar.YEAR),
-            calendario.get(Calendar.MONTH),
-            calendario.get(Calendar.DAY_OF_MONTH)
+                    TimePickerDialog timePickerDialog = new TimePickerDialog(
+                            this,
+                            (view1, hourOfDay, minute) -> {
+                                // Validar horario laboral (7:00 - 19:00)
+                                if (hourOfDay < 7 || hourOfDay >= 19) {
+                                    Toast.makeText(this, "El horario de citas es de 7:00 a 19:00", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                String fecha = String.format("%02d/%02d/%d", dayOfMonth, month + 1, year);
+                                String hora = String.format("%02d:%02d", hourOfDay, minute);
+                                etFechaHora.setText(fecha + " " + hora);
+                            },
+                            calendario.get(Calendar.HOUR_OF_DAY),
+                            calendario.get(Calendar.MINUTE),
+                            true
+                    );
+                    timePickerDialog.show();
+                },
+                calendario.get(Calendar.YEAR),
+                calendario.get(Calendar.MONTH),
+                calendario.get(Calendar.DAY_OF_MONTH)
         );
         datePickerDialog.show();
     }
@@ -217,14 +217,14 @@ public class ModificarCitaActivity extends AppCompatActivity {
 
     private boolean validarCampos() {
         return !TextUtils.isEmpty(etNombre.getText()) &&
-               !TextUtils.isEmpty(etApellidos.getText()) &&
-               !TextUtils.isEmpty(etTelefono.getText()) &&
-               !TextUtils.isEmpty(etEmail.getText()) &&
-               !TextUtils.isEmpty(etTipo.getText()) &&
-               !TextUtils.isEmpty(etCiudad.getText()) &&
-               !TextUtils.isEmpty(etCodigoPostal.getText()) &&
-               !TextUtils.isEmpty(etCalle.getText()) &&
-               !TextUtils.isEmpty(etNumeroCasa.getText()) &&
-               !TextUtils.isEmpty(etFechaHora.getText());
+                !TextUtils.isEmpty(etApellidos.getText()) &&
+                !TextUtils.isEmpty(etTelefono.getText()) &&
+                !TextUtils.isEmpty(etEmail.getText()) &&
+                !TextUtils.isEmpty(etTipo.getText()) &&
+                !TextUtils.isEmpty(etCiudad.getText()) &&
+                !TextUtils.isEmpty(etCodigoPostal.getText()) &&
+                !TextUtils.isEmpty(etCalle.getText()) &&
+                !TextUtils.isEmpty(etNumeroCasa.getText()) &&
+                !TextUtils.isEmpty(etFechaHora.getText());
     }
-} 
+}

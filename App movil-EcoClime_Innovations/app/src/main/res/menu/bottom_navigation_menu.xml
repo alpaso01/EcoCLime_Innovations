@@ -12,4 +12,4 @@
         android:id="@+id/nav_mi_perfil"
         android:icon="@android:drawable/ic_menu_myplaces"
         android:title="Mi Perfil" />
-</menu> 
+</menu>

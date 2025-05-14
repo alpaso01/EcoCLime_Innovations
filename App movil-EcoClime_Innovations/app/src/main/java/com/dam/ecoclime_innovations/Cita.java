@@ -5,49 +5,49 @@ import com.google.gson.annotations.SerializedName;
 public class Cita {
     @SerializedName("id")
     private int id;
-    
+
     @SerializedName("usuario_id")
     private Usuario usuario;
-    
+
     @SerializedName("nombre")
     private String nombre;
-    
+
     @SerializedName("apellidos")
     private String apellidos;
-    
+
     @SerializedName("telefono")
     private String telefono;
-    
+
     @SerializedName("email")
     private String email;
-    
+
     @SerializedName("tipo")
     private String tipo;
-    
+
     @SerializedName("ciudad")
     private String ciudad;
-    
+
     @SerializedName("codigo_postal")
     private String codigoPostal;
-    
+
     @SerializedName("calle")
     private String calle;
-    
+
     @SerializedName("numero_casa")
     private String numeroCasa;
-    
+
     @SerializedName("fecha")
     private String fecha;
-    
+
     @SerializedName("hora")
     private String hora;
-    
+
     @SerializedName("fecha_hora")
     private String fechaHora;
-    
+
     @SerializedName("estado")
     private String estado;
-    
+
     @SerializedName("mensaje")
     private String mensaje;
 
@@ -57,8 +57,8 @@ public class Cita {
     }
 
     // Constructor completo
-    public Cita(int id, Usuario usuario, String nombre, String apellidos, String telefono, String email, 
-                String tipo, String ciudad, String codigoPostal, String calle, String numeroCasa, 
+    public Cita(int id, Usuario usuario, String nombre, String apellidos, String telefono, String email,
+                String tipo, String ciudad, String codigoPostal, String calle, String numeroCasa,
                 String fecha, String hora, String estado) {
         this.id = id;
         this.usuario = usuario;

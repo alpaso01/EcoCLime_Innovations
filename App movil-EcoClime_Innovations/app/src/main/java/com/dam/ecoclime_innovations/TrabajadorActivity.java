@@ -41,11 +41,11 @@ public class TrabajadorActivity extends BaseActivity {
         setupButtons();
         setupSwipeRefresh();
         initRetrofit();
-        
+
         // Establecer la fecha actual como fecha seleccionada
         selectedDate = new Date();
         dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        
+
         // Cargar citas del día actual
         loadAppointments();
     }
@@ -76,7 +76,7 @@ public class TrabajadorActivity extends BaseActivity {
 
     private void setupButtons() {
         btnCalendario.setOnClickListener(v -> showDatePicker());
-        
+
         btnTodos.setOnClickListener(v -> {
             btnTodos.setSelected(true);
             btnEmpresa.setSelected(false);
@@ -102,30 +102,30 @@ public class TrabajadorActivity extends BaseActivity {
     private void setupSwipeRefresh() {
         swipeRefreshLayout.setOnRefreshListener(this::loadAppointments);
         swipeRefreshLayout.setColorSchemeResources(
-            android.R.color.holo_blue_bright,
-            android.R.color.holo_green_light,
-            android.R.color.holo_orange_light,
-            android.R.color.holo_red_light
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light
         );
     }
 
     private void showDatePicker() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(selectedDate);
-        
+
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-            this,
-            (view, year, month, dayOfMonth) -> {
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, month, dayOfMonth);
-                selectedDate = newDate.getTime();
-                loadAppointments();
-            },
-            calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH)
+                this,
+                (view, year, month, dayOfMonth) -> {
+                    Calendar newDate = Calendar.getInstance();
+                    newDate.set(year, month, dayOfMonth);
+                    selectedDate = newDate.getTime();
+                    loadAppointments();
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
         );
-        
+
         datePickerDialog.show();
     }
 
@@ -151,16 +151,16 @@ public class TrabajadorActivity extends BaseActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     adapter.setCitas(response.body());
                 } else {
-                    Toast.makeText(TrabajadorActivity.this, 
-                        "Error al cargar las citas", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TrabajadorActivity.this,
+                            "Error al cargar las citas", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Cita>> call, Throwable t) {
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(TrabajadorActivity.this, 
-                    "Error de conexión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TrabajadorActivity.this,
+                        "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -169,4 +169,4 @@ public class TrabajadorActivity extends BaseActivity {
     protected int getSelectedNavigationItemId() {
         return R.id.navigation_home;
     }
-} 
+}

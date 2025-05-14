@@ -36,16 +36,16 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         // Configurar la ventana para el fondo transparente
         getWindow().setStatusBarColor(android.graphics.Color.TRANSPARENT);
         getWindow().setNavigationBarColor(android.graphics.Color.TRANSPARENT);
         getWindow().getDecorView().setSystemUiVisibility(
-            View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-            View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         );
-        
+
         setContentView(R.layout.activity_login);
 
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
@@ -139,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         errorMessage = "Error al leer respuesta del servidor";
                     }
-                    
+
                     // Mostrar el error por más tiempo y en el log
                     Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
                     Log.e("LoginError", errorMessage);
@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                     retryCount++;
                     Log.d("LoginActivity", "Reintentando conexión (" + retryCount + "/" + MAX_RETRIES + ")");
                     Toast.makeText(LoginActivity.this, "Reintentando conexión...", Toast.LENGTH_LONG).show();
-                    
+
                     // Reiniciar Retrofit y volver a intentar
                     RetrofitClient.resetInstance();
                     initRetrofit();

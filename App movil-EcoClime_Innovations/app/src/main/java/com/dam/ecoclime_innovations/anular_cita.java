@@ -18,16 +18,16 @@ public class anular_cita extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_anular_cita);
-        
+
         // Obtener email del usuario desde el intent
         userEmail = getIntent().getStringExtra("userEmail");
-        
+
         if (userEmail == null || userEmail.isEmpty()) {
             Toast.makeText(this, "Error: Usuario no identificado", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
-        
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
