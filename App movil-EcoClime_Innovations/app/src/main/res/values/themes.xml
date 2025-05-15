@@ -12,6 +12,9 @@
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:navigationBarDividerColor">@color/navigationBarColor</item>
+        <!-- Splash screen personalizado -->
+        <item name="android:windowSplashScreenBackground">@color/primaryColorButton</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@android:color/transparent</item>
     </style>
 
     <style name="Theme.EcoClime_Innovations" parent="Base.Theme.EcoClime_Innovations" />

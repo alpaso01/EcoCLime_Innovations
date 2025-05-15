@@ -57,17 +57,21 @@
         <activity
             android:name=".PantallaCargaActivity"
             android:exported="true"
+            android:theme="@style/Theme.EcoClime_Innovations" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.EcoClime_Innovations"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".SplashCustomActivity"
+            android:exported="true"
             android:theme="@style/Theme.EcoClime_Innovations">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true"
-            android:theme="@style/Theme.EcoClime_Innovations"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".TrabajadorActivity"
             android:exported="false" />
@@ -80,6 +84,10 @@
         <activity
             android:name=".CrearAdminActivity"
             android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

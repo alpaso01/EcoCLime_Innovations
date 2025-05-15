@@ -50,10 +50,8 @@ public class pantalla_principal extends BaseActivity {
         CardView cardHistorialCitas = findViewById(R.id.cardHistorialCitas);
 
         // Configurar el botón de inicio
-        ImageButton fabHome = findViewById(R.id.fab_home);
-        fabHome.setOnClickListener(v -> {
-            // Ya estamos en inicio, no necesitamos hacer nada
-        });
+
+
 
         // Configurar listeners de tarjetas
         cardElegirCita.setOnClickListener(v -> {

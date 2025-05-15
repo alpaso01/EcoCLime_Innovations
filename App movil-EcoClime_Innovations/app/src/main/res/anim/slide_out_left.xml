@@ -8,4 +8,4 @@
         android:fromAlpha="1.0"
         android:toAlpha="0.0"
         android:duration="300"/>
-</set> 
+</set>
