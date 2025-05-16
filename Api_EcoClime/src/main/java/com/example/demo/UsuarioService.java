@@ -83,4 +83,36 @@ public class UsuarioService {
         Optional<Admin> optionalAdmin = adminRepository.findByEmail(email);
         return optionalAdmin.orElse(null);
     }
+
+    public void cambiarPassword(String email, String nuevaPassword) {
+        // Primero intentamos con usuario normal
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
+        if (optionalUsuario.isPresent()) {
+            Usuario usuario = optionalUsuario.get();
+            usuario.setPassword(nuevaPassword);
+            usuarioRepository.save(usuario);
+            return;
+        }
+
+        // Si no es usuario normal, intentamos con trabajador
+        Optional<Trabajador> optionalTrabajador = trabajadorRepository.findByEmail(email);
+        if (optionalTrabajador.isPresent()) {
+            Trabajador trabajador = optionalTrabajador.get();
+            trabajador.setPassword(nuevaPassword);
+            trabajadorRepository.save(trabajador);
+            return;
+        }
+
+        // Si no es trabajador, intentamos con admin
+        Optional<Admin> optionalAdmin = adminRepository.findByEmail(email);
+        if (optionalAdmin.isPresent()) {
+            Admin admin = optionalAdmin.get();
+            admin.setPassword(nuevaPassword);
+            adminRepository.save(admin);
+            return;
+        }
+
+        // Si no se encontró ningún usuario
+        throw new IllegalArgumentException("Usuario no encontrado");
+    }
 }

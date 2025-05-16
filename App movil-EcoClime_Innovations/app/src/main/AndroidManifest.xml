@@ -84,6 +84,12 @@
         <activity
             android:name=".CrearAdminActivity"
             android:exported="false" />
+        <activity
+            android:name=".RecuContraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CambioContraActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -60,6 +63,31 @@ public class MiPerfilActivity extends AppCompatActivity {
 
     private void configurarListeners() {
         btnVolver.setOnClickListener(v -> finish());
+        
+        // Configurar los botones de navegación personalizados
+        View navHome = findViewById(R.id.nav_home);
+        View navWeb = findViewById(R.id.nav_web);
+        View navAccount = findViewById(R.id.nav_account);
+        
+        // Botón Inicio
+        navHome.setOnClickListener(v -> {
+            Intent intent = new Intent(this, pantalla_principal.class);
+            intent.putExtra("userEmail", userEmail);
+            startActivity(intent);
+            finish();
+        });
+        
+        // Botón Web
+        navWeb.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VistaWebActivity.class);
+            intent.putExtra("userEmail", userEmail);
+            startActivity(intent);
+        });
+        
+        // Botón Cuenta (ya estamos en la cuenta)
+        navAccount.setOnClickListener(v -> {
+            // Ya estamos en la cuenta, no hacemos nada
+        });
     }
 
     private void cargarDatosUsuario() {

@@ -1,6 +1,8 @@
 package com.dam.ecoclime_innovations;
 
 import java.util.List;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -26,6 +28,9 @@ public interface ApiService {
 
     @GET("api/usuarios/user/{email}")
     Call<Usuario> obtenerUsuarioPorEmail(@Path("email") String email);
+
+    @POST("/cambiar-contrasena")
+    Call<Void> cambiarPassword(@Body Map<String, String> request);
 
     @GET("api/usuarios")
     Call<Usuario> obtenerUsuarioPorEmailQuery(@Query("email") String email);

@@ -364,4 +364,9 @@ public class LoginActivity extends AppCompatActivity {
         registerForm.setVisibility(View.VISIBLE);
         loginForm.setVisibility(View.GONE);
     }
+
+    public void onForgotPasswordClick(View view) {
+        Intent intent = new Intent(this, RecuContraActivity.class);
+        startActivity(intent);
+    }
 }

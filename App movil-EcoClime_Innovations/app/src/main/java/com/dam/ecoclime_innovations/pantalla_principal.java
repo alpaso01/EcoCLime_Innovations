@@ -76,31 +76,36 @@ public class pantalla_principal extends BaseActivity {
 
     @Override
     protected void setupBottomNavigation() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.navigation_home) {
-                // Ya estamos en home
-                return true;
-            } else if (itemId == R.id.navigation_web) {
-                Intent intent = new Intent(this, VistaWebActivity.class);
-                pasarDatosUsuario(intent);
-                startActivity(intent);
-                return true;
-            } else if (itemId == R.id.navigation_perfil) {
-                Intent intent = new Intent(this, MiPerfilActivity.class);
-                pasarDatosUsuario(intent);
-                startActivity(intent);
-                return true;
-            }
-            return false;
+        // Configurar los botones de navegación personalizados
+        View navHome = findViewById(R.id.nav_home);
+        View navWeb = findViewById(R.id.nav_web);
+        View navAccount = findViewById(R.id.nav_account);
+        
+        // Botón Inicio (ya estamos en la pantalla principal)
+        navHome.setOnClickListener(v -> {
+            // Ya estamos en home, no hacemos nada
+        });
+        
+        // Botón Web
+        navWeb.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VistaWebActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+        });
+        
+        // Botón Cuenta
+        navAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MiPerfilActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
         });
     }
 
     @Override
     protected int getSelectedNavigationItemId() {
-        return R.id.navigation_home;
+        // Como ya no usamos BottomNavigationView, devolvemos un valor por defecto
+        // Este método es requerido por la clase base pero ya no lo necesitamos
+        return 0;
     }
 
     private void obtenerDatosUsuario() {

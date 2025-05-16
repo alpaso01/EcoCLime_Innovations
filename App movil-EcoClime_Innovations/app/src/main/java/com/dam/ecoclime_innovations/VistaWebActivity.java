@@ -3,6 +3,7 @@ package com.dam.ecoclime_innovations;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -27,26 +28,29 @@ public class VistaWebActivity extends BaseActivity {
     }
 
     protected void setupBottomNavigation() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_web);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.navigation_home) {
-                Intent intent = new Intent(this, pantalla_principal.class);
-                intent.putExtra("userEmail", userEmail);
-                startActivity(intent);
-                finish();
-                return true;
-            } else if (itemId == R.id.navigation_web) {
-                // Ya estamos en la vista web
-                return true;
-            } else if (itemId == R.id.navigation_perfil) {
-                Intent intent = new Intent(this, MiPerfilActivity.class);
-                intent.putExtra("userEmail", userEmail);
-                startActivity(intent);
-                return true;
-            }
-            return false;
+        // Configurar los botones de navegación personalizados
+        View navHome = findViewById(R.id.nav_home);
+        View navWeb = findViewById(R.id.nav_web);
+        View navAccount = findViewById(R.id.nav_account);
+        
+        // Botón Inicio
+        navHome.setOnClickListener(v -> {
+            Intent intent = new Intent(this, pantalla_principal.class);
+            intent.putExtra("userEmail", userEmail);
+            startActivity(intent);
+            finish();
+        });
+        
+        // Botón Web (ya estamos en la vista web)
+        navWeb.setOnClickListener(v -> {
+            // Ya estamos en la vista web, no hacemos nada
+        });
+        
+        // Botón Cuenta
+        navAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MiPerfilActivity.class);
+            intent.putExtra("userEmail", userEmail);
+            startActivity(intent);
         });
     }
 

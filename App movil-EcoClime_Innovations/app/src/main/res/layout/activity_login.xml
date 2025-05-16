@@ -99,12 +99,12 @@
                     android:id="@+id/loginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/bg_input_rounded"
                     android:fontFamily="sans-serif"
                     android:hint="Contraseña"
                     android:inputType="textPassword"
                     android:padding="14dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_input_rounded"
                     android:textColor="#222222"
                     android:textStyle="normal" />
 
@@ -112,14 +112,14 @@
                     android:id="@+id/forgotPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="sans-serif-medium"
-                    android:paddingBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="¿Olvidaste tu contraseña?"
                     android:textColor="#316ffe"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="onForgotPasswordClick" />
 
                 <Button
                     android:id="@+id/accessButton"

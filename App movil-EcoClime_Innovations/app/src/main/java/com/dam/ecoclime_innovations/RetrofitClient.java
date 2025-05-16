@@ -42,6 +42,17 @@ public class RetrofitClient {
     private static Retrofit retrofit = null;
     private static String lastWorkingUrl = null;
 
+    public static Retrofit getInstance() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                .baseUrl(getBaseUrl())
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        }
+        return retrofit;
+    }
+
     private static boolean isEmulator() {
         return (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
                 || Build.FINGERPRINT.startsWith("generic")
