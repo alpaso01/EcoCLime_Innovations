@@ -90,6 +90,15 @@
         <activity
             android:name=".CambioContraActivity"
             android:exported="false" />
+        <activity
+            android:name=".PoliticaPrivacidadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AvisoLegalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TerminosCondicionesActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

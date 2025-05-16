@@ -42,6 +42,9 @@ public class MiPerfilActivity extends AppCompatActivity {
             return;
         }
 
+        // Inicializar el servicio API
+        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+
         inicializarVistas();
         configurarListeners();
         cargarDatosUsuario();
@@ -58,7 +61,15 @@ public class MiPerfilActivity extends AppCompatActivity {
         tvDireccion = findViewById(R.id.tvDireccion);
         btnVolver = findViewById(R.id.btnVolver);
 
-        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+        // Validar que todos los TextViews se hayan inicializado correctamente
+        if (tvNombre == null || tvApellidos == null || tvEmail == null || tvTelefono == null || 
+            tvTipo == null || tvCiudad == null || tvCodigoPostal == null || tvDireccion == null) {
+            Toast.makeText(this, "Error: Algunos campos del perfil no se han inicializado correctamente", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        // Ya inicializado en onCreate
     }
 
     private void configurarListeners() {
@@ -112,6 +123,11 @@ public class MiPerfilActivity extends AppCompatActivity {
     }
 
     private void mostrarDatosUsuario(Usuario usuario) {
+        if (usuario == null) {
+            Toast.makeText(this, "Error: Usuario nulo", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         tvNombre.setText(usuario.getNombre());
         tvApellidos.setText(usuario.getApellidos());
         tvEmail.setText(usuario.getEmail());

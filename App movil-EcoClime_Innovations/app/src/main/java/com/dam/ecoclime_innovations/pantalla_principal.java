@@ -173,10 +173,36 @@ public class pantalla_principal extends BaseActivity {
         popup.getMenuInflater().inflate(R.menu.menu_principal, popup.getMenu());
         popup.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
-            if (itemId == R.id.menu_atencion_cliente) {
+            if (itemId == R.id.menu_ayuda) {
+                // Redirigir a Atención al Cliente
                 Intent intent = new Intent(this, AtencionClienteActivity.class);
                 pasarDatosUsuario(intent);
                 startActivity(intent);
+                return true;
+            } else if (itemId == R.id.menu_politica_privacidad) {
+                // Redirigir a Política de Privacidad
+                Intent intent = new Intent(this, PoliticaPrivacidadActivity.class);
+                pasarDatosUsuario(intent);
+                startActivity(intent);
+                return true;
+            } else if (itemId == R.id.menu_aviso_legal) {
+                // Redirigir a Aviso Legal
+                Intent intent = new Intent(this, AvisoLegalActivity.class);
+                pasarDatosUsuario(intent);
+                startActivity(intent);
+                return true;
+            } else if (itemId == R.id.menu_terminos_condiciones) {
+                // Redirigir a Términos y Condiciones
+                Intent intent = new Intent(this, TerminosCondicionesActivity.class);
+                pasarDatosUsuario(intent);
+                startActivity(intent);
+                return true;
+            } else if (itemId == R.id.menu_salir) {
+                // Redirigir a Login
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
                 return true;
             }
             return false;

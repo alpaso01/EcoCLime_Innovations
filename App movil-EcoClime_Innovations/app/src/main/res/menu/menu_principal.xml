@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Elemento de menú: Atención al Cliente -->
+    <!-- Elemento de menú: Ayuda -->
     <item
-        android:id="@+id/atencion_cliente"
-        android:title="Atención al Cliente"/>
+        android:id="@+id/menu_ayuda"
+        android:title="Ayuda"/>
 
-    <!-- Elemento de menú: Visitar Web -->
+    <!-- Elemento de menú: Política de privacidad -->
     <item
-        android:id="@+id/visita_web"
-        android:title="Visitar Web"/>
+        android:id="@+id/menu_politica_privacidad"
+        android:title="Política de privacidad"/>
 
-    <!-- Elemento de menú: Mi Perfil -->
+    <!-- Elemento de menú: Aviso legal -->
     <item
-        android:id="@+id/mi_perfil"
-        android:title="Mi Perfil"/>
+        android:id="@+id/menu_aviso_legal"
+        android:title="Aviso legal"/>
+
+    <!-- Elemento de menú: Términos y condiciones -->
+    <item
+        android:id="@+id/menu_terminos_condiciones"
+        android:title="Términos y condiciones"/>
+
+    <!-- Elemento de menú: Salir -->
+    <item
+        android:id="@+id/menu_salir"
+        android:title="Salir"/>
 </menu>

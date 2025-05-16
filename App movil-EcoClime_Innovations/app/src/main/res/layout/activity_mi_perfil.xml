@@ -94,6 +94,28 @@
                     android:textColor="#212121"/>
             </LinearLayout>
 
+            <!-- Card: Email -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_dialog_email"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#212121"/>
+            </LinearLayout>
+
             <!-- Card: Apellidos -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,6 +176,28 @@
                     android:layout_marginEnd="16dp"/>
                 <TextView
                     android:id="@+id/tvCiudad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#212121"/>
+            </LinearLayout>
+
+            <!-- Card: Teléfono -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:tint="#316ffe"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tvTelefono"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
