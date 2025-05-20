@@ -94,28 +94,6 @@
                     android:textColor="#212121"/>
             </LinearLayout>
 
-            <!-- Card: Email -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_input_rounded"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_dialog_email"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
-                <TextView
-                    android:id="@+id/tvEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#212121"/>
-            </LinearLayout>
-
             <!-- Card: Apellidos -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -138,7 +116,7 @@
                     android:textColor="#212121"/>
             </LinearLayout>
 
-            <!-- Card: Tipo -->
+            <!-- Card: Email -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -149,33 +127,11 @@
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_info_details"
+                    android:src="@android:drawable/ic_dialog_email"
                     android:tint="#316ffe"
                     android:layout_marginEnd="16dp"/>
                 <TextView
-                    android:id="@+id/tvTipo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#212121"/>
-            </LinearLayout>
-
-            <!-- Card: Ciudad -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_input_rounded"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_compass"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
-                <TextView
-                    android:id="@+id/tvCiudad"
+                    android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -198,50 +154,6 @@
                     android:layout_marginEnd="16dp"/>
                 <TextView
                     android:id="@+id/tvTelefono"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#212121"/>
-            </LinearLayout>
-
-            <!-- Card: Código Postal -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_input_rounded"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_edit"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
-                <TextView
-                    android:id="@+id/tvCodigoPostal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#212121"/>
-            </LinearLayout>
-
-            <!-- Card: Dirección -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_input_rounded"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_directions"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
-                <TextView
-                    android:id="@+id/tvDireccion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"

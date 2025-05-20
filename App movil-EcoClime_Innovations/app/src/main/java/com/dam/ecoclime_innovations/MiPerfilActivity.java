@@ -24,10 +24,11 @@ public class MiPerfilActivity extends AppCompatActivity {
     private static final String TAG = "MiPerfilActivity";
     private String userEmail;
     private ApiService apiService;
+    private String passwordUsuario = "";
 
     private TextView tvNombre, tvApellidos, tvEmail, tvTelefono;
-    private TextView tvTipo, tvCiudad, tvCodigoPostal, tvDireccion;
     private ImageButton btnVolver;
+    private Button btnEditarPerfil; // Botón para editar perfil
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +56,11 @@ public class MiPerfilActivity extends AppCompatActivity {
         tvApellidos = findViewById(R.id.tvApellidos);
         tvEmail = findViewById(R.id.tvEmail);
         tvTelefono = findViewById(R.id.tvTelefono);
-        tvTipo = findViewById(R.id.tvTipo);
-        tvCiudad = findViewById(R.id.tvCiudad);
-        tvCodigoPostal = findViewById(R.id.tvCodigoPostal);
-        tvDireccion = findViewById(R.id.tvDireccion);
+        btnEditarPerfil = findViewById(R.id.btnEditarPerfil);
         btnVolver = findViewById(R.id.btnVolver);
 
         // Validar que todos los TextViews se hayan inicializado correctamente
-        if (tvNombre == null || tvApellidos == null || tvEmail == null || tvTelefono == null || 
-            tvTipo == null || tvCiudad == null || tvCodigoPostal == null || tvDireccion == null) {
+        if (tvNombre == null || tvApellidos == null || tvEmail == null || tvTelefono == null) {
             Toast.makeText(this, "Error: Algunos campos del perfil no se han inicializado correctamente", Toast.LENGTH_SHORT).show();
             finish();
             return;
@@ -73,6 +70,18 @@ public class MiPerfilActivity extends AppCompatActivity {
     }
 
     private void configurarListeners() {
+        // Listener para el botón de editar perfil
+        if (btnEditarPerfil != null) {
+            btnEditarPerfil.setOnClickListener(v -> {
+                Intent intent = new Intent(MiPerfilActivity.this, EditarPerfilActivity.class);
+                intent.putExtra("nombre", tvNombre.getText().toString());
+                intent.putExtra("apellidos", tvApellidos.getText().toString());
+                intent.putExtra("email", tvEmail.getText().toString());
+                intent.putExtra("telefono", tvTelefono.getText().toString());
+                intent.putExtra("password", passwordUsuario);
+                startActivity(intent);
+            });
+        }
         btnVolver.setOnClickListener(v -> finish());
         
         // Configurar los botones de navegación personalizados
@@ -132,9 +141,6 @@ public class MiPerfilActivity extends AppCompatActivity {
         tvApellidos.setText(usuario.getApellidos());
         tvEmail.setText(usuario.getEmail());
         tvTelefono.setText(usuario.getTelefono());
-        tvTipo.setText(usuario.getTipo());
-        tvCiudad.setText(usuario.getCiudad());
-        tvCodigoPostal.setText(usuario.getCodigoPostal());
-        tvDireccion.setText(usuario.getDireccion());
+        passwordUsuario = usuario.getPassword();
     }
 }

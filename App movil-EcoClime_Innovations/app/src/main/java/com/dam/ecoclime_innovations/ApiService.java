@@ -8,6 +8,9 @@ import retrofit2.http.*;
 
 public interface ApiService {
 
+    @PUT("api/usuarios/{id}")
+    Call<Void> actualizarUsuario(@Path("id") int id, @Body Usuario usuario);
+
     //-----INICIO DE SESIÓN Y REGISTRO-----
 
     @POST("api/usuarios/registro")

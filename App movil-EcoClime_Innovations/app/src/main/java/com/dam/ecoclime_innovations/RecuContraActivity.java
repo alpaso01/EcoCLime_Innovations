@@ -16,6 +16,7 @@ public class RecuContraActivity extends AppCompatActivity {
     private Button verificarButton;
     private TextView errorTextView;
     private ApiService apiService;
+    private android.widget.ImageButton btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,12 @@ public class RecuContraActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         verificarButton = findViewById(R.id.verificarButton);
         errorTextView = findViewById(R.id.errorTextView);
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> {
+            // Redirigir a LoginActivity
+            startActivity(new android.content.Intent(RecuContraActivity.this, LoginActivity.class));
+            finish();
+        });
 
         // Inicializar Retrofit
         apiService = RetrofitClient.getInstance().create(ApiService.class);

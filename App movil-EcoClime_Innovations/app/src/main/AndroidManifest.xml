@@ -25,6 +25,9 @@
             android:name=".AtencionClienteActivity"
             android:exported="false" />
         <activity
+            android:name=".EditarPerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".MiPerfilActivity"
             android:exported="false" />
         <activity
