@@ -20,7 +20,7 @@ public class CitasTrabajadorAdapter extends RecyclerView.Adapter<CitasTrabajador
     @Override
     public CitaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_cita_trabajador, parent, false);
+                .inflate(R.layout.item_trabajador, parent, false);
         return new CitaViewHolder(view);
     }
 
@@ -41,31 +41,52 @@ public class CitasTrabajadorAdapter extends RecyclerView.Adapter<CitasTrabajador
     }
 
     static class CitaViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvFecha;
-        private TextView tvHora;
-        private TextView tvTipo;
-        private TextView tvCliente;
-        private TextView tvDireccion;
-        private TextView tvTelefono;
+        private TextView nombreTextView, telefonoTextView, emailTextView, tipoTextView;
+        private TextView ciudadTextView, codigoPostalTextView, calleTextView, numeroCasaTextView, fechaHoraTextView, estadoTextView;
 
         public CitaViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvFecha = itemView.findViewById(R.id.tvFecha);
-            tvHora = itemView.findViewById(R.id.tvHora);
-            tvTipo = itemView.findViewById(R.id.tvTipo);
-            tvCliente = itemView.findViewById(R.id.tvCliente);
-            tvDireccion = itemView.findViewById(R.id.tvDireccion);
-            tvTelefono = itemView.findViewById(R.id.tvTelefono);
+            nombreTextView = itemView.findViewById(R.id.nombreTextView);
+            telefonoTextView = itemView.findViewById(R.id.telefonoTextView);
+            emailTextView = itemView.findViewById(R.id.emailTextView);
+            tipoTextView = itemView.findViewById(R.id.tipoTextView);
+            ciudadTextView = itemView.findViewById(R.id.ciudadTextView);
+            codigoPostalTextView = itemView.findViewById(R.id.codigoPostalTextView);
+            calleTextView = itemView.findViewById(R.id.calleTextView);
+            numeroCasaTextView = itemView.findViewById(R.id.numeroCasaTextView);
+            fechaHoraTextView = itemView.findViewById(R.id.fechaHoraTextView);
+            estadoTextView = itemView.findViewById(R.id.estadoTextView);
         }
 
         public void bind(Cita cita) {
-            tvFecha.setText(cita.getFecha());
-            tvHora.setText(cita.getHora());
-            tvTipo.setText(cita.getTipo());
-            tvCliente.setText(cita.getNombre());
-            String direccionCompleta = cita.getCalle() + " " + cita.getNumeroCasa() + ", " + cita.getCiudad() + " (" + cita.getCodigoPostal() + ")";
-            tvDireccion.setText(direccionCompleta);
-            tvTelefono.setText(cita.getTelefono());
+            nombreTextView.setText(cita.getNombre());
+            telefonoTextView.setText("Tel: " + (cita.getTelefono() != null ? cita.getTelefono() : ""));
+            emailTextView.setText("Email: " + (cita.getEmail() != null ? cita.getEmail() : ""));
+            tipoTextView.setText("Tipo: " + cita.getTipo());
+            ciudadTextView.setText("Ciudad: " + (cita.getCiudad() != null ? cita.getCiudad() : ""));
+            codigoPostalTextView.setText("C.P.: " + (cita.getCodigoPostal() != null ? cita.getCodigoPostal() : ""));
+            calleTextView.setText("Calle: " + (cita.getCalle() != null ? cita.getCalle() : ""));
+            numeroCasaTextView.setText("Nº: " + (cita.getNumeroCasa() != null ? cita.getNumeroCasa() : ""));
+            fechaHoraTextView.setText("Fecha y hora: " + (cita.getFechaHora() != null ? cita.getFechaHora() : "No disponible"));
+            // Estado
+            String estado = cita.getEstado() != null ? cita.getEstado() : "programada";
+            estadoTextView.setText("Estado: " + estado.substring(0,1).toUpperCase() + estado.substring(1));
+            switch (estado) {
+                case "programada":
+                    estadoTextView.setTextColor(itemView.getResources().getColor(android.R.color.holo_blue_dark));
+                    break;
+                case "confirmada":
+                    estadoTextView.setTextColor(itemView.getResources().getColor(android.R.color.holo_green_dark));
+                    break;
+                case "en_curso":
+                    estadoTextView.setTextColor(itemView.getResources().getColor(android.R.color.holo_orange_dark));
+                    break;
+                case "cancelada":
+                    estadoTextView.setTextColor(itemView.getResources().getColor(android.R.color.holo_red_dark));
+                    break;
+                default:
+                    estadoTextView.setTextColor(itemView.getResources().getColor(android.R.color.darker_gray));
+            }
         }
     }
-} 
+}

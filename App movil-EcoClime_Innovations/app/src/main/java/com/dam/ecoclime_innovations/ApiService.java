@@ -69,4 +69,10 @@ public interface ApiService {
 
     @GET("api/citas/fecha/{fecha}/tipo/{tipo}")
     Call<List<Cita>> obtenerCitasPorFechaYTipo(@Path("fecha") String fecha, @Path("tipo") String tipo);
+
+    @PUT("api/citas/{citaId}/estado")
+    Call<Void> actualizarEstadoCita(
+            @Path("citaId") int citaId,
+            @Body Map<String, String> estado
+    );
 }

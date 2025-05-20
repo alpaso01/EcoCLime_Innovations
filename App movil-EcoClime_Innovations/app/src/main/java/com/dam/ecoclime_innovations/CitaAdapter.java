@@ -59,6 +59,28 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
         holder.calleTextView.setText("Calle: " + (cita.getCalle() != null ? cita.getCalle() : ""));
         holder.numeroCasaTextView.setText("Nº: " + (cita.getNumeroCasa() != null ? cita.getNumeroCasa() : ""));
 
+        // Estado
+        String estado = cita.getEstado() != null ? cita.getEstado() : "programada";
+        if (holder.estadoTextView != null) {
+            holder.estadoTextView.setText("Estado: " + estado.substring(0,1).toUpperCase() + estado.substring(1));
+            switch (estado) {
+                case "programada":
+                    holder.estadoTextView.setTextColor(holder.itemView.getResources().getColor(android.R.color.holo_blue_dark));
+                    break;
+                case "confirmada":
+                    holder.estadoTextView.setTextColor(holder.itemView.getResources().getColor(android.R.color.holo_green_dark));
+                    break;
+                case "en_curso":
+                    holder.estadoTextView.setTextColor(holder.itemView.getResources().getColor(android.R.color.holo_orange_dark));
+                    break;
+                case "cancelada":
+                    holder.estadoTextView.setTextColor(holder.itemView.getResources().getColor(android.R.color.holo_red_dark));
+                    break;
+                default:
+                    holder.estadoTextView.setTextColor(holder.itemView.getResources().getColor(android.R.color.darker_gray));
+            }
+        }
+
         // Mostrar fecha y hora desde el campo fechaHora
         String fechaHora = cita.getFechaHora();
         if (fechaHora != null && fechaHora.contains("T")) {
@@ -85,7 +107,7 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
 
     public static class CitaViewHolder extends RecyclerView.ViewHolder {
         TextView nombreTextView, telefonoTextView, emailTextView, tipoTextView;
-        TextView ciudadTextView, codigoPostalTextView, calleTextView, numeroCasaTextView, fechaHoraTextView;
+        TextView ciudadTextView, codigoPostalTextView, calleTextView, numeroCasaTextView, fechaHoraTextView, estadoTextView;
         Button btnModificar, btnEliminar;
 
         public CitaViewHolder(View itemView) {
@@ -99,8 +121,9 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
             calleTextView = itemView.findViewById(R.id.calleTextView);
             numeroCasaTextView = itemView.findViewById(R.id.numeroCasaTextView);
             fechaHoraTextView = itemView.findViewById(R.id.fechaHoraTextView);
+            estadoTextView = itemView.findViewById(R.id.estadoTextView);
             btnModificar = itemView.findViewById(R.id.btnModificar);
             btnEliminar = itemView.findViewById(R.id.btnEliminar);
         }
     }
-} 
+}

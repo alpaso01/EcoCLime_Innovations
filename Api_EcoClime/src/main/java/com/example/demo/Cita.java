@@ -57,6 +57,8 @@ public class Cita {
     @JsonProperty("hora")
     private String hora;
 
+    private String estado = "programada"; // Valores posibles: programada, confirmada, en_curso, cancelada
+
     private void actualizarFechaHora() {
         if (fecha != null && !fecha.isEmpty() && hora != null && !hora.isEmpty()) {
             try {
@@ -87,6 +89,7 @@ public class Cita {
                 ", fechaHora=" + fechaHora +
                 ", fecha='" + fecha + '\'' +
                 ", hora='" + hora + '\'' +
+                ", estado='" + estado + '\'' +
                 '}';
     }
 
@@ -203,5 +206,13 @@ public class Cita {
     public void setHora(String hora) {
         this.hora = hora;
         actualizarFechaHora();
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

@@ -1,21 +1,36 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/citas")
+@RequestMapping(value = "/api/citas", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class CitaController {
     private static final Logger logger = LoggerFactory.getLogger(CitaController.class);
 
     @Autowired
     private CitaService citaService;
+    
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        logger.info("Solicitud recibida en el endpoint de prueba");
+        return ResponseEntity.ok("El controlador de citas está funcionando correctamente");
+    }
+    
+    public CitaController() {
+        logger.info("CitaController inicializado");
+    }
 
     // Endpoint para agendar una cita
     @PostMapping("/agendar/{usuarioId}")
@@ -156,6 +171,83 @@ public class CitaController {
         } catch (Exception e) {
             logger.error("Error inesperado al crear la cita: {}", e.getMessage(), e);
             return ResponseEntity.internalServerError().body("Error al crear la cita: " + e.getMessage());
+        }
+    }
+    
+    // Obtener citas por fecha
+    @GetMapping(value = "/fecha/{fecha}", produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<?> obtenerCitasPorFecha(@PathVariable String fecha) {
+        logger.info("🔍 Solicitud recibida para obtenerCitasPorFecha con fecha: {}", fecha);
+        
+        // Validar formato de fecha
+        try {
+            LocalDate fechaConsulta = LocalDate.parse(fecha);
+            logger.info("✅ Formato de fecha válido: {}", fecha);
+        } catch (DateTimeParseException e) {
+            String mensajeError = "❌ Formato de fecha inválido. Use el formato yyyy-MM-dd";
+            logger.error(mensajeError);
+            return ResponseEntity.badRequest().body(mensajeError);
+        }
+        
+        try {
+            logger.info("🔍 Buscando citas para la fecha: {}", fecha);
+            List<Cita> citas = citaService.obtenerCitasPorFecha(fecha);
+            logger.info("✅ Se encontraron {} citas para la fecha {}", citas.size(), fecha);
+            return ResponseEntity.ok(citas);
+        } catch (RuntimeException e) {
+            logger.error("❌ Error al obtener citas por fecha: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            String mensajeError = "❌ Error inesperado al obtener citas por fecha: " + e.getMessage();
+            logger.error(mensajeError, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                             .body(mensajeError);
+        }
+    }
+    
+    // Obtener citas por fecha y tipo
+    @GetMapping("/fecha/{fecha}/tipo/{tipo}")
+    public ResponseEntity<?> obtenerCitasPorFechaYTipo(
+            @PathVariable String fecha, 
+            @PathVariable String tipo) {
+        try {
+            logger.info("Obteniendo citas para la fecha: {} y tipo: {}", fecha, tipo);
+            List<Cita> citas = citaService.obtenerCitasPorFechaYTipo(fecha, tipo);
+            return ResponseEntity.ok(citas);
+        } catch (RuntimeException e) {
+            logger.error("Error al obtener citas por fecha y tipo: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            logger.error("Error inesperado al obtener citas por fecha y tipo: {}", e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Error al obtener las citas: " + e.getMessage());
+        }
+    }
+    
+    // Actualizar estado de una cita
+    @PutMapping("/{citaId}/estado")
+    public ResponseEntity<?> actualizarEstadoCita(
+            @PathVariable Integer citaId, 
+            @RequestBody Map<String, String> estadoMap) {
+        try {
+            logger.info("Actualizando estado de la cita ID: {} a {}", citaId, estadoMap);
+            
+            if (estadoMap == null || !estadoMap.containsKey("estado")) {
+                return ResponseEntity.badRequest().body("El campo 'estado' es obligatorio");
+            }
+            
+            String nuevoEstado = estadoMap.get("estado");
+            Cita citaActualizada = citaService.actualizarEstadoCita(citaId, nuevoEstado);
+            
+            logger.info("Estado de la cita actualizado correctamente");
+            return ResponseEntity.ok(citaActualizada);
+            
+        } catch (RuntimeException e) {
+            logger.error("Error al actualizar el estado de la cita: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            logger.error("Error inesperado al actualizar el estado de la cita: {}", e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Error al actualizar el estado de la cita: " + e.getMessage());
         }
     }
 }

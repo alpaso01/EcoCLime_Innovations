@@ -22,6 +22,7 @@
             android:textStyle="bold"
             android:textColor="#316ffe"/>
 
+
         <TextView
             android:id="@+id/telefonoTextView"
             android:layout_width="match_parent"
@@ -36,12 +37,14 @@
             android:layout_marginTop="4dp"
             android:textColor="#666666"/>
 
+
         <TextView
             android:id="@+id/tipoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textColor="#666666"/>
+
 
         <TextView
             android:id="@+id/ciudadTextView"
@@ -63,14 +66,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textColor="#666666"/>
-
         <TextView
             android:id="@+id/numeroCasaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textColor="#666666"/>
-
         <TextView
             android:id="@+id/fechaHoraTextView"
             android:layout_width="match_parent"
@@ -88,11 +89,24 @@
             android:textColor="#4CAF50"
             android:text="Estado: Programada"/>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
+
+
+            <Button
+                android:id="@+id/btnEstado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Cambiar Estado"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#9C27B0"/>
+
 
             <Button
                 android:id="@+id/btnModificar"
@@ -104,12 +118,12 @@
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#316ffe"/>
 
+
             <Button
                 android:id="@+id/btnEliminar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="8dp"
                 android:text="Eliminar"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#FF4444"/>

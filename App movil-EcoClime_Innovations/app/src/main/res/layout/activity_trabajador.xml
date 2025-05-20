@@ -23,15 +23,30 @@
             android:gravity="center"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Botón de Calendario -->
-        <Button
-            android:id="@+id/btnCalendario"
-            android:layout_width="wrap_content"
+        <!-- Botón de Calendario y fecha seleccionada -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Seleccionar Fecha"
-            android:layout_gravity="center"
-            android:backgroundTint="#316ffe"
-            android:layout_marginBottom="16dp"/>
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnCalendario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cambiar Fecha"
+                android:backgroundTint="#316ffe"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvFechaSeleccionada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#316ffe"/>
+        </LinearLayout>
 
         <!-- Botones de filtrado -->
         <LinearLayout

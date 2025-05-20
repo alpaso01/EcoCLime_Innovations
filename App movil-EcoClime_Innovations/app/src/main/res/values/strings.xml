@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EcoClime_Innovations</string>
+    
+    <!-- Estados de cita -->
+    <string-array name="estados_cita">
+        <item>Programada</item>
+        <item>Confirmada</item>
+        <item>En curso</item>
+        <item>Cancelada</item>
+    </string-array>
 </resources>
