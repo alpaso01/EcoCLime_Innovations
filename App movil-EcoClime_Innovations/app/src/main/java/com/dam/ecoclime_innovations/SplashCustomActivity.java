@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashCustomActivity extends Activity {
-    private static final int SPLASH_DURATION = 4000; // 4 segundos
-    private static final int ANIMATION_DURATION = 1800; // 1.8 segundos por vuelta
+    private static final int SPLASH_DURATION = 2500; // 2.5 segundos
+    private static final int ANIMATION_DURATION = 1200; // 1.2 segundos por vuelta
     private ValueAnimator orbitAnimator;
 
     @Override

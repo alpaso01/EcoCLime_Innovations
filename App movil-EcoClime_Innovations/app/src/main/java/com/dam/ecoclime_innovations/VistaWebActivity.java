@@ -58,7 +58,7 @@ public class VistaWebActivity extends BaseActivity {
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://www.ecoclime.com"); // Reemplaza con tu URL real
+        webView.loadUrl("http://ecoclimeinnovations.free.nf/"); // Reemplaza con tu URL real
     }
 
     @Override

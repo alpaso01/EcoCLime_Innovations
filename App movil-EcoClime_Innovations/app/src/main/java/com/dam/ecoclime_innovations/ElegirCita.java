@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+import android.widget.ImageButton;
 import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -55,6 +56,12 @@ public class ElegirCita extends BaseActivity {
 
         // Configurar navegación inferior
         setupBottomNavigation();
+        
+        // Configurar botón de atrás
+        ImageButton botonAtras = findViewById(R.id.botonAtras);
+        botonAtras.setOnClickListener(v -> {
+            onBackPressed();
+        });
     }
 
     @Override

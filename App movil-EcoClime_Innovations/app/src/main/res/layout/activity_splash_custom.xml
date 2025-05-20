@@ -27,9 +27,9 @@
         <TextView
             android:id="@+id/splashText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="153dp"
             android:layout_marginBottom="32dp"
-            android:fontFamily="@font/marko_one"
+            android:fontFamily="@font/anaheim"
             android:gravity="center"
             android:lineSpacingMultiplier="0.8"
             android:text="EcoClime\n App"
@@ -45,41 +45,41 @@
         android:gravity="center"
         android:layout_marginBottom="48dp">
 
-        <TextView
-            android:id="@+id/loadingText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cargando..."
-            android:textColor="#2196F3"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:layout_marginBottom="24dp"
-            android:letterSpacing="0.12" />
-
         <FrameLayout
             android:id="@+id/loaderContainer"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="110dp"
+            android:layout_height="96dp"
             android:layout_gravity="center">
 
             <ImageView
                 android:id="@+id/circleLoader"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/circle_loader"
+                android:layout_width="88dp"
+                android:layout_height="81dp"
                 android:contentDescription="Círculo de carga"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/circle_loader" />
 
             <ImageView
                 android:id="@+id/dotLoader"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/dot_loader"
-                android:contentDescription="Punto de carga"
+                android:layout_width="16dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="6dp"
-                android:layout_marginTop="6dp" />
+                android:layout_marginTop="6dp"
+                android:contentDescription="Punto de carga"
+                android:src="@drawable/dot_loader" />
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/loadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:letterSpacing="0.12"
+            android:text="Cargando..."
+            android:textColor="#2196F3"
+            android:textSize="32sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

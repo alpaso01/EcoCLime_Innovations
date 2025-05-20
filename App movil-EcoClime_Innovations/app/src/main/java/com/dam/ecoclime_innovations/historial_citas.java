@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -60,6 +61,10 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
 
         // Configurar navegación inferior
         setupBottomNavigation();
+        
+        // Configurar botón de atrás
+        ImageButton botonAtras = findViewById(R.id.botonAtrasHistorial);
+        botonAtras.setOnClickListener(v -> onBackPressed());
     }
 
     @Override
