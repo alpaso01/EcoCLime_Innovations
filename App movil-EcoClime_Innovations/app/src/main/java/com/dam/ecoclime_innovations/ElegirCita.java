@@ -3,14 +3,15 @@ package com.dam.ecoclime_innovations;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class ElegirCita extends BaseActivity {
+public class ElegirCita extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "ElegirCita";
     private String userEmail;
 
@@ -59,13 +60,48 @@ public class ElegirCita extends BaseActivity {
         
         // Configurar botón de atrás
         ImageButton botonAtras = findViewById(R.id.botonAtras);
-        botonAtras.setOnClickListener(v -> {
-            onBackPressed();
+        botonAtras.setOnClickListener(v -> onBackPressed());
+    }
+
+    @Override
+    protected void setupBottomNavigation() {
+        // Configurar los botones de navegación personalizados
+        View navHome = findViewById(R.id.nav_home);
+        View navWeb = findViewById(R.id.nav_web);
+        View navAccount = findViewById(R.id.nav_account);
+        
+        // Botón Inicio
+        navHome.setOnClickListener(v -> {
+            Intent intent = new Intent(this, pantalla_principal.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+            finish();
+        });
+        
+        // Botón Web
+        navWeb.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VistaWebActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+        });
+        
+        // Botón Cuenta
+        navAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MiPerfilActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
         });
     }
 
     @Override
     protected int getSelectedNavigationItemId() {
-        return R.id.navigation_home;
+        // No se selecciona ningún ítem ya que no estamos en la pantalla principal
+        return -1;
+    }
+    
+    @Override
+    public void onClick(View v) {
+        // Manejar clics en las vistas si es necesario
+        // Actualmente el manejo de clics se hace con lambdas en los listeners
     }
 }

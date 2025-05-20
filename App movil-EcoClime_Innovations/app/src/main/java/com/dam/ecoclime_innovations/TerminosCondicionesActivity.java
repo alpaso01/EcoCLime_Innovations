@@ -3,13 +3,14 @@ package com.dam.ecoclime_innovations;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-public class TerminosCondicionesActivity extends AppCompatActivity {
+public class TerminosCondicionesActivity extends BaseActivity {
     
     private ImageButton btnVolver;
     private TextView tvTerminos;
@@ -21,15 +22,25 @@ public class TerminosCondicionesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terminos_condiciones);
 
+        // Configurar el padding para la barra de estado
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
         // Obtener datos del usuario
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            email = extras.getString("email");
-            password = extras.getString("password");
+        userEmail = getIntent().getStringExtra("userEmail");
+        if (userEmail == null || userEmail.isEmpty()) {
+            userEmail = getIntent().getStringExtra("email");
         }
+        password = getIntent().getStringExtra("password");
 
         inicializarVistas();
         configurarListeners();
+        
+        // Configurar navegación inferior
+        setupBottomNavigation();
     }
 
     private void inicializarVistas() {
@@ -64,25 +75,61 @@ public class TerminosCondicionesActivity extends AppCompatActivity {
                 "soporte@ecoclime.com");
     }
 
-    private void pasarDatosUsuario(Intent intent) {
-        Bundle bundle = new Bundle();
-        bundle.putString("email", email);
-        bundle.putString("password", password);
-        intent.putExtras(bundle);
+    @Override
+    protected void pasarDatosUsuario(Intent intent) {
+        super.pasarDatosUsuario(intent);
+        if (email != null) {
+            intent.putExtra("email", email);
+        }
+        if (password != null) {
+            intent.putExtra("password", password);
+        }
     }
 
     private void configurarListeners() {
-        btnVolver.setOnClickListener(v -> {
+        btnVolver.setOnClickListener(v -> onBackPressed());
+    }
+    
+    @Override
+    protected void setupBottomNavigation() {
+        // Configurar los botones de navegación personalizados
+        View navHome = findViewById(R.id.nav_home);
+        View navWeb = findViewById(R.id.nav_web);
+        View navAccount = findViewById(R.id.nav_account);
+        
+        // Botón Inicio
+        navHome.setOnClickListener(v -> {
             Intent intent = new Intent(this, pantalla_principal.class);
             pasarDatosUsuario(intent);
             startActivity(intent);
             finish();
         });
+        
+        // Botón Web
+        navWeb.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VistaWebActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+        });
+        
+        // Botón Cuenta
+        navAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MiPerfilActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+        });
     }
-
+    
+    @Override
+    protected int getSelectedNavigationItemId() {
+        // No se selecciona ningún ítem ya que no estamos en la pantalla principal
+        return -1;
+    }
+    
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, pantalla_principal.class);
+        pasarDatosUsuario(intent);
         startActivity(intent);
         finish();
     }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaActionListener {
+public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaActionListener, View.OnClickListener {
     private static final String TAG = "historial_citas";
     private RecyclerView recyclerView;
     private CitaAdapter citaAdapter;
@@ -44,7 +45,7 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
         Log.d(TAG, "userEmail obtenido: " + userEmail);
 
         // Inicializar vistas y configuración
-        recyclerView = findViewById(R.id.recyclerViewCitas);
+        recyclerView = findViewById(R.id.recyclerHistorial);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         citaAdapter = new CitaAdapter(listaCitas, this);
@@ -69,7 +70,44 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
 
     @Override
     protected int getSelectedNavigationItemId() {
-        return R.id.navigation_home;
+        // No se selecciona ningún ítem ya que no estamos en la pantalla principal
+        return -1;
+    }
+    
+    @Override
+    public void onClick(View v) {
+        // Manejar clics en las vistas si es necesario
+        // Actualmente el manejo de clics se hace con lambdas en los listeners
+    }
+
+    @Override
+    protected void setupBottomNavigation() {
+        // Configurar los botones de navegación personalizados
+        View navHome = findViewById(R.id.nav_home);
+        View navWeb = findViewById(R.id.nav_web);
+        View navAccount = findViewById(R.id.nav_account);
+        
+        // Botón Inicio
+        navHome.setOnClickListener(v -> {
+            Intent intent = new Intent(this, pantalla_principal.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+            finish();
+        });
+        
+        // Botón Web
+        navWeb.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VistaWebActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+        });
+        
+        // Botón Cuenta
+        navAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MiPerfilActivity.class);
+            pasarDatosUsuario(intent);
+            startActivity(intent);
+        });
     }
 
     private void setupFiltros() {
