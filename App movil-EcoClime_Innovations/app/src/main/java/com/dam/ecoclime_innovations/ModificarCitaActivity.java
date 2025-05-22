@@ -11,12 +11,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ModificarCitaActivity extends AppCompatActivity {
-    private EditText etNombre, etApellidos, etTelefono, etEmail, etTipo;
+    private EditText etNombre, etTelefono, etEmail, etTipo;
     private EditText etCiudad, etCodigoPostal, etCalle, etNumeroCasa, etFechaHora;
     private Button btnGuardar, btnCancelar;
     private ApiService apiService;
@@ -44,7 +47,7 @@ public class ModificarCitaActivity extends AppCompatActivity {
 
     private void inicializarVistas() {
         etNombre = findViewById(R.id.etNombre);
-        etApellidos = findViewById(R.id.etApellidos);
+        
         etTelefono = findViewById(R.id.etTelefono);
         etEmail = findViewById(R.id.etEmail);
         etTipo = findViewById(R.id.etTipo);
@@ -65,14 +68,17 @@ public class ModificarCitaActivity extends AppCompatActivity {
         etFechaHora.setOnClickListener(v -> mostrarSelectorFechaHora());
     }
 
-    private void cargarDatosCita() {
+    private String fechaOriginal = "";
+private String horaOriginal = "";
+
+private void cargarDatosCita() {
+        // Llama a la API para obtener los datos de la cita
         apiService.obtenerCita(citaId).enqueue(new Callback<Cita>() {
             @Override
             public void onResponse(Call<Cita> call, Response<Cita> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Cita cita = response.body();
                     etNombre.setText(cita.getNombre());
-                    etApellidos.setText(cita.getApellidos());
                     etTelefono.setText(cita.getTelefono());
                     etEmail.setText(cita.getEmail());
                     etTipo.setText(cita.getTipo());
@@ -80,17 +86,35 @@ public class ModificarCitaActivity extends AppCompatActivity {
                     etCodigoPostal.setText(cita.getCodigoPostal());
                     etCalle.setText(cita.getCalle());
                     etNumeroCasa.setText(cita.getNumeroCasa());
-                    String fechaHora = cita.getFecha() + " " + cita.getHora();
-                    etFechaHora.setText(fechaHora);
+                    String fecha = cita.getFecha();
+                    String hora = cita.getHora();
+                    if (fecha != null && hora != null && !fecha.equalsIgnoreCase("null") && !hora.equalsIgnoreCase("null") &&
+                        !fecha.isEmpty() && !hora.isEmpty()) {
+                        // Mostrar en formato dd/MM/yyyy HH:mm
+                        String[] partes = fecha.split("-");
+                        if (partes.length == 3) {
+                            String fechaMostrar = partes[2] + "/" + partes[1] + "/" + partes[0];
+                            etFechaHora.setText(fechaMostrar + " " + hora);
+                        } else {
+                            etFechaHora.setText(fecha + " " + hora);
+                        }
+                        fechaOriginal = fecha;
+                        horaOriginal = hora;
+                    } else {
+                        etFechaHora.setText(""); // Obliga a seleccionar fecha/hora
+                        fechaOriginal = "";
+                        horaOriginal = "";
+                    }
                 } else {
-                    Toast.makeText(ModificarCitaActivity.this, "Error al cargar los datos de la cita", Toast.LENGTH_SHORT).show();
+                    // Mostrar mensaje de error detallado
+                    Toast.makeText(ModificarCitaActivity.this, "Error al cargar los datos de la cita. Código: " + response.code(), Toast.LENGTH_LONG).show();
                     finish();
                 }
             }
 
             @Override
             public void onFailure(Call<Cita> call, Throwable t) {
-                Toast.makeText(ModificarCitaActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ModificarCitaActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 finish();
             }
         });
@@ -156,8 +180,10 @@ public class ModificarCitaActivity extends AppCompatActivity {
         }
 
         String[] fechaHora = etFechaHora.getText().toString().split(" ");
-        if (fechaHora.length != 2) {
-            Toast.makeText(this, "Formato de fecha y hora inválido", Toast.LENGTH_SHORT).show();
+        if (fechaHora.length != 2 ||
+            fechaHora[0].equalsIgnoreCase("null") || fechaHora[1].equalsIgnoreCase("null") ||
+            fechaHora[0].isEmpty() || fechaHora[1].isEmpty()) {
+            Toast.makeText(this, "Debes seleccionar una fecha y hora válidas", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -181,23 +207,33 @@ public class ModificarCitaActivity extends AppCompatActivity {
     }
 
     private void actualizarCitaConUsuario(int usuarioId, String[] fechaHora) {
-        // Crear instancia de Cita usando constructor vacío y setters
-        Cita citaModificada = new Cita();
-        citaModificada.setId(citaId);
-        citaModificada.setUsuarioId(usuarioId);
-        citaModificada.setNombre(etNombre.getText().toString());
-        citaModificada.setApellidos(etApellidos.getText().toString());
-        citaModificada.setTelefono(etTelefono.getText().toString());
-        citaModificada.setEmail(etEmail.getText().toString());
-        citaModificada.setTipo(etTipo.getText().toString());
-        citaModificada.setCiudad(etCiudad.getText().toString());
-        citaModificada.setCodigoPostal(etCodigoPostal.getText().toString());
-        citaModificada.setCalle(etCalle.getText().toString());
-        citaModificada.setNumeroCasa(etNumeroCasa.getText().toString());
-        citaModificada.setFecha(fechaHora[0]);
-        citaModificada.setHora(fechaHora[1]);
+    // Crear un Map con solo los campos permitidos
+    Map<String, Object> campos = new HashMap<>();
+    campos.put("nombre", etNombre.getText().toString());
+    campos.put("telefono", etTelefono.getText().toString());
+    campos.put("email", etEmail.getText().toString());
+    campos.put("tipo", etTipo.getText().toString());
+    campos.put("ciudad", etCiudad.getText().toString());
+    campos.put("codigo_postal", etCodigoPostal.getText().toString());
+    campos.put("calle", etCalle.getText().toString());
+    campos.put("numero_casa", etNumeroCasa.getText().toString());
+    // Si el usuario no cambió fecha/hora, usa los originales
+    String fechaInput = fechaHora[0];
+    String horaInput = fechaHora[1];
+    String fechaFormateada;
+    if (fechaInput.contains("/")) {
+        String[] partesFecha = fechaInput.split("/");
+        fechaFormateada = partesFecha[2] + "-" + partesFecha[1] + "-" + partesFecha[0];
+    } else {
+        fechaFormateada = fechaInput; // Ya está en formato backend
+    }
+    if (fechaFormateada.isEmpty()) fechaFormateada = fechaOriginal;
+    if (horaInput.isEmpty()) horaInput = horaOriginal;
+    campos.put("fecha", fechaFormateada);
+    campos.put("hora", horaInput);
+    campos.put("usuario_id", usuarioId); // Si el backend espera un objeto, adaptar aquí
 
-        apiService.actualizarCita(citaId, citaModificada).enqueue(new Callback<Void>() {
+    apiService.actualizarCita(citaId, campos).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
@@ -217,7 +253,6 @@ public class ModificarCitaActivity extends AppCompatActivity {
 
     private boolean validarCampos() {
         return !TextUtils.isEmpty(etNombre.getText()) &&
-                !TextUtils.isEmpty(etApellidos.getText()) &&
                 !TextUtils.isEmpty(etTelefono.getText()) &&
                 !TextUtils.isEmpty(etEmail.getText()) &&
                 !TextUtils.isEmpty(etTipo.getText()) &&

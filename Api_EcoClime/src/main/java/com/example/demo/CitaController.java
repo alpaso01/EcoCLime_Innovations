@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -17,20 +19,51 @@ import java.util.Map;
 @RequestMapping(value = "/api/citas", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class CitaController {
+
     private static final Logger logger = LoggerFactory.getLogger(CitaController.class);
+
+    public CitaController() {
+        logger.info("CitaController cargado correctamente al arrancar la aplicación");
+    } // Solo dejar este constructor, eliminar el otro duplicado.
+
+    /**
+     * Obtener una cita por ID
+     * Ejemplo: GET /api/citas/id/11
+     */
+    @GetMapping("/id/{id}")
+    public ResponseEntity<?> obtenerCitaPorId(@PathVariable Long id) {
+        logger.info("[GET] /api/citas/id/{} llamado", id);
+        try {
+            Cita cita = citaService.obtenerCitaPorId(id);
+            if (cita != null) {
+                logger.info("Cita encontrada: {}", cita.getId());
+                return ResponseEntity.ok(cita);
+            } else {
+                logger.warn("No se encontró la cita con ID: {}", id);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la cita con ID: " + id);
+            }
+        } catch (Exception e) {
+            logger.error("Error al obtener la cita:", e);
+            return ResponseEntity.internalServerError().body("Error al obtener la cita: " + e.getMessage());
+        }
+    }
 
     @Autowired
     private CitaService citaService;
-    
+
+    @GetMapping("/id/test")
+    public ResponseEntity<String> testId() {
+        logger.info("[GET] /api/citas/id/test llamado");
+        return ResponseEntity.ok("Endpoint /api/citas/id/test activo");
+    }
+
     @GetMapping("/test")
     public ResponseEntity<String> test() {
         logger.info("Solicitud recibida en el endpoint de prueba");
         return ResponseEntity.ok("El controlador de citas está funcionando correctamente");
     }
     
-    public CitaController() {
-        logger.info("CitaController inicializado");
-    }
+
 
     // Endpoint para agendar una cita
     @PostMapping("/agendar/{usuarioId}")
@@ -102,7 +135,7 @@ public class CitaController {
 
     // Endpoint para anular una cita
     @DeleteMapping("/anular/{citaId}")
-    public ResponseEntity<?> anularCita(@PathVariable Integer citaId) {
+    public ResponseEntity<?> anularCita(@PathVariable Long citaId) {
         try {
             boolean anulada = citaService.anularCita(citaId);
             if (anulada) {
@@ -227,7 +260,7 @@ public class CitaController {
     // Actualizar estado de una cita
     @PutMapping("/{citaId}/estado")
     public ResponseEntity<?> actualizarEstadoCita(
-            @PathVariable Integer citaId, 
+            @PathVariable Long citaId, 
             @RequestBody Map<String, String> estadoMap) {
         try {
             logger.info("Actualizando estado de la cita ID: {} a {}", citaId, estadoMap);
@@ -248,6 +281,66 @@ public class CitaController {
         } catch (Exception e) {
             logger.error("Error inesperado al actualizar el estado de la cita: {}", e.getMessage(), e);
             return ResponseEntity.internalServerError().body("Error al actualizar el estado de la cita: " + e.getMessage());
+        }
+    }
+
+    // Modificar una cita (solo campos permitidos)
+    @PutMapping("/modificar/{citaId}")
+    public ResponseEntity<?> modificarCita(@PathVariable Long citaId, @RequestBody Map<String, Object> campos) {
+        try {
+            logger.info("[PUT] /api/citas/modificar/{} llamado", citaId);
+            Cita cita = citaService.obtenerCitaPorId(citaId);
+            if (cita == null) {
+                logger.warn("No se encontró la cita con ID: {}", citaId);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la cita con ID: " + citaId);
+            }
+            // Solo actualizar los campos permitidos (sin apellidos)
+            if (campos.containsKey("nombre")) {
+                cita.setNombre((String) campos.get("nombre"));
+            }
+            if (campos.containsKey("tipo")) {
+                cita.setTipo((String) campos.get("tipo"));
+            }
+            if (campos.containsKey("telefono")) {
+                cita.setTelefono((String) campos.get("telefono"));
+            }
+            if (campos.containsKey("codigo_postal")) {
+                cita.setCodigoPostal((String) campos.get("codigo_postal"));
+            }
+            if (campos.containsKey("ciudad")) {
+                cita.setCiudad((String) campos.get("ciudad"));
+            }
+            if (campos.containsKey("calle")) {
+                cita.setCalle((String) campos.get("calle"));
+            }
+            if (campos.containsKey("numero_casa")) {
+                cita.setNumeroCasa((String) campos.get("numero_casa"));
+            }
+            // Manejo robusto de fecha y hora
+            if (campos.containsKey("fecha") && campos.containsKey("hora")) {
+                String fecha = (String) campos.get("fecha");
+                String hora = (String) campos.get("hora");
+                if (fecha != null && !fecha.equalsIgnoreCase("null") && !fecha.isEmpty() &&
+                    hora != null && !hora.equalsIgnoreCase("null") && !hora.isEmpty()) {
+                    try {
+                        LocalDate localDate = LocalDate.parse(fecha);
+                        LocalTime localTime = LocalTime.parse(hora);
+                        cita.setFecha(fecha);
+                        cita.setHora(hora);
+                        cita.setFechaHora(LocalDateTime.of(localDate, localTime));
+                    } catch (Exception e) {
+                        logger.error("Error al parsear fecha u hora: {}", e.getMessage());
+                        return ResponseEntity.badRequest().body("Formato de fecha u hora inválido. Use yyyy-MM-dd y HH:mm");
+                    }
+                }
+            }
+            // Guardar cambios
+            Cita citaModificada = citaService.guardarCita(cita);
+            logger.info("Cita modificada exitosamente: {}", citaModificada.getId());
+            return ResponseEntity.ok(citaModificada);
+        } catch (Exception e) {
+            logger.error("Error al modificar la cita: {}", e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Error al modificar la cita: " + e.getMessage());
         }
     }
 }

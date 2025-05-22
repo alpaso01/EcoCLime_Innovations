@@ -51,183 +51,189 @@
 
     <!-- Contenedor de datos de perfil -->
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="424dp"
+        android:layout_height="344dp"
         android:layout_marginTop="-32dp"
         android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnEditarPerfil"
         app:layout_constraintTop_toBottomOf="@id/barraSuperior"
-        app:layout_constraintBottom_toTopOf="@id/btnEditarPerfil">
+        tools:layout_editor_absoluteX="-13dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:gravity="center_horizontal">
+            android:padding="24dp">
 
             <!-- ID oculto -->
             <TextView
                 android:id="@+id/tvId"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <!-- Card: Nombre -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:orientation="horizontal"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
+                    android:layout_marginEnd="16dp"
                     android:src="@android:drawable/ic_menu_myplaces"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
+                    android:tint="#316ffe" />
+
                 <TextView
                     android:id="@+id/tvNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#212121"/>
+                    android:textColor="#212121"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <!-- Card: Apellidos -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:orientation="horizontal"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
+                    android:layout_marginEnd="16dp"
                     android:src="@android:drawable/ic_menu_myplaces"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
+                    android:tint="#316ffe" />
+
                 <TextView
                     android:id="@+id/tvApellidos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#212121"/>
+                    android:textColor="#212121"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <!-- Card: Email -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:orientation="horizontal"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
+                    android:layout_marginEnd="16dp"
                     android:src="@android:drawable/ic_dialog_email"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
+                    android:tint="#316ffe" />
+
                 <TextView
                     android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#212121"/>
+                    android:textColor="#212121"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <!-- Card: Teléfono -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:orientation="horizontal"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
+                    android:layout_marginEnd="16dp"
                     android:src="@android:drawable/ic_menu_call"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
+                    android:tint="#316ffe" />
+
                 <TextView
                     android:id="@+id/tvTelefono"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#212121"/>
+                    android:textColor="#212121"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <!-- Card: Contraseña -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:orientation="horizontal"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
+                    android:layout_marginEnd="16dp"
                     android:src="@android:drawable/ic_lock_lock"
-                    android:tint="#316ffe"
-                    android:layout_marginEnd="16dp"/>
+                    android:tint="#316ffe" />
+
                 <TextView
                     android:id="@+id/tvPassword"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18sp"
-                    android:textColor="#212121"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="********"/>
-                <ImageView
-                    android:id="@+id/ivTogglePassword"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_view"
-                    android:tint="#316ffe"
-                    android:layout_marginStart="8dp"
-                    android:clickable="true"
-                    android:focusable="true"/>
+                    android:text="********"
+                    android:textColor="#212121"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
     <!-- Botón Editar perfil -->
+
+    <!-- Menú de navegación personalizado -->
+
     <Button
         android:id="@+id/btnEditarPerfil"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="100dp"
         android:backgroundTint="#316ffe"
+        android:fontFamily="sans-serif"
         android:text="Editar perfil"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
         android:textSize="18sp"
-        android:fontFamily="sans-serif"
+        android:textStyle="bold"
         app:cornerRadius="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/barraSuperior"
+        app:layout_constraintVertical_bias="0.657" />
 
-    <!-- Menú de navegación personalizado -->
     <LinearLayout
         android:id="@+id/bottom_navigation_container"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_width="423dp"
+        android:layout_height="76dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/custom_navigation_background"
         android:elevation="8dp"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -238,11 +244,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="26dp"
@@ -265,11 +271,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="26dp"
@@ -292,11 +298,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="26dp"

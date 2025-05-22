@@ -89,7 +89,7 @@ public class UsuarioService {
         Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
         if (optionalUsuario.isPresent()) {
             Usuario usuario = optionalUsuario.get();
-            usuario.setPassword(nuevaPassword);
+            usuario.setpassword(nuevaPassword);
             usuarioRepository.save(usuario);
             return;
         }

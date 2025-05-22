@@ -52,7 +52,7 @@ public interface ApiService {
     @GET("api/citas/email/{email}")
     Call<List<Cita>> obtenerHistorialCitasPorEmail(@Path("email") String email);
 
-    @GET("api/citas/{citaId}")
+    @GET("api/citas/id/{citaId}")
     Call<Cita> obtenerCita(@Path("citaId") int citaId);
 
     @POST("api/citas/crear/{usuarioId}")
@@ -61,8 +61,8 @@ public interface ApiService {
     @POST("api/citas/agendar/{usuarioId}")
     Call<Cita> agendarCita(@Path("usuarioId") int usuarioId, @Body Cita cita);
 
-    @PUT("api/citas/{citaId}")
-    Call<Void> actualizarCita(@Path("citaId") int citaId, @Body Cita cita);
+    @PUT("api/citas/modificar/{citaId}")
+    Call<Void> actualizarCita(@Path("citaId") int citaId, @Body Map<String, Object> campos);
 
     @DELETE("api/citas/anular/{citaId}")
     Call<Void> eliminarCita(@Path("citaId") int citaId);

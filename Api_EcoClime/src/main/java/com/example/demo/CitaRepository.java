@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CitaRepository extends JpaRepository<Cita, Integer> {
+public interface CitaRepository extends JpaRepository<Cita, Long> {
     List<Cita> findByUsuarioId(Integer usuarioId); // Obtener todas las citas de un usuario
     List<Cita> findByEmail(String email); // Obtener citas por email
     

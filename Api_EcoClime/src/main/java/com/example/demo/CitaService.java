@@ -14,6 +14,14 @@ import java.time.format.DateTimeParseException;
 
 @Service
 public class CitaService {
+
+    // ... otros métodos ...
+    /**
+     * Obtener una cita por su ID
+     */
+    public Cita obtenerCitaPorId(Long id) {
+        return citaRepository.findById(id).orElse(null);
+    }
     private static final Logger logger = LoggerFactory.getLogger(CitaService.class);
 
     @Autowired
@@ -63,7 +71,7 @@ public class CitaService {
     }
 
     // Anular una cita
-    public boolean anularCita(Integer citaId) {
+    public boolean anularCita(Long citaId) {
         Optional<Cita> citaOpt = citaRepository.findById(citaId);
         if (citaOpt.isPresent()) {
             citaRepository.deleteById(citaId);
@@ -144,7 +152,7 @@ public class CitaService {
     }
     
     // Actualizar estado de una cita
-    public Cita actualizarEstadoCita(Integer citaId, String nuevoEstado) {
+    public Cita actualizarEstadoCita(Long citaId, String nuevoEstado) {
         // Validar que el estado sea uno de los permitidos
         List<String> estadosPermitidos = List.of("programada", "confirmada", "en_curso", "cancelada");
         if (!estadosPermitidos.contains(nuevoEstado.toLowerCase())) {
@@ -159,6 +167,11 @@ public class CitaService {
         cita.setEstado(nuevoEstado);
         
         // Guardar los cambios
+        return citaRepository.save(cita);
+    }
+
+    // Guardar cambios de una cita existente
+    public Cita guardarCita(Cita cita) {
         return citaRepository.save(cita);
     }
 }

@@ -23,20 +23,41 @@
             android:orientation="vertical"
             android:paddingBottom="16dp">
 
-    <TextView
-        android:id="@+id/textTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Atención al Cliente"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Atención al Cliente"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+            <Button
+                android:id="@+id/btnVolver"
+                android:layout_width="421dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="#316ffe"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.01"
+                android:paddingStart="32dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="32dp"
+                android:paddingBottom="12dp"
+                android:text="Volver"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:cornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textContacto" />
+
+            <TextView
         android:id="@+id/textContacto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -49,27 +70,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTitulo" />
 
-    <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="wrap_content"
+    <!-- Sección de Preguntas Frecuentes (FAQ) -->
+    <TextView
+        android:id="@+id/textFaqTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#316ffe"
-        android:text="Volver"
-        android:textColor="#FFFFFF"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:textSize="16sp"
-        android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.01"
-        app:cornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textContacto" />
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Preguntas Frecuentes"
+        android:textColor="#316ffe"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textFaqContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="\u2022 ¿Cómo puedo reservar una cita?\nPuedes reservar una cita desde la pantalla principal pulsando en 'Elegir Cita' y siguiendo los pasos.\n\n\u2022 ¿Cómo puedo modificar o cancelar una cita?\nAccede al historial de citas y selecciona la cita que deseas modificar o cancelar.\n\n\u2022 ¿He olvidado mi contraseña, qué hago?\nPulsa en '¿Olvidaste tu contraseña?' en la pantalla de inicio de sesión y sigue las instrucciones para recuperarla.\n\n\u2022 ¿Cómo contacto con soporte?\nPuedes llamarnos al +34 91 123 45 67 o escribirnos a soporte@ecoclime.es.\n\n\u2022 ¿Mis datos están seguros?\nSí, tus datos están protegidos y solo se usan para la gestión de tus citas."
+        android:textColor="#222222"
+        android:textSize="16sp" />
+
+        </LinearLayout>
     </ScrollView>
 
     <!-- Menú de navegación personalizado -->

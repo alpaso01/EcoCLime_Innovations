@@ -69,7 +69,8 @@ public class CambioContraActivity extends AppCompatActivity {
                 request.put("email", email);
                 request.put("nuevaPassword", nuevaPassword);
 
-                // Llamar a la API para cambiar la contraseña
+                // Llamada a la API para cambiar la contraseña
+                // Asegúrate de que el endpoint /cambiar-contrasena existe y espera estos campos
                 Call<Void> call = apiService.cambiarPassword(request);
                 call.enqueue(new Callback<Void>() {
                     @Override
@@ -78,6 +79,8 @@ public class CambioContraActivity extends AppCompatActivity {
                             Toast.makeText(CambioContraActivity.this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show();
                             finish(); // Volver a la pantalla anterior
                         } else {
+                            // Mostrar mensaje de error más detallado
+                            errorTextView.setText("Error al cambiar la contraseña. Código de error: " + response.code());
                             errorTextView.setText("Error al cambiar la contraseña");
                             errorTextView.setVisibility(View.VISIBLE);
                         }

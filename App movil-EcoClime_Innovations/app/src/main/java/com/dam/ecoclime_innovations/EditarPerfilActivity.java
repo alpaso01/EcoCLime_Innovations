@@ -76,29 +76,42 @@ public class EditarPerfilActivity extends AppCompatActivity {
         });
 
         btnGuardar.setOnClickListener(v -> {
-            String nombre = editNombre.getText().toString();
-            String apellidos = editApellidos.getText().toString();
-            String email = editEmail.getText().toString();
-            String telefono = editTelefono.getText().toString();
-            String password = editPassword.getText().toString();
+            // Recoger datos actualizados
+            String nombre = editNombre.getText().toString().trim();
+            String apellidos = editApellidos.getText().toString().trim();
+            String email = editEmail.getText().toString().trim();
+            String telefono = editTelefono.getText().toString().trim();
+            String password = editPassword.getText().toString().trim();
 
-            Usuario usuario = new Usuario();
-            usuario.setNombre(nombre);
-            usuario.setApellidos(apellidos);
-            usuario.setEmail(email);
-            usuario.setTelefono(telefono);
-            usuario.setPassword(password);
-            if (usuarioId != -1) usuario.setId(usuarioId);
+            // Validación básica
+            if (nombre.isEmpty() || apellidos.isEmpty() || email.isEmpty() || telefono.isEmpty() || password.isEmpty()) {
+                Toast.makeText(EditarPerfilActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            Call<Void> call = apiService.actualizarUsuario(usuarioId, usuario);
-            call.enqueue(new Callback<Void>() {
+            // Crear objeto Usuario actualizado
+            Usuario usuarioActualizado = new Usuario();
+            usuarioActualizado.setNombre(nombre);
+            usuarioActualizado.setApellidos(apellidos);
+            usuarioActualizado.setEmail(email);
+            usuarioActualizado.setTelefono(telefono);
+            usuarioActualizado.setPassword(password);
+
+            if (usuarioId == -1) {
+                Toast.makeText(EditarPerfilActivity.this, "Error: ID de usuario no válido", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Llamada a la API para actualizar usuario
+            // Asegúrate de que el backend espera todos los campos y actualiza correctamente
+            apiService.actualizarUsuario(usuarioId, usuarioActualizado).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(EditarPerfilActivity.this, "Datos actualizados correctamente", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
-                        Toast.makeText(EditarPerfilActivity.this, "Error al actualizar los datos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditarPerfilActivity.this, "Error al actualizar los datos. Verifica que todos los campos sean válidos.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
