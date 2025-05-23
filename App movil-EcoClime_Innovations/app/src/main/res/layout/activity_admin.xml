@@ -45,6 +45,17 @@
             android:padding="16dp"
             android:backgroundTint="#316ffe"/>
 
+        <!-- Botón Historial Usuarios -->
+        <Button
+            android:id="@+id/btnHistorialUsuarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Historial Usuarios"
+            android:textSize="18sp"
+            android:padding="16dp"
+            android:backgroundTint="#316ffe"
+            android:layout_marginTop="24dp"/>
+
     </LinearLayout>
 
     <!-- Barra de navegación inferior -->

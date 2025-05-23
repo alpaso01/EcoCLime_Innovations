@@ -12,49 +12,53 @@
     <!-- Barra superior azul con título y menú hamburguesa -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#316ffe"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="415dp"
+        android:layout_height="86dp"
+        android:background="@drawable/bg_appbar_gradient"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:fontFamily="sans-serif-black"
+            android:layout_marginStart="24dp"
+            android:fontFamily="sans-serif-medium"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:text="EcoClime Innovations"
             android:textColor="#FFFFFF"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.404"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.5" />
 
         <ImageButton
             android:id="@+id/menuButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="47dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="24dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Menú"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_menu"
             android:tint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="Menú" />
+            app:layout_constraintVertical_bias="0.5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Menú de navegación personalizado -->
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="410dp"
-        android:layout_height="471dp"
+        android:layout_width="413dp"
+        android:layout_height="465dp"
         android:layout_marginTop="138dp"
         android:layout_marginBottom="122dp"
         android:gravity="center"
@@ -69,13 +73,13 @@
             android:id="@+id/cardElegirCita"
             android:layout_width="380dp"
             android:layout_height="206dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="30dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardBackgroundColor="#316ffe"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="12dp">
+            app:cardCornerRadius="32dp"
+            app:cardElevation="18dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,8 +89,8 @@
                 android:padding="32dp">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:layout_marginEnd="32dp"
                     android:src="@drawable/ic_calendar"
                     android:tint="#FFFFFF" />
@@ -111,34 +115,34 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="sans-serif-medium"
                         android:text="Programa tu próxima visita"
-                        android:textColor="#E6FFFFFF"
-                        android:textSize="20sp" />
+                        android:textColor="#B0C4DE"
+                        android:textSize="24sp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardHistorialCitas"
-            android:layout_width="370dp"
-            android:layout_height="0dp"
+            android:layout_width="374dp"
+            android:layout_height="210dp"
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardBackgroundColor="#316ffe"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="12dp">
+            app:cardCornerRadius="32dp"
+            app:cardElevation="18dp">
 
             <LinearLayout
-                android:layout_width="391dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="32dp">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:layout_marginEnd="32dp"
                     android:src="@drawable/ic_history"
                     android:tint="#FFFFFF" />
@@ -162,8 +166,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Revisa tus citas anteriores"
-                        android:textColor="#E6FFFFFF"
+                        android:text="Revisa tus citas "
+                        android:textColor="#B0C4DE"
                         android:textSize="24sp" />
                 </LinearLayout>
             </LinearLayout>

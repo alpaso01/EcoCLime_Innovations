@@ -29,6 +29,19 @@ public interface ApiService {
 
     //-------OBTENER DATOS DE USUARIO-------
 
+    // --- HISTORIAL DE USUARIOS ---
+    @GET("api/usuarios/todos")
+    Call<List<Usuario>> obtenerTodosLosUsuarios();
+
+    @GET("api/usuarios/trabajadores")
+    Call<List<Usuario>> obtenerTrabajadores();
+
+    @GET("api/usuarios/admins")
+    Call<List<Usuario>> obtenerAdmins();
+
+    @GET("api/usuarios/clientes")
+    Call<List<Usuario>> obtenerClientes();
+
     @GET("api/usuarios/user/{email}")
     Call<Usuario> obtenerUsuarioPorEmail(@Path("email") String email);
 

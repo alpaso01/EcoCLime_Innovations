@@ -58,6 +58,9 @@
             android:name=".pantalla_principal"
             android:exported="false" />
         <activity
+            android:name=".HistorialUsuariosActivity"
+            android:exported="false" />
+        <activity
             android:name=".PantallaCargaActivity"
             android:exported="true"
             android:theme="@style/Theme.EcoClime_Innovations" />

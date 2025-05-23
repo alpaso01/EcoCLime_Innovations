@@ -39,12 +39,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
         btnGuardar = findViewById(R.id.btnGuardar);
         btnBack = findViewById(R.id.btnBack);
 
-        // Inicializar Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/") // Cambia la URL base según tu backend
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        apiService = retrofit.create(ApiService.class);
+        // Inicializar Retrofit usando la instancia centralizada
+        apiService = RetrofitClient.getInstance().create(ApiService.class);
 
         // Cargar datos actuales del usuario (puedes recibirlos por Intent)
         Intent intent = getIntent();

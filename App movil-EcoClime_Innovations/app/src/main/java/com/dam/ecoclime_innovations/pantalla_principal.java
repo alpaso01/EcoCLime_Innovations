@@ -80,19 +80,19 @@ public class pantalla_principal extends BaseActivity {
         View navHome = findViewById(R.id.nav_home);
         View navWeb = findViewById(R.id.nav_web);
         View navAccount = findViewById(R.id.nav_account);
-        
+
         // Botón Inicio (ya estamos en la pantalla principal)
         navHome.setOnClickListener(v -> {
             // Ya estamos en home, no hacemos nada
         });
-        
+
         // Botón Web
         navWeb.setOnClickListener(v -> {
             Intent intent = new Intent(this, VistaWebActivity.class);
             pasarDatosUsuario(intent);
             startActivity(intent);
         });
-        
+
         // Botón Cuenta
         navAccount.setOnClickListener(v -> {
             Intent intent = new Intent(this, MiPerfilActivity.class);

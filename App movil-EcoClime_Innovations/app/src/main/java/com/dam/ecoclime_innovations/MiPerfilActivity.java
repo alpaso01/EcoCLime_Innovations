@@ -72,16 +72,17 @@ public class MiPerfilActivity extends AppCompatActivity {
     private void configurarListeners() {
         // Listener para el botón de editar perfil
         if (btnEditarPerfil != null) {
-            btnEditarPerfil.setOnClickListener(v -> {
-                Intent intent = new Intent(MiPerfilActivity.this, EditarPerfilActivity.class);
-                intent.putExtra("nombre", tvNombre.getText().toString());
-                intent.putExtra("apellidos", tvApellidos.getText().toString());
-                intent.putExtra("email", tvEmail.getText().toString());
-                intent.putExtra("telefono", tvTelefono.getText().toString());
-                intent.putExtra("password", passwordUsuario);
-                startActivity(intent);
-            });
-        }
+    btnEditarPerfil.setOnClickListener(v -> {
+        Intent intent = new Intent(MiPerfilActivity.this, EditarPerfilActivity.class);
+        intent.putExtra("nombre", tvNombre.getText().toString());
+        intent.putExtra("apellidos", tvApellidos.getText().toString());
+        intent.putExtra("email", tvEmail.getText().toString());
+        intent.putExtra("telefono", tvTelefono.getText().toString());
+        intent.putExtra("password", passwordUsuario);
+        intent.putExtra("id", idUsuarioActual); // <-- AÑADIDO EL ID
+        startActivity(intent);
+    });
+}
         btnVolver.setOnClickListener(v -> finish());
         
         // Configurar los botones de navegación personalizados
@@ -131,16 +132,19 @@ public class MiPerfilActivity extends AppCompatActivity {
         });
     }
 
-    private void mostrarDatosUsuario(Usuario usuario) {
-        if (usuario == null) {
-            Toast.makeText(this, "Error: Usuario nulo", Toast.LENGTH_SHORT).show();
-            return;
-        }
+    private int idUsuarioActual = -1;
 
-        tvNombre.setText(usuario.getNombre());
-        tvApellidos.setText(usuario.getApellidos());
-        tvEmail.setText(usuario.getEmail());
-        tvTelefono.setText(usuario.getTelefono());
-        passwordUsuario = usuario.getPassword();
+private void mostrarDatosUsuario(Usuario usuario) {
+    if (usuario == null) {
+        Toast.makeText(this, "Error: Usuario nulo", Toast.LENGTH_SHORT).show();
+        return;
     }
+
+    idUsuarioActual = usuario.getId();
+    tvNombre.setText(usuario.getNombre());
+    tvApellidos.setText(usuario.getApellidos());
+    tvEmail.setText(usuario.getEmail());
+    tvTelefono.setText(usuario.getTelefono());
+    passwordUsuario = usuario.getPassword();
+}
 }

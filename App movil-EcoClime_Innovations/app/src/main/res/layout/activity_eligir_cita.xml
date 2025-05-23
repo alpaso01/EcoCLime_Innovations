@@ -168,8 +168,10 @@
     <!-- Menú de navegación personalizado -->
     <LinearLayout
         android:id="@+id/bottom_navigation_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="435dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/custom_navigation_background"
         android:elevation="8dp"
         android:orientation="horizontal"
