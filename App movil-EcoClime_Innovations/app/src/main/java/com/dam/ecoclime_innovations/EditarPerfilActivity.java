@@ -79,40 +79,74 @@ public class EditarPerfilActivity extends AppCompatActivity {
             String telefono = editTelefono.getText().toString().trim();
             String password = editPassword.getText().toString().trim();
 
+            // Recoger valores originales del intent
+            String originalNombre = intent.getStringExtra("nombre");
+            String originalApellidos = intent.getStringExtra("apellidos");
+            String originalEmail = intent.getStringExtra("email");
+            String originalTelefono = intent.getStringExtra("telefono");
+            String originalPassword = intent.getStringExtra("password");
+
             // Validación básica
             if (nombre.isEmpty() || apellidos.isEmpty() || email.isEmpty() || telefono.isEmpty() || password.isEmpty()) {
                 Toast.makeText(EditarPerfilActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Crear objeto Usuario actualizado
-            Usuario usuarioActualizado = new Usuario();
-            usuarioActualizado.setNombre(nombre);
-            usuarioActualizado.setApellidos(apellidos);
-            usuarioActualizado.setEmail(email);
-            usuarioActualizado.setTelefono(telefono);
-            usuarioActualizado.setPassword(password);
+            // Comparar y construir Map solo con campos modificados
+            java.util.Map<String, Object> campos = new java.util.HashMap<>();
+            if (!nombre.equals(originalNombre)) campos.put("nombre", nombre);
+            if (!apellidos.equals(originalApellidos)) campos.put("apellidos", apellidos);
+            if (!email.equals(originalEmail)) campos.put("email", email);
+            if (!telefono.equals(originalTelefono)) campos.put("telefono", telefono);
+            if (!password.equals(originalPassword)) campos.put("password", password);
+
+            if (campos.isEmpty()) {
+                Toast.makeText(EditarPerfilActivity.this, "No hay cambios para guardar", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (usuarioId == -1) {
                 Toast.makeText(EditarPerfilActivity.this, "Error: ID de usuario no válido", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Llamada a la API para actualizar usuario
-            // Asegúrate de que el backend espera todos los campos y actualiza correctamente
-            apiService.actualizarUsuario(usuarioId, usuarioActualizado).enqueue(new Callback<Void>() {
+            // Mostrar un diálogo de progreso
+            android.app.ProgressDialog progressDialog = new android.app.ProgressDialog(EditarPerfilActivity.this);
+            progressDialog.setMessage("Actualizando datos...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+            
+            // Llamada PATCH para actualizar solo campos modificados
+            apiService.actualizarUsuarioParcial(usuarioId, campos).enqueue(new retrofit2.Callback<Void>() {
                 @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
+                public void onResponse(retrofit2.Call<Void> call, retrofit2.Response<Void> response) {
+                    progressDialog.dismiss();
                     if (response.isSuccessful()) {
                         Toast.makeText(EditarPerfilActivity.this, "Datos actualizados correctamente", Toast.LENGTH_SHORT).show();
+                        
+                        // Actualizar los datos en la pantalla principal
+                        android.content.Intent resultIntent = new android.content.Intent();
+                        resultIntent.putExtra("nombre", nombre);
+                        resultIntent.putExtra("apellidos", apellidos);
+                        resultIntent.putExtra("email", email);
+                        resultIntent.putExtra("telefono", telefono);
+                        resultIntent.putExtra("password", password);
+                        setResult(RESULT_OK, resultIntent);
+                        
+                        // Cerrar esta actividad y volver a la pantalla principal
                         finish();
                     } else {
-                        Toast.makeText(EditarPerfilActivity.this, "Error al actualizar los datos. Verifica que todos los campos sean válidos.", Toast.LENGTH_SHORT).show();
+                        String errorMsg = "Código: " + response.code();
+                        try {
+                            if (response.errorBody() != null)
+                                errorMsg += ", Error: " + response.errorBody().string();
+                        } catch (Exception e) {}
+                        Toast.makeText(EditarPerfilActivity.this, "Error al actualizar: " + errorMsg, Toast.LENGTH_LONG).show();
                     }
                 }
-
                 @Override
-                public void onFailure(Call<Void> call, Throwable t) {
+                public void onFailure(retrofit2.Call<Void> call, Throwable t) {
+                    progressDialog.dismiss();
                     Toast.makeText(EditarPerfilActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

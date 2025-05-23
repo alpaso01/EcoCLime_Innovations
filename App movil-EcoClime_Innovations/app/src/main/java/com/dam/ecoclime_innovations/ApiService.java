@@ -8,6 +8,10 @@ import retrofit2.http.*;
 
 public interface ApiService {
 
+    @PATCH("api/usuarios/{id}")
+    Call<Void> actualizarUsuarioParcial(@Path("id") int id, @Body Map<String, Object> campos);
+
+
     @PUT("api/usuarios/{id}")
     Call<Void> actualizarUsuario(@Path("id") int id, @Body Usuario usuario);
 

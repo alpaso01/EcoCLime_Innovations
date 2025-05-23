@@ -79,4 +79,64 @@ public class UsuarioController {
     public ResponseEntity<?> obtenerClientes() {
         return ResponseEntity.ok(usuarioRepository.findByTipo("cliente"));
     }
+
+    @PatchMapping("/{id}")
+    @org.springframework.transaction.annotation.Transactional
+    public ResponseEntity<?> actualizarUsuarioParcial(@PathVariable int id, @RequestBody Map<String, Object> campos) {
+        try {
+            System.out.println("PATCH recibido para usuario ID: " + id + " con campos: " + campos);
+            
+            // Buscar el usuario por ID
+            java.util.Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
+            if (!usuarioOpt.isPresent()) {
+                System.out.println("Usuario no encontrado con ID: " + id);
+                return ResponseEntity.notFound().build();
+            }
+            
+            Usuario usuario = usuarioOpt.get();
+            System.out.println("Usuario antes de actualizar: " + usuario.getId() + ", " + usuario.getNombre() + ", " + usuario.getTelefono());
+            
+            // Actualizar solo los campos recibidos
+            campos.forEach((key, value) -> {
+                switch (key) {
+                    case "nombre":
+                        usuario.setNombre((String) value);
+                        System.out.println("Actualizando nombre a: " + value);
+                        break;
+                    case "apellidos":
+                        usuario.setApellidos((String) value);
+                        System.out.println("Actualizando apellidos a: " + value);
+                        break;
+                    case "email":
+                        usuario.setEmail((String) value);
+                        System.out.println("Actualizando email a: " + value);
+                        break;
+                    case "telefono":
+                        usuario.setTelefono((String) value);
+                        System.out.println("Actualizando telefono a: " + value);
+                        break;
+                    case "password":
+                        usuario.setpassword((String) value); // Nota: 'p' minúscula
+                        System.out.println("Actualizando password");
+                        break;
+                    case "tipo":
+                        usuario.setTipo((String) value);
+                        System.out.println("Actualizando tipo a: " + value);
+                        break;
+                }
+            });
+            
+            // Guardar los cambios
+            Usuario usuarioActualizado = usuarioRepository.save(usuario);
+            System.out.println("Usuario después de actualizar: " + usuarioActualizado.getId() + ", " + usuarioActualizado.getNombre() + ", " + usuarioActualizado.getTelefono());
+            
+            return ResponseEntity.ok().build();
+            
+        } catch (Exception e) {
+            System.out.println("Error al actualizar usuario: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al actualizar usuario: " + e.getMessage());
+        }
+    }
 }

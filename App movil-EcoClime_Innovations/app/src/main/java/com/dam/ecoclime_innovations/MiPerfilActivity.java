@@ -69,20 +69,24 @@ public class MiPerfilActivity extends AppCompatActivity {
         // Ya inicializado en onCreate
     }
 
+    // Constante para el código de solicitud de edición de perfil
+    private static final int REQUEST_CODE_EDITAR_PERFIL = 1001;
+    
     private void configurarListeners() {
         // Listener para el botón de editar perfil
         if (btnEditarPerfil != null) {
-    btnEditarPerfil.setOnClickListener(v -> {
-        Intent intent = new Intent(MiPerfilActivity.this, EditarPerfilActivity.class);
-        intent.putExtra("nombre", tvNombre.getText().toString());
-        intent.putExtra("apellidos", tvApellidos.getText().toString());
-        intent.putExtra("email", tvEmail.getText().toString());
-        intent.putExtra("telefono", tvTelefono.getText().toString());
-        intent.putExtra("password", passwordUsuario);
-        intent.putExtra("id", idUsuarioActual); // <-- AÑADIDO EL ID
-        startActivity(intent);
-    });
-}
+            btnEditarPerfil.setOnClickListener(v -> {
+                Intent intent = new Intent(MiPerfilActivity.this, EditarPerfilActivity.class);
+                intent.putExtra("nombre", tvNombre.getText().toString());
+                intent.putExtra("apellidos", tvApellidos.getText().toString());
+                intent.putExtra("email", tvEmail.getText().toString());
+                intent.putExtra("telefono", tvTelefono.getText().toString());
+                intent.putExtra("password", passwordUsuario);
+                intent.putExtra("id", idUsuarioActual);
+                // Usar startActivityForResult en lugar de startActivity
+                startActivityForResult(intent, REQUEST_CODE_EDITAR_PERFIL);
+            });
+        }
         btnVolver.setOnClickListener(v -> finish());
         
         // Configurar los botones de navegación personalizados
@@ -146,5 +150,32 @@ private void mostrarDatosUsuario(Usuario usuario) {
     tvEmail.setText(usuario.getEmail());
     tvTelefono.setText(usuario.getTelefono());
     passwordUsuario = usuario.getPassword();
+}
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    
+    if (requestCode == REQUEST_CODE_EDITAR_PERFIL && resultCode == RESULT_OK && data != null) {
+        // Actualizar los datos en la UI con los valores devueltos
+        String nombreActualizado = data.getStringExtra("nombre");
+        String apellidosActualizados = data.getStringExtra("apellidos");
+        String emailActualizado = data.getStringExtra("email");
+        String telefonoActualizado = data.getStringExtra("telefono");
+        String passwordActualizado = data.getStringExtra("password");
+        
+        // Actualizar los TextView con los nuevos datos
+        if (nombreActualizado != null) tvNombre.setText(nombreActualizado);
+        if (apellidosActualizados != null) tvApellidos.setText(apellidosActualizados);
+        if (emailActualizado != null) tvEmail.setText(emailActualizado);
+        if (telefonoActualizado != null) tvTelefono.setText(telefonoActualizado);
+        if (passwordActualizado != null) passwordUsuario = passwordActualizado;
+        
+        // Mostrar mensaje de éxito
+        Toast.makeText(this, "Perfil actualizado correctamente", Toast.LENGTH_SHORT).show();
+    } else {
+        // Alternativamente, podríamos recargar los datos desde el servidor
+        cargarDatosUsuario();
+    }
 }
 }
