@@ -194,7 +194,9 @@ public class citas_empresa extends AppCompatActivity {
                     Toast.makeText(citas_empresa.this, "Cita agendada con éxito", Toast.LENGTH_SHORT).show();
                     // Actualizar el contador de citas en SharedPreferences
                     actualizarContadorCitas();
-                    finish();
+                    
+                    // Enviar correo electrónico de confirmación
+                    enviarCorreoConfirmacion(citaGuardada);
                 } else {
                     String errorMsg = "Error al agendar la cita: ";
                     if (response.errorBody() != null) {
@@ -275,5 +277,33 @@ public class citas_empresa extends AppCompatActivity {
                 !TextUtils.isEmpty(etCodigoPostal.getText()) &&
                 !TextUtils.isEmpty(etCalle.getText()) &&
                 !TextUtils.isEmpty(etNumeroCasa.getText());
+    }
+    
+    /**
+     * Envía un correo electrónico de confirmación al usuario
+     * @param cita Objeto Cita con la información de la cita agendada
+     */
+    private void enviarCorreoConfirmacion(Cita cita) {
+        Log.d("citas_empresa", "Enviando correo de confirmación a: " + cita.getEmail());
+        
+        EmailSender.enviarConfirmacionCita(this, cita, new EmailSender.EmailCallback() {
+            @Override
+            public void onSuccess() {
+                Log.d("citas_empresa", "Correo enviado con éxito");
+                runOnUiThread(() -> {
+                    Toast.makeText(citas_empresa.this, "Se ha enviado un correo de confirmación", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                Log.e("citas_empresa", "Error al enviar correo: " + error);
+                runOnUiThread(() -> {
+                    Toast.makeText(citas_empresa.this, "La cita se ha registrado, pero no se pudo enviar el correo de confirmación", Toast.LENGTH_LONG).show();
+                    finish();
+                });
+            }
+        });
     }
 }

@@ -22,6 +22,9 @@ public class CitaController {
 
     private static final Logger logger = LoggerFactory.getLogger(CitaController.class);
 
+    @Autowired
+    private EmailService emailService;
+
     public CitaController() {
         logger.info("CitaController cargado correctamente al arrancar la aplicación");
     } // Solo dejar este constructor, eliminar el otro duplicado.
@@ -103,6 +106,18 @@ public class CitaController {
             }
 
             Cita nuevaCita = citaService.agendarCita(cita, usuarioId);
+            // Enviar email de confirmación
+            try {
+                String asunto = "Confirmación de cita - EcoClime Innovations";
+                String contenidoHtml = "<h2>¡Cita agendada con éxito!</h2>" +
+                    "<p>Hola " + nuevaCita.getNombre() + ",</p>" +
+                    "<p>Tu cita ha sido registrada para el día <b>" + nuevaCita.getFecha() + "</b> a las <b>" + nuevaCita.getHora() + "</b> en <b>" + nuevaCita.getCiudad() + ", " + nuevaCita.getCalle() + " " + nuevaCita.getNumeroCasa() + ".</b></p>" +
+                    "<p>Tipo de cita: <b>" + nuevaCita.getTipo() + "</b></p>" +
+                    "<p>Gracias por confiar en EcoClime Innovations.</p>";
+                emailService.enviarConfirmacionCita(nuevaCita.getEmail(), asunto, contenidoHtml);
+            } catch (Exception ex) {
+                logger.error("No se pudo enviar el email de confirmación: {}", ex.getMessage());
+            }
             return ResponseEntity.ok(nuevaCita);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -196,6 +211,18 @@ public class CitaController {
             try {
                 Cita nuevaCita = citaService.crearCita(usuarioId, cita);
                 logger.info("Cita creada exitosamente con ID: {}", nuevaCita.getId());
+                // Enviar email de confirmación
+                try {
+                    String asunto = "Confirmación de cita - EcoClime Innovations";
+                    String contenidoHtml = "<h2>¡Cita agendada con éxito!</h2>" +
+                        "<p>Hola " + nuevaCita.getNombre() + ",</p>" +
+                        "<p>Tu cita ha sido registrada para el día <b>" + nuevaCita.getFecha() + "</b> a las <b>" + nuevaCita.getHora() + "</b> en <b>" + nuevaCita.getCiudad() + ", " + nuevaCita.getCalle() + " " + nuevaCita.getNumeroCasa() + ".</b></p>" +
+                        "<p>Tipo de cita: <b>" + nuevaCita.getTipo() + "</b></p>" +
+                        "<p>Gracias por confiar en EcoClime Innovations.</p>";
+                    emailService.enviarConfirmacionCita(nuevaCita.getEmail(), asunto, contenidoHtml);
+                } catch (Exception ex) {
+                    logger.error("No se pudo enviar el email de confirmación: {}", ex.getMessage());
+                }
                 return ResponseEntity.ok(nuevaCita);
             } catch (RuntimeException e) {
                 logger.error("Error al crear la cita: {}", e.getMessage());
