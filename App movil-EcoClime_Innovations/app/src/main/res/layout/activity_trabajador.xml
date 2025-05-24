@@ -7,87 +7,88 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="880dp"
         android:orientation="vertical"
         android:padding="16dp">
 
         <!-- Texto de bienvenida -->
-        <TextView
-            android:id="@+id/welcomeText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bienvenid@"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#316ffe"
-            android:gravity="center"
-            android:layout_marginBottom="16dp"/>
 
         <!-- Botón de Calendario y fecha seleccionada -->
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="Bienvenid@"
+            android:textColor="#316ffe"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
-            android:layout_marginBottom="16dp">
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnCalendario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cambiar Fecha"
+                android:layout_marginBottom="8dp"
                 android:backgroundTint="#316ffe"
-                android:layout_marginBottom="8dp"/>
+                android:text="Cambiar Fecha" />
 
             <TextView
                 android:id="@+id/tvFechaSeleccionada"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#316ffe"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#316ffe"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Botones de filtrado -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
-            android:layout_marginBottom="16dp">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnTodos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:text="Todos"
                 android:backgroundTint="#316ffe"
-                android:layout_marginEnd="4dp"/>
+                android:text="Todos" />
 
             <Button
                 android:id="@+id/btnEmpresa"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:text="Empresa"
                 android:backgroundTint="#316ffe"
-                android:layout_marginEnd="4dp"/>
+                android:text="Empresa" />
 
             <Button
                 android:id="@+id/btnParticulares"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Particulares"
-                android:backgroundTint="#316ffe"/>
+                android:backgroundTint="#316ffe"
+                android:text="Particulares" />
         </LinearLayout>
 
         <!-- Lista de citas -->
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="631dp"
             android:layout_weight="1">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -95,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="8dp" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

@@ -85,16 +85,22 @@ public class CitaTrabajadorAdapter extends RecyclerView.Adapter<CitaTrabajadorAd
         holder.estadoTextView.setText("Estado: " + estadoActual.substring(0, 1).toUpperCase() + estadoActual.substring(1));
         actualizarColorEstado(holder.estadoTextView, estadoActual);
 
-        // Configurar botones
-        holder.btnModificar.setOnClickListener(v -> {
-            if (listener != null) listener.onModificarClick(cita);
-        });
+        // Configurar botones solo si existen
+        if (holder.btnModificar != null) {
+            holder.btnModificar.setOnClickListener(v -> {
+                if (listener != null) listener.onModificarClick(cita);
+            });
+        }
 
-        holder.btnEliminar.setOnClickListener(v -> {
-            if (listener != null) listener.onEliminarClick(cita);
-        });
+        if (holder.btnEliminar != null) {
+            holder.btnEliminar.setOnClickListener(v -> {
+                if (listener != null) listener.onEliminarClick(cita);
+            });
+        }
 
-        holder.btnEstado.setOnClickListener(v -> mostrarDialogoEstado(cita, holder));
+        if (holder.btnEstado != null) {
+            holder.btnEstado.setOnClickListener(v -> mostrarDialogoEstado(cita, holder));
+        }
     }
 
     private void mostrarDialogoEstado(Cita cita, CitaTrabajadorViewHolder holder) {
@@ -172,6 +178,7 @@ public class CitaTrabajadorAdapter extends RecyclerView.Adapter<CitaTrabajadorAd
 
         public CitaTrabajadorViewHolder(@NonNull View itemView) {
             super(itemView);
+            // Inicializar vistas de texto
             nombreTextView = itemView.findViewById(R.id.nombreTextView);
             telefonoTextView = itemView.findViewById(R.id.telefonoTextView);
             emailTextView = itemView.findViewById(R.id.emailTextView);
@@ -182,9 +189,15 @@ public class CitaTrabajadorAdapter extends RecyclerView.Adapter<CitaTrabajadorAd
             numeroCasaTextView = itemView.findViewById(R.id.numeroCasaTextView);
             fechaHoraTextView = itemView.findViewById(R.id.fechaHoraTextView);
             estadoTextView = itemView.findViewById(R.id.estadoTextView);
-            btnModificar = itemView.findViewById(R.id.btnModificar);
-            btnEliminar = itemView.findViewById(R.id.btnEliminar);
-            btnEstado = itemView.findViewById(R.id.btnEstado);
+            
+            // Intentar inicializar botones - pueden ser nulos si el layout no los contiene
+            try {
+                btnModificar = itemView.findViewById(R.id.btnModificar);
+                btnEliminar = itemView.findViewById(R.id.btnEliminar);
+                btnEstado = itemView.findViewById(R.id.btnEstado);
+            } catch (Exception e) {
+                // Ignorar errores si los botones no existen
+            }
         }
     }
 }
