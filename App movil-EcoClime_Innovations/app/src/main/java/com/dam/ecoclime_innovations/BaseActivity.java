@@ -17,7 +17,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void setupBottomNavigation() {
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
         if (bottomNavigationView != null) {
             bottomNavigationView.setSelectedItemId(getSelectedNavigationItemId());
             bottomNavigationView.setOnItemSelectedListener(item -> {

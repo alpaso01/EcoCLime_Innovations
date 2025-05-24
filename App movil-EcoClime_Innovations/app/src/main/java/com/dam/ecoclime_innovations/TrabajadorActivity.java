@@ -1,6 +1,7 @@
 package com.dam.ecoclime_innovations;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 public class TrabajadorActivity extends AppCompatActivity implements CitaTrabajadorAdapter.OnCitaActionListener {
     private static final String TAG = "TrabajadorActivity";
     private TextView welcomeText, tvFechaSeleccionada;
-    private Button btnCalendario, btnTodos, btnEmpresa, btnParticulares;
+    private Button btnCalendario, btnTodos, btnEmpresa, btnParticulares, btnAtras;
     private RecyclerView citasRecyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Date selectedDate;
@@ -69,6 +70,7 @@ public class TrabajadorActivity extends AppCompatActivity implements CitaTrabaja
         btnTodos = findViewById(R.id.btnTodos);
         btnEmpresa = findViewById(R.id.btnEmpresa);
         btnParticulares = findViewById(R.id.btnParticulares);
+        btnAtras = findViewById(R.id.btnAtras);
         citasRecyclerView = findViewById(R.id.citasRecyclerView);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
@@ -118,6 +120,13 @@ public class TrabajadorActivity extends AppCompatActivity implements CitaTrabaja
             setFiltroActivo(btnParticulares);
             filtroActual = "particular";
             cargarCitas();
+        });
+        
+        btnAtras.setOnClickListener(v -> {
+            Intent intent = new Intent(TrabajadorActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         });
     }
     

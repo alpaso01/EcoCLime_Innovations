@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,32 +57,32 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Seleccione un día"
-                android:textSize="26sp"
-                android:textColor="#316ffe"
-                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:layout_marginBottom="16dp"/>
+                android:text="Seleccione un día"
+                android:textColor="#316ffe"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
             <CalendarView
                 android:id="@+id/calendarioCitasEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"/>
+                android:layout_marginBottom="24dp" />
 
             <Button
                 android:id="@+id/seleccionarHoraEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#316ffe"
+                android:fontFamily="sans-serif"
                 android:text="Seleccionar Hora"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#316ffe"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                app:cornerRadius="28dp"
-                android:layout_marginBottom="16dp"/>
+                app:cornerRadius="28dp" />
 
             <Button
                 android:id="@+id/btnSiguienteEmpresa"
@@ -104,7 +104,7 @@
         android:id="@+id/layoutFormularioEmpresa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,124 +114,124 @@
 
             <Button
                 android:id="@+id/btnVolverFechaEmpresa"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="38dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/button_border"
                 android:backgroundTint="#316ffe"
+                android:fontFamily="sans-serif"
                 android:text="&#60;"
                 android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:layout_marginBottom="32dp"/>
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Datos de la empresa"
-                android:textSize="26sp"
-                android:textColor="#316ffe"
-                android:textStyle="bold"
+                android:layout_width="379dp"
+                android:layout_height="104dp"
+                android:layout_marginBottom="24dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:layout_marginBottom="24dp"/>
+                android:text="Datos de la empresa"
+                android:textColor="#316ffe"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/nombreEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:hint="Nombre de la empresa"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
+                android:hint="Nombre de la empresa"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="12dp"/>
+                android:paddingEnd="16dp" />
 
             <EditText
                 android:id="@+id/emailEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
                 android:hint="Correo electrónico"
                 android:inputType="textEmailAddress"
-                android:background="@drawable/bg_input_rounded"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="12dp"/>
+                android:paddingEnd="16dp" />
 
             <EditText
                 android:id="@+id/telefonoEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
                 android:hint="Teléfono"
                 android:inputType="phone"
-                android:background="@drawable/bg_input_rounded"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="12dp"/>
+                android:paddingEnd="16dp" />
 
             <EditText
                 android:id="@+id/ciudadEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:hint="Ciudad"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
+                android:hint="Ciudad"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="12dp"/>
+                android:paddingEnd="16dp" />
 
             <EditText
                 android:id="@+id/codigoPostalEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
                 android:hint="Código Postal"
                 android:inputType="number"
-                android:background="@drawable/bg_input_rounded"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="12dp"/>
+                android:paddingEnd="16dp" />
 
             <EditText
                 android:id="@+id/calleEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:hint="Nombre de la calle"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
+                android:hint="Nombre de la calle"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="12dp"/>
+                android:paddingEnd="16dp" />
 
             <EditText
                 android:id="@+id/numeroEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_rounded"
                 android:hint="Número de casa/piso y puerta"
                 android:inputType="number"
-                android:background="@drawable/bg_input_rounded"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="12dp"/>
+                android:paddingEnd="16dp" />
 
             <EditText
                 android:id="@+id/mensajeEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_input_rounded"
+                android:gravity="top"
                 android:hint="Mensaje opcional"
                 android:inputType="textMultiLine"
                 android:lines="3"
-                android:background="@drawable/bg_input_rounded"
-                android:padding="16dp"
-                android:gravity="top"
-                android:layout_marginBottom="24dp"/>
+                android:padding="16dp" />
 
             <Button
                 android:id="@+id/confirmarEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:backgroundTint="#316ffe"
+                android:fontFamily="sans-serif"
                 android:text="Confirmar Cita"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#316ffe"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                app:cornerRadius="28dp"/>
+                app:cornerRadius="28dp" />
 
         </LinearLayout>
     </ScrollView>

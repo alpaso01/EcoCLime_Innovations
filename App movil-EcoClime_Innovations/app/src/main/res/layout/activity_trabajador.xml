@@ -14,10 +14,11 @@
         <!-- Texto de bienvenida -->
 
         <!-- Botón de Calendario y fecha seleccionada -->
+
         <TextView
             android:id="@+id/welcomeText"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
+            android:layout_width="382dp"
+            android:layout_height="49dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
             android:text="Bienvenid@"
@@ -26,8 +27,8 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="377dp"
+            android:layout_height="61dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
             android:orientation="vertical">
@@ -50,6 +51,8 @@
         </LinearLayout>
 
         <!-- Botones de filtrado -->
+
+        <!-- Lista de citas -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +62,7 @@
 
             <Button
                 android:id="@+id/btnTodos"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
@@ -68,7 +71,7 @@
 
             <Button
                 android:id="@+id/btnEmpresa"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
@@ -77,18 +80,17 @@
 
             <Button
                 android:id="@+id/btnParticulares"
-                android:layout_width="0dp"
+                android:layout_width="114dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#316ffe"
                 android:text="Particulares" />
         </LinearLayout>
 
-        <!-- Lista de citas -->
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="631dp"
+            android:layout_height="558dp"
             android:layout_weight="1">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -99,6 +101,17 @@
                 android:paddingBottom="8dp" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        
+        <!-- Botón Atrás -->
+        <Button
+            android:id="@+id/btnAtras"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FF5252"
+            android:padding="12dp"
+            android:text="Cerrar Sesión"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

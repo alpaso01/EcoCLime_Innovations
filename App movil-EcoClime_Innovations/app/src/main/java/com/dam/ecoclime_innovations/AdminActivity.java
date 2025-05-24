@@ -10,6 +10,7 @@ public class AdminActivity extends BaseActivity {
     private Button btnCrearTrabajador;
     private Button btnCrearAdmin;
     private Button btnHistorialUsuarios;
+    private Button btnAtras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class AdminActivity extends BaseActivity {
         btnCrearTrabajador = findViewById(R.id.btnCrearTrabajador);
         btnCrearAdmin = findViewById(R.id.btnCrearAdmin);
         btnHistorialUsuarios = findViewById(R.id.btnHistorialUsuarios);
+        btnAtras = findViewById(R.id.btnAtras);
 
         // Configurar texto de bienvenida
         String email = getIntent().getStringExtra("userEmail");
@@ -45,6 +47,13 @@ public class AdminActivity extends BaseActivity {
         btnHistorialUsuarios.setOnClickListener(v -> {
             Intent intent = new Intent(AdminActivity.this, HistorialUsuariosActivity.class);
             startActivity(intent);
+        });
+        
+        btnAtras.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         });
     }
 

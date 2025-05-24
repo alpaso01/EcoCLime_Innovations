@@ -1,5 +1,6 @@
 package com.dam.ecoclime_innovations;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class HistorialUsuariosActivity extends AppCompatActivity {
     private RecyclerView recyclerUsuarios;
     private UsuarioAdapter usuarioAdapter;
     private ApiService apiService;
-    private Button btnTodos, btnTrabajadores, btnAdmins, btnClientes;
+    private Button btnTodos, btnTrabajadores, btnAdmins, btnClientes, btnAtras;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,11 +37,18 @@ public class HistorialUsuariosActivity extends AppCompatActivity {
         btnTrabajadores = findViewById(R.id.btnTrabajadores);
         btnAdmins = findViewById(R.id.btnAdmins);
         btnClientes = findViewById(R.id.btnClientes);
+        btnAtras = findViewById(R.id.btnAtras);
 
         btnTodos.setOnClickListener(v -> cargarTodos());
         btnTrabajadores.setOnClickListener(v -> cargarTrabajadores());
         btnAdmins.setOnClickListener(v -> cargarAdmins());
         btnClientes.setOnClickListener(v -> cargarClientes());
+        
+        btnAtras.setOnClickListener(v -> {
+            Intent intent = new Intent(HistorialUsuariosActivity.this, AdminActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         cargarTodos(); // Cargar todos por defecto
     }

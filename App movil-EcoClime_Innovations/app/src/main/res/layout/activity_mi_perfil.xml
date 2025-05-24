@@ -225,8 +225,8 @@
 
     <LinearLayout
         android:id="@+id/bottom_navigation_container"
-        android:layout_width="423dp"
-        android:layout_height="76dp"
+        android:layout_width="433dp"
+        android:layout_height="72dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"

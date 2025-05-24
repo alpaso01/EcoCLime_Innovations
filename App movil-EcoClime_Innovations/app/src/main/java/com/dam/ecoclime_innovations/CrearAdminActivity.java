@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import java.io.IOException;
+import android.content.Intent;
 
 public class CrearAdminActivity extends BaseActivity {
     private EditText etNombre;
@@ -17,6 +18,7 @@ public class CrearAdminActivity extends BaseActivity {
     private EditText etPassword;
     private EditText etConfirmPassword;
     private Button btnRegistrar;
+    private Button btnAtras;
     private ApiService apiService;
 
     @Override
@@ -37,6 +39,7 @@ public class CrearAdminActivity extends BaseActivity {
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
         btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnAtras = findViewById(R.id.btnAtras);
     }
 
     private void initRetrofit() {
@@ -45,6 +48,12 @@ public class CrearAdminActivity extends BaseActivity {
 
     private void setupButton() {
         btnRegistrar.setOnClickListener(v -> registrarAdmin());
+        
+        btnAtras.setOnClickListener(v -> {
+            Intent intent = new Intent(CrearAdminActivity.this, AdminActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void registrarAdmin() {

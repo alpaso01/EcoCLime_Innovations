@@ -88,7 +88,17 @@
             android:text="Registrar Administrador"
             android:textSize="18sp"
             android:padding="16dp"
-            android:backgroundTint="#316ffe"/>
+            android:backgroundTint="#316ffe"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnAtras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Atrás"
+            android:textSize="18sp"
+            android:padding="16dp"
+            android:backgroundTint="#FF5252"/>
 
     </LinearLayout>
-</ScrollView> 
+</ScrollView>

@@ -1,5 +1,6 @@
 package com.dam.ecoclime_innovations;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ public class CrearTrabajadorActivity extends BaseActivity {
     private EditText etPassword;
     private EditText etConfirmPassword;
     private Button btnRegistrar;
+    private Button btnAtras;
     private ApiService apiService;
 
     @Override
@@ -37,6 +39,7 @@ public class CrearTrabajadorActivity extends BaseActivity {
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
         btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnAtras = findViewById(R.id.btnAtras);
     }
 
     private void initRetrofit() {
@@ -45,6 +48,12 @@ public class CrearTrabajadorActivity extends BaseActivity {
 
     private void setupButton() {
         btnRegistrar.setOnClickListener(v -> registrarTrabajador());
+        
+        btnAtras.setOnClickListener(v -> {
+            Intent intent = new Intent(CrearTrabajadorActivity.this, AdminActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void registrarTrabajador() {

@@ -51,6 +51,10 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation(libs.swiperefreshlayout)
+    
+    // JavaMail para envío de correos electrónicos
+    implementation("com.sun.mail:android-mail:1.6.7")
+    implementation("com.sun.mail:android-activation:1.6.7")
 
     // Testing
     testImplementation("junit:junit:4.13.2")
