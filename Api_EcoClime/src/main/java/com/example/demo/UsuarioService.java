@@ -16,6 +16,12 @@ public class UsuarioService {
     @Autowired
     private AdminRepository adminRepository;
 
+    public boolean existePorEmail(String email) {
+        return usuarioRepository.existsByEmail(email)
+            || trabajadorRepository.existsByEmail(email)
+            || adminRepository.existsByEmail(email);
+    }
+
     //REGISTRO
     public Usuario registrarUsuario(Usuario usuario) {
         // No permitir registro con emails de trabajador o admin

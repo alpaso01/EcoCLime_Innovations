@@ -20,7 +20,8 @@ public class CambioContraActivity extends AppCompatActivity {
     private Button cambiarContraButton;
     private TextView errorTextView;
     private String email;
-    private ApiService apiService;
+    private String codigo;
+    private RecuperacionApi recuperacionApi;
 
     public static void start(AppCompatActivity activity, String email) {
         Intent intent = new Intent(activity, CambioContraActivity.class);
@@ -35,6 +36,7 @@ public class CambioContraActivity extends AppCompatActivity {
 
         // Obtener email del Intent
         email = getIntent().getStringExtra("email");
+        codigo = getIntent().getStringExtra("codigo");
 
         // Inicializar vistas
         nuevaPasswordEditText = findViewById(R.id.nuevaPasswordEditText);
@@ -42,8 +44,7 @@ public class CambioContraActivity extends AppCompatActivity {
         cambiarContraButton = findViewById(R.id.cambiarContraButton);
         errorTextView = findViewById(R.id.errorTextView);
 
-        // Inicializar Retrofit
-        apiService = RetrofitClient.getInstance().create(ApiService.class);
+        recuperacionApi = RetrofitRecuperacionClient.getApi();
 
         // Configurar click listener
         cambiarContraButton.setOnClickListener(new View.OnClickListener() {
@@ -64,33 +65,31 @@ public class CambioContraActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Crear Map con los datos
-                Map<String, String> request = new HashMap<>();
-                request.put("email", email);
-                request.put("nuevaPassword", nuevaPassword);
-
-                // Llamada a la API para cambiar la contraseña
-                // Asegúrate de que el endpoint /cambiar-contrasena existe y espera estos campos
-                Call<Void> call = apiService.cambiarPassword(request);
-                call.enqueue(new Callback<Void>() {
+                // Llamar al endpoint restablecer-contrasena
+                Map<String, String> body = new HashMap<>();
+                body.put("email", email);
+                body.put("codigo", codigo);
+                body.put("nuevaContrasena", nuevaPassword);
+                cambiarContraButton.setEnabled(false);
+                recuperacionApi.restablecerContrasena(body).enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
+                        cambiarContraButton.setEnabled(true);
                         if (response.isSuccessful()) {
                             Toast.makeText(CambioContraActivity.this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show();
-                            finish(); // Volver a la pantalla anterior
+                            startActivity(new Intent(CambioContraActivity.this, LoginActivity.class));
+                            finish();
                         } else {
-                            // Mostrar mensaje de error más detallado
-                            errorTextView.setText("Error al cambiar la contraseña. Código de error: " + response.code());
-                            errorTextView.setText("Error al cambiar la contraseña");
+                            errorTextView.setText("Error al cambiar la contraseña. Código inválido o expirado.");
                             errorTextView.setVisibility(View.VISIBLE);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        errorTextView.setText("Error al cambiar la contraseña");
+                        cambiarContraButton.setEnabled(true);
+                        errorTextView.setText("Error de red");
                         errorTextView.setVisibility(View.VISIBLE);
-                        Toast.makeText(CambioContraActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

@@ -1,5 +1,6 @@
 package com.dam.ecoclime_innovations;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +14,10 @@ import retrofit2.Response;
 
 public class RecuContraActivity extends AppCompatActivity {
     private EditText emailEditText;
-    private Button verificarButton;
+    private Button enviarCodigoButton;
     private TextView errorTextView;
-    private ApiService apiService;
     private android.widget.ImageButton btnBack;
+    private RecuperacionApi recuperacionApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class RecuContraActivity extends AppCompatActivity {
 
         // Inicializar vistas
         emailEditText = findViewById(R.id.emailEditText);
-        verificarButton = findViewById(R.id.verificarButton);
+        enviarCodigoButton = findViewById(R.id.verificarButton);
         errorTextView = findViewById(R.id.errorTextView);
         btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
@@ -34,11 +35,9 @@ public class RecuContraActivity extends AppCompatActivity {
             finish();
         });
 
-        // Inicializar Retrofit
-        apiService = RetrofitClient.getInstance().create(ApiService.class);
+        recuperacionApi = RetrofitRecuperacionClient.getApi();
 
-        // Configurar click listener
-        verificarButton.setOnClickListener(new View.OnClickListener() {
+        enviarCodigoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString().trim();
@@ -47,26 +46,33 @@ public class RecuContraActivity extends AppCompatActivity {
                     errorTextView.setVisibility(View.VISIBLE);
                     return;
                 }
-
-                // Verificar email en la API
-                Call<Usuario> call = apiService.obtenerUsuarioPorEmail(email);
-                call.enqueue(new Callback<Usuario>() {
+                // Llamar al endpoint para enviar código
+                java.util.Map<String, String> body = new java.util.HashMap<>();
+                body.put("email", email);
+                enviarCodigoButton.setEnabled(false);
+                recuperacionApi.enviarCodigo(body).enqueue(new Callback<Void>() {
                     @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                        if (response.isSuccessful() && response.body() != null) {
-                            // Email encontrado, ir a pantalla de cambio de contraseña
-                            CambioContraActivity.start(RecuContraActivity.this, email);
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        enviarCodigoButton.setEnabled(true);
+                        if (response.isSuccessful()) {
+                            // Ir a la pantalla de introducir código
+                            Intent intent = new Intent(RecuContraActivity.this, CodigoContraActivity.class);
+                            intent.putExtra("email", email);
+                            startActivity(intent);
+                            finish();
                         } else {
-                            errorTextView.setText("No se encontró ningún usuario con este email");
+                            errorTextView.setText("No se encontró ningún usuario con este email o error enviando código");
                             errorTextView.setVisibility(View.VISIBLE);
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
-                        errorTextView.setText("Error al verificar el email");
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        enviarCodigoButton.setEnabled(true);
+                        errorTextView.setText("Error de red: " + t.getMessage());
                         errorTextView.setVisibility(View.VISIBLE);
-                        Toast.makeText(RecuContraActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        android.util.Log.e("Recuperacion", "Error enviando código", t);
+                        Toast.makeText(RecuContraActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
             }
