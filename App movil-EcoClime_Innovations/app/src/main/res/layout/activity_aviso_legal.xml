@@ -23,9 +23,9 @@
             <!-- Barra superior con título y botón de volver -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/barraSuperior"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#316ffe">
+                android:layout_width="415dp"
+                android:layout_height="103dp"
+                android:background="@drawable/bg_appbar_gradient">
 
                 <ImageButton
                     android:id="@+id/btnVolver"
@@ -43,17 +43,20 @@
 
                 <TextView
                     android:id="@+id/textTitulo"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
-                    android:gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
                     android:text="Aviso Legal"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="28sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/btnVolver"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintVertical_bias="0.5" />

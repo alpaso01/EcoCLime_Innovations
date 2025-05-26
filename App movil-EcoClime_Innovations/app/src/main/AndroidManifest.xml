@@ -33,9 +33,7 @@
         <activity
             android:name=".ElegirCita"
             android:exported="false" />
-        <activity
-            android:name=".principal_empresa"
-            android:exported="false" />
+
         <activity
             android:name=".menu_principal"
             android:exported="false" />
@@ -45,9 +43,7 @@
         <activity
             android:name=".historial_citas"
             android:exported="false" />
-        <activity
-            android:name=".anular_cita"
-            android:exported="false" />
+
         <activity
             android:name=".citas_empresa"
             android:exported="false" />
@@ -60,10 +56,7 @@
         <activity
             android:name=".HistorialUsuariosActivity"
             android:exported="false" />
-        <activity
-            android:name=".PantallaCargaActivity"
-            android:exported="true"
-            android:theme="@style/Theme.EcoClime_Innovations" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"

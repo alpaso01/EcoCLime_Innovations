@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,12 +11,10 @@
         android:padding="0dp">
 
         <!-- Barra superior azul con botón atrás y título -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:orientation="horizontal"
-            android:background="#316ffe"
-            android:gravity="center_vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="415dp"
+            android:layout_height="103dp"
+            android:background="@drawable/bg_appbar_gradient">
 
             <ImageButton
                 android:id="@+id/btnBack"
@@ -25,17 +24,30 @@
                 android:src="@drawable/ic_back"
                 android:tint="@android:color/white"
                 android:contentDescription="Botón atrás"
-                android:padding="8dp" />
+                android:padding="8dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:shadowColor="#80000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="Editar Perfil"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
                 android:textStyle="bold"
-                android:layout_marginStart="8dp"/>
-        </LinearLayout>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

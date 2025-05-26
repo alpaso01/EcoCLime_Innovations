@@ -26,14 +26,15 @@
             <!-- Barra superior azul con botón atrás y título -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/barraSuperior"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#316ffe">
+                android:layout_width="415dp"
+                android:layout_height="103dp"
+                android:background="@drawable/bg_appbar_gradient">
 
                 <ImageButton
                     android:id="@+id/botonAtrasHistorial"
                     android:layout_width="40dp"
                     android:layout_height="38dp"
+                    android:layout_marginStart="16dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Botón atrás"
                     android:padding="8dp"
@@ -41,22 +42,24 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
-                    android:layout_marginStart="16dp" />
+                    app:layout_constraintVertical_bias="0.492" />
 
                 <TextView
                     android:id="@+id/tituloHistorial"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
-                    android:gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
                     android:text="Historial de Citas"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="28sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/botonAtrasHistorial"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintVertical_bias="0.5" />
@@ -78,7 +81,7 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_filtro_pill_selected"
+                    android:background="@drawable/bg_filtro_pill_azul"
                     android:fontFamily="sans-serif"
                     android:text="Todos"
                     android:textColor="#FFFFFF"
@@ -90,10 +93,10 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_filtro_pill_inactive"
+                    android:background="@drawable/bg_filtro_pill_gris_claro"
                     android:fontFamily="sans-serif"
                     android:text="Empresas"
-                    android:textColor="#666666"
+                    android:textColor="#FFFFFF"
                     android:textStyle="normal" />
 
                 <Button
@@ -101,10 +104,10 @@
                     android:layout_width="110dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_filtro_pill_inactive"
+                    android:background="@drawable/bg_filtro_pill_gris_claro"
                     android:fontFamily="sans-serif"
                     android:text="Particulares"
-                    android:textColor="#666666"
+                    android:textColor="#FFFFFF"
                     android:textStyle="normal" />
             </LinearLayout>
 

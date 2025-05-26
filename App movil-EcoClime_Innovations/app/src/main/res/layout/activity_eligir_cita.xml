@@ -29,20 +29,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Contenido principal con ScrollView -->
     <ImageButton
         android:id="@+id/botonAtras"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="80dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_back"
+        android:contentDescription="Botón atrás"
         android:padding="8dp"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Botón atrás"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Contenido principal con ScrollView -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"

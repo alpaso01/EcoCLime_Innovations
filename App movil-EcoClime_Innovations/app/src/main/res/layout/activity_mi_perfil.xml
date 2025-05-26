@@ -10,9 +10,9 @@
     <!-- Barra superior azul con botón atrás y título -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/barraSuperior"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="#316ffe"
+        android:layout_width="415dp"
+        android:layout_height="103dp"
+        android:background="@drawable/bg_appbar_gradient"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -36,16 +36,18 @@
             android:id="@+id/textTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:text="Mi Perfil"
             android:textColor="#FFFFFF"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.371"
-            app:layout_constraintStart_toEndOf="@id/btnVolver"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
