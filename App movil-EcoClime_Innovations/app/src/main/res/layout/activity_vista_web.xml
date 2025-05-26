@@ -18,12 +18,9 @@
     <!-- Menú de navegación personalizado -->
     <LinearLayout
         android:id="@+id/bottom_navigation_container"
-        android:layout_width="440dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/custom_navigation_background"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#FFFFFF"
         android:elevation="8dp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -44,18 +41,20 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_home"
-                android:tint="#FFFFFF" />
+                android:tint="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="18dp"
                 android:layout_marginTop="4dp"
                 android:text="Inicio"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="12sp" />
+            
+            <!-- El indicador se añadirá programáticamente aquí -->
         </LinearLayout>
 
         <!-- Botón Web -->
@@ -71,18 +70,20 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_web"
-                android:tint="#FFFFFF" />
+                android:tint="#316ffe" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="18dp"
                 android:layout_marginTop="4dp"
                 android:text="Web"
-                android:textColor="#FFFFFF"
+                android:textColor="#316ffe"
                 android:textSize="12sp" />
+            
+            <!-- El indicador se añadirá programáticamente aquí -->
         </LinearLayout>
 
         <!-- Botón Cuenta -->
@@ -98,18 +99,20 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_person"
-                android:tint="#FFFFFF" />
+                android:tint="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="18dp"
                 android:layout_marginTop="4dp"
                 android:text="Cuenta"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="12sp" />
+            
+            <!-- El indicador se añadirá programáticamente aquí -->
         </LinearLayout>
     </LinearLayout>
 

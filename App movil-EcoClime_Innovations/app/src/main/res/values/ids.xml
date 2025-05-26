@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="indicator_home" type="id" />
+    <item name="indicator_web" type="id" />
+    <item name="indicator_account" type="id" />
+</resources>
