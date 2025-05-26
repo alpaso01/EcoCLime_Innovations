@@ -2,6 +2,7 @@ package com.dam.ecoclime_innovations;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
+import com.dam.ecoclime_innovations.UsuarioUnificadoDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,7 +21,7 @@ public class HistorialUsuariosActivity extends AppCompatActivity {
     private RecyclerView recyclerUsuarios;
     private UsuarioAdapter usuarioAdapter;
     private ApiService apiService;
-    private Button btnTodos, btnTrabajadores, btnAdmins, btnClientes, btnAtras;
+    private Button btnTrabajadores, btnAdmins, btnClientes, btnAtras;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,13 +35,12 @@ public class HistorialUsuariosActivity extends AppCompatActivity {
 
         apiService = RetrofitClient.getInstance().create(ApiService.class);
 
-        btnTodos = findViewById(R.id.btnTodos);
         btnTrabajadores = findViewById(R.id.btnTrabajadores);
         btnAdmins = findViewById(R.id.btnAdmins);
         btnClientes = findViewById(R.id.btnClientes);
         btnAtras = findViewById(R.id.btnAtras);
 
-        btnTodos.setOnClickListener(v -> cargarTodos());
+
         btnTrabajadores.setOnClickListener(v -> cargarTrabajadores());
         btnAdmins.setOnClickListener(v -> cargarAdmins());
         btnClientes.setOnClickListener(v -> cargarClientes());
@@ -50,73 +51,117 @@ public class HistorialUsuariosActivity extends AppCompatActivity {
             finish();
         });
 
-        cargarTodos(); // Cargar todos por defecto
+        cargarTrabajadores();
+        // Puedes seleccionar aquí si quieres cargar por defecto un rol, por ejemplo cargarAdmins();
+        // cargarAdmins();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // cargarTrabajadores();
+        cargarTrabajadores();
+        // Puedes seleccionar aquí si quieres cargar por defecto un rol, por ejemplo cargarAdmins();
+        // cargarAdmins();
+    }
+
+    private List<Usuario> convertirADTOs(List<UsuarioUnificadoDTO> dtos) {
+        List<Usuario> usuarios = new ArrayList<>();
+        if (dtos != null) {
+            for (UsuarioUnificadoDTO dto : dtos) {
+                Usuario usuario = new Usuario();
+                usuario.setId(dto.getId());
+                usuario.setNombre(dto.getNombre());
+                usuario.setApellidos(dto.getApellidos());
+                usuario.setEmail(dto.getEmail());
+                usuario.setTelefono(dto.getTelefono());
+                usuario.setRol(dto.getRol());
+                usuario.setTipo(dto.getTipo());
+                usuarios.add(usuario);
+            }
+        }
+        return usuarios;
+    }
+
+    private void mostrarError(String mensaje) {
+        Log.e("HistorialUsuarios", mensaje);
+        runOnUiThread(() -> 
+            Toast.makeText(HistorialUsuariosActivity.this, mensaje, Toast.LENGTH_SHORT).show()
+        );
     }
 
     private void cargarTodos() {
-        apiService.obtenerTodosLosUsuarios().enqueue(new Callback<List<Usuario>>() {
+        apiService.obtenerTodosLosUsuarios().enqueue(new Callback<List<UsuarioUnificadoDTO>>() {
             @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+            public void onResponse(Call<List<UsuarioUnificadoDTO>> call, Response<List<UsuarioUnificadoDTO>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    usuarioAdapter.actualizarUsuarios(response.body());
+                    Log.d("HistorialUsuarios", "Usuarios cargados: " + response.body().size());
+                    usuarioAdapter.actualizarUsuarios(convertirADTOs(response.body()));
                 } else {
-                    Toast.makeText(HistorialUsuariosActivity.this, "No se pudieron cargar los usuarios", Toast.LENGTH_SHORT).show();
+                    mostrarError("Error al cargar usuarios: " + response.message());
                 }
             }
+
             @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                Toast.makeText(HistorialUsuariosActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<UsuarioUnificadoDTO>> call, Throwable t) {
+                mostrarError("Error de conexión: " + t.getMessage());
             }
         });
     }
 
     private void cargarTrabajadores() {
-        apiService.obtenerTrabajadores().enqueue(new Callback<List<Usuario>>() {
+        apiService.obtenerTrabajadores().enqueue(new Callback<List<UsuarioUnificadoDTO>>() {
             @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+            public void onResponse(Call<List<UsuarioUnificadoDTO>> call, Response<List<UsuarioUnificadoDTO>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    usuarioAdapter.actualizarUsuarios(response.body());
+                    Log.d("HistorialUsuarios", "Trabajadores cargados: " + response.body().size());
+                    usuarioAdapter.actualizarUsuarios(convertirADTOs(response.body()));
                 } else {
-                    Toast.makeText(HistorialUsuariosActivity.this, "No se pudieron cargar los trabajadores", Toast.LENGTH_SHORT).show();
+                    mostrarError("Error al cargar trabajadores: " + response.message());
                 }
             }
+
             @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                Toast.makeText(HistorialUsuariosActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<UsuarioUnificadoDTO>> call, Throwable t) {
+                mostrarError("Error de conexión: " + t.getMessage());
             }
         });
     }
 
     private void cargarAdmins() {
-        apiService.obtenerAdmins().enqueue(new Callback<List<Usuario>>() {
+        apiService.obtenerAdmins().enqueue(new Callback<List<UsuarioUnificadoDTO>>() {
             @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+            public void onResponse(Call<List<UsuarioUnificadoDTO>> call, Response<List<UsuarioUnificadoDTO>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    usuarioAdapter.actualizarUsuarios(response.body());
+                    Log.d("HistorialUsuarios", "Admins cargados: " + response.body().size());
+                    usuarioAdapter.actualizarUsuarios(convertirADTOs(response.body()));
                 } else {
-                    Toast.makeText(HistorialUsuariosActivity.this, "No se pudieron cargar los admins", Toast.LENGTH_SHORT).show();
+                    mostrarError("Error al cargar admins: " + response.message());
                 }
             }
+
             @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                Toast.makeText(HistorialUsuariosActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<UsuarioUnificadoDTO>> call, Throwable t) {
+                mostrarError("Error de conexión: " + t.getMessage());
             }
         });
     }
 
     private void cargarClientes() {
-        apiService.obtenerClientes().enqueue(new Callback<List<Usuario>>() {
+        apiService.obtenerClientes().enqueue(new Callback<List<UsuarioUnificadoDTO>>() {
             @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+            public void onResponse(Call<List<UsuarioUnificadoDTO>> call, Response<List<UsuarioUnificadoDTO>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    usuarioAdapter.actualizarUsuarios(response.body());
+                    Log.d("HistorialUsuarios", "Clientes cargados: " + response.body().size());
+                    usuarioAdapter.actualizarUsuarios(convertirADTOs(response.body()));
                 } else {
-                    Toast.makeText(HistorialUsuariosActivity.this, "No se pudieron cargar los clientes", Toast.LENGTH_SHORT).show();
+                    mostrarError("Error al cargar clientes: " + response.message());
                 }
             }
+
             @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                Toast.makeText(HistorialUsuariosActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<UsuarioUnificadoDTO>> call, Throwable t) {
+                mostrarError("Error de conexión: " + t.getMessage());
             }
         });
     }

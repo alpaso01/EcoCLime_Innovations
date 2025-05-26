@@ -3,6 +3,7 @@ package com.dam.ecoclime_innovations;
 import java.util.List;
 import java.util.Map;
 
+import com.dam.ecoclime_innovations.UsuarioUnificadoDTO;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -35,16 +36,16 @@ public interface ApiService {
 
     // --- HISTORIAL DE USUARIOS ---
     @GET("api/usuarios/todos")
-    Call<List<Usuario>> obtenerTodosLosUsuarios();
+    Call<List<UsuarioUnificadoDTO>> obtenerTodosLosUsuarios();
 
     @GET("api/usuarios/trabajadores")
-    Call<List<Usuario>> obtenerTrabajadores();
+    Call<List<UsuarioUnificadoDTO>> obtenerTrabajadores();
 
     @GET("api/usuarios/admins")
-    Call<List<Usuario>> obtenerAdmins();
+    Call<List<UsuarioUnificadoDTO>> obtenerAdmins();
 
     @GET("api/usuarios/clientes")
-    Call<List<Usuario>> obtenerClientes();
+    Call<List<UsuarioUnificadoDTO>> obtenerClientes();
 
     @GET("api/usuarios/user/{email}")
     Call<Usuario> obtenerUsuarioPorEmail(@Path("email") String email);

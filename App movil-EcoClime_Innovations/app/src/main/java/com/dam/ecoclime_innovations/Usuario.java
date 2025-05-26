@@ -22,13 +22,19 @@ public class Usuario {
     private String password;
 
     @SerializedName("tipo")
-    private String tipo;
+    private String tipo;  // "particular" o "empresa" (solo para clientes)
+
+    @SerializedName("rol")
+    private String rol;  // "cliente", "admin" o "trabajador"
 
     @SerializedName("ciudad")
     private String ciudad;
 
     @SerializedName("codigo_postal")
     private String codigoPostal;
+
+    @SerializedName("direccion")
+    private String direccion;
 
     @Override
     public String toString() {
@@ -40,14 +46,12 @@ public class Usuario {
                 ", telefono='" + telefono + '\'' +
                 ", password='" + password + '\'' +
                 ", tipo='" + tipo + '\'' +
+                ", rol='" + rol + '\'' +
                 ", ciudad='" + ciudad + '\'' +
                 ", codigoPostal='" + codigoPostal + '\'' +
                 ", direccion='" + direccion + '\'' +
                 '}';
     }
-
-    @SerializedName("direccion")
-    private String direccion;
 
     // Constructor vacío necesario para Retrofit
     public Usuario() {
@@ -71,13 +75,14 @@ public class Usuario {
 
     // Constructor con todos los campos
     public Usuario(String nombre, String apellidos, String email, String telefono, String password, String tipo,
-                   String ciudad, String codigoPostal, String direccion) {
+                   String rol, String ciudad, String codigoPostal, String direccion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
         this.password = password;
         this.tipo = tipo;
+        this.rol = rol;
         this.ciudad = ciudad;
         this.codigoPostal = codigoPostal;
         this.direccion = direccion;
@@ -138,6 +143,14 @@ public class Usuario {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public String getCiudad() {

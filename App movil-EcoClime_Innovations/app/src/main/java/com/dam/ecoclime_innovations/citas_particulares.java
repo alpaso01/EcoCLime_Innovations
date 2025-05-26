@@ -2,6 +2,7 @@ package com.dam.ecoclime_innovations;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -150,6 +151,11 @@ public class citas_particulares extends AppCompatActivity {
                     String errorMsg = "Error al obtener datos del usuario: " + response.code();
                     Log.e(TAG, errorMsg);
                     Toast.makeText(citas_particulares.this, "Error al obtener datos del usuario", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(citas_particulares.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
@@ -157,6 +163,11 @@ public class citas_particulares extends AppCompatActivity {
             public void onFailure(Call<Usuario> call, Throwable t) {
                 Log.e(TAG, "Error de conexión: " + t.getMessage());
                 Toast.makeText(citas_particulares.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(citas_particulares.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -195,16 +206,16 @@ public class citas_particulares extends AppCompatActivity {
                     Log.d(TAG, "Detalles de la cita guardada: " + citaGuardada.toString());
                     Toast.makeText(citas_particulares.this, "Cita agendada con éxito", Toast.LENGTH_SHORT).show();
                     actualizarContadorCitas();
-                    
-                    // Enviar correo electrónico de confirmación
                     enviarCorreoConfirmacion(citaGuardada);
+                } else if (response.isSuccessful()) {
+                    Toast.makeText(citas_particulares.this, "Cita agendada con éxito", Toast.LENGTH_SHORT).show();
+                    actualizarContadorCitas();
                 } else {
                     String errorMsg = "Error al agendar la cita: ";
                     if (response.errorBody() != null) {
                         try {
                             errorMsg += response.errorBody().string();
                             Log.e(TAG, "Error detallado del servidor: " + errorMsg);
-
                             if (errorMsg.contains("ObjectOptimisticLockingFailureException")) {
                                 if (retryCount < MAX_RETRIES - 1) {
                                     retryCount++;
@@ -213,7 +224,6 @@ public class citas_particulares extends AppCompatActivity {
                                         Log.d(TAG, "Reintentando agendar cita...");
                                         agendarCitaConUsuario(usuarioId);
                                     }, 2000);
-                                    return;
                                 } else {
                                     Log.e(TAG, "Se alcanzó el número máximo de reintentos por error de concurrencia");
                                     Toast.makeText(citas_particulares.this, "No se pudo agendar la cita. Por favor, intente nuevamente en unos minutos.", Toast.LENGTH_LONG).show();
@@ -255,6 +265,13 @@ public class citas_particulares extends AppCompatActivity {
                         mensajeError += t.getMessage();
                     }
                     Toast.makeText(citas_particulares.this, mensajeError, Toast.LENGTH_LONG).show();
+                    new Handler().postDelayed(() -> {
+                        Intent intent = new Intent(citas_particulares.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    }, 1200);
                 }
             }
         });
@@ -291,18 +308,26 @@ public class citas_particulares extends AppCompatActivity {
             public void onSuccess() {
                 Log.d(TAG, "Correo enviado con éxito");
                 runOnUiThread(() -> {
-                    Toast.makeText(citas_particulares.this, "Se ha enviado un correo de confirmación", Toast.LENGTH_SHORT).show();
-                    finish();
-                });
+    Toast.makeText(citas_particulares.this, "Se ha enviado un correo de confirmación", Toast.LENGTH_SHORT).show();
+    Intent intent = new Intent(citas_particulares.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
+    finish();
+});
             }
 
             @Override
             public void onError(String error) {
                 Log.e(TAG, "Error al enviar correo: " + error);
                 runOnUiThread(() -> {
-                    Toast.makeText(citas_particulares.this, "La cita se ha registrado, pero no se pudo enviar el correo de confirmación", Toast.LENGTH_LONG).show();
-                    finish();
-                });
+    Toast.makeText(citas_particulares.this, "La cita se ha registrado, pero no se pudo enviar el correo de confirmación", Toast.LENGTH_LONG).show();
+    Intent intent = new Intent(citas_particulares.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
+    finish();
+});
             }
         });
     }

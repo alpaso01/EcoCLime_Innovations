@@ -74,38 +74,38 @@
 
                 <Button
                     android:id="@+id/btnTodos"
-                    android:layout_width="0dp"
+                    android:layout_width="114dp"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
                     android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
                     android:background="@drawable/bg_filtro_pill_selected"
+                    android:fontFamily="sans-serif"
                     android:text="Todos"
                     android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif"/>
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnEmpresas"
-                    android:layout_width="0dp"
+                    android:layout_width="90dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_filtro_pill_inactive"
+                    android:fontFamily="sans-serif"
                     android:text="Empresas"
                     android:textColor="#666666"
-                    android:textStyle="normal"
-                    android:fontFamily="sans-serif"/>
+                    android:textStyle="normal" />
 
                 <Button
                     android:id="@+id/btnParticulares"
-                    android:layout_width="0dp"
+                    android:layout_width="110dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_filtro_pill_inactive"
+                    android:fontFamily="sans-serif"
                     android:text="Particulares"
                     android:textColor="#666666"
-                    android:textStyle="normal"
-                    android:fontFamily="sans-serif"/>
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <!-- Lista de citas -->
@@ -122,8 +122,8 @@
     <!-- Menú de navegación personalizado -->
     <LinearLayout
         android:id="@+id/bottom_navigation_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="436dp"
+        android:layout_height="73dp"
         android:background="@drawable/custom_navigation_background"
         android:elevation="8dp"
         android:orientation="horizontal"

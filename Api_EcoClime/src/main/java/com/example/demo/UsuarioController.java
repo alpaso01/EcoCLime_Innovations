@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("api/usuarios")
@@ -15,6 +16,12 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    private AdminRepository adminRepository;
+    
+    @Autowired
+    private TrabajadorRepository trabajadorRepository;
 
     @PostMapping("/registro")
     public ResponseEntity<?> registrarUsuario(@RequestBody Usuario usuario) {
@@ -61,23 +68,101 @@ public class UsuarioController {
     // --- HISTORIAL DE USUARIOS ---
     
     @GetMapping("/todos")
-    public ResponseEntity<?> obtenerTodos() {
-        return ResponseEntity.ok(usuarioRepository.findAll());
+    public ResponseEntity<List<UsuarioUnificadoDTO>> obtenerTodos() {
+        List<UsuarioUnificadoDTO> todos = new ArrayList<>();
+
+        // Clientes
+        for (Usuario cliente : usuarioRepository.findAll()) {
+            UsuarioUnificadoDTO dto = new UsuarioUnificadoDTO();
+            dto.setId(cliente.getId());
+            dto.setNombre(cliente.getNombre());
+            dto.setApellidos(cliente.getApellidos());
+            dto.setEmail(cliente.getEmail());
+            dto.setTelefono(cliente.getTelefono());
+            dto.setRol("cliente");
+            dto.setTipo(cliente.getTipo()); // "particular" o "empresa"
+            todos.add(dto);
+        }
+
+        // Admins
+        for (Admin admin : adminRepository.findAll()) {
+            UsuarioUnificadoDTO dto = new UsuarioUnificadoDTO();
+            dto.setId(admin.getId());
+            dto.setNombre(admin.getNombre());
+            dto.setApellidos(admin.getApellidos());
+            dto.setEmail(admin.getEmail());
+            dto.setTelefono(admin.getTelefono());
+            dto.setRol("admin");
+            dto.setTipo(null);
+            todos.add(dto);
+        }
+
+        // Trabajadores
+        for (Trabajador trabajador : trabajadorRepository.findAll()) {
+            UsuarioUnificadoDTO dto = new UsuarioUnificadoDTO();
+            dto.setId(trabajador.getId());
+            dto.setNombre(trabajador.getNombre());
+            dto.setApellidos(trabajador.getApellidos());
+            dto.setEmail(trabajador.getEmail());
+            dto.setTelefono(trabajador.getTelefono());
+            dto.setRol("trabajador");
+            dto.setTipo(null);
+            todos.add(dto);
+        }
+
+        return ResponseEntity.ok(todos);
     }
 
     @GetMapping("/trabajadores")
-    public ResponseEntity<?> obtenerTrabajadores() {
-        return ResponseEntity.ok(usuarioRepository.findByTipo("trabajador"));
+    public ResponseEntity<List<UsuarioUnificadoDTO>> obtenerTrabajadores() {
+        List<UsuarioUnificadoDTO> trabajadores = new ArrayList<>();
+        for (Trabajador trabajador : trabajadorRepository.findAll()) {
+            UsuarioUnificadoDTO dto = new UsuarioUnificadoDTO();
+            dto.setId(trabajador.getId());
+            dto.setNombre(trabajador.getNombre());
+            dto.setApellidos(trabajador.getApellidos());
+            dto.setEmail(trabajador.getEmail());
+            dto.setTelefono(trabajador.getTelefono());
+            dto.setRol("trabajador");
+            dto.setTipo(null);
+            trabajadores.add(dto);
+        }
+        return ResponseEntity.ok(trabajadores);
     }
 
     @GetMapping("/admins")
-    public ResponseEntity<?> obtenerAdmins() {
-        return ResponseEntity.ok(usuarioRepository.findByTipo("admin"));
+    public ResponseEntity<List<UsuarioUnificadoDTO>> obtenerAdmins() {
+        List<UsuarioUnificadoDTO> admins = new ArrayList<>();
+        for (Admin admin : adminRepository.findAll()) {
+            UsuarioUnificadoDTO dto = new UsuarioUnificadoDTO();
+            dto.setId(admin.getId());
+            dto.setNombre(admin.getNombre());
+            dto.setApellidos(admin.getApellidos());
+            dto.setEmail(admin.getEmail());
+            dto.setTelefono(admin.getTelefono());
+            dto.setRol("admin");
+            dto.setTipo(null);
+            admins.add(dto);
+        }
+        return ResponseEntity.ok(admins);
     }
 
     @GetMapping("/clientes")
-    public ResponseEntity<?> obtenerClientes() {
-        return ResponseEntity.ok(usuarioRepository.findByTipo("cliente"));
+    public ResponseEntity<List<UsuarioUnificadoDTO>> obtenerClientes() {
+        List<UsuarioUnificadoDTO> clientes = new ArrayList<>();
+        // Obtener todos los usuarios de la tabla usuarios (todos son clientes)
+        for (Usuario usuario : usuarioRepository.findAll()) {
+            UsuarioUnificadoDTO dto = new UsuarioUnificadoDTO();
+            dto.setId(usuario.getId());
+            dto.setNombre(usuario.getNombre());
+            dto.setApellidos(usuario.getApellidos());
+            dto.setEmail(usuario.getEmail());
+            dto.setTelefono(usuario.getTelefono());
+            dto.setRol("cliente");
+            dto.setTipo(usuario.getTipo());
+            clientes.add(dto);
+        }
+        return ResponseEntity.ok(clientes);
     }
 
     @PatchMapping("/{id}")

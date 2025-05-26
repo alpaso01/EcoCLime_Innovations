@@ -30,9 +30,21 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
     @Override
     public void onBindViewHolder(@NonNull UsuarioViewHolder holder, int position) {
         Usuario usuario = usuarios.get(position);
-        holder.tvNombreUsuario.setText(usuario.getNombre());
+        holder.tvNombreUsuario.setText(usuario.getNombre() + " " + usuario.getApellidos());
         holder.tvEmailUsuario.setText(usuario.getEmail());
-        holder.tvTipoUsuario.setText(usuario.getTipo());
+        
+        // Mostrar el rol del usuario (cliente, admin o trabajador)
+        String rol = usuario.getRol() != null ? 
+                   usuario.getRol().substring(0, 1).toUpperCase() + usuario.getRol().substring(1) : "";
+        
+        // Si es cliente, mostrar también el tipo (particular/empresa)
+        if ("cliente".equals(usuario.getRol()) && usuario.getTipo() != null) {
+            String tipo = usuario.getTipo().substring(0, 1).toUpperCase() + 
+                        usuario.getTipo().substring(1);
+            holder.tvTipoUsuario.setText(rol + " - " + tipo);
+        } else {
+            holder.tvTipoUsuario.setText(rol);
+        }
     }
 
     @Override

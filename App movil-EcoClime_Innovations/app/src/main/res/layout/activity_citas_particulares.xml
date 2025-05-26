@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/barraSuperior"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="99dp"
         android:background="#316ffe">
 
         <ImageButton
@@ -19,25 +19,25 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Botón atrás"
+            android:padding="12dp"
             android:src="@drawable/ic_back"
             android:tint="#FFFFFF"
-            android:padding="12dp"
-            android:contentDescription="Botón atrás"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tituloParticulares"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="187dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
             android:text="Cita Particular"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/botonAtrasParticulares"
             app:layout_constraintStart_toEndOf="@id/botonAtrasParticulares"
-            app:layout_constraintTop_toTopOf="@id/botonAtrasParticulares"
-            app:layout_constraintBottom_toBottomOf="@id/botonAtrasParticulares"/>
+            app:layout_constraintTop_toTopOf="@id/botonAtrasParticulares" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Primera parte: Selección de fecha y hora -->
@@ -104,7 +104,7 @@
         android:id="@+id/layoutFormulario"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,7 +115,7 @@
             <Button
                 android:id="@+id/btnVolverFecha"
                 android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_height="27dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/button_border"
                 android:backgroundTint="#316ffe"
@@ -127,7 +127,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="Datos de contacto"
@@ -139,6 +140,7 @@
                 android:id="@+id/nombre"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_input_rounded"
                 android:hint="Nombre"
@@ -224,8 +226,8 @@
             <EditText
                 android:id="@+id/mensaje"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_input_rounded"
                 android:gravity="top"
                 android:hint="Mensaje opcional"

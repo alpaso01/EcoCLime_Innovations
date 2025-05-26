@@ -192,28 +192,25 @@ public class citas_empresa extends AppCompatActivity {
                     Log.d("citas_empresa", "Cita agendada exitosamente. ID de la cita: " + citaGuardada.getId());
                     Log.d("citas_empresa", "Detalles de la cita guardada: " + citaGuardada.toString());
                     Toast.makeText(citas_empresa.this, "Cita agendada con éxito", Toast.LENGTH_SHORT).show();
-                    // Actualizar el contador de citas en SharedPreferences
                     actualizarContadorCitas();
-                    
-                    // Enviar correo electrónico de confirmación
                     enviarCorreoConfirmacion(citaGuardada);
+                } else if (response.isSuccessful()) {
+                    Toast.makeText(citas_empresa.this, "Cita agendada con éxito", Toast.LENGTH_SHORT).show();
+                    actualizarContadorCitas();
                 } else {
                     String errorMsg = "Error al agendar la cita: ";
                     if (response.errorBody() != null) {
                         try {
                             errorMsg += response.errorBody().string();
                             Log.e("citas_empresa", "Error detallado del servidor: " + errorMsg);
-
-                            // Verificar si es un error de concurrencia
                             if (errorMsg.contains("ObjectOptimisticLockingFailureException")) {
                                 if (retryCount < MAX_RETRIES - 1) {
                                     retryCount++;
                                     Log.e("citas_empresa", "Error de concurrencia detectado. Intentando nuevamente... (Intento " + (retryCount + 1) + " de " + MAX_RETRIES + ")");
-                                    // Intentar nuevamente después de un breve retraso
                                     new Handler().postDelayed(() -> {
                                         Log.d("citas_empresa", "Reintentando agendar cita...");
                                         agendarCitaConUsuario(usuarioId);
-                                    }, 2000); // Aumentamos el tiempo de espera a 2 segundos
+                                    }, 2000);
                                     return;
                                 } else {
                                     Log.e("citas_empresa", "Se alcanzó el número máximo de reintentos por error de concurrencia");
@@ -230,6 +227,11 @@ public class citas_empresa extends AppCompatActivity {
                         }
                     }
                 }
+                Intent intent = new Intent(citas_empresa.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
 
             @Override
@@ -242,7 +244,7 @@ public class citas_empresa extends AppCompatActivity {
                     Log.d("citas_empresa", "Reintentando después de error de conexión... (Intento " + (retryCount + 1) + " de " + MAX_RETRIES + ")");
                     new Handler().postDelayed(() -> {
                         agendarCitaConUsuario(usuarioId);
-                    }, 3000); // Aumentamos el tiempo de espera a 3 segundos para errores de conexión
+                    }, 3000);
                 } else {
                     Log.e("citas_empresa", "Se alcanzó el número máximo de reintentos después de errores de conexión");
                     String mensajeError = "Error de conexión: ";
@@ -257,6 +259,11 @@ public class citas_empresa extends AppCompatActivity {
                     }
                     Toast.makeText(citas_empresa.this, mensajeError, Toast.LENGTH_LONG).show();
                 }
+                Intent intent = new Intent(citas_empresa.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -291,18 +298,26 @@ public class citas_empresa extends AppCompatActivity {
             public void onSuccess() {
                 Log.d("citas_empresa", "Correo enviado con éxito");
                 runOnUiThread(() -> {
-                    Toast.makeText(citas_empresa.this, "Se ha enviado un correo de confirmación", Toast.LENGTH_SHORT).show();
-                    finish();
-                });
+    Toast.makeText(citas_empresa.this, "Se ha enviado un correo de confirmación", Toast.LENGTH_SHORT).show();
+    Intent intent = new Intent(citas_empresa.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
+    finish();
+});
             }
 
             @Override
             public void onError(String error) {
                 Log.e("citas_empresa", "Error al enviar correo: " + error);
                 runOnUiThread(() -> {
-                    Toast.makeText(citas_empresa.this, "La cita se ha registrado, pero no se pudo enviar el correo de confirmación", Toast.LENGTH_LONG).show();
-                    finish();
-                });
+    Toast.makeText(citas_empresa.this, "La cita se ha registrado, pero no se pudo enviar el correo de confirmación", Toast.LENGTH_LONG).show();
+    Intent intent = new Intent(citas_empresa.this, pantalla_principal.class);
+intent.putExtra("userEmail", userEmail);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
+    finish();
+});
             }
         });
     }

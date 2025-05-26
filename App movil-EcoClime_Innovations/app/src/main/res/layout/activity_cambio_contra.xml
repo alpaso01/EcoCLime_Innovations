@@ -42,10 +42,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/cambiarContraButton"
-        android:layout_width="match_parent"
+        android:layout_width="364dp"
         android:layout_height="wrap_content"
-        android:text="Cambiar Contraseña"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:text="Cambiar Contraseña" />
 
     <TextView
         android:id="@+id/errorTextView"

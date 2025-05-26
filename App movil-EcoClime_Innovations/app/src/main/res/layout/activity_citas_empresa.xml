@@ -104,7 +104,7 @@
         android:id="@+id/layoutFormularioEmpresa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -212,7 +212,7 @@
             <EditText
                 android:id="@+id/mensajeEmpresa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="76dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/bg_input_rounded"
                 android:gravity="top"
