@@ -29,23 +29,30 @@ public class AdminActivity extends BaseActivity {
         btnAtras = findViewById(R.id.btnAtras);
 
         // Configurar texto de bienvenida
-        String email = getIntent().getStringExtra("userEmail");
-        welcomeText.setText("Bienvenid@ " + email);
+        // Usar el userEmail de la clase base que ya se inicializó en onCreate de BaseActivity
+        if (userEmail != null && !userEmail.isEmpty()) {
+            welcomeText.setText("Bienvenid@ Administrador");
+        } else {
+            welcomeText.setText("Bienvenid@ Administrador");
+        }
     }
 
     private void setupButtons() {
         btnCrearTrabajador.setOnClickListener(v -> {
             Intent intent = new Intent(AdminActivity.this, CrearTrabajadorActivity.class);
+            pasarDatosUsuario(intent); // Usar el método de BaseActivity para pasar datos
             startActivity(intent);
         });
 
         btnCrearAdmin.setOnClickListener(v -> {
             Intent intent = new Intent(AdminActivity.this, CrearAdminActivity.class);
+            pasarDatosUsuario(intent); // Usar el método de BaseActivity para pasar datos
             startActivity(intent);
         });
 
         btnHistorialUsuarios.setOnClickListener(v -> {
             Intent intent = new Intent(AdminActivity.this, HistorialUsuariosActivity.class);
+            pasarDatosUsuario(intent); // Usar el método de BaseActivity para pasar datos
             startActivity(intent);
         });
         

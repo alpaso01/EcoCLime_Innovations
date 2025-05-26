@@ -30,14 +30,14 @@
             android:id="@+id/tituloEmpresa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Cita Empresa"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/botonAtrasEmpresa"
             app:layout_constraintStart_toEndOf="@id/botonAtrasEmpresa"
-            app:layout_constraintTop_toTopOf="@id/botonAtrasEmpresa"
-            app:layout_constraintBottom_toBottomOf="@id/botonAtrasEmpresa"/>
+            app:layout_constraintTop_toTopOf="@id/botonAtrasEmpresa" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Primera parte: Selección de fecha y hora -->

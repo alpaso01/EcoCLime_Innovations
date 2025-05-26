@@ -2,6 +2,8 @@ package com.dam.ecoclime_innovations;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -115,14 +117,24 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
         btnEmpresas = findViewById(R.id.btnEmpresas);
         btnParticulares = findViewById(R.id.btnParticulares);
 
-        // Establecer colores iniciales
-        btnTodos.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill));
-        btnEmpresas.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill_inactive));
-        btnParticulares.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill_inactive));
+        // Crear drawables para los estados
+        GradientDrawable inactivoDrawable = new GradientDrawable();
+        inactivoDrawable.setColor(Color.parseColor("#D3D3D3")); // Gris claro
+        inactivoDrawable.setCornerRadius(20 * getResources().getDisplayMetrics().density); // 20dp en px
 
-        btnTodos.setTextColor(getResources().getColor(android.R.color.white));
-        btnEmpresas.setTextColor(getResources().getColor(android.R.color.white));
-        btnParticulares.setTextColor(getResources().getColor(android.R.color.white));
+        GradientDrawable activoDrawable = new GradientDrawable();
+        activoDrawable.setColor(Color.parseColor("#316ffe")); // Azul
+        activoDrawable.setCornerRadius(20 * getResources().getDisplayMetrics().density); // 20dp en px
+
+        // Establecer colores iniciales - btnTodos activo por defecto (azul), los demás gris claro
+        btnTodos.setBackground(activoDrawable);
+        btnEmpresas.setBackground(inactivoDrawable);
+        btnParticulares.setBackground(inactivoDrawable);
+
+        // Todos los botones con texto blanco
+        btnTodos.setTextColor(Color.WHITE);
+        btnEmpresas.setTextColor(Color.WHITE);
+        btnParticulares.setTextColor(Color.WHITE);
 
         btnTodos.setOnClickListener(v -> {
             Log.d(TAG, "Botón TODOS clickeado");
@@ -144,18 +156,27 @@ public class historial_citas extends BaseActivity implements CitaAdapter.OnCitaA
     }
 
     private void setFiltroActivo(Button botonActivo) {
-        // Resetear todos los botones a estado inactivo
-        btnTodos.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill_inactive));
-        btnEmpresas.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill_inactive));
-        btnParticulares.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill_inactive));
+        // Crear nuevos drawables para los estados
+        GradientDrawable inactivoDrawable = new GradientDrawable();
+        inactivoDrawable.setColor(Color.parseColor("#D3D3D3")); // Gris claro
+        inactivoDrawable.setCornerRadius(20 * getResources().getDisplayMetrics().density); // 20dp en px
+
+        GradientDrawable activoDrawable = new GradientDrawable();
+        activoDrawable.setColor(Color.parseColor("#316ffe")); // Azul
+        activoDrawable.setCornerRadius(20 * getResources().getDisplayMetrics().density); // 20dp en px
+
+        // Resetear todos los botones a estado inactivo (gris claro)
+        btnTodos.setBackground(inactivoDrawable);
+        btnEmpresas.setBackground(inactivoDrawable);
+        btnParticulares.setBackground(inactivoDrawable);
 
         // Mantener el texto en blanco para todos los botones
-        btnTodos.setTextColor(getResources().getColor(android.R.color.white));
-        btnEmpresas.setTextColor(getResources().getColor(android.R.color.white));
-        btnParticulares.setTextColor(getResources().getColor(android.R.color.white));
+        btnTodos.setTextColor(Color.WHITE);
+        btnEmpresas.setTextColor(Color.WHITE);
+        btnParticulares.setTextColor(Color.WHITE);
 
-        // Activar el botón seleccionado
-        botonActivo.setBackground(getResources().getDrawable(R.drawable.bg_filtro_pill));
+        // Activar el botón seleccionado (azul)
+        botonActivo.setBackground(activoDrawable);
     }
 
     private void filtrarCitas(String tipo) {

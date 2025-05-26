@@ -21,9 +21,7 @@
         <activity
             android:name=".ModificarCitaActivity"
             android:exported="false" />
-        <activity
-            android:name=".AtencionClienteActivity"
-            android:exported="false" />
+
         <activity
             android:name=".EditarPerfilActivity"
             android:exported="false" />

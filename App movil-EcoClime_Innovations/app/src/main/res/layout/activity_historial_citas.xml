@@ -77,11 +77,11 @@
 
                 <Button
                     android:id="@+id/btnTodos"
-                    android:layout_width="114dp"
+                    android:layout_width="102dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_filtro_pill_azul"
+                    android:background="@drawable/btn_filtro_activo"
                     android:fontFamily="sans-serif"
                     android:text="Todos"
                     android:textColor="#FFFFFF"
@@ -93,22 +93,22 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_filtro_pill_gris_claro"
+                    android:background="@drawable/btn_filtro_inactivo"
                     android:fontFamily="sans-serif"
                     android:text="Empresas"
                     android:textColor="#FFFFFF"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnParticulares"
                     android:layout_width="110dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_filtro_pill_gris_claro"
+                    android:background="@drawable/btn_filtro_inactivo"
                     android:fontFamily="sans-serif"
                     android:text="Particulares"
                     android:textColor="#FFFFFF"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- Lista de citas -->
@@ -151,14 +151,14 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_home"
-                android:tint="#AAAAAA" />
+                android:tint="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Inicio"
-                android:textColor="#AAAAAA"
+                android:textColor="#000000"
                 android:textSize="12sp" />
             
             <!-- El indicador se añadirá programáticamente aquí -->
@@ -180,14 +180,14 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_web"
-                android:tint="#AAAAAA" />
+                android:tint="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Web"
-                android:textColor="#AAAAAA"
+                android:textColor="#000000"
                 android:textSize="12sp" />
             
             <!-- El indicador se añadirá programáticamente aquí -->
@@ -209,14 +209,14 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_person"
-                android:tint="#AAAAAA" />
+                android:tint="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Cuenta"
-                android:textColor="#AAAAAA"
+                android:textColor="#000000"
                 android:textSize="12sp" />
             
             <!-- El indicador se añadirá programáticamente aquí -->
