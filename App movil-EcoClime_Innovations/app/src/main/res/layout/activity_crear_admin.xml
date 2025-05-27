@@ -12,14 +12,14 @@
         android:padding="16dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Registrar Nuevo Administrador"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#316ffe"
+            android:layout_width="375dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="32dp"
             android:gravity="center"
-            android:layout_marginBottom="32dp"/>
+            android:text="Registrar Nuevo Administrador"
+            android:textColor="#316ffe"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etNombre"

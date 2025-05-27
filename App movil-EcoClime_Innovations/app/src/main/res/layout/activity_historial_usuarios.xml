@@ -5,17 +5,25 @@
     android:orientation="vertical"
     android:padding="8dp">
 
+    <!-- Espacio para mover los botones hacia abajo -->
+    <Space
+        android:layout_width="399dp"
+        android:layout_height="35dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
         <Button
             android:id="@+id/btnTrabajadores"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginRight="4dp"
             android:text="Trabajador"
             android:textSize="10dp" />
         <Button
@@ -23,12 +31,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:text="Admins" />
         <Button
             android:id="@+id/btnClientes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="4dp"
             android:text="Clientes"
             android:textSize="13dp" />
     </LinearLayout>
@@ -36,10 +47,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerUsuarios"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="709dp"
         android:layout_weight="1"
-        android:paddingTop="8dp"/>
-        
+        android:paddingTop="8dp" />
+
     <Button
         android:id="@+id/btnAtras"
         android:layout_width="match_parent"
@@ -48,6 +59,8 @@
         android:textSize="18sp"
         android:padding="12dp"
         android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:backgroundTint="#FF5252"/>
 
 </LinearLayout>
